@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import dto.UtenteDTO;
 import interf.GestioneUtenteBE;
 import model.User;
 import security.MySecurityContext;

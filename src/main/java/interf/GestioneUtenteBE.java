@@ -1,6 +1,6 @@
 package interf;
 
-import controller.UtenteDTO;
+import dto.UtenteDTO;
 import model.User;
 
 public interface GestioneUtenteBE {

@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import controller.UtenteDTO;
+import dto.UtenteDTO;
 import interf.GestioneUtenteBE;
 import model.User;
 import repository.UtenteRepository;
