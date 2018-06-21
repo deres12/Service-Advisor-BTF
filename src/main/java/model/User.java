@@ -53,13 +53,13 @@ public class User extends AEntity<String> {
 		
 	}
 	
-	/*public User(String nome, String cognome, String username, String via) {
+	public User(String nome, String cognome, String username, String via) {
 		this.nome=nome;
 		this.username=username;
 		this.cognome=cognome;
 		this.via=via;
 		
-	}*/
+	}
 	
 	public String getOid() {
 		return getUsername();

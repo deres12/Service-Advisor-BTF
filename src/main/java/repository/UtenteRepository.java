@@ -12,6 +12,6 @@ import model.User;
 public interface UtenteRepository extends JpaRepository<User, String> {
 
 	List<User> findByLastName(String string);
-	User saveAndFlush(User u);
+	//User saveAndFlush(User u);
 	
 }
