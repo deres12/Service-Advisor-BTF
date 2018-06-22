@@ -1,5 +1,6 @@
-package controller;
+package it.btf.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -9,15 +10,23 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import it.btf.dto.RispostaDTO;
+import it.btf.dto.UtenteDTO;
+import it.btf.interf.GestioneUtenteBE;
+
 @RestController
 @RequestMapping(value = "/esempio")
 public class EsempioController {
+	
+	@Autowired
+	GestioneUtenteBE service;
 
 	@ResponseBody
 	@RequestMapping(value = "saluta", method = RequestMethod.POST)
 	public ResponseEntity<RispostaDTO> saluta(@RequestBody UtenteDTO dto) {
 
 		if (dto.getNome() != null) {
+			//service.add(dto);
 			return new ResponseEntity<RispostaDTO>(new RispostaDTO("ciao " + dto.getNome()), HttpStatus.OK);
 		} else {
 			return new ResponseEntity<RispostaDTO>(new RispostaDTO("utente non creato"), HttpStatus.BAD_REQUEST);

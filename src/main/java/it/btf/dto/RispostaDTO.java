@@ -1,4 +1,4 @@
-package controller;
+package it.btf.dto;
 
 public class RispostaDTO {
 

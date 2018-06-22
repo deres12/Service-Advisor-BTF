@@ -1,4 +1,4 @@
-package controller;
+package it.btf.controller;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,10 +11,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import interf.GestioneUtenteBE;
-import model.User;
+import it.btf.dto.UtenteDTO;
+import it.btf.interf.GestioneUtenteBE;
+import it.btf.model.User;
+import it.btf.security.MySecurityContext;
 
-//import it.example.security.MySecurityContext;
 
 
 @RestController
@@ -27,18 +28,19 @@ public class GestioneUtenteController {
 	@RequestMapping("/{username}")
 	@ResponseBody
 	public UtenteDTO load(@PathVariable("username") String username){
-		//String email = MySecurityContext.getEmail();
+		
+		String email = MySecurityContext.getEmail();
 		
 		System.out.println(username);
 		return service.load(username);
 	}
 	
-	
+	/*
 	
 	@RequestMapping(value="/aiuto", method = RequestMethod.POST)
 	@ResponseBody
 	public ResponseEntity<String> insert(@RequestBody UtenteDTO dto){
-		String email = "s.carrino@yahoo.it";/*MySecurityContext.getEmail();*/
+		String email = "s.carrino@yahoo.it";
 		System.out.println(email);
 		User a=new User();
 		a.setUsername(dto.getUsername());
@@ -47,13 +49,9 @@ public class GestioneUtenteController {
 		a.setVia(dto.getVia());
 		service.insert(a);
 		return new ResponseEntity<String>(new String("e andato tutto bene"), HttpStatus.OK);
-		/*
-		 * new User(dto.getNome(),dto.getCognome(),dto.getUsername(),dto.getVia())
-		 * 
-		 * String nome, String cognome, String username, String via*/
-		//return service.load(username);
+
 	}
-	
+	*/
 	/*@ResponseBody
 	@RequestMapping(value = "saluta", method = RequestMethod.POST)
 	public ResponseEntity<RispostaDTO> saluta(@RequestBody UtenteDTO dto) {
