@@ -1,4 +1,4 @@
-package model;
+package it.btf.model;
 
 import java.io.Serializable;
 

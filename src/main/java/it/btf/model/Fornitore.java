@@ -1,4 +1,4 @@
-package model;
+package it.btf.model;
 
 
 public class Fornitore extends User {

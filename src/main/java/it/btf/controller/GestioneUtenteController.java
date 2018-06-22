@@ -1,4 +1,4 @@
-package controller;
+package it.btf.controller;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,12 +11,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import dto.UtenteDTO;
-import interf.GestioneUtenteBE;
-import model.User;
-import security.MySecurityContext;
+import it.btf.dto.UtenteDTO;
+import it.btf.interf.GestioneUtenteBE;
+import it.btf.model.User;
+import it.btf.security.MySecurityContext;
 
-//import it.example.security.MySecurityContext;
 
 
 @RestController
@@ -29,7 +28,8 @@ public class GestioneUtenteController {
 	@RequestMapping("/{username}")
 	@ResponseBody
 	public UtenteDTO load(@PathVariable("username") String username){
-		//String email = MySecurityContext.getEmail();
+		
+		String email = MySecurityContext.getEmail();
 		
 		System.out.println(username);
 		return service.load(username);

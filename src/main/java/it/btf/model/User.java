@@ -1,5 +1,6 @@
-package model;
+package it.btf.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Embedded;
@@ -13,53 +14,64 @@ import javax.persistence.TemporalType;
 
 import org.apache.tomcat.jni.Address;
 
-@Table(name = "USERX")
+@Table(name = "UTENTI")
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED)
-public class User extends AEntity<String> {
+public class User /* extends AEntity<String>*/ implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	@Id
 	private String username;
 	private String nome;
 	private String cognome;
 	private String via;
-	public String getNome() {
-		return nome;
-	}
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-	public String getCognome() {
-		return cognome;
-	}
-	public void setCognome(String cognome) {
-		this.cognome = cognome;
-	}
-	public String getVia() {
-		return via;
-	}
-	public void setVia(String via) {
-		this.via = via;
-	}
-
 	private String email;
 
 	@Temporal(TemporalType.DATE)
 	private Date timeBirth;
 
-	/*@Embedded
-	private Address address;*/
+
 	public User() {
-		
+
 	}
-	
-	public User(String nome, String cognome, String username, String via) {
-		this.nome=nome;
-		this.username=username;
-		this.cognome=cognome;
-		this.via=via;
+
+	public User(String nome, String cognome, String username, String via, String email) {
+		this.nome = nome;
+		this.username = username;
+		this.cognome = cognome;
+		this.via = via;
+		this.email=email;
 		
+
 	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public String getCognome() {
+		return cognome;
+	}
+
+	public void setCognome(String cognome) {
+		this.cognome = cognome;
+	}
+
+	public String getVia() {
+		return via;
+	}
+
+	public void setVia(String via) {
+		this.via = via;
+	}
+
 	
 	public String getOid() {
 		return getUsername();
@@ -73,14 +85,7 @@ public class User extends AEntity<String> {
 		this.username = username;
 	}
 
-	/*public Address getAddress() {
-		return address;
-	}
 
-	public void setAddress(Address address) {
-		this.address = address;
-	}
-*/
 	public String getEmail() {
 		return email;
 	}

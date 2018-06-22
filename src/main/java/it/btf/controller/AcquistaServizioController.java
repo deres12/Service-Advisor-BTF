@@ -1,4 +1,4 @@
-package controller;
+package it.btf.controller;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import dto.ServizioDTO;
+import it.btf.dto.ServizioDTO;
 
 @RestController
 @RequestMapping(value="/acquista")
