@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import interf.GestioneUtenteBE;
 import model.User;
-import security.MySecurityContext;
 
 //import it.example.security.MySecurityContext;
 
