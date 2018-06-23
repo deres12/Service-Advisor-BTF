@@ -1,11 +1,9 @@
 package it.btf.interf;
 
-import it.btf.dto.UtenteDTO;
+import it.btf.dto.PersonaDTO;
 
 public interface GestioneUtenteBE {
 	
-	public UtenteDTO load(String username);
-	//public ExampleEntity add(ExampleEntity user);
-	//public void insert(User utente);
+	public PersonaDTO load(String username);
 
 }

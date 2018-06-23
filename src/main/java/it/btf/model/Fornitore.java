@@ -1,7 +1,7 @@
 package it.btf.model;
 
 
-public class Fornitore extends User {
+public class Fornitore extends Persona {
 
 	public Fornitore(String nome, String cognome, String username, String via) {
 		super();

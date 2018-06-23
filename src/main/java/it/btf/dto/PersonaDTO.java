@@ -1,6 +1,6 @@
 package it.btf.dto;
 
-public class UtenteDTO {
+public class PersonaDTO {
 
 	private String nome;
 	private String cognome;
@@ -8,7 +8,7 @@ public class UtenteDTO {
 	private String username;
 	private String email;
 	
-	public UtenteDTO(String nome, String cognome, String username, String via, String email) {
+	public PersonaDTO(String nome, String cognome, String username, String via, String email) {
 		this.nome=nome;
 		this.username=username;
 		this.cognome=cognome;

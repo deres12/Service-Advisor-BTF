@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import it.btf.dto.RispostaDTO;
-import it.btf.dto.UtenteDTO;
+import it.btf.dto.PersonaDTO;
 import it.btf.interf.GestioneUtenteBE;
 
 @RestController
@@ -23,7 +23,7 @@ public class EsempioController {
 
 	@ResponseBody
 	@RequestMapping(value = "saluta", method = RequestMethod.POST)
-	public ResponseEntity<RispostaDTO> saluta(@RequestBody UtenteDTO dto) {
+	public ResponseEntity<RispostaDTO> saluta(@RequestBody PersonaDTO dto) {
 
 		if (dto.getNome() != null) {
 			//service.add(dto);

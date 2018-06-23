@@ -5,18 +5,13 @@ import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-
-import org.apache.tomcat.jni.Address;
-
-@Table(name = "UTENTI")
+@Table(name = "PERSONE")
 @Entity
-public class User /* extends AEntity<String>*/ implements Serializable {
+public class Persona implements Serializable {
 
 	/**
 	 * 
@@ -34,11 +29,11 @@ public class User /* extends AEntity<String>*/ implements Serializable {
 	private Date timeBirth;
 
 
-	public User() {
+	public Persona() {
 
 	}
 
-	public User(String nome, String cognome, String username, String via, String email) {
+	public Persona(String nome, String cognome, String username, String via, String email) {
 		this.nome = nome;
 		this.username = username;
 		this.cognome = cognome;
