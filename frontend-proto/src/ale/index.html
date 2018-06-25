@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
+          integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"
+            integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"
+            integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"
+            integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
+            crossorigin="anonymous"></script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="container" style="background-color: lavender;">
+
+    <!-- BARRA NAV -->
+    <ul class="nav nav-pills nav-justified" style="background-color: white;">
+        <li class="nav-item">
+            <a class="nav-link active" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Servizi</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Info</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link disabled" href="#">Logout</a>
+        </li>
+    </ul>
+
+    <!--MESSAGGIO DI BENVENUTO -->
+    <div class="row" style="background-color: lavender;">
+        <div class="col-md-2"></div>
+        <div class="col-md-8"><h1>BENVENUTO nome utente</h1></br>
+            <h2>Hai una nuova offerta</h2>
+        </div>
+        <div class="col-md-2 "></div>
+    </div>
+    <div class="row" style="background-color: lavender;">
+        <div class="col-md-3" style="background-color: lavender;"></br></div>
+        <div class="col-md-6">
+            <div class="row align-items-center justify-content-center">
+                <button type="button" class="btn btn-primary btn-lg" style="margin: 16px; width: 100% "><h3>Nuova
+                    richiesta</h3></button>
+
+            </div>
+        </div>
+        <div class="col-md-3 " style="background-color: lavender;"></div>
+    </div>
+
+    <!-- ELENCO RICHIESTE IN TABLIST-->
+    <div id="accordion" role="tablist" aria-multiselectable="true">
+        <div class="card">
+            <div class="card-header" role="tab" id="headingOne">
+                <h5 class="mb-0">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true"
+                       aria-controls="collapseOne">
+                        Nome Richiesta #1
+                    </a>
+                </h5>
+            </div>
+
+            <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
+                <div class="card-block">
+                    <h4>Hai ricevuto N richeste da M venditori!</h4>
+                    <p>Prezzo minimo: 250 €</p>
+                    <p>Prezzo minimo: 500 €</p>
+                    <strong>Per visualizzare i dettagli clicca il bottone</strong>
+                    <button class="btn btn-outline-primary" style="float:right">Sblocca</button>
+
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header" role="tab" id="headingTwo">
+                <h5 class="mb-0">
+                    <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo"
+                       aria-expanded="false" aria-controls="collapseTwo">
+                        Nome Richiesta #2
+                    </a>
+                </h5>
+            </div>
+            <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
+                <div class="card-block">
+                    <h4>Hai ricevuto N richeste da M venditori!</h4>
+                    <p>Prezzo minimo: 250 €</p>
+                    <p>Prezzo minimo: 500 €</p>
+                    <strong>Per visualizzare i dettagli clicca il bottone</strong>
+                    <button class="btn btn-outline-primary" style="float:right">Sblocca</button>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header" role="tab" id="headingThree">
+                <h5 class="mb-0">
+                    <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree"
+                       aria-expanded="false" aria-controls="collapseThree">
+                        Nome Richiesta #3
+                    </a>
+                </h5>
+            </div>
+            <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree">
+                <div class="card-block">
+                    <h4>Hai ricevuto N richeste da M venditori!</h4>
+                    <p>Prezzo minimo: 250 €</p>
+                    <p>Prezzo minimo: 500 €</p>
+                    <strong>Per visualizzare i dettagli clicca il bottone</strong>
+                    <button class="btn btn-outline-primary" style="float:right">Sblocca</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--FOOTER-->
+    <div class="row" style="background: steelblue; color: white; margin-top: 50px">
+
+        <div class="col-12 col-sm-4" style="margin-top: 16px">
+            <h4>CalmDown</h4>
+            <a href="categoria/multimedia" style="color: white">Assistenza</a></br>
+            <a href="categoria/multimedia" style="color: white">Chi siamo?</a></br>
+            <a href="categoria/multimedia" style="color: white">Link Cliccabile</a>
+
+        </div>
+        <div class="col-12 col-sm-4" style="margin-top: 16px">
+            <h4>Clienti</h4>
+            <a href="categoria/multimedia" style="color: white">Come funziona?</a></br>
+            <a href="categoria/multimedia" style="color: white">FAQ</a></br>
+            <a href="categoria/multimedia" style="color: white">Regolamento</a>
+        </div>
+        <div class="col-12 col-sm-4" style="margin-top: 16px">
+            <h4>Professionisti</h4>
+            <a href="categoria/multimedia" style="color: white">Come funiona?</a></br>
+            <a href="categoria/multimedia" style="color: white">Statistiche</a>
+        </div>
+
+        <div class="col-12 col-sm-3" style="margin-top: 16px">
+
+            <!-- QUI CI VA IL LOGO-->
+            <h4>Qui ci va il logo</h4>
+        </div>
+        <div class="col-12 col-sm-9" style="margin-top: 16px">
+            <div>
+                <small>CalmDown srl - P.IVA: 0000000000 | Copyright © 2018 - Tutti i diritti riservati</small>
+                </br>
+                <small>Sede legale: via non so 10-12, 20123 Milano (MI) | Sede operativa: via del Boh 25, 20124 Milano
+                    (MI)
+                </small>
+            </div>
+
+        </div>
+    </div>
+</div>
+</body>
+</html>

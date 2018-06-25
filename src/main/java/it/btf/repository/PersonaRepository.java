@@ -5,12 +5,12 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import it.btf.model.Persona;
+import it.btf.model.Cliente;
 
 
 @Repository
-public interface PersonaRepository extends JpaRepository<Persona, String> {
+public interface PersonaRepository extends JpaRepository<Cliente, String> {
 
-	List<Persona> findByEmail(String string);
+	List<Cliente> findByEmail(String string);
 	
 }

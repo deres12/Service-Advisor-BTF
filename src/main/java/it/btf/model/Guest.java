@@ -3,15 +3,21 @@ package it.btf.model;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.Embeddable;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-@Table(name = "PERSONE")
 @Entity
-public class Persona implements Serializable {
+@Inheritance(strategy=InheritanceType.JOINED)
+@DiscriminatorColumn(name="TYPE_GUEST")
+@Table(name="GUEST")
+public abstract class Guest implements Serializable {
 
 	/**
 	 * 
@@ -29,11 +35,11 @@ public class Persona implements Serializable {
 	private Date timeBirth;
 
 
-	public Persona() {
+	public Guest() {
 
 	}
 
-	public Persona(String nome, String cognome, String username, String via, String email) {
+	public Guest(String nome, String cognome, String username, String via, String email) {
 		this.nome = nome;
 		this.username = username;
 		this.cognome = cognome;

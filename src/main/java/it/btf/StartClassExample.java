@@ -7,7 +7,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
-import it.btf.model.Persona;
+import it.btf.model.Cliente;
 import it.btf.repository.PersonaRepository;
 
 @SpringBootApplication
@@ -25,7 +25,7 @@ public class StartClassExample {
 	public CommandLineRunner commandLineRunner(PersonaRepository repository) {
 		return (args) -> {
 
-			Persona a=new Persona("assda","prova", "aaa@aaa","adsadsad","asasa");
+			Cliente a=new Cliente("assda","prova", "aaa@aaa","adsadsad","asasa");
 
 			repository.save(a);
 			
@@ -33,7 +33,7 @@ public class StartClassExample {
 			// fetch all customers
 			log.info("Customers found with findAll():");
 			log.info("-------------------------------");
-			for (Persona customer : repository.findAll()) {
+			for (Cliente customer : repository.findAll()) {
 				log.info(customer.toString());
 			}
 			log.info("");

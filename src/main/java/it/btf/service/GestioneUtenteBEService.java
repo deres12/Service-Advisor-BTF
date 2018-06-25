@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import it.btf.dto.PersonaDTO;
 import it.btf.interf.GestioneUtenteBE;
-import it.btf.model.Persona;
+import it.btf.model.Cliente;
 import it.btf.repository.PersonaRepository;
 
 @Service
@@ -17,7 +17,7 @@ public class GestioneUtenteBEService implements GestioneUtenteBE {
 
 	@Override
 	public PersonaDTO load(String username) {
-		Persona utente = utenteRepository.findById(username).orElse(new Persona(username,null,null,null,null));
+		Cliente utente = utenteRepository.findById(username).orElse(new Cliente(username,null,null,null,null));
 		return new PersonaDTO(utente.getNome(),utente.getCognome(),utente.getUsername(),utente.getVia(),utente.getEmail());
 	}
 
