@@ -1,22 +1,26 @@
 package it.btf.model;
 
-import javax.persistence.Column;
-import javax.persistence.DiscriminatorColumn;
+import java.util.List;
+
 import javax.persistence.DiscriminatorValue;
-import javax.persistence.Embeddable;
-import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
-
-import org.hibernate.annotations.ManyToAny;
 
 @Entity 	
 @DiscriminatorValue("F")
 public class Fornitore extends Guest {
+	private int valutazione;
+	private String descrizione;
+	private String numero;
 
+	@ManyToOne
+	private Professione professione;
+
+	@OneToMany
+	private List<Servizio> servizi;
+	
+	
 	/**
 	 * 
 	 */
@@ -32,29 +36,22 @@ public class Fornitore extends Guest {
 		// TODO Auto-generated constructor stub
 	}
 	
-	
 
-	private int valutazione;
-	private String descrizione;
-	private String numero;
-	
-	/*@OneToOne
-	private Persona utente;*/
-	
-	/*@ManyToOne
-	private Professione lavoro;
-	*/
-	
-	/*public Persona getUtente() {
-		return utente;
+	public Professione getProfessione() {
+		return professione;
 	}
 
-	public void setUtente(Persona utente) {
-		this.utente = utente;
-	}*/
+	public void setProfessione(Professione lavoro) {
+		this.professione = lavoro;
+	}
 
-	
-	// private
+	public List<Servizio> getServizi() {
+		return servizi;
+	}
+
+	public void setServizi(List<Servizio> servizi) {
+		this.servizi = servizi;
+	}
 
 	public int getValutazione() {
 		return valutazione;
@@ -79,14 +76,6 @@ public class Fornitore extends Guest {
 	public void setNumero(String numero) {
 		this.numero = numero;
 	}
-
-/*	public Professione getLavoro() {
-		return lavoro;
-	}
-
-	public void setLavoro(Professione lavoro) {
-		this.lavoro = lavoro;
-	}*/
 	
 	
 

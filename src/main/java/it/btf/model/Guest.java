@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.DiscriminatorColumn;
-import javax.persistence.Embeddable;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
