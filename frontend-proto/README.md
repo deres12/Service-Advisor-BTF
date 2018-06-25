@@ -14,7 +14,9 @@ Il prototipo e' cosi' composto:
 
 | Risorsa   | Descrizione |
 |-----------|-------------|
-| index.html| Il file principale |
-| css/      | cartella contenente tutti i fogli di stile |
-| js/       | cartella contenente tutti gli script javascript |
-| res/      | cartella contenente risorse, come ad esempio immagini |
+| docs/          | cartella contenente documentazione aggiuntiva |
+| src/           | cartella contenente i sorgenti principali |
+| src/index.html | Il file principale |
+| src/css/       | cartella contenente tutti i fogli di stile |
+| src/js/        | cartella contenente tutti gli script javascript |
+| src/res/       | cartella contenente risorse, come ad esempio immagini |
