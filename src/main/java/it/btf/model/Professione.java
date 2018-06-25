@@ -19,7 +19,7 @@ public class Professione {
 	@OneToMany(mappedBy = "id")
 	private List<Servizio> servizi;
 	
-	@OneToMany(mappedBy="username")
+	@OneToMany(mappedBy="email")
 	private List<Fornitore> fornitori;
 	
 	

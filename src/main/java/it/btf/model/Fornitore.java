@@ -10,13 +10,17 @@ import javax.persistence.OneToMany;
 @Entity 	
 @DiscriminatorValue("F")
 public class Fornitore extends Guest {
+	
 	private int valutazione;
 	private String descrizione;
 	private String numero;
 
 	@ManyToOne
 	private Professione professione;
-
+	
+	@OneToMany(mappedBy="fornitore")
+	private List<Offerta> offerte;
+	
 	@OneToMany
 	private List<Servizio> servizi;
 	

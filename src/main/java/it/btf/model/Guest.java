@@ -23,11 +23,12 @@ public abstract class Guest implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	@Id
+	
 	private String username;
 	private String nome;
 	private String cognome;
 	private String via;
+	@Id
 	private String email;
 
 	@Temporal(TemporalType.DATE)
@@ -39,11 +40,11 @@ public abstract class Guest implements Serializable {
 	}
 
 	public Guest(String nome, String cognome, String username, String via, String email) {
+		this.email=email;
 		this.nome = nome;
 		this.username = username;
 		this.cognome = cognome;
 		this.via = via;
-		this.email=email;
 		
 
 	}

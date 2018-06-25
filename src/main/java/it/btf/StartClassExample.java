@@ -25,7 +25,7 @@ public class StartClassExample {
 	public CommandLineRunner commandLineRunner(PersonaRepository repository) {
 		return (args) -> {
 
-			Cliente a=new Cliente("assda","prova", "aaa@aaa","adsadsad","asasa");
+			Cliente a=new Cliente("assda","prova","adsadsad","asasa", "aaa@aaa");
 
 			repository.save(a);
 			
@@ -39,9 +39,9 @@ public class StartClassExample {
 			log.info("");
 
 			// fetch an individual customer by ID
-			repository.findById("assda")
+			repository.findById("aaa@aaa")
 				.ifPresent(customer -> {
-					log.info("Utente found with findById(\"assda\"):");
+					log.info("Utente found with findById(\"aaa@aaa\"):");
 					log.info("--------------------------------");
 					log.info(customer.toString());
 					log.info("");
