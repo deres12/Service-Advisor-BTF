@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler;
 
 @Configuration
 public class SecuityConfig extends WebSecurityConfigurerAdapter
@@ -12,6 +11,7 @@ public class SecuityConfig extends WebSecurityConfigurerAdapter
 
 	@Autowired
 	SuccessLoginHandler successLoginHandler;
+	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests().antMatchers("/oauth_login", "css/**", "js/**", "img/**").permitAll().anyRequest()
