@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="utf-8">
+    <meta name="author" value="Antonio Bonfitto">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prova</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/modals.css">
+</head>
+
+<body>
+
+    <!-- barra di navigazione superiore -->
+    <nav class="flex-row">
+        <button>
+            <img src="res/logo2.svg" id="nav-logo" alt="">
+            <strong style="vertical-align:middle">ServAdvisor</strong>
+        </button>
+        <span class="flex-spacer"></span>
+        <button id="open-side-menu-button">&hellip;</button>
+    </nav>
+
+    <!-- menu laterale -->
+    <div id="side-menu-container">
+        <div id="side-menu">
+            <div style="text-align:right;">
+                <button id="close-side-menu-button">
+                    &times;
+                </button>
+            </div>
+            <ul class="unstyled flex-spacer" style="overflow: auto">
+                <li id="profile-button">Accedi</li>
+                <li id="my-requests-button">Le mie richieste</li>
+                <li id="my-settings-button">Impostazioni</li>
+                <li>...</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- contenitore dei modals -->
+    <div id="modals-container">
+
+        <!-- modal per effettuale l'accesso -->
+        <div class="modal" data-name="login">
+            <header>
+                <span>Accedi</span>
+                <button class="close-modal">&times;</button>
+            </header>
+            <div class="content">
+                <form id="login-form">
+                    <label for="username">Nome Utente</label>
+                    <input type="text" name="username" placeholder="Nome o Email">
+
+                    <label for="password">Password</label>
+                    <input type="password" name="password" placeholder="Password">
+                    
+                    <input type="submit" value="Accedi" class="big-btn">
+                </form>
+                <div class="centered">
+                    <span class="separator">oppure</span>
+                    <button class="sign-with-google">
+                        <span style="font-family:Verdana;font-weight:bold">G&nbsp;</span>
+                        Accedi con Google
+                        </button>
+                    <button class="sign-with-facebook">
+                        <span style="font-family:Verdana;font-weight:bold">f </span>
+                        Accedi con Facebook
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- modal di registrazione per utente NON professionista -->
+        <div class="modal" data-name="signup">
+            <header>
+                <span>Registrazione</span>
+                <button class="close-modal">&times;</button>
+            </header>
+            <div class="content">
+                <form id="signup-form">
+                    <label for="username">Indirizzo E-mail</label>
+                    <input type="email" name="email" placeholder="E-mail">
+                    
+                    <label for="username">Nome Utente</label>
+                    <input type="text" name="username" placeholder="Nome">
+
+                    <label for="password">Password</label>
+                    <input type="password" name="password" placeholder="Crea una password">
+
+                    <label for="password2">Ripeti Password</label>
+                    <input type="password" name="password2" placeholder="Ripeti la password">
+                    
+                    <input type="submit" value="Registrati" class="big-btn">
+                </form>
+                <div class="centered">
+                    <span class="separator">oppure</span>
+                    <button class="sign-with-google">
+                        <span style="font-family:Verdana;font-weight:bold">G </span>
+                        Registrati con Google
+                        </button>
+                    <button class="sign-with-facebook">
+                        <span style="font-family:Verdana;font-weight:bold">f </span>
+                        Registrati con Facebook
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- modal per creare una nuova richiesta -->
+        <div class="modal" data-name="new-request">
+            <header>
+                <span>Nuova richiesta</span>
+                <button class="close-modal">&times;</button>
+            </header>
+            <div class="content">
+                <form id="new-request-form" class="form-vertical">
+                    <label for="service">Che tipo di servizio?</label>
+                    <select name="service"></select>
+
+                    <label for="address">Dove ti serve?</label>
+                    <input type="text" name="address" placeholder="Indirizzo">
+
+                    <label for="duration">Quando ti serve?</label>
+                    <select name="duration">
+                        <option>entro pochi giorni</option>
+                        <option>entro un mese</option>
+                        <option>non lo so</option>
+                    </select>
+
+                    <label for="descr">Descrivi il problema</label>
+                    <textarea name="descr"
+                        placeholder="..."
+                        rows="5"
+                        cols="30"></textarea>
+
+                    <input type="submit" value="Crea" class="big-btn">
+                </form>
+            </div>
+        </div>
+
+        <!-- modal visualizzazione richieste effettuate -->
+        <div class="modal" data-name="user-requests">
+            <header>
+                <span>Le mie richieste</span>
+                <button class="close-modal">&times;</button>
+            </header>
+            <div class="content">
+                <ul id="requests-list" class="unstyled"></ul>
+            </div>
+        </div>
+
+        <!-- modal impostazioni account utente -->
+        <div class="modal" data-name="user-settings">
+            <header>
+                <span>Impostazioni</span>
+                <button class="close-modal">&times;</button>
+            </header>
+            <div class="content">
+                <ul class="unstyled">
+                    <li onclick="open_modal('user-change-password')">Modifica Password</li>
+                    <li>...</li>
+                    <li>Opzione n</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- modal di modifica password -->
+        <div class="modal" data-name="user-change-password">
+            <header>
+                <span>Modifica Password</span>
+                <button class="close-modal">&times;</button>
+            </header>
+            <div class="content">
+                <form id="change-password-form">
+                    <label>Password Attuale</label>
+                    <input type="password" name="oldPass">
+                    <label>Nuova Password</label>
+                    <input type="password" name="newPass1">
+                    <label>Ripeti Password</label>
+                    <input type="password" name="newPass2">
+
+                    <input type="submit" class="big-btn" value="Conferma">
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- contenitore delle varie "viste" della web app -->
+    <main>
+        <!-- pagina di benvenuto -->
+        <div class="panel" data-name="home">
+            <div style="color:#444;min-height:8em;text-align:center;padding: 50px 0">
+                <div style="font-weight:bold;font-size:30px; max-width: 600px;margin:0 auto;margin-bottom: 12px;">
+                    Service Advisor ti aiuta a trovare
+                    professionisti nella tua zona
+                </div>
+                <button class="big-btn" onclick="open_modal('signup')">
+                    Registrati Subito
+                </button>
+            </div>
+        </div>
+
+        <!-- pagina principale utente registrato -->
+        <div class="panel" data-name="user">
+            <div class="centered" style="padding: 100px 0;">
+                <button class="big-btn" onclick="open_modal('new-request')">
+                    Ho Bisogno Di...
+                </button>
+            </div>
+        </div>
+
+        <!-- pagina principale professionista -->
+        <div class="panel" data-name="work">
+            
+        </div>
+    </main>
+
+    <!-- pannello di test che consente di
+         fare lo switch tra diverse "viste".
+         Premere "\" per aprire/chiudere -->
+    <span id="panel-switcher" class="panel-switcher-hidden">
+        <span>Viste:</span>
+        <input type="button" value="guest" onclick="setup_guest_ui()">
+        <input type="button" value="user" onclick="setup_user_ui()">
+        <input type="button" value="worker" onclick="show_panel('work')">
+    </span>
+
+    <script src="js/utils.js"></script>
+    <script src="js/stub-db.js"></script>
+    <script src="js/stub-auth.js"></script>
+    <script src="js/stub-service.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
+
