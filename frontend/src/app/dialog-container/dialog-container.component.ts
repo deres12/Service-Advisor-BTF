@@ -9,7 +9,6 @@ export class DialogContainerComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
 }

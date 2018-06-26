@@ -12,6 +12,7 @@ finestre di dialogo e menu a scomparsa laterale.
 var side_menu_visible = false;
 var modals_stack = [];
 
+
 // conterra' l'id dell'utente loggato
 var login_info = null;
 

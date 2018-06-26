@@ -1,0 +1,22 @@
+<form id="new-request-form" class="form-vertical">
+  <label for="service">Che tipo di servizio?</label>
+  <select name="service"></select>
+
+  <label for="address">Dove ti serve?</label>
+  <input type="text" name="address" placeholder="Indirizzo">
+
+  <label for="duration">Quando ti serve?</label>
+  <select name="duration">
+      <option>entro pochi giorni</option>
+      <option>entro un mese</option>
+      <option>non lo so</option>
+  </select>
+
+  <label for="descr">Descrivi il problema</label>
+  <textarea name="descr"
+      placeholder="..."
+      rows="5"
+      cols="30"></textarea>
+
+  <input type="submit" value="Crea" class="big-btn">
+</form>

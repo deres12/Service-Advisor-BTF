@@ -10,11 +10,12 @@ public class SecuityConfig extends WebSecurityConfigurerAdapter
 {
 
 	@Autowired
+	SuccessLoginHandler handler;
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests().antMatchers("/oauth_login", "css/**", "js/**", "img/**").permitAll().anyRequest()
-				.authenticated().and().oauth2Login().loginPage("/oauth_login").successHandler(successLoginHandler);
+				.authenticated().and().oauth2Login().loginPage("/oauth_login").successHandler(handler);
 	}
 
 }

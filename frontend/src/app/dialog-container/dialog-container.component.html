@@ -1,34 +1,42 @@
 <div id="modals-container">
 
   <!-- modal per effettuare l'accesso -->
+  <app-modal name="login" title="Accedi">
+    <app-login-form></app-login-form>
+    <div class="centered">
+        <span class="separator">oppure</span>
+        <button class="sign-with-google">
+            <span style="font-family:Verdana;font-weight:bold">G&nbsp;</span>
+            Accedi con Google
+        </button>
+        <button class="sign-with-facebook">
+            <span style="font-family:Verdana;font-weight:bold">f&nbsp;</span>
+            Accedi con Facebook
+        </button>
+    </div>
+  </app-modal>
+  <!--
   <div class="modal" data-name="login">
       <header>
           <span>Accedi</span>
           <button class="close-modal">&times;</button>
       </header>
       <div class="content">
-          <form id="login-form">
-              <label for="username">Nome Utente</label>
-              <input type="text" name="username" placeholder="Nome o Email">
-
-              <label for="password">Password</label>
-              <input type="password" name="password" placeholder="Password">
-              
-              <input type="submit" value="Accedi" class="big-btn">
-          </form>
+          <app-login-form></app-login-form>
           <div class="centered">
               <span class="separator">oppure</span>
               <button class="sign-with-google">
                   <span style="font-family:Verdana;font-weight:bold">G&nbsp;</span>
                   Accedi con Google
-                  </button>
+              </button>
               <button class="sign-with-facebook">
-                  <span style="font-family:Verdana;font-weight:bold">f </span>
+                  <span style="font-family:Verdana;font-weight:bold">f&nbsp;</span>
                   Accedi con Facebook
               </button>
           </div>
       </div>
   </div>
+  -->
 
   <!-- modal di registrazione per utente NON professionista -->
   <div class="modal" data-name="signup">
@@ -37,27 +45,13 @@
           <button class="close-modal">&times;</button>
       </header>
       <div class="content">
-          <form id="signup-form">
-              <label for="username">Indirizzo E-mail</label>
-              <input type="email" name="email" placeholder="E-mail">
-              
-              <label for="username">Nome Utente</label>
-              <input type="text" name="username" placeholder="Nome">
-
-              <label for="password">Password</label>
-              <input type="password" name="password" placeholder="Crea una password">
-
-              <label for="password2">Ripeti Password</label>
-              <input type="password" name="password2" placeholder="Ripeti la password">
-              
-              <input type="submit" value="Registrati" class="big-btn">
-          </form>
+          <app-signup-form></app-signup-form>
           <div class="centered">
               <span class="separator">oppure</span>
               <button class="sign-with-google">
                   <span style="font-family:Verdana;font-weight:bold">G </span>
                   Registrati con Google
-                  </button>
+              </button>
               <button class="sign-with-facebook">
                   <span style="font-family:Verdana;font-weight:bold">f </span>
                   Registrati con Facebook
@@ -73,28 +67,7 @@
           <button class="close-modal">&times;</button>
       </header>
       <div class="content">
-          <form id="new-request-form" class="form-vertical">
-              <label for="service">Che tipo di servizio?</label>
-              <select name="service"></select>
-
-              <label for="address">Dove ti serve?</label>
-              <input type="text" name="address" placeholder="Indirizzo">
-
-              <label for="duration">Quando ti serve?</label>
-              <select name="duration">
-                  <option>entro pochi giorni</option>
-                  <option>entro un mese</option>
-                  <option>non lo so</option>
-              </select>
-
-              <label for="descr">Descrivi il problema</label>
-              <textarea name="descr"
-                  placeholder="..."
-                  rows="5"
-                  cols="30"></textarea>
-
-              <input type="submit" value="Crea" class="big-btn">
-          </form>
+          <app-new-request-form></app-new-request-form>
       </div>
   </div>
 
