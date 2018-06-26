@@ -11,6 +11,9 @@ public class SecuityConfig extends WebSecurityConfigurerAdapter
 
 	@Autowired
 	SuccessLoginHandler handler;
+	
+	/*@Autowired
+	  OAuth2ClientContext oauth2ClientContext;*/
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
