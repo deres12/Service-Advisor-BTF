@@ -7,6 +7,5 @@ import it.btf.model.RichiestaCliente;
 
 @Repository
 public interface RichiestaClienteRepository extends JpaRepository<RichiestaCliente, Long> {
-	
 
 }

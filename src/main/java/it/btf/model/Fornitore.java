@@ -41,7 +41,10 @@ public class Fornitore extends Guest {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+<<<<<<< HEAD
 	
+=======
+>>>>>>> 39dca99... risolto merge
 
 	public Professione getProfessione() {
 		return professione;
