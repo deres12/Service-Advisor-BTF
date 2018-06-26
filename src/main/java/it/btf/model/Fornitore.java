@@ -1,9 +1,12 @@
 package it.btf.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
@@ -34,11 +37,15 @@ public class Fornitore extends Guest {
 		this.offerte=offerte;
 		this.servizi=servizi;
 		this.professione=professione;
+		servizi=new ArrayList<Servizio>();
+		offerte=new ArrayList<Offerta>();
 		// TODO Auto-generated constructor stub
 	}
 	
 	public Fornitore() {
 		super();
+		servizi=new ArrayList<Servizio>();
+		offerte=new ArrayList<Offerta>();
 		// TODO Auto-generated constructor stub
 	}
 
@@ -81,6 +88,12 @@ public class Fornitore extends Guest {
 	public void setNumero(String numero) {
 		this.numero = numero;
 	}
+	
+	public void addServizio(Servizio servizio) {
+		this.servizi.add(servizio);
+	}
+	
+
 	
 	
 
