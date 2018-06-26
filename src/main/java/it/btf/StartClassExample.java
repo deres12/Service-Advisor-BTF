@@ -62,7 +62,7 @@ public class StartClassExample {
 					log.info("--------------------------------");
 					log.info(customer.toString());
 					log.info("");
-					System.err.println("ECCOLOOOOO PER ID");
+					//System.err.println("ECCOLOOOOO PER ID");
 				});
 
 			// fetch customers by last name
