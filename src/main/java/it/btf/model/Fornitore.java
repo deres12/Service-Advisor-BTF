@@ -30,8 +30,12 @@ public class Fornitore extends Guest {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public Fornitore(String nome, String cognome, String username, String via) {
-		super();
+	public Fornitore(String nome, String cognome, String username, String via, String email, String numero,String descrizione) {
+		super(nome, cognome, username, via, email);
+		this.valutazione=0;
+		this.numero=numero;
+		this.descrizione=descrizione;
+		
 		// TODO Auto-generated constructor stub
 	}
 	

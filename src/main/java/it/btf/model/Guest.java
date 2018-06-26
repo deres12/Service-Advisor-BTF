@@ -45,8 +45,7 @@ public abstract class Guest implements Serializable {
 		this.username = username;
 		this.cognome = cognome;
 		this.via = via;
-		
-
+		timeBirth=new Date();
 	}
 
 	public String getNome() {

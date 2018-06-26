@@ -25,6 +25,7 @@ public class StartClassExample {
 		SpringApplication.run(StartClassExample.class, args);
 	}
 	
+	/************************* INSERIMENTO DATI DA CODICE ******************************************/
 	
 	@Bean(name="repositoryCommandLine")
 	public CommandLineRunner commandLineRunner(
@@ -35,8 +36,15 @@ public class StartClassExample {
 		return (args) -> {
 
 			Cliente a=new Cliente("assda","prova","adsadsad","asasa", "aaa@aaa");
-
 			personaRep.save(a);
+			
+			
+			
+			
+			
+			
+			
+			
 			
 			
 			// fetch all customers
