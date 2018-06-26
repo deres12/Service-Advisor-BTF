@@ -41,7 +41,6 @@ public class StartClassExample {
 			Cliente a=new Cliente("assda","prova","adsadsad","asasa", "aaa@aaa");
 			personaRep.save(a);
 			
-			/*
 			// fetch all customers
 			log.info("Customers found with findAll():");
 			log.info("-------------------------------");
