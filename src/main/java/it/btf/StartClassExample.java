@@ -47,6 +47,8 @@ public class StartClassExample {
 			
 			
 			
+			
+			
 			// fetch all customers
 			log.info("Customers found with findAll():");
 			log.info("-------------------------------");
