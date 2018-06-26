@@ -14,7 +14,7 @@ import it.btf.security.MySecurityContext;
 
 
 @RestController
-@RequestMapping("/")
+@RequestMapping("/user")
 public class GestioneUtenteController {
 	
 	@Autowired
@@ -24,9 +24,9 @@ public class GestioneUtenteController {
 	@ResponseBody
 	public PersonaDTO load(@PathVariable("username") String username){
 		
-		String email = MySecurityContext.getEmail();
+		//String email = MySecurityContext.getEmail();
 		
-		System.out.println(email);
+		System.out.println(username);
 		return service.load(username);
 	}
 	
