@@ -60,10 +60,6 @@
 			<artifactId>google-geocoding</artifactId>
 			<version>3.0.0</version>
 		</dependency>
-<<<<<<< HEAD
-=======
-
->>>>>>> 1e0c780... aggiunta dipendenza di google geocode
 	</dependencies>
 
 	<properties>

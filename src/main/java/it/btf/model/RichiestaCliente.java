@@ -1,9 +1,12 @@
 package it.btf.model;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -14,12 +17,14 @@ import javax.persistence.TemporalType;
 public class RichiestaCliente {
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 
 	@ManyToOne
 	private Cliente cliente;
 
 	private String descrizione;
+	private String via;
 
 	private long prezzoMassimo;
 
@@ -29,6 +34,25 @@ public class RichiestaCliente {
 	private Date dataFine;
 
 	private STATO stato;
+	
+	@ManyToOne
+	private Fornitore fornitore;
+	
+	public String getVia() {
+		return via;
+	}
+
+	public void setVia(String via) {
+		this.via = via;
+	}
+
+	public Fornitore getFornitore() {
+		return fornitore;
+	}
+
+	public void setFornitore(Fornitore fornitore) {
+		this.fornitore = fornitore;
+	}
 
 	@OneToMany(mappedBy="richiesta")
 	private List<Offerta> offerte;
@@ -37,6 +61,8 @@ public class RichiestaCliente {
 	private Servizio servizioRichiesto;
 
 	public RichiestaCliente() {
+		offerte=new ArrayList<Offerta>();
+		stato=STATO.APERTA;
 
 	}
 

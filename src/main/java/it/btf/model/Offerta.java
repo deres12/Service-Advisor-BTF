@@ -25,7 +25,7 @@ public class Offerta {
 	private RichiestaCliente richiesta;
 	
 	public Offerta() {
-		
+		stato=STATO.SOSPESA;
 	}
 	
 	public Long getId() {
@@ -75,11 +75,11 @@ public class Offerta {
 	public void setRichiesta(RichiestaCliente richiesta) {
 		this.richiesta = richiesta;
 	}
-
+	
 	enum STATO {
-		APERTA,
-		SOSPESA,
-		CHIUSA
+		ACCETTATA,
+		RIFIUTATA,
+		SOSPESA
 	}
 
 }

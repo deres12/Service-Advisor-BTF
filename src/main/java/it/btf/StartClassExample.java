@@ -83,6 +83,24 @@ public class StartClassExample {
 			servizoRep.save(serv2);
 			personaRep.save(a);
 			
+			RichiestaCliente rich= new RichiestaCliente();
+			rich.setCliente(a);
+			rich.setDataFine(new Date());
+			rich.setDataInizio(new Date());
+			rich.setDescrizione("pipppppppppaspdaspddpa");
+			rich.setPrezzoMassimo(100);
+			rich.setServizioRichiesto(serv1);
+			rich.setFornitore(fornit);
+			rich.setVia("Via carlo antonio");
+			richiestaCliRep.save(rich);
+			
+			Offerta offer=new Offerta();
+			offer.setDescrizione("esempio di offerta");
+			offer.setFornitore(fornit);
+			offer.setPrezzo(95);
+			offer.setRichiesta(rich);
+			offertaRep.save(offer);
+			
 			
 			/*for (Servizio servizio : servizoRep.findByDescrizione("fdafhauidfa")) {
 				prof.addServizio(servizio);
