@@ -2,7 +2,6 @@ package it.btf;
 
 import it.btf.model.*;
 
-import org.hibernate.id.ForeignGenerator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
@@ -17,9 +16,7 @@ import it.btf.repository.ProfessioneRepository;
 import it.btf.repository.RichiestaClienteRepository;
 import it.btf.repository.ServizioRepository;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 @SpringBootApplication
 public class StartClassExample {
@@ -43,7 +40,6 @@ public class StartClassExample {
 
 			Cliente a = new Cliente("assda", "prova", "adsadsad", "asasa", "aaa@aaa");
 			Professione prof = new Professione();
-			// prof.addFornitori(fornit);
 			prof.setNome("idraulico");
 			Fornitore fornit = new Fornitore();
 			fornit.setNome("stefano");
@@ -58,18 +54,6 @@ public class StartClassExample {
 			fornit.setUsername("pippo");
 			fornit.setValutazione(0);
 			fornit.setVia("asdasda");
-
-			// List<Servizio> servizi= new ArrayList<Servizio>();
-			// List<Fornitore> fornitori = new ArrayList<Fornitore>();
-
-			// List<Offerta> offerte = new ArrayList<Offerta>();
-			// Professione professione = new Professione("Idraulico", servizi, fornitori );
-
-			// Fornitore fornitore = new Fornitore("Alessandro", "Beninati", "beniale", "via
-			// non so", "ale@gmail.com", "3255464656", "Lavoratore
-			// di...",offerte,servizi,professione );
-			// fornitoreRep.save(fornitore);
-
 			Servizio serv1 = new Servizio();
 			serv1.setDescrizione("fdafhauidfa");
 			servizoRep.save(serv1);
