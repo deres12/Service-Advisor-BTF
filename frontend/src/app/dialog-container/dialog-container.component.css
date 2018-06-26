@@ -1,0 +1,97 @@
+#modals-container {
+    visibility: hidden;
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    overflow-x: hidden;
+    overflow-y: auto;
+    z-index: 20;
+}
+
+#modals-container.visible {
+    visibility: visible;
+}
+
+#modals-container > .modal {
+    display: none;
+    background: #FFF;
+}
+
+#modals-container > .modal.visible {
+    display: block;
+}
+
+@media screen and (min-width: 600px) {
+    #modals-container > .modal {
+        margin: 40px auto;
+        border-radius: 4px;
+        max-width: 600px;
+        overflow: hidden;
+    }
+}
+
+@media screen and (max-width: 599px) {
+    #modals-container > .modal {
+        position: fixed;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        overflow: auto;
+    }
+
+    #modals-container > .modal > header {
+        position: fixed;
+        left: 0;
+        top: 0;
+        right: 0;
+    }
+
+    #modals-container > .modal > .content {
+        margin-top: 50px;
+    }
+}
+
+.modal > header {
+    background: var(--color1);
+    color: #FFF;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 50px;
+    font-size: 24px;
+}
+
+.modal > header > span {
+    margin-left: 8px;
+}
+
+.modal > header > button {
+    font-size: 24px;
+    min-width: 50px;
+    height: 50px;
+    border: none;
+    background: none;
+    color: #FFF;
+}
+
+.modal > header > button:hover {
+    background: var(--color2);
+}
+
+.modal > header > button:active {
+    background: var(--color3);
+}
+
+.modal > .content {padding: 16px;}
+
+.modal > footer {
+    border-top: solid 1px #BBB;
+    bottom: 0;
+    padding: 8px;
+    text-align: right;
+}
+
