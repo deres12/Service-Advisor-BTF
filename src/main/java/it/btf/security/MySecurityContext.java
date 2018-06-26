@@ -7,12 +7,10 @@ public class MySecurityContext {
 
 	public static String getEmail(){
 		DefaultOidcUser defaultOidcUser = (DefaultOidcUser)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		
+		System.err.println(defaultOidcUser.getEmail());
 		return defaultOidcUser.getEmail();
 	}
 	
-	/*public static String getName(){
-		DefaultOidcUser defaultOidcUser = (DefaultOidcUser)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		return defaultOidcUser.getName();
-	}*/
 	
 }
