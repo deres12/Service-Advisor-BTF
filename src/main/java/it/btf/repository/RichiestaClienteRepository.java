@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import it.btf.model.RichiestaCliente;
 
 @Repository
-public interface RichiestaClienteRepository extends JpaRepository<RichiestaCliente, String> {
+public interface RichiestaClienteRepository extends JpaRepository<RichiestaCliente, Long> {
 	
 
 }

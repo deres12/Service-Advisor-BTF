@@ -1,5 +1,6 @@
 package it.btf;
 
+import it.btf.model.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
@@ -7,13 +8,15 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
-import it.btf.model.Cliente;
 import it.btf.repository.FornitoreRepository;
 import it.btf.repository.OffertaRepository;
 import it.btf.repository.PersonaRepository;
 import it.btf.repository.ProfessioneRepository;
 import it.btf.repository.RichiestaClienteRepository;
 import it.btf.repository.ServizioRepository;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @SpringBootApplication
 public class StartClassExample {
@@ -38,17 +41,7 @@ public class StartClassExample {
 			Cliente a=new Cliente("assda","prova","adsadsad","asasa", "aaa@aaa");
 			personaRep.save(a);
 			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
+			/*
 			// fetch all customers
 			log.info("Customers found with findAll():");
 			log.info("-------------------------------");
@@ -76,7 +69,7 @@ public class StartClassExample {
 			// for (Customer bauer : repository.findByLastName("Bauer")) {
 			// 	log.info(bauer.toString());
 			// }
-			log.info("");
+			log.info("");*/
 		};
 	}
 

@@ -16,13 +16,24 @@ public class Professione {
 	
 	private String nome;
 
-	@OneToMany(mappedBy = "id")
+	@OneToMany
 	private List<Servizio> servizi;
 	
-	@OneToMany(mappedBy="email")
+	@OneToMany(mappedBy="professione")
 	private List<Fornitore> fornitori;
-	
-	
+
+
+	//Costruttore vuoto come detto da Giancarlo per le entità
+	public Professione() {
+
+	}
+
+	public Professione(String nome, List<Servizio> servizi, List<Fornitore> fornitori) {
+		this.nome = nome;
+		this.servizi= servizi;
+		this.fornitori = fornitori;
+	}
+
 	public List<Servizio> getServizi() {
 		return servizi;
 	}

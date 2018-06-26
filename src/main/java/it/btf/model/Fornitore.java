@@ -23,19 +23,17 @@ public class Fornitore extends Guest {
 	
 	@OneToMany
 	private List<Servizio> servizi;
-	
-	
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
 
-	public Fornitore(String nome, String cognome, String username, String via, String email, String numero,String descrizione) {
+	public Fornitore(String nome, String cognome, String username, String via, String email, String numero,String descrizione, List<Offerta> offerte, List<Servizio> servizi, Professione professione) {
 		super(nome, cognome, username, via, email);
 		this.valutazione=0;
 		this.numero=numero;
 		this.descrizione=descrizione;
-		
+		this.offerte=offerte;
+		this.servizi=servizi;
+		this.professione=professione;
 		// TODO Auto-generated constructor stub
 	}
 	
