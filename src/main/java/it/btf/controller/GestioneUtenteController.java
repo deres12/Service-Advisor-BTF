@@ -24,7 +24,7 @@ public class GestioneUtenteController {
 	@ResponseBody
 	public PersonaDTO load(@PathVariable("username") String username){
 		
-		//String email = MySecurityContext.getEmail();
+		String email = MySecurityContext.getEmail();
 		
 		System.out.println(username);
 		return service.load(username);
