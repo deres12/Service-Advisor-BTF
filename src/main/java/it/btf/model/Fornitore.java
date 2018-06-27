@@ -3,10 +3,9 @@ package it.btf.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
@@ -24,28 +23,28 @@ public class Fornitore extends Guest {
 	@OneToMany(mappedBy="fornitore")
 	private List<Offerta> offerte;
 	
-	@OneToMany
+	@ManyToMany
 	private List<Servizio> servizi;
 
 	private static final long serialVersionUID = 1L;
 
-	public Fornitore(String nome, String cognome, String username, String via, String email, String numero,String descrizione, List<Offerta> offerte, List<Servizio> servizi, Professione professione) {
-		super(nome, cognome, username, via, email);
+	public Fornitore(String nome, String cognome, String username, String via, String email, String numero,String descrizione, List<Offerta> offerte, List<Servizio> servizi, Professione professione,String pass) {
+		super(nome, cognome, username, via, email, pass);
 		this.valutazione=0;
 		this.numero=numero;
 		this.descrizione=descrizione;
 		this.offerte=offerte;
 		this.servizi=servizi;
 		this.professione=professione;
-		servizi=new ArrayList<Servizio>();
-		offerte=new ArrayList<Offerta>();
+		this.servizi=new ArrayList<Servizio>();
+		this.offerte=new ArrayList<Offerta>();
 		// TODO Auto-generated constructor stub
 	}
 	
 	public Fornitore() {
 		super();
-		servizi=new ArrayList<Servizio>();
-		offerte=new ArrayList<Offerta>();
+		this.servizi=new ArrayList<Servizio>();
+		this.offerte=new ArrayList<Offerta>();
 		// TODO Auto-generated constructor stub
 	}
 

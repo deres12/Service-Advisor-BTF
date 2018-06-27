@@ -16,8 +16,8 @@ public class Cliente extends Guest{
 		super();
 	}
 	
-	public Cliente(String nome, String cognome, String username, String via, String email) {
-		super(nome, cognome, username, via, email);
+	public Cliente(String nome, String cognome, String username, String via, String email, String pass) {
+		super(nome, cognome, username, via, email, pass);
 		
 
 	}
