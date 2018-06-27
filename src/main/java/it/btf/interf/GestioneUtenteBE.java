@@ -8,5 +8,6 @@ public interface GestioneUtenteBE {
 	
 	public List<PersonaDTO> load(String username);
 	public void addUser(PersonaDTO utente);
+	public PersonaDTO loadById(String id);
 
 }

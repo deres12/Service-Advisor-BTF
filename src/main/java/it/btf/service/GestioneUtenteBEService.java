@@ -15,35 +15,50 @@ import it.btf.repository.PersonaRepository;
 @Transactional
 public class GestioneUtenteBEService implements GestioneUtenteBE {
 
-	@Autowired
-	PersonaRepository utenteRepository;
+    @Autowired
+    PersonaRepository utenteRepository;
 
-	@Override
-	public List<PersonaDTO> load(String username) {
-		List<PersonaDTO> persone=new ArrayList<PersonaDTO>();
-		
-		List<Cliente> utente = utenteRepository.findByUsername(username)/*.orElse(new ArrayList<Cliente>(new Cliente(username,null,null,null,null,null)))*/;
-		if(utente.size()==0) {
-			return persone;
-		}else {
-			for(Cliente a:utente) {
-				persone.add(new PersonaDTO(a.getNome(),a.getCognome(),a.getUsername(),a.getVia(),a.getEmail(),""));
-			}
-		}
-		
-		return persone;
-	}
+    @Override
+    public List<PersonaDTO> load(String username) {
+        List<PersonaDTO> persone = new ArrayList<PersonaDTO>();
 
-	@Override
-	public void addUser(PersonaDTO utente) {
-		Cliente cliente = new Cliente();
-		cliente.setEmail(utente.getEmail());
-		cliente.setNome(utente.getNome());
-		cliente.setCognome(utente.getCognome());
-		cliente.setVia(utente.getVia());
-		cliente.setUsername(utente.getUsername());
-		cliente.setPass(utente.getPass());
-		utenteRepository.save(cliente);
-	}
+        List<Cliente> utente = utenteRepository.findByUsername(username)/*.orElse(new ArrayList<Cliente>(new Cliente(username,null,null,null,null,null)))*/;
+        if (utente.size() == 0) {
+            return persone;
+        } else {
+            for (Cliente a : utente) {
+                persone.add(new PersonaDTO(a.getNome(), a.getCognome(), a.getUsername(), a.getVia(), a.getEmail(), ""));
+            }
+        }
+
+        return persone;
+    }
+
+
+    @Override
+    public PersonaDTO loadById(String email) {
+        Object a = utenteRepository.getOne(email);
+
+
+        if (utenteRepository.existsById(email)) {
+            Cliente utente = utenteRepository.getOne(email);
+            return new PersonaDTO(utente.getNome(), utente.getCognome(), utente.getUsername(), utente.getVia(), utente.getEmail(), utente.getPass());
+        } else
+            return null;
+        //return persone;
+    }
+
+
+    @Override
+    public void addUser(PersonaDTO utente) {
+        Cliente cliente = new Cliente();
+        cliente.setEmail(utente.getEmail());
+        cliente.setNome(utente.getNome());
+        cliente.setCognome(utente.getCognome());
+        cliente.setVia(utente.getVia());
+        cliente.setUsername(utente.getUsername());
+        cliente.setPass(utente.getPass());
+        utenteRepository.save(cliente);
+    }
 
 }

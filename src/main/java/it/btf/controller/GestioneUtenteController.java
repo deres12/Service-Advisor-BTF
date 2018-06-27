@@ -44,6 +44,21 @@ public class GestioneUtenteController {
 		return new ResponseEntity<>(new RispostaDTO("ciao " + dto.getNome()), HttpStatus.OK);
 
 	}
+
+	@ResponseBody
+	@RequestMapping(value = "login", method = RequestMethod.POST)
+	public ResponseEntity<RispostaDTO> login(@RequestBody PersonaDTO dto) {
+		PersonaDTO loaded=this.service.loadById(dto.getEmail());
+		if (loaded!=null){
+			if(loaded.getEmail().equals(dto.getEmail())&&loaded.getPass().equals(dto.getPass()))
+				return new ResponseEntity<>(new RispostaDTO("ciao " + loaded.getNome()), HttpStatus.OK);
+			else
+				return new ResponseEntity<>(HttpStatus.PARTIAL_CONTENT);
+		}else
+			return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+
+
+	}
 	
 	/*@RequestMapping("/request/{email}")
 	@ResponseBody
