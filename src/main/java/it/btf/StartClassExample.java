@@ -38,7 +38,11 @@ public class StartClassExample {
 			RichiestaClienteRepository richiestaCliRep, ServizioRepository servizoRep) {
 		return (args) -> {
 
-			Cliente a = new Cliente("assda", "prova", "adsadsad", "asasa", "aaa@aaa");
+			Cliente a = new Cliente("assda", "prova", "adsadsad", "asasa", "aaa@aaa", "prova");
+			Cliente b = new Cliente("assda", "prova", "adsadsad", "asasa", "sfsdfsdf@aaa", "prova");
+			Cliente c = new Cliente("assda", "prova", "adsadsad", "asasa", "sfsdfsdf@sdsd", "prova");
+			personaRep.save(b);
+			personaRep.save(c);
 			Professione prof = new Professione();
 			prof.setNome("idraulico");
 			Fornitore fornit = new Fornitore();
@@ -50,10 +54,15 @@ public class StartClassExample {
 			fornit.setProfessione(prof);
 			prof.addFornitori(fornit);
 
+			
 			fornit.setTimeBirth(new Date());
 			fornit.setUsername("pippo");
 			fornit.setValutazione(0);
 			fornit.setVia("asdasda");
+
+
+			fornit.setPass("prova");
+
 			Servizio serv1 = new Servizio();
 			serv1.setDescrizione("fdafhauidfa");
 			servizoRep.save(serv1);
@@ -84,6 +93,50 @@ public class StartClassExample {
 			offer.setPrezzo(95);
 			offer.setRichiesta(rich);
 			offertaRep.save(offer);
+			
+			
+			Fornitore prova2 = new Fornitore();
+			prova2.setNome("stefano");
+			prova2.setCognome("carrino");
+			prova2.setDescrizione("lavoro da 20 anni nel campo ellettrico, offro supporto per qualsiasi evenienza");
+			prova2.setEmail("esempio@gggg.vbb");
+			prova2.setNumero("aaaa");
+			prova2.setProfessione(prof);
+			prova2.setTimeBirth(new Date());
+			prova2.setUsername("pippo");
+			prova2.setValutazione(0);
+			prova2.setVia("asdasda");
+			prova2.setPass("asdasda");
+			prova2.addServizio(serv1);
+			fornitoreRep.save(prova2);
+			
+			RichiestaCliente rich2= new RichiestaCliente();
+			rich2.setCliente(a);
+			rich2.setDataFine(new Date());
+			rich2.setDataInizio(new Date());
+			rich2.setDescrizione("pipppppppppaspdaspddpa");
+			rich2.setPrezzoMassimo(100);
+			rich2.setServizioRichiesto(serv2);
+			rich2.setFornitore(prova2);
+			rich2.setVia("Via carlo antonio");
+			richiestaCliRep.save(rich2);
+			
+			
+			Offerta offer2=new Offerta();
+			offer2.setDescrizione("dfdsfdsf");
+			offer2.setFornitore(prova2);
+			offer2.setRichiesta(rich);
+			offer2.setPrezzo(100);
+			offertaRep.save(offer2);
+			
+			Offerta offer3=new Offerta();
+			offer3.setDescrizione("dfdsfdsf");
+			offer3.setFornitore(fornit);
+			offer3.setRichiesta(rich2);
+			offer3.setPrezzo(100);
+			offertaRep.save(offer3);
+			
+			
 			
 			
 			/*for (Servizio servizio : servizoRep.findByDescrizione("fdafhauidfa")) {

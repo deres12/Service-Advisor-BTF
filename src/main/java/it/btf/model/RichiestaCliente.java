@@ -33,6 +33,12 @@ public class RichiestaCliente {
 	@Temporal(TemporalType.DATE)
 	private Date dataFine;
 
+	@OneToMany(mappedBy="richiesta")
+	private List<Offerta> offerte;
+	
+	@ManyToOne
+	private Servizio servizioRichiesto;
+	
 	private STATO stato;
 	
 	@ManyToOne
@@ -54,11 +60,6 @@ public class RichiestaCliente {
 		this.fornitore = fornitore;
 	}
 
-	@OneToMany(mappedBy="richiesta")
-	private List<Offerta> offerte;
-	
-	@ManyToOne
-	private Servizio servizioRichiesto;
 
 	public RichiestaCliente() {
 		offerte=new ArrayList<Offerta>();

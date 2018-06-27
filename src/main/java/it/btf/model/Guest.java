@@ -28,6 +28,16 @@ public abstract class Guest implements Serializable {
 	private String nome;
 	private String cognome;
 	private String via;
+	private String pass;
+	
+	public String getPass() {
+		return pass;
+	}
+
+	public void setPass(String pass) {
+		this.pass = pass;
+	}
+
 	@Id
 	private String email;
 
@@ -39,12 +49,13 @@ public abstract class Guest implements Serializable {
 
 	}
 
-	public Guest(String nome, String cognome, String username, String via, String email) {
+	public Guest(String nome, String cognome, String username, String via, String email, String pass) {
 		this.email=email;
 		this.nome = nome;
 		this.username = username;
 		this.cognome = cognome;
 		this.via = via;
+		this.pass=pass;
 		timeBirth=new Date();
 	}
 

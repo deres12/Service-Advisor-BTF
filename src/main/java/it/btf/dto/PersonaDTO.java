@@ -7,14 +7,20 @@ public class PersonaDTO {
 	private String via;
 	private String username;
 	private String email;
+	private String pass;
 	
-	public PersonaDTO(String nome, String cognome, String username, String via, String email) {
+	public PersonaDTO() {
+		
+	}
+
+	
+	public PersonaDTO(String nome, String cognome, String username, String via, String email, String pass) {
 		this.nome=nome;
 		this.username=username;
 		this.cognome=cognome;
 		this.via=via;
 		this.email=email;
-		
+		this.setPass(pass);
 	}
 
 	public String getEmail() {
@@ -57,6 +63,14 @@ public class PersonaDTO {
 
 	public void setVia(String via) {
 		this.via = via;
+	}
+
+	public String getPass() {
+		return pass;
+	}
+
+	public void setPass(String pass) {
+		this.pass = pass;
 	}
 
 }

@@ -11,6 +11,7 @@ import it.btf.model.Cliente;
 @Repository
 public interface PersonaRepository extends JpaRepository<Cliente, String> {
 
-	List<Cliente> findByEmail(String string);
+	//List<Cliente> findByEmail(String string);
+	List <Cliente> findByUsername(String username);
 	
 }
