@@ -1,9 +1,7 @@
 package it.btf.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 public class Offerta {
@@ -15,7 +13,12 @@ public class Offerta {
 	private float prezzo;
 	
 	private String descrizione;
-	
+
+
+
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date dataInizio;
+
 	private STATO stato;
 	
 	@ManyToOne
@@ -74,6 +77,14 @@ public class Offerta {
 
 	public void setRichiesta(RichiestaCliente richiesta) {
 		this.richiesta = richiesta;
+	}
+
+	public Date getDataInizio() {
+		return dataInizio;
+	}
+
+	public void setDataInizio(Date dataInizio) {
+		this.dataInizio = dataInizio;
 	}
 	
 	enum STATO {

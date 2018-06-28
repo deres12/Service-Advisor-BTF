@@ -3,32 +3,32 @@ package it.btf.controller;
 
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import it.btf.dto.PersonaDTO;
 import it.btf.dto.RispostaDTO;
 import it.btf.interf.GestioneUtenteBE;
-//import it.btf.security.MySecurityContext;
 
 
 
 @RestController
-
 @RequestMapping("/services/user")
-
 public class GestioneUtenteController {
 	///user/find
 	@Autowired
 	GestioneUtenteBE service;
-	
+
+
+
+	/*@Autowired
+	GestioneServizioBE servService;*/
+
+
+
 	@RequestMapping("/find/{username}")
 	@ResponseBody
 
@@ -36,22 +36,36 @@ public class GestioneUtenteController {
 
 		return service.load(username);
 	}
-	
+
+	@PostMapping("/registrati")
 	@ResponseBody
-	@RequestMapping(value = "inserisci", method = RequestMethod.POST)
+	public ResponseEntity<RispostaDTO> saveUser(@RequestBody PersonaDTO dto){
+
+		//return service.load(username);
+		//service.addUser(dto);
+
+		String a=service.addUser(dto);
+		return new ResponseEntity<>(new RispostaDTO("ciao Cliente, il risultato e: " + a), HttpStatus.OK);
+	}
+
+
+
+
+	/*@ResponseBody
+	@RequestMapping(value = "inserimento", method = RequestMethod.POST)
 	public ResponseEntity<RispostaDTO> inserisci(@RequestBody PersonaDTO dto) {
 		this.service.addUser(dto);
 		return new ResponseEntity<>(new RispostaDTO("ciao " + dto.getNome()), HttpStatus.OK);
 
-	}
+	}*/
 
 	@ResponseBody
 	@RequestMapping(value = "login", method = RequestMethod.POST)
 	public ResponseEntity<RispostaDTO> login(@RequestBody PersonaDTO dto) {
-		PersonaDTO loaded=this.service.loadById(dto.getEmail());
+		PersonaDTO loaded=this.service.loadById(dto);
 		if (loaded!=null){
 			if(loaded.getEmail().equals(dto.getEmail())&&loaded.getPass().equals(dto.getPass()))
-				return new ResponseEntity<>(new RispostaDTO("ciao " + loaded.getNome()), HttpStatus.OK);
+				return new ResponseEntity<>(new RispostaDTO("ciao Cliente: " + loaded.getNome()), HttpStatus.OK);
 			else
 				return new ResponseEntity<>(HttpStatus.PARTIAL_CONTENT);
 		}else
@@ -59,13 +73,6 @@ public class GestioneUtenteController {
 
 
 	}
-	
-	/*@RequestMapping("/request/{email}")
-	@ResponseBody
-	public List<PersonaDTO> loadRequest(@PathVariable("email") String email){
 
-		return service.load(email);
-	}*/
-	
 
 }

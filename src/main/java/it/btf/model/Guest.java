@@ -41,12 +41,12 @@ public abstract class Guest implements Serializable {
 	@Id
 	private String email;
 
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date timeBirth;
 
 
 	public Guest() {
-
+		this.timeBirth=new Date();
 	}
 
 	public Guest(String nome, String cognome, String username, String via, String email, String pass) {
@@ -56,7 +56,7 @@ public abstract class Guest implements Serializable {
 		this.cognome = cognome;
 		this.via = via;
 		this.pass=pass;
-		timeBirth=new Date();
+		this.timeBirth=new Date();
 	}
 
 	public String getNome() {
