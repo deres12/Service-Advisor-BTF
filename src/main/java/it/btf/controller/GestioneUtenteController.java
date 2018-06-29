@@ -1,36 +1,23 @@
 package it.btf.controller;
-
-
 import java.util.List;
-
-
 import it.btf.utility.DatabaseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import it.btf.dto.PersonaDTO;
-import it.btf.dto.RispostaDTO;
 import it.btf.interf.GestioneUtenteBE;
 
 
 @RestController
 @RequestMapping("/user")
 public class GestioneUtenteController {
-    ///user/find
     @Autowired
     GestioneUtenteBE service;
 
 
-
-	/*@Autowired
-	GestioneServizioBE servService;*/
-
-
     @RequestMapping("/find/{username}")
     @ResponseBody
-
     public List<PersonaDTO> load(@PathVariable("username") String username) {
 
         return service.load(username);
@@ -40,15 +27,13 @@ public class GestioneUtenteController {
     @ResponseBody
     public ResponseEntity saveUser(@RequestBody PersonaDTO dto) {
 
-        //return service.load(username);
-        //service.addUser(dto);
-        String a;
+        ResponseEntity a;
         try {
             a = service.addUser(dto);
         } catch (DatabaseException ex) {
             return ex.getResponse();
         }
-        return ResponseEntity.ok("Utente registrato");
+        return a;
     }
 
 

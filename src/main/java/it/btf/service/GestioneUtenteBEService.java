@@ -44,7 +44,7 @@ public class GestioneUtenteBEService implements GestioneUtenteBE {
             return persone;
         } else {
             for (Cliente a : utente) {
-                persone.add(new PersonaDTO(a.getNome(), a.getCognome(), a.getUsername(), a.getVia(), a.getEmail(), "",0,"","","",null,null));
+                persone.add(new PersonaDTO(a.getNome(), a.getCognome(), a.getUsername(), a.getVia(), a.getEmail(), "", 0, "", "", "", null, null));
             }
         }
 
@@ -56,19 +56,19 @@ public class GestioneUtenteBEService implements GestioneUtenteBE {
     public PersonaDTO loadById(PersonaDTO dto) {
         //Object a = utenteRepository.getOne(dto.getEmail());
 
-        if(fornitoreRepository.existsById(dto.getEmail())){
+        if (fornitoreRepository.existsById(dto.getEmail())) {
             Fornitore fornit = fornitoreRepository.getOne(dto.getEmail());
-            return new PersonaDTO(fornit.getNome(), fornit.getCognome(), fornit.getUsername(), fornit.getVia(), fornit.getEmail(), fornit.getPass(), fornit.getValutazione(), fornit.getNumero(), fornit.getDescrizione(),"F",null,null);
+            return new PersonaDTO(fornit.getNome(), fornit.getCognome(), fornit.getUsername(), fornit.getVia(), fornit.getEmail(), fornit.getPass(), fornit.getValutazione(), fornit.getNumero(), fornit.getDescrizione(), "F", null, null);
         }
         if (utenteRepository.existsById(dto.getEmail())) {
             Cliente utente = utenteRepository.getOne(dto.getEmail());
-            return new PersonaDTO(utente.getNome(), utente.getCognome(), utente.getUsername(), utente.getVia(), utente.getEmail(), utente.getPass(),0,"","","C",null,null);
+            return new PersonaDTO(utente.getNome(), utente.getCognome(), utente.getUsername(), utente.getVia(), utente.getEmail(), utente.getPass(), 0, "", "", "C", null, null);
         } else
             return null;
         //return persone;
     }
 
-    public void addCliente(PersonaDTO utente){
+    public void addCliente(PersonaDTO utente) {
         Cliente cliente = new Cliente();
         cliente.setEmail(utente.getEmail());
         cliente.setNome(utente.getNome());
@@ -80,8 +80,8 @@ public class GestioneUtenteBEService implements GestioneUtenteBE {
     }
 
 
-    public void addFornitore(PersonaDTO utente){
-        Fornitore fornitore =new Fornitore();
+    public void addFornitore(PersonaDTO utente) {
+        Fornitore fornitore = new Fornitore();
         fornitore.setVia(utente.getVia());
         fornitore.setPass(utente.getPass());
         fornitore.setUsername(utente.getUsername());
@@ -91,14 +91,14 @@ public class GestioneUtenteBEService implements GestioneUtenteBE {
         fornitore.setDescrizione(utente.getDescrizione());
         fornitore.setCognome(utente.getCognome());
         fornitore.setValutazione(0);
-        List<Servizio> servizi=new ArrayList<Servizio>();
-        for(ServizioDTO s:utente.getServizi()){
-            Servizio s2=new Servizio();
+        List<Servizio> servizi = new ArrayList<Servizio>();
+        for (ServizioDTO s : utente.getServizi()) {
+            Servizio s2 = new Servizio();
             s2.setId(s.getId());
             servizi.add(s2);
         }
         fornitore.setServizi(servizi);
-        Professione p=new Professione();
+        Professione p = new Professione();
         p.setId(utente.getProfessione().getId());
         fornitore.setProfessione(p);
         fornitoreRepository.save(fornitore);
@@ -106,28 +106,27 @@ public class GestioneUtenteBEService implements GestioneUtenteBE {
 
 
     @Override
-    public String addUser(PersonaDTO utente) throws DatabaseException{
-        if(utente.getType().equalsIgnoreCase("c")){
-            if(utenteRepository.existsById(utente.getEmail())){
-                ResponseEntity ex=new ResponseEntity("email presente, utente gia registrato",HttpStatus.CONFLICT);
+    public ResponseEntity addUser(PersonaDTO utente) throws DatabaseException {
+        if (utente.getType().equalsIgnoreCase("c")) {
+            if (utenteRepository.existsById(utente.getEmail())) {
+                ResponseEntity ex = new ResponseEntity("email presente, utente gia registrato", HttpStatus.CONFLICT);
                 throw new DatabaseException(ex);
                 //return "error_email";
-            }else{
+            } else {
                 this.addCliente(utente);
             }
-        }else{
-            if(utente.getType().equalsIgnoreCase("F")){
-            if(fornitoreRepository.existsById(utente.getEmail())){
-                ResponseEntity ex=new ResponseEntity("email presente, utente gia registrato",HttpStatus.CONFLICT);
-                throw new DatabaseException(ex);
-            }else{
-                this.addFornitore(utente);
+        } else {
+            if (utente.getType().equalsIgnoreCase("F")) {
+                if (fornitoreRepository.existsById(utente.getEmail())) {
+                    ResponseEntity ex = new ResponseEntity("email presente, utente gia registrato", HttpStatus.CONFLICT);
+                    throw new DatabaseException(ex);
+                } else {
+                    this.addFornitore(utente);
+                }
             }
-        }}
-        return "ok, utente registrato";
+        }
+        return ResponseEntity.ok("Utente aggiunto");
     }
-
-
 
 
 }
