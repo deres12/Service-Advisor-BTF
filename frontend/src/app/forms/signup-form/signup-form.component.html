@@ -1,15 +1,35 @@
 <form class="form" (submit)="submit($event)">
 
+    <label for="type">Tipo di account</label>
+    <select name="type" [(ngModel)]="type">
+        <option [value]="userType.Client">Cliente</option>
+        <option [value]="userType.Vendor">Fornitore</option>
+    </select>
+
+    <div *ngIf="type==userType.Vendor">
+        <label for="professione">Professione</label>    
+        <select name="professione" [(ngModel)]="professione">
+            <option *ngFor="let job of jobs.getAll()" value="{{job.id}}">{{job.name}}</option>
+        </select>
+    </div>
+
+    <div *ngIf="professione">
+        <label for="servizi">Servizi offerti</label>
+        <select name="servizi" multiple [(ngModel)]="">
+            <option *ngFor="let service of " value="{{service.id}}">{{service.name}}</option>
+        </select>
+    </div>
+
     <label for="username">Indirizzo E-mail</label>
     <input type="email" name="email" placeholder="E-mail" [(ngModel)]="email">
     
     <label for="password">Password</label>
-    <input type="password" name="password" placeholder="Crea una password" [(ngModel)]="pass">
+    <input type="password" name="password" placeholder="Crea una password" [(ngModel)]="pass1">
 
     <label for="password2">Ripeti Password</label>
     <input type="password" name="password2" placeholder="Ripeti la password" [(ngModel)]="pass2">
 
-    <input type="submit" value="Registrati" class="big-btn" [disabled]="!validate()">
+    <input type="submit" value="Registrati" class="big-btn" [attr.disabled]="!validate()">
 
     <span class="separator">oppure</span>
     <button type="button" class="sign-with-google">

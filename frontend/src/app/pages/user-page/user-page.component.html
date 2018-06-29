@@ -1,7 +1,8 @@
-<div class="panel" data-name="user">
-  <div class="centered" style="padding: 100px 0;">
-      <button class="big-btn" (click)="modals.open('new-request')">
-          Ho Bisogno Di...
-      </button>
-  </div>
+<div [ngSwitch]="auth.userType">
+    <ng-content *ngSwitchCase="userType.Client">
+
+    </ng-content>
+    <ng-content *ngSwitchCase="userType.Vendor">
+        
+    </ng-content>
 </div>

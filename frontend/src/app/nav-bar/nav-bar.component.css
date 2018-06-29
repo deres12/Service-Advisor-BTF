@@ -9,12 +9,7 @@ nav {
     width: 100%;
     height: 50px;
     box-shadow: 0 4px 4px rgba(0,0,0,0.3);
-}
-
-#nav-logo {
-    width: 40px;
-    height: 40px;
-    vertical-align: middle;
+    z-index: 1;
 }
 
 nav > button {
@@ -27,9 +22,84 @@ nav > button {
 }
 
 nav > button:hover {
-    background: #3949AB;
+    background: var(--color2);
 }
 
 nav > button:active {
-    background: #303F9F;
+    background: var(--color3);
+}
+
+/* Side Menu */
+.side-menu-backdrop {
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 20;
+    overflow: hidden;
+}
+
+.side-menu-backdrop.visible {
+    display: block;
+}
+
+.side-menu {
+    position: absolute;
+    left: -250px;
+    top: 0px;
+    bottom: 0;
+    width: 250px;
+    background: #FFF;
+    transition: left 250ms ease-out;
+    z-index: 21;
+}
+
+.side-menu.visible {
+    left: 0px;
+}
+
+.close-menu-button {
+    border: none;
+    background: #FFF;
+    font-size: 24px;
+    color: #222;
+    min-width: 50px;
+    height: 50px;
+}
+
+.close-menu-button:hover {
+    background: #EEE;
+    cursor: pointer;
+}
+
+.close-menu-button:active {
+    background: #DDD;
+}
+
+.side-menu ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    cursor: pointer;
+}
+
+.side-menu ul li {
+    padding: 16px;
+    font-size: 20px;
+    border-top: solid 1px #DDD;
+}
+
+.side-menu ul li:last-child {
+    border-bottom: solid 1px #DDD;
+}
+
+.side-menu ul li:hover {
+    background: #EEE;
+}
+
+.side-menu ul li:active {
+    background: #DDD;
 }

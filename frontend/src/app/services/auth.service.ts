@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 /* TODO: spostare le interfacce in file separati */
-interface SignupData {
+export interface SignupData {
   type: UserType,
   email: string,
   pass: string

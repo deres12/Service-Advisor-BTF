@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { UserType, AuthService } from '../../services/auth.service';
+import { UserType, AuthService, SignupData } from '../../services/auth.service';
+import { Router } from '@angular/router';
+import { JobsService } from '../../services/jobs.service';
 
 @Component({
   selector: 'app-signup-form',
@@ -12,11 +14,15 @@ export class SignupFormComponent implements OnInit {
   userType = UserType;
 
   type: UserType = UserType.Guest;
-  email: string;
-  pass1: string;
-  pass2: string;
+  email: string = "";
+  pass1: string = "";
+  pass2: string = "";
+  professione: number;
 
-  constructor(private auth: AuthService) { }
+  constructor(
+    private auth: AuthService,
+    public router: Router,
+    public jobs: JobsService) { }
 
   ngOnInit() {}
 
@@ -28,7 +34,7 @@ export class SignupFormComponent implements OnInit {
   }
 
   validate(): boolean {
-    if(this.type != UserType.Client && this.type != UserType.Vendor) {
+    if(this.type == UserType.Guest) {
       return false;
     }
 
@@ -55,8 +61,15 @@ export class SignupFormComponent implements OnInit {
     event.preventDefault();
     if(!this.validate()) return;
     // call REST API
-    this.auth.signup({type: this.type, email: this.email, pass: this.pass1}).subscribe(
-      res => {},
+    let data: SignupData = {
+      type: this.type,
+      email: this.email,
+      pass: this.pass1
+    };
+    this.auth.signup(data).subscribe(
+      res => {
+        this.router.navigateByUrl("/user");
+      },
       err => {}
     );
   }

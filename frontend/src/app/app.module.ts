@@ -16,14 +16,16 @@ import { NotfoundPageComponent } from './pages/notfound-page/notfound-page.compo
 import { SettingsPageComponent } from './pages/settings-page/settings-page.component';
 import { ChangePasswordFormComponent } from './forms/change-password-form/change-password-form.component';
 import { AuthService } from './services/auth.service';
+import { LoginPageComponent } from './pages/login-page/login-page.component';
+import { SignupPageComponent } from './pages/signup-page/signup-page.component';
 
 /* 
   TODO: spostare <routes> in un modulo separato ed importarlo in app.module.ts
 */
 const routes: Routes = [
   {path: '', component: HomePageComponent},
-  {path: 'login', component: LoginFormComponent},
-  {path: 'signup', component: SignupFormComponent},
+  {path: 'login', component: LoginPageComponent},
+  {path: 'signup', component: SignupPageComponent},
   {path: 'settings', component: SettingsPageComponent},
   {path: 'user', component: UserPageComponent},
   {path: '**', component: NotfoundPageComponent}
@@ -41,7 +43,9 @@ const routes: Routes = [
     UserPageComponent,
     WorkerPageComponent,
     NotfoundPageComponent,
-    ChangePasswordFormComponent
+    ChangePasswordFormComponent,
+    LoginPageComponent,
+    SignupPageComponent
   ],
   imports: [
     BrowserModule,
