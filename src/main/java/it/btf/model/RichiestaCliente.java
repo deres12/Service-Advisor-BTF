@@ -28,9 +28,9 @@ public class RichiestaCliente {
 
 	private long prezzoMassimo;
 
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataInizio;
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataFine;
 
 	@OneToMany(mappedBy="richiesta")

@@ -33,18 +33,26 @@ public class Fornitore extends Guest {
 		this.valutazione=0;
 		this.numero=numero;
 		this.descrizione=descrizione;
-		this.offerte=offerte;
-		this.servizi=servizi;
 		this.professione=professione;
-		this.servizi=new ArrayList<Servizio>();
-		this.offerte=new ArrayList<Offerta>();
+		this.servizi=servizi;
+		this.offerte=offerte;
 		// TODO Auto-generated constructor stub
 	}
-	
+
+	public List<Offerta> getOfferte() {
+		return offerte;
+	}
+
+	public void setOfferte(List<Offerta> offerte) {
+		this.offerte = offerte;
+	}
+
 	public Fornitore() {
 		super();
 		this.servizi=new ArrayList<Servizio>();
 		this.offerte=new ArrayList<Offerta>();
+		this.professione=new Professione();
+
 		// TODO Auto-generated constructor stub
 	}
 
@@ -54,6 +62,11 @@ public class Fornitore extends Guest {
 
 	public void setProfessione(Professione lavoro) {
 		this.professione = lavoro;
+	}
+
+	public void setProfessione(Long idLavoro) {
+		this.professione = new Professione();
+		professione.setId(idLavoro);
 	}
 
 	public List<Servizio> getServizi() {
