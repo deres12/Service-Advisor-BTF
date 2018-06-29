@@ -1,6 +1,34 @@
-<nav class="flex-row">
+<nav>
+  <button (click)="openSideMenu()">
+    &hellip;
+  </button>
   <button routerLink="/">
-      <!--<img src="/assets/res/logo2.svg" id="nav-logo" alt="">-->
-      <strong style="vertical-align:middle">ServAdvisor</strong>
+      <!--<img src="/assets/res/logo2.svg" alt="">-->
+      <strong style="vertical-align:middle">Service Advisor</strong>
   </button>
 </nav>
+
+
+<div class="side-menu-backdrop" [class.visible]="isMenuOpen"></div>
+<div class="side-menu" [class.visible]="isMenuOpen">
+  <div>
+    <button class="close-menu-button" (click)="closeSideMenu()">
+      &times;
+    </button>
+  </div>
+  <ul [ngSwitch]="auth.userType" (click)="closeSideMenu()">
+    <ng-container *ngSwitchCase="userType.Guest">
+      <li routerLink="/login">Accedi</li>
+    </ng-container>
+    <ng-container *ngSwitchCase="userType.Client">
+      <li routerLink="/user">Profilo</li>
+      <li>...</li>
+      <li (click)="auth.logout()">Esci</li>
+    </ng-container>
+    <ng-container *ngSwitchCase="userType.Vendor">
+      <li routerLink="/user">Profilo</li>
+      <li>...</li>
+      <li (click)="auth.logout()">Esci</li>
+    </ng-container>
+  </ul>
+</div>

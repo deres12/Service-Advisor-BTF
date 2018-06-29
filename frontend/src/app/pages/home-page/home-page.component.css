@@ -1,6 +1,7 @@
 .main-banner {
-    background: linear-gradient(180deg, rgba(255,255,255,0), rgb(0, 100, 255, 0.5));
-    color: rgb(0, 5, 34);
+    /*background: linear-gradient(0deg, rgb(100, 100, 100), rgb(0, 26, 65));*/
+    background: rgb(0, 25, 60);
+    color: rgb(250, 250, 250);
     min-height: 8em;
     text-align: left;
     padding: 50px 10px;
@@ -37,7 +38,7 @@ div.container {
     vertical-align: middle;
 }
 
-.search-bar button {
+.search-button {
     border: none;
     background: var(--color1);
     border:solid 1px var(--color1);
@@ -46,6 +47,14 @@ div.container {
     height: 35px;
     vertical-align: middle;
     color: #FFF;
+}
+
+.search-button:hover {
+    background: var(--color2);
+}
+
+.search-button:active {
+    background: var(--color3);
 }
 
 ul.vendors-list {
@@ -59,15 +68,15 @@ ul.vendors-list {
     min-height: 20px;
     margin: 0;
     padding: 0;
+    padding-top: 8px;
     list-style-type: none;
 }
 
 ul.vendors-list > li {
     background: #FFF;
     border: solid 1px #AAA;
-    border-radius: 3px;
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
-    margin: 8px;
+    margin-bottom: 8px;
     padding: 8px;
     min-width: 200px;
     height: 200px;
@@ -76,13 +85,6 @@ ul.vendors-list > li {
     justify-content: flex-start;
     align-items: flex-start;
     transition: background 200ms;
-}
-
-@media screen and (max-width: 500px) {
-    ul.vendors-list > li {
-        margin: 4px 4px;
-        width: 90%;
-    }
 }
 
 ul.vendors-list > li:hover {

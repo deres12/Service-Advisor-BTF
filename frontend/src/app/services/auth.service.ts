@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import {environment} from "../../environments/environment.prod";
 
 /* TODO: spostare le interfacce in file separati */
-interface SignupData {
+export interface SignupData {
   type: UserType,
   email: string,
   pass: string

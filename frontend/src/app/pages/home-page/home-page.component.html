@@ -11,19 +11,24 @@
 </div>
 
 <div class="search-bar centered">
-    <form class="container">
-        <input type="search" placeholder="Idraulici, ...">
-        <button>Cerca</button>
-    </form>
+    <div class="container">
+        <form class="flex-row">
+            <input type="search" placeholder="Idraulici, ..." style="flex-grow:1">
+            <button class="search-button">Cerca</button>
+        </form>
+    </div>
 </div>
 
-<div class="centered container">
-    <ul class="vendors-list">
-        <li *ngFor="let w of workers; let i = index">
-            <div class="profile-image"></div>
-            <span class="profile-content">
-                professionista {{i}}
-            </span>
-        </li>
-    </ul>
+<div class="centered" style="background: rgb(230,230,220)">
+    <div class="container">
+        <ul class="vendors-list">
+            <li *ngFor="let w of workers; let i = index">
+                <div class="profile-image"></div>
+                <span class="profile-content">
+                    Professionista {{i}}<br>
+                    informazioni...
+                </span>
+            </li>
+        </ul>
+    </div>
 </div>

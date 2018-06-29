@@ -4,9 +4,9 @@ Per utilizzarle negli attributi CSS basta scrivere
 ad esempio: var(--color1)
 */
 :root {
-    --color1: #3F51B5;
-    --color2: #3949AB;
-    --color3: #303F9F;
+    --color1: #4caf50;
+    --color2: #43a047;
+    --color3: #388e3c;
 }
 
 /* utils */
@@ -91,20 +91,20 @@ ul.unstyled li:hover {
     cursor: pointer;
 }
 
-.big-btn {
+.btn, .big-btn {
     border: none;
     padding: 6px 12px;
-    border-radius: 0.5em;
     font-size: 20px;
     color: #FFF;
     background: var(--color1);
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
 }
 
-.big-btn:hover {
+.btn:hover, .big-btn:hover {
     background: var(--color2);
 }
 
-.big-btn:active {
+.btn:active, .big-btn:active {
     background: var(--color3);
 }
 
@@ -135,10 +135,16 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .form {
+    margin: 8px;
+    padding: 12px;
+    border: solid 1px #DDD;
+    border-radius: 3px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
     max-width: 400px;
     margin: 0px auto;
     display: flex;
     flex-direction: column;
+    background: 
 }
 
 .form > input, .form > textarea, .form > select {
@@ -152,12 +158,6 @@ input, textarea, select {
     font-size: 16px;
     border-radius: 4px;
     margin-bottom: 8px;
-    transition: box-shadow 300ms, border-color 300ms
-}
-
-input:hover, textarea:hover, select:hover {
-    border-color: #3F51B5;
-    box-shadow: 0 0 4px #3F51B5;
 }
 
 textarea {
