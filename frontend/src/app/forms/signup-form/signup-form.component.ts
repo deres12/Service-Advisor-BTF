@@ -11,7 +11,7 @@ export class SignupFormComponent implements OnInit {
 
   userType = UserType;
 
-  type: UserType = UserType.Guest;
+  type: UserType = UserType.Vendor;
   email: string;
   pass1: string;
   pass2: string;
@@ -28,9 +28,6 @@ export class SignupFormComponent implements OnInit {
   }
 
   validate(): boolean {
-    if(this.type != UserType.Client && this.type != UserType.Vendor) {
-      return false;
-    }
 
     if(this.email.length == 0) {
       return false;

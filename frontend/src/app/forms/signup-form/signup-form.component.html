@@ -1,22 +1,27 @@
 <form class="form" (submit)="submit($event)">
+<br>
+  <select name="type" [(ngModel)]="type">
+    <option value="{{userType.Client}}">Cliente</option>
+    <option value="{{userType.Vendor}}">Fornitore</option>
+  </select>
 
     <label for="username">Indirizzo E-mail</label>
-    <input type="email" name="email" placeholder="E-mail" [(ngModel)]="email">
-    
+    <input id="username" type="email" name="email" placeholder="E-mail" [(ngModel)]="email">
+
     <label for="password">Password</label>
-    <input type="password" name="password" placeholder="Crea una password" [(ngModel)]="pass">
+    <input id="password" type="password" name="password" placeholder="Crea una password" [(ngModel)]="pass1">
 
     <label for="password2">Ripeti Password</label>
-    <input type="password" name="password2" placeholder="Ripeti la password" [(ngModel)]="pass2">
+    <input id="password2" type="password" name="password2" placeholder="Ripeti la password" [(ngModel)]="pass2">
 
     <input type="submit" value="Registrati" class="big-btn" [disabled]="!validate()">
 
-    <span class="separator">oppure</span>
-    <button type="button" class="sign-with-google">
+    <!--<span class="separator">oppure</span>-->
+    <button type="button" class="sign-with-google" hidden="true">
         <span style="font-family:Verdana;font-weight:bold">G </span>
         Registrati con Google
     </button>
-    <button type="button" class="sign-with-facebook">
+    <button type="button" class="sign-with-facebook" hidden="true">
         <span style="font-family:Verdana;font-weight:bold">f </span>
         Registrati con Facebook
     </button>
