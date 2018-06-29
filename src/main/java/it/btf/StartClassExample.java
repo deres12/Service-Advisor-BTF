@@ -19,6 +19,7 @@ import it.btf.repository.ServizioRepository;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @SpringBootApplication
 public class StartClassExample {
@@ -167,7 +168,6 @@ public class StartClassExample {
             fornitoreRep.save(example3);
 
 			professioneRep.save(p);
-			
 
 		};
 	}

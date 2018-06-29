@@ -11,8 +11,10 @@ import it.btf.model.Professione;
 import it.btf.model.Servizio;
 import it.btf.repository.FornitoreRepository;
 import it.btf.repository.ServizioRepository;
+import it.btf.utility.DatabaseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import it.btf.dto.PersonaDTO;
@@ -104,21 +106,25 @@ public class GestioneUtenteBEService implements GestioneUtenteBE {
 
 
     @Override
-    public String addUser(PersonaDTO utente) {
+    public String addUser(PersonaDTO utente) throws DatabaseException{
         if(utente.getType().equalsIgnoreCase("c")){
             if(utenteRepository.existsById(utente.getEmail())){
-                return "error_email";
+                ResponseEntity ex=new ResponseEntity("email presente, utente gia registrato",HttpStatus.CONFLICT);
+                throw new DatabaseException(ex);
+                //return "error_email";
             }else{
                 this.addCliente(utente);
             }
         }else{
+            if(utente.getType().equalsIgnoreCase("F")){
             if(fornitoreRepository.existsById(utente.getEmail())){
-                return "error_email";
+                ResponseEntity ex=new ResponseEntity("email presente, utente gia registrato",HttpStatus.CONFLICT);
+                throw new DatabaseException(ex);
             }else{
                 this.addFornitore(utente);
             }
-        }
-        return "ok";
+        }}
+        return "ok, utente registrato";
     }
 
 
