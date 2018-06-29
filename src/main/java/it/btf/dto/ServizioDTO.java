@@ -11,6 +11,10 @@ public class ServizioDTO {
 		this.descrizione = descrizione;
 	}
 
+	public ServizioDTO(Long id) {
+		this.id = id;
+	}
+
 	public ServizioDTO() {
 	}
 

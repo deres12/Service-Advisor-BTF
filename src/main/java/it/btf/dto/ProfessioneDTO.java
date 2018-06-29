@@ -48,4 +48,9 @@ public class ProfessioneDTO {
     public void setNome(String nome) {
         this.nome = nome;
     }
+
+    public void addServizio(ServizioDTO a){
+
+        servizi.add(a);
+    }
 }

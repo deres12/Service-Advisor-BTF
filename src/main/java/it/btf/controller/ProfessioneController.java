@@ -9,15 +9,21 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/services/professioni")
+@RequestMapping("/professioni")
 public class ProfessioneController {
 
     @Autowired
     GestioneProfessioneBE profService;
 
-    @GetMapping
+    @GetMapping("/servizi")
     public ResponseEntity<List<ProfessioneDTO>> caricaServiziProfessioni() {
         List<ProfessioneDTO> dtoProf=profService.loadAllWithService();
+        return new ResponseEntity<>(dtoProf, HttpStatus.OK);
+    }
+
+    @GetMapping
+    public ResponseEntity<List<ProfessioneDTO>> caricaProfessioni() {
+        List<ProfessioneDTO> dtoProf=profService.loadAll();
         return new ResponseEntity<>(dtoProf, HttpStatus.OK);
     }
 

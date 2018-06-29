@@ -23,7 +23,11 @@ public class GestioneProfessioneBEService implements GestioneProfessioneBE {
         List<ProfessioneDTO> profDto=new ArrayList<ProfessioneDTO>();
         List <Professione> professioni= profRepository.findAll();
         for(Professione p: professioni){
-            profDto.add(new ProfessioneDTO(p.getId(),p.getNome(), new ArrayList<ServizioDTO>()));
+            List<ServizioDTO> servDto=new ArrayList<ServizioDTO>();
+            for(Servizio serv:p.getServizi()){
+                servDto.add(new ServizioDTO(serv.getId()));
+            }
+            profDto.add(new ProfessioneDTO(p.getId(),p.getNome(), servDto));
         }
         return profDto;
     }
