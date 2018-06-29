@@ -1,0 +1,110 @@
+.main-banner {
+    background: linear-gradient(180deg, rgba(255,255,255,0), rgb(0, 100, 255, 0.5));
+    color: rgb(0, 5, 34);
+    min-height: 8em;
+    text-align: left;
+    padding: 50px 10px;
+}
+
+.main-banner .main-text {
+    font-weight: bold;
+    font-size: 44px;
+    max-width: 600px;
+    margin-bottom: 12px;
+}
+
+div.container {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.search-bar {
+    border-top: solid 1px #AAA;
+    border-bottom: solid 1px #AAA;
+    padding: 4px;
+    background: #FFF;
+}
+
+.search-bar input[type="search"] {
+    background: #FFF;
+    border: solid 1px #888;
+    padding: 4px 8px;
+    border-radius: 0;
+    margin: 0;
+    font-size: 18px;
+    height: 35px;
+    vertical-align: middle;
+}
+
+.search-bar button {
+    border: none;
+    background: var(--color1);
+    border:solid 1px var(--color1);
+    padding: 4px 8px;
+    font-size: 18px;
+    height: 35px;
+    vertical-align: middle;
+    color: #FFF;
+}
+
+ul.vendors-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: stretch;
+    align-items: flex-start;
+    align-content: space-around;
+    display: block;
+    min-height: 20px;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+ul.vendors-list > li {
+    background: #FFF;
+    border: solid 1px #AAA;
+    border-radius: 3px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+    margin: 8px;
+    padding: 8px;
+    min-width: 200px;
+    height: 200px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    transition: background 200ms;
+}
+
+@media screen and (max-width: 500px) {
+    ul.vendors-list > li {
+        margin: 4px 4px;
+        width: 90%;
+    }
+}
+
+ul.vendors-list > li:hover {
+    background: #E8E8E8;
+    cursor: pointer;
+}
+
+ul.vendors-list > li > span {
+    font-size: 18px;
+    font-weight: bold;
+    color: #222;
+}
+
+ul.vendors-list > li > .profile-image {
+    background: #333;
+    width: 150px;
+    height: 150px;
+    border-radius: 3px;
+    margin-right: 8px;
+}
+
+ul.vendors-list > li > .profile-content {
+    color: #222;
+}
+

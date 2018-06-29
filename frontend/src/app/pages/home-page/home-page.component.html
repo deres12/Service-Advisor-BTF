@@ -1,0 +1,29 @@
+<div class="main-banner">
+    <div class="container">
+        <div class="main-text">
+            Service Advisor ti aiuta a trovare
+            professionisti nella tua zona
+        </div>
+        <button class="big-btn" routerLink="/signup">
+            Registrati Subito
+        </button>
+    </div>
+</div>
+
+<div class="search-bar centered">
+    <form class="container">
+        <input type="search" placeholder="Idraulici, ...">
+        <button>Cerca</button>
+    </form>
+</div>
+
+<div class="centered container">
+    <ul class="vendors-list">
+        <li *ngFor="let w of workers; let i = index">
+            <div class="profile-image"></div>
+            <span class="profile-content">
+                professionista {{i}}
+            </span>
+        </li>
+    </ul>
+</div>

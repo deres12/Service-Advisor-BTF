@@ -1,21 +1,4 @@
-<!-- barra di navigazione superiore -->
 <app-nav-bar></app-nav-bar>
-
-<!-- menu laterale -->
-<app-side-menu></app-side-menu>
-
-<!-- contenitore dei modals -->
-<app-dialog-container></app-dialog-container>
-
-<!-- contenitore delle varie "viste" della web app -->
-<app-content-view></app-content-view>
-
-<!-- pannello di test che consente di
-      fare lo switch tra diverse "viste".
-      Premere "\" per aprire/chiudere -->
-<span id="panel-switcher" class="panel-switcher-hidden">
-    <span>Viste:</span>
-    <input type="button" value="guest" onclick="setup_guest_ui()">
-    <input type="button" value="user" onclick="setup_user_ui()">
-    <input type="button" value="worker" onclick="show_panel('work')">
-</span>
+<main>
+    <router-outlet></router-outlet>
+</main>

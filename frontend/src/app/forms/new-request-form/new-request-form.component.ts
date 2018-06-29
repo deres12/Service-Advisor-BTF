@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { JobsService } from '../../services/jobs.service';
 
 @Component({
   selector: 'app-new-request-form',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NewRequestFormComponent implements OnInit {
 
-  constructor() { }
+  constructor(private jobs: JobsService) { }
 
   ngOnInit() {
   }
 
+  validate(): boolean {
+    return false;
+  }
+
+  submit(event) {
+    event.preventDefault();
+    if(!this.validate()) return;
+    // call REST API
+  }
 }

@@ -1,3 +1,14 @@
+/*
+Questo blocco consente di dichiarare variabili.
+Per utilizzarle negli attributi CSS basta scrivere 
+ad esempio: var(--color1)
+*/
+:root {
+    --color1: #3F51B5;
+    --color2: #3949AB;
+    --color3: #303F9F;
+}
+
 /* utils */
 /*--------------------------------------------------*/
 
@@ -7,7 +18,7 @@ span.separator {
     color: #888;
     max-width: 80%;
     margin: 0px auto;
-    margin-bottom:10px;
+    margin-bottom: 10px;
 }
 
 .hidden {
@@ -80,19 +91,31 @@ ul.unstyled li:hover {
     cursor: pointer;
 }
 
-
-/*--------------------------------------------------*/
-/*
-Questo blocco consente di dichiarare variabili.
-Per utilizzarle negli attributi CSS basta scrivere 
-ad esempio: var(--color1)
-*/
-:root {
-    --color1: #3F51B5;
-    --color2: #3949AB;
-    --color3: #303F9F;
+.big-btn {
+    border: none;
+    padding: 6px 12px;
+    border-radius: 0.5em;
+    font-size: 20px;
+    color: #FFF;
+    background: var(--color1);
 }
 
+.big-btn:hover {
+    background: var(--color2);
+}
+
+.big-btn:active {
+    background: var(--color3);
+}
+
+.big-btn[disabled] {
+    background: #888;
+    box-shadow: none;
+}
+
+.alert-error {
+    color: #F00;
+}
 
 /* main */
 /*--------------------------------------------------*/
@@ -111,15 +134,14 @@ h1, h2, h3, h4, h5, h6 {
     color: #222;
 }
 
-
-form {
+.form {
     max-width: 400px;
     margin: 0px auto;
     display: flex;
     flex-direction: column;
 }
 
-form > input, form > textarea, form > select {
+.form > input, .form > textarea, .form > select {
     margin-bottom: 1em;
 }
 
@@ -140,33 +162,6 @@ input:hover, textarea:hover, select:hover {
 
 textarea {
     resize: none;
-}
-
-main {
-    width: 100%;
-    max-width: 800px;
-    margin: 0 auto;
-    margin-top: 50px;
-}
-
-
-.big-btn {
-    border: solid 2px var(--color1);
-    background: #FFF;
-    color: var(--color1);
-    border-radius: 1em;
-    padding: 6px 12px;
-    font-size: 20px;
-}
-
-.big-btn:hover {
-    background: var(--color1);
-    color: #FFF;
-}
-
-.big-btn:active {
-    background: var(--color3);
-    color: #FFF;
 }
 
 /* social buttons */
@@ -207,29 +202,3 @@ main {
 .sign-with-google:active {
     background: #b00000;
 }
-
-
-/* pannello di debug */
-/*--------------------------------------------------*/
-#panel-switcher {
-    position: fixed;
-    background: #334;
-    color: #FFF;
-    padding: 4px;
-    box-sizing: border-box;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    height: 99px;
-    border-top: solid 1px #222;
-    transition: bottom 300ms ease-in-out;
-    z-index: 10000;
-}
-
-#panel-switcher.panel-switcher-hidden {
-    bottom: -100px;
-}
-
-/*--------------------------------------------------*/
-
-

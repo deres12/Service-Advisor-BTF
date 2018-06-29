@@ -1,9 +1,25 @@
-<form id="login-form">
-  <label for="username">Nome Utente</label>
-  <input type="text" name="username" placeholder="Nome o Email">
+<form class="form" (submit)="submit($event)">
 
-  <label for="password">Password</label>
-  <input type="password" name="password" placeholder="Password">
-  
-  <input type="submit" value="Accedi" class="big-btn">
+    <div class="alert-error" *ngIf="error">
+        Email o password errati
+    </div>
+
+    <label for="">Indirizzo Email</label>
+    <input type="text" name="email" placeholder="Email" [(ngModel)]="data.email">
+
+    <label for="password">Password</label>
+    <input type="password" name="password" placeholder="Password" [(ngModel)]="data.pass">
+    
+    <input type="submit" value="Accedi" class="big-btn" [disabled]="!validate()">
+
+    <span class="separator">oppure</span>
+    <button type="button" class="sign-with-google">
+        <span style="font-family:Verdana;font-weight:bold">G&nbsp;</span>
+        Accedi con Google
+    </button>
+    <button type="button" class="sign-with-facebook">
+        <span style="font-family:Verdana;font-weight:bold">f&nbsp;</span>
+        Accedi con Facebook
+    </button>
+
 </form>

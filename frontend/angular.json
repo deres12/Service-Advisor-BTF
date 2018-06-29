@@ -26,11 +26,7 @@
               "src/styles.css"
             ],
             "scripts": [
-              "src/assets/js/utils.js",
-              "src/assets/js/stub-auth.js",
-              "src/assets/js/stub-service.js",
-              "src/assets/js/stub-db.js",
-              "src/assets/js/main.js"
+              
             ]
           },
           "configurations": {

@@ -1,6 +1,11 @@
-<form id="new-request-form" class="form-vertical">
+<form class="form" (submit)="submit($event)">
+    
   <label for="service">Che tipo di servizio?</label>
-  <select name="service"></select>
+  <select name="service">
+        <option *ngFor="let job of jobs.getAll()" [value]="job.id">
+            {{job.name}}
+        </option>
+  </select>
 
   <label for="address">Dove ti serve?</label>
   <input type="text" name="address" placeholder="Indirizzo">

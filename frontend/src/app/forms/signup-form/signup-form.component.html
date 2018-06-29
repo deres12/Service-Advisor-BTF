@@ -1,15 +1,23 @@
-<form id="signup-form">
-  <label for="username">Indirizzo E-mail</label>
-  <input type="email" name="email" placeholder="E-mail">
-  
-  <label for="username">Nome Utente</label>
-  <input type="text" name="username" placeholder="Nome">
+<form class="form" (submit)="submit($event)">
 
-  <label for="password">Password</label>
-  <input type="password" name="password" placeholder="Crea una password">
+    <label for="username">Indirizzo E-mail</label>
+    <input type="email" name="email" placeholder="E-mail" [(ngModel)]="email">
+    
+    <label for="password">Password</label>
+    <input type="password" name="password" placeholder="Crea una password" [(ngModel)]="pass">
 
-  <label for="password2">Ripeti Password</label>
-  <input type="password" name="password2" placeholder="Ripeti la password">
-  
-  <input type="submit" value="Registrati" class="big-btn">
+    <label for="password2">Ripeti Password</label>
+    <input type="password" name="password2" placeholder="Ripeti la password" [(ngModel)]="pass2">
+
+    <input type="submit" value="Registrati" class="big-btn" [disabled]="!validate()">
+
+    <span class="separator">oppure</span>
+    <button type="button" class="sign-with-google">
+        <span style="font-family:Verdana;font-weight:bold">G </span>
+        Registrati con Google
+    </button>
+    <button type="button" class="sign-with-facebook">
+        <span style="font-family:Verdana;font-weight:bold">f </span>
+        Registrati con Facebook
+    </button>
 </form>
