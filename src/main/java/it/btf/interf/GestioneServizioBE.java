@@ -6,6 +6,6 @@ import java.util.List;
 
 public interface GestioneServizioBE {
 
-    public List<ServizioDTO> loadAll();
-
+    public List<ServizioDTO> loadAllByProf(Long id);
+    public List<ServizioDTO> loadAllService();
 }

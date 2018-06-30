@@ -10,5 +10,6 @@ import java.util.Optional;
 @Repository
 public interface ProfessioneRepository extends JpaRepository<Professione, Long> {
 
+    public Optional<Professione> findAllByNome(String prof);
     public Optional<Professione> findById(Long id);
 }

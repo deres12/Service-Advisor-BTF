@@ -2,7 +2,6 @@ package it.btf.service;
 
 import it.btf.dto.ServizioDTO;
 import it.btf.interf.GestioneServiziBE;
-import it.btf.model.Professione;
 import it.btf.model.Servizio;
 import it.btf.repository.ProfessioneRepository;
 import it.btf.repository.ServizioRepository;
@@ -36,7 +35,7 @@ public class GestioneServiziBEService implements GestioneServiziBE {
 
         }
 
-        */
+
         List<ServizioDTO> risposta= new ArrayList<ServizioDTO>();
 
         List<Servizio> servizi= servizioRepository.serviziByProfessione(professione);
@@ -46,7 +45,7 @@ public class GestioneServiziBEService implements GestioneServiziBE {
                risposta.add(serv);
             }
         }
-
-        return risposta;
+*/
+        return null;
     }
 }

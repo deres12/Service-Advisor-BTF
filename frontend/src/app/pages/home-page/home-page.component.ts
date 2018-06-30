@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Fornitore} from "../../services/fornitore";
+import {TakeFornintoriService} from "../../services/take-fornintori.service";
 
 @Component({
   selector: 'app-home-page',
@@ -6,6 +8,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home-page.component.css']
 })
 export class HomePageComponent implements OnInit {
+
+  fornitori: Fornitore[];
+
   workers = [
     {nome: "tizio"    , professione: "Elettricista"},
     {nome: "caio"     , professione: "Idraulico"},
@@ -18,8 +23,13 @@ export class HomePageComponent implements OnInit {
     {nome: "caio"     , professione: "Disoccupato?"}
   ];
 
-  constructor() { }
+  constructor(private serv: TakeFornintoriService) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.serv.getFornitori().subscribe((list: Fornitore[]) => {
+      this.fornitori=list;
+    },(error)=>{console.log(error);});
+
+  }
 
 }

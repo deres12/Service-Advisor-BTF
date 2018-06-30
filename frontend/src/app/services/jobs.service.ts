@@ -15,13 +15,13 @@ interface Job {
   providedIn: 'root'
 })
 export class JobsService {
-  
+
   private jobs: Job[] = [
     {
       id: 1,
       nome: "Elettricista",
       servizi: [
-        {id: 1, descrizione: "sostituzione lampadina"}
+        {id: 1, descrizione: "sostituzione lampadina"},
         {id: 2, descrizione: "sostituzione batterie"}
       ]
     },

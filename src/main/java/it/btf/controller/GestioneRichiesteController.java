@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/services/richieste")
+@RequestMapping("/richieste")
 public class GestioneRichiesteController {
 
 //INSERISCI RICHIEST --------GET RICHIESTE EFFETTUATE-------- GET ALL RICHIESTE
