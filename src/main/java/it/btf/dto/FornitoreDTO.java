@@ -1,18 +1,40 @@
 package it.btf.dto;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class FornitoreDTO  {
 
+    private String nome;
     private int valutazione;
     private String descrizione;
     private String numero;
     private String email;
 
+    private String nomeProfessione;
 
-    //private ProfessioneDTO professione;
     private List<OffertaDTO> offerte;
     private List<ServizioDTO> servizi;
+
+
+
+    //------METODI-----------
+
+    public String getNomeProfessione() {
+        return nomeProfessione;
+    }
+
+    public void setNomeProfessione(String nomeProfessione) {
+        this.nomeProfessione = nomeProfessione;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
 
     public String getEmail() {
         return email;

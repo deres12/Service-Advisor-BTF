@@ -22,11 +22,13 @@
 <div class="centered" style="background: rgb(230,230,220)">
     <div class="container">
         <ul class="vendors-list">
-            <li *ngFor="let w of workers; let i = index">
-                <div class="profile-image"></div>
+            <li *ngFor="let fornitore of fornitori; let i = index">
+                <div class="profile-image"><img src="http://static1.seety.pagesjaunes.fr/dam_55018360/2ee97218-6f53-4ccd-b5bd-694a93e5e9e1-800" style="width: 100px"/></div>
                 <span class="profile-content">
-                    Professionista {{i}}<br>
-                    informazioni...
+                  {{fornitore.nome}}<br />
+                  {{fornitore.nomeProfessione}}<br />
+                  {{fornitore.descrizione}}<br />
+                  {{fornitore.valutazione}}
                 </span>
             </li>
         </ul>

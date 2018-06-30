@@ -2,7 +2,6 @@ package it.btf.service;
 
 import it.btf.dto.ServizioDTO;
 import it.btf.interf.GestioneServiziBE;
-import it.btf.model.Professione;
 import it.btf.model.Servizio;
 import it.btf.repository.ProfessioneRepository;
 import it.btf.repository.ServizioRepository;
@@ -28,6 +27,17 @@ public class GestioneServiziBEService implements GestioneServiziBE {
 
     @Override
     public List<ServizioDTO> loadServiceByProf(String professione) {
+
+
+        /*
+        Optional <Professione> f =professioneRepository.findById(new Long(1));
+        if(f.isPresent()){
+            return f.get().getServizi();
+
+        }
+
+
+
         List<ServizioDTO> risposta= new ArrayList<ServizioDTO>();
 
        /* List<Servizio> servizi= servizioRepository.serviziByProfessione(professione);
@@ -38,6 +48,8 @@ public class GestioneServiziBEService implements GestioneServiziBE {
             }
         }
 */
-        return risposta;
+
+        return null;
+
     }
 }

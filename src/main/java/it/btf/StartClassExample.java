@@ -135,7 +135,7 @@ public class StartClassExample {
 			Fornitore prova2 = new Fornitore();
 			prova2.setNome("stefano");
 			prova2.setCognome("carrino");
-			prova2.setDescrizione("lavoro da 20 anni nel campo ellettrico, offro supporto per qualsiasi evenienza");
+			prova2.setDescrizione("A facc ro cazz!!!");
 			prova2.setEmail("esempio@gggg.vbb");
 			prova2.setNumero("aaaa");
 
