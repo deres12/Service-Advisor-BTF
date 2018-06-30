@@ -10,7 +10,7 @@ public class FornitoreDTO  {
     private String email;
 
 
-    private ProfessioneDTO professione;
+    //private ProfessioneDTO professione;
     private List<OffertaDTO> offerte;
     private List<ServizioDTO> servizi;
 

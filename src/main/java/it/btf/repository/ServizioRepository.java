@@ -14,6 +14,6 @@ public interface ServizioRepository extends JpaRepository<Servizio, Long>  {
 	List<Servizio> findByDescrizione(String string);
 
 
-	@Query("SELECT s FROM servizio s JOIN professione p WHERE p.nome = ?1")
+	@Query("SELECT s FROM servizio s JOIN professione p ON p.servizi = s.id WHERE p.nome = ?1")
 	List<Servizio> serviziByProfessione(String nome);
 }
