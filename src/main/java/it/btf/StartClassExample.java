@@ -16,7 +16,10 @@ import it.btf.repository.ProfessioneRepository;
 import it.btf.repository.RichiestaClienteRepository;
 import it.btf.repository.ServizioRepository;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+import java.util.Optional;
 
 @SpringBootApplication
 public class StartClassExample {
@@ -44,7 +47,6 @@ public class StartClassExample {
 			personaRep.save(b);
 			personaRep.save(c);
 			Professione prof = new Professione();
-			// prof.addFornitori(fornit);
 			prof.setNome("idraulico");
 			Fornitore fornit = new Fornitore();
 			fornit.setNome("stefano");
@@ -61,7 +63,9 @@ public class StartClassExample {
 			fornit.setValutazione(0);
 			fornit.setVia("asdasda");
 
+
 			fornit.setPass("prova");
+
 			Servizio serv1 = new Servizio();
 			serv1.setDescrizione("fdafhauidfa");
 			servizoRep.save(serv1);
@@ -100,7 +104,8 @@ public class StartClassExample {
 			prova2.setDescrizione("lavoro da 20 anni nel campo ellettrico, offro supporto per qualsiasi evenienza");
 			prova2.setEmail("esempio@gggg.vbb");
 			prova2.setNumero("aaaa");
-			prova2.setProfessione(prof);
+
+			prova2.setProfessione(prof.getId());
 			prova2.setTimeBirth(new Date());
 			prova2.setUsername("pippo");
 			prova2.setValutazione(0);
@@ -134,53 +139,36 @@ public class StartClassExample {
 			offer3.setRichiesta(rich2);
 			offer3.setPrezzo(100);
 			offertaRep.save(offer3);
-			
-			
-			
-			
-			/*for (Servizio servizio : servizoRep.findByDescrizione("fdafhauidfa")) {
-				prof.addServizio(servizio);
-				fornit.addServizio(servizio);
-			}*/
-			//System.err.println(serv1.getId());
-			//System.err.println(serv2.getId());
-			//fornitoreRep.save(fornit);
+			List<Servizio> pippo=new ArrayList<Servizio>();
+			pippo.add(serv2);
+			Professione p=new Professione("gommista", pippo,null);
+			Servizio example =new Servizio();
+			example.setDescrizione("ciccio pasticcio");
+			servizoRep.save(example);
+			Professione example2= new Professione();
+			example2.setNome("elettricista");
+			example2.addServizio(example);
+			professioneRep.save(example2);
+			Fornitore example3= new Fornitore();
+            example3.setNome("stefano");
+            example3.setCognome("carrino");
+            example3.setDescrizione("lavoro da 20 anni nel campo ellettrico, offro supporto per qualsiasi evenienza");
+            example3.setEmail("zzz@zzz.zzz");
+            example3.setNumero("aaaa");
 
-			// servizoRep.findByDescrizione("fdafhauidfa")
+            example3.setProfessione(example2.getId());
+            example3.setTimeBirth(new Date());
+            example3.setUsername("pippo");
+            example3.setValutazione(0);
+            example3.setVia("asdasda");
+            example3.setPass("asdasda");
+            Servizio asss=new Servizio();
+            asss.setId(example.getId());
+            example3.addServizio(asss);
+            fornitoreRep.save(example3);
 
-			/*
-			 * Professione prof=new Professione();
-			 * 
-			 * personaRep.save(a); for (Servizio servizo :
-			 * servizoRep.findByDescrizione("fdafhauidfa")) { prof.addServizio(serv1); }
-			 * 
-			 * professioneRep.save(prof);
-			 */
+			professioneRep.save(p);
 
-			// servizoRep.findOne(serv1);
-			// prof.addServizio(serv1);
-
-			/*
-			 * // fetch all customers log.info("Customers found with findAll():");
-			 * log.info("-------------------------------"); for (Cliente customer :
-			 * personaRep.findAll()) { log.info(customer.toString()); } log.info("");
-			 * 
-			 * // fetch an individual customer by ID personaRep.findById("aaa@aaa")
-			 * .ifPresent(customer -> {
-			 * log.info("Utente found with findById(\"aaa@aaa\"):");
-			 * log.info("--------------------------------"); log.info(customer.toString());
-			 * log.info(""); System.err.println("ECCOLOOOOO PER ID");
-			 * 
-			 * });
-			 * 
-			 * // fetch customers by last name
-			 * log.info("Utente found with findByLastName('prova'):");
-			 * log.info("--------------------------------------------");
-			 * personaRep.findByEmail("prova").forEach(bauer -> {
-			 * log.info(bauer.toString()); }); // for (Customer bauer :
-			 * repository.findByLastName("Bauer")) { // log.info(bauer.toString()); // }
-			 * log.info("");
-			 */
 		};
 	}
 

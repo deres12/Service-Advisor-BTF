@@ -2,17 +2,31 @@ package it.btf.dto;
 
 public class ServizioDTO {
 
-	private String descrizione;
-	private String tipoServizio;
-	private  long id;
 
+	private Long id;
+
+	private String descrizione;
+
+
+	public ServizioDTO(Long id, String descrizione) {
+		this.id = id;
+		this.descrizione = descrizione;
+	}
+
+
+	public ServizioDTO(Long id) {
+		this.id = id;
+	}
 
 	public ServizioDTO() {
 	}
 
-	public ServizioDTO(String descrizione, String tipoServizio, long id) {
-		this.descrizione = descrizione;
-		this.tipoServizio = tipoServizio;
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -24,19 +38,4 @@ public class ServizioDTO {
 		this.descrizione = descrizione;
 	}
 
-	public String getTipoServizio() {
-		return tipoServizio;
-	}
-
-	public void setTipoServizio(String tipoServizio) {
-		this.tipoServizio = tipoServizio;
-	}
-
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
-	}
 }

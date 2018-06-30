@@ -1,53 +1,66 @@
 package it.btf.controller;
-
-
 import java.util.List;
-
+import it.btf.utility.DatabaseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.web.bind.annotation.*;
 import it.btf.dto.PersonaDTO;
-import it.btf.dto.RispostaDTO;
 import it.btf.interf.GestioneUtenteBE;
-//import it.btf.security.MySecurityContext;
-
 
 
 @RestController
-@RequestMapping("/services/user")
+@RequestMapping("/user")
 public class GestioneUtenteController {
-	///user/find
-	@Autowired
-	GestioneUtenteBE service;
-	
-	@RequestMapping("/find/{username}")
-	@ResponseBody
-	public List<PersonaDTO> load(@PathVariable("username") String username){
 
-		return service.load(username);
-	}
-	
-	@ResponseBody
-	@RequestMapping(value = "inserisci", method = RequestMethod.POST)
-	public ResponseEntity<RispostaDTO> inserisci(@RequestBody PersonaDTO dto) {
-		this.service.addUser(dto);
-		return new ResponseEntity<>(new RispostaDTO("ciao " + dto.getNome()), HttpStatus.OK);
+    @Autowired
+    GestioneUtenteBE service;
 
-	}
-	
-	/*@RequestMapping("/request/{email}")
-	@ResponseBody
-	public List<PersonaDTO> loadRequest(@PathVariable("email") String email){
 
-		return service.load(email);
-	}*/
-	
+    @RequestMapping("/find/{username}")
+    @ResponseBody
+    public List<PersonaDTO> load(@PathVariable("username") String username) {
 
+        return service.load(username);
+    }
+
+    @PostMapping("/registrati")
+    @ResponseBody
+    public ResponseEntity saveUser(@RequestBody PersonaDTO dto) {
+
+        ResponseEntity a;
+        try {
+            a = service.addUser(dto);
+        } catch (DatabaseException ex) {
+            return ex.getResponse();
+        }
+        return a;
+    }
+
+
+    /*
+     * COD: 1 login effettuato
+     * COD: 2 email corretta password errata(o assente)
+     * COD: 3 email sbagliata
+     * COD: 4 email nulla, eccezione
+     *
+     * */
+    @ResponseBody
+    @RequestMapping(value = "login", method = RequestMethod.POST)
+    public ResponseEntity login(@RequestBody PersonaDTO dto) {
+        PersonaDTO loaded;
+        try {
+            loaded= this.service.loadById(dto);
+        }catch (Exception e){
+            return new ResponseEntity<>(4, HttpStatus.BAD_REQUEST);
+        }
+
+        if (loaded == null) {
+            return new ResponseEntity<>(3, HttpStatus.UNAUTHORIZED);
+        }
+        if (!loaded.getPass().equals(dto.getPass())) {
+            return new ResponseEntity<>(2, HttpStatus.UNAUTHORIZED);
+        }
+        return new ResponseEntity<>(1, HttpStatus.OK);
+    }
 }

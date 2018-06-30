@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import {environment} from "../../environments/environment.prod";
 
 /* TODO: spostare le interfacce in file separati */
 export interface SignupData {
@@ -23,15 +24,15 @@ export enum UserType {
 interface ProfileInfo {
   name: string,
   type: UserType
-  /*...*/ 
+  /*...*/
 }
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private loginUrl: string = "/services/user/login";
-  private signupUrl: string = "/services/user/registrati";
+  private loginUrl: string = environment.apiUrl+"/user/login";
+  private signupUrl: string = environment.apiUrl+"/user/registrati";
 
 
   userInfo: ProfileInfo = {
@@ -54,6 +55,10 @@ export class AuthService {
   }
 
   signup(data: SignupData): Observable<any> {
+    console.log(data.email);
+    console.log(data.pass);
+    console.log(data.type);
+    console.log(this.signupUrl);
     return this.http.post<any>(this.signupUrl, data);
   }
 }

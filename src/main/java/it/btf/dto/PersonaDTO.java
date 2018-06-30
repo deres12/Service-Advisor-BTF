@@ -1,5 +1,9 @@
 package it.btf.dto;
 
+import it.btf.model.Professione;
+
+import java.util.List;
+
 public class PersonaDTO {
 
 	private String nome;
@@ -8,20 +12,78 @@ public class PersonaDTO {
 	private String username;
 	private String email;
 	private String pass;
-	
-	public PersonaDTO() {
-		
+    private int valutazione;
+    private String descrizione;
+    private String numero;
+    private String type;
+    private ProfessioneDTO professione;
+    private List<ServizioDTO> servizi;
+
+    public PersonaDTO() {
+
+    }
+
+
+    public PersonaDTO(String nome, String cognome, String username, String via, String email, String pass, int valutazione, String descrizione, String numero, String type, List<ServizioDTO>servizi, ProfessioneDTO professione) {
+        this.nome=nome;
+        this.username=username;
+        this.cognome=cognome;
+        this.via=via;
+        this.email=email;
+        this.pass=pass;
+        this.descrizione=descrizione;
+        this.numero=numero;
+        this.valutazione=valutazione;
+        this.type=type;
+        this.professione=professione;
+        this.servizi=servizi;
+    }
+
+
+    public ProfessioneDTO getProfessione() {
+        return professione;
+    }
+
+    public void setProfessione(ProfessioneDTO professione) {
+        this.professione = professione;
+    }
+
+    public List<ServizioDTO> getServizi() {
+        return servizi;
+    }
+
+    public void setServizi(List<ServizioDTO> servizi) {
+        this.servizi = servizi;
+    }
+
+
+
+	public int getValutazione() {
+		return valutazione;
 	}
 
-	
-	public PersonaDTO(String nome, String cognome, String username, String via, String email, String pass) {
-		this.nome=nome;
-		this.username=username;
-		this.cognome=cognome;
-		this.via=via;
-		this.email=email;
-		this.setPass(pass);
+	public void setValutazione(int valutazione) {
+		this.valutazione = valutazione;
 	}
+
+	public String getDescrizione() {
+		return descrizione;
+	}
+
+	public void setDescrizione(String descrizione) {
+		this.descrizione = descrizione;
+	}
+
+	public String getNumero() {
+		return numero;
+	}
+
+	public void setNumero(String numero) {
+		this.numero = numero;
+	}
+
+
+
 
 	public String getEmail() {
 		return email;
@@ -73,4 +135,11 @@ public class PersonaDTO {
 		this.pass = pass;
 	}
 
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
 }

@@ -35,9 +35,10 @@ public class RichiestaCliente {
 	private String descrizione;
 	private String via;
 	private long prezzoMassimo;
-	@Temporal(TemporalType.DATE)
+
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataInizio;
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataFine;
 
 	private STATO stato;

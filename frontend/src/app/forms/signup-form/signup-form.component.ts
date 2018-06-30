@@ -19,6 +19,7 @@ export class SignupFormComponent implements OnInit {
   pass2: string = "";
   professione: number;
 
+
   constructor(
     private auth: AuthService,
     public router: Router,
@@ -34,6 +35,7 @@ export class SignupFormComponent implements OnInit {
   }
 
   validate(): boolean {
+
     if(this.type == UserType.Guest) {
       return false;
     }
