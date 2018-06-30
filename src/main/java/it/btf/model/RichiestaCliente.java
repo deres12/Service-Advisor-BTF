@@ -23,27 +23,26 @@ public class RichiestaCliente {
 	@ManyToOne
 	private Cliente cliente;
 
+	@OneToMany(mappedBy="richiesta")
+	private List<Offerta> offerte;
+
+	@ManyToOne
+	private Servizio servizioRichiesto;
+
+	@ManyToOne
+	private Fornitore fornitore;
+
 	private String descrizione;
 	private String via;
-
 	private long prezzoMassimo;
-
 	@Temporal(TemporalType.DATE)
 	private Date dataInizio;
 	@Temporal(TemporalType.DATE)
 	private Date dataFine;
 
-	@OneToMany(mappedBy="richiesta")
-	private List<Offerta> offerte;
-	
-	@ManyToOne
-	private Servizio servizioRichiesto;
-	
 	private STATO stato;
 	
-	@ManyToOne
-	private Fornitore fornitore;
-	
+
 	public String getVia() {
 		return via;
 	}

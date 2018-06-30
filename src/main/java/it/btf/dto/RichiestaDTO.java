@@ -9,13 +9,15 @@ import it.btf.model.Servizio;
 
 public class RichiestaDTO {
 
+	private Long id;
 	private String descrizione;
 	private String via;
 	private long prezzoMassimo;
 	private Date dataInizio;
 	private Date dataFine;
 
-	private String servizioRichiesto;
+	private PersonaDTO persona;
+	private ServizioDTO servizioRichiesto;
 
 	private STATO stato;
 
@@ -26,6 +28,30 @@ public class RichiestaDTO {
 	
 	public RichiestaDTO() {
 		
+	}
+
+	public PersonaDTO getPersona() {
+		return persona;
+	}
+
+	public void setPersona(PersonaDTO cliente) {
+		this.persona = cliente;
+	}
+
+	public ServizioDTO getServizioRichiesto() {
+		return servizioRichiesto;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public void setServizioRichiesto(ServizioDTO servizioRichiesto) {
+		this.servizioRichiesto = servizioRichiesto;
 	}
 
 	public String getDescrizione() {
@@ -66,14 +92,6 @@ public class RichiestaDTO {
 
 	public void setDataFine(Date dataFine) {
 		this.dataFine = dataFine;
-	}
-
-	public String getServizioRichiesto() {
-		return servizioRichiesto;
-	}
-
-	public void setServizioRichiesto(String servizioRichiesto) {
-		this.servizioRichiesto = servizioRichiesto;
 	}
 
 	public STATO getStato() {

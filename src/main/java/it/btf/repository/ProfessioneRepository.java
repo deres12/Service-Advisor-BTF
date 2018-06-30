@@ -5,7 +5,10 @@ import org.springframework.stereotype.Repository;
 
 import it.btf.model.Professione;
 
+import java.util.Optional;
+
 @Repository
 public interface ProfessioneRepository extends JpaRepository<Professione, Long> {
 
+    public Optional<Professione> findById(Long id);
 }

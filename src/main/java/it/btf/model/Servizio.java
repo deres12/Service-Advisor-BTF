@@ -13,26 +13,18 @@ public class Servizio  {
 	private Long id;
 
 	private String descrizione;
-	
-
 
 	public Servizio() {
 		
 	}
-	
-	
 
 	public Long getId() {
 		return id;
 	}
 
-
-
 	public void setId(Long id) {
 		this.id = id;
 	}
-
-
 
 	public String getDescrizione() {
 		return descrizione;
