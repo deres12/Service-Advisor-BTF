@@ -2,6 +2,7 @@ package it.btf;
 
 import it.btf.model.*;
 
+import it.btf.utility.Position;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
@@ -19,7 +20,6 @@ import it.btf.repository.ServizioRepository;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 
 @SpringBootApplication
 public class StartClassExample {
@@ -40,10 +40,42 @@ public class StartClassExample {
 			OffertaRepository offertaRep, ProfessioneRepository professioneRep,
 			RichiestaClienteRepository richiestaCliRep, ServizioRepository servizoRep) {
 		return (args) -> {
+			Luogo pos=new Luogo();
+			pos.setPaese("Copertino");
+			pos.setNazione("IT");
+			pos.setNumeroCivico(7);
+			pos.setVia("Antonio Gramsci");
+			pos.setLatit(Position.getDoubleFromAddress(pos.toString(),"lat"));
+			pos.setLongit(Position.getDoubleFromAddress(pos.toString(),"lng"));
+			/*pos.setLatit(0);
+			pos.setLongit(0);*/
 
-			Cliente a = new Cliente("assda", "prova", "adsadsad", "asasa", "aaa@aaa", "prova");
-			Cliente b = new Cliente("assda", "prova", "adsadsad", "asasa", "sfsdfsdf@aaa", "prova");
-			Cliente c = new Cliente("assda", "prova", "adsadsad", "asasa", "sfsdfsdf@sdsd", "prova");
+			Luogo pos2=new Luogo();
+			pos2.setPaese("Milano");
+			pos2.setNazione("IT");
+			pos2.setNumeroCivico(50);
+			pos2.setVia("Giancarlo Sismondi");
+			pos2.setLatit(Position.getDoubleFromAddress(pos2.toString(),"lat"));
+			pos2.setLongit(Position.getDoubleFromAddress(pos2.toString(),"lng"));
+			/*pos2.setLatit(0);
+			pos2.setLongit(0);*/
+
+
+			Luogo pos3=new Luogo();
+			pos3.setPaese("Copertino");
+			pos3.setNazione("IT");
+			pos3.setNumeroCivico(8);
+			pos3.setVia("Siena");
+			pos3.setLatit(Position.getDoubleFromAddress(pos3.toString(),"lat"));
+			pos3.setLongit(Position.getDoubleFromAddress(pos3.toString(),"lng"));
+			/*pos3.setLatit(0);
+			pos3.setLongit(0);*/
+
+
+
+			Cliente a = new Cliente("assda", "prova", "adsadsad", pos, "aaa@aaa", "prova");
+			Cliente b = new Cliente("assda", "prova", "adsadsad", pos2, "sfsdfsdf@aaa", "prova");
+			Cliente c = new Cliente("assda", "prova", "adsadsad", pos3, "sfsdfsdf@sdsd", "prova");
 			personaRep.save(b);
 			personaRep.save(c);
 			Professione prof = new Professione();
@@ -61,7 +93,9 @@ public class StartClassExample {
 			fornit.setTimeBirth(new Date());
 			fornit.setUsername("pippo");
 			fornit.setValutazione(0);
-			fornit.setVia("asdasda");
+
+
+			fornit.setVia(pos3);
 
 
 			fornit.setPass("prova");
@@ -87,7 +121,7 @@ public class StartClassExample {
 			rich.setPrezzoMassimo(100);
 			rich.setServizioRichiesto(serv1);
 			rich.setFornitore(fornit);
-			rich.setVia("Via carlo antonio");
+			rich.setVia(pos3);
 			richiestaCliRep.save(rich);
 			
 			Offerta offer=new Offerta();
@@ -109,7 +143,7 @@ public class StartClassExample {
 			prova2.setTimeBirth(new Date());
 			prova2.setUsername("pippo");
 			prova2.setValutazione(0);
-			prova2.setVia("asdasda");
+			prova2.setVia(pos3);
 			prova2.setPass("asdasda");
 			prova2.addServizio(serv1);
 			fornitoreRep.save(prova2);
@@ -122,7 +156,7 @@ public class StartClassExample {
 			rich2.setPrezzoMassimo(100);
 			rich2.setServizioRichiesto(serv2);
 			rich2.setFornitore(prova2);
-			rich2.setVia("Via carlo antonio");
+			rich2.setVia(pos3);
 			richiestaCliRep.save(rich2);
 			
 			
@@ -160,7 +194,7 @@ public class StartClassExample {
             example3.setTimeBirth(new Date());
             example3.setUsername("pippo");
             example3.setValutazione(0);
-            example3.setVia("asdasda");
+            example3.setVia(pos3);
             example3.setPass("asdasda");
             Servizio asss=new Servizio();
             asss.setId(example.getId());

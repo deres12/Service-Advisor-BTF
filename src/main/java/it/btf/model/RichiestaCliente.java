@@ -4,14 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.*;
 
 @Entity
 public class RichiestaCliente {
@@ -33,7 +26,8 @@ public class RichiestaCliente {
 	private Fornitore fornitore;
 
 	private String descrizione;
-	private String via;
+	@Embedded
+	private Luogo via;
 	private long prezzoMassimo;
 
 	@Temporal(TemporalType.TIMESTAMP)
@@ -44,11 +38,11 @@ public class RichiestaCliente {
 	private STATO stato;
 	
 
-	public String getVia() {
+	public Luogo getVia() {
 		return via;
 	}
 
-	public void setVia(String via) {
+	public void setVia(Luogo via) {
 		this.via = via;
 	}
 

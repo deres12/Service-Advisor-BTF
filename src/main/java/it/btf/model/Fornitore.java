@@ -28,7 +28,7 @@ public class Fornitore extends Guest {
 
 	private static final long serialVersionUID = 1L;
 
-	public Fornitore(String nome, String cognome, String username, String via, String email, String numero,String descrizione, List<Offerta> offerte, List<Servizio> servizi, Professione professione,String pass) {
+	public Fornitore(String nome, String cognome, String username, Luogo via, String email, String numero,String descrizione, List<Offerta> offerte, List<Servizio> servizi, Professione professione,String pass) {
 		super(nome, cognome, username, via, email, pass);
 		this.valutazione=0;
 		this.numero=numero;

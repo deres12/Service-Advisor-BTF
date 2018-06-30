@@ -28,25 +28,16 @@ public class GestioneServiziBEService implements GestioneServiziBE {
 
     @Override
     public List<ServizioDTO> loadServiceByProf(String professione) {
-
-        /*
-        Optional <Professione> f =professioneRepository.findById(new Long(1));
-        if(f.isPresent()){
-            return f.get().getServizi();
-
-        }
-
-        */
         List<ServizioDTO> risposta= new ArrayList<ServizioDTO>();
 
-        List<Servizio> servizi= servizioRepository.serviziByProfessione(professione);
+       /* List<Servizio> servizi= servizioRepository.serviziByProfessione(professione);
         if(servizi.size()>0){
             for(Servizio S : servizi){
                ServizioDTO serv =new DozerBeanMapper().map(S, ServizioDTO.class);
                risposta.add(serv);
             }
         }
-
+*/
         return risposta;
     }
 }

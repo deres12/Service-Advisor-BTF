@@ -3,14 +3,7 @@ package it.btf.model;
 import java.io.Serializable;
 import java.util.Date;
 
-import javax.persistence.DiscriminatorColumn;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.*;
 
 @Entity
 @Inheritance(strategy=InheritanceType.JOINED)
@@ -27,7 +20,10 @@ public abstract class Guest implements Serializable {
 	private String username;
 	private String nome;
 	private String cognome;
-	private String via;
+
+	@Embedded
+	private Luogo via;
+
 	private String pass;
 	
 	public String getPass() {
@@ -49,7 +45,7 @@ public abstract class Guest implements Serializable {
 		this.timeBirth=new Date();
 	}
 
-	public Guest(String nome, String cognome, String username, String via, String email, String pass) {
+	public Guest(String nome, String cognome, String username, Luogo via, String email, String pass) {
 		this.email=email;
 		this.nome = nome;
 		this.username = username;
@@ -75,11 +71,11 @@ public abstract class Guest implements Serializable {
 		this.cognome = cognome;
 	}
 
-	public String getVia() {
+	public Luogo getVia() {
 		return via;
 	}
 
-	public void setVia(String via) {
+	public void setVia(Luogo via) {
 		this.via = via;
 	}
 

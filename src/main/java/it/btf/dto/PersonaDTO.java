@@ -1,5 +1,6 @@
 package it.btf.dto;
 
+import it.btf.model.Luogo;
 import it.btf.model.Professione;
 
 import java.util.List;
@@ -8,7 +9,7 @@ public class PersonaDTO {
 
 	private String nome;
 	private String cognome;
-	private String via;
+	private Luogo via;
 	private String username;
 	private String email;
 	private String pass;
@@ -24,7 +25,7 @@ public class PersonaDTO {
     }
 
 
-    public PersonaDTO(String nome, String cognome, String username, String via, String email, String pass, int valutazione, String descrizione, String numero, String type, List<ServizioDTO>servizi, ProfessioneDTO professione) {
+    public PersonaDTO(String nome, String cognome, String username, Luogo via, String email, String pass, int valutazione, String descrizione, String numero, String type, List<ServizioDTO>servizi, ProfessioneDTO professione) {
         this.nome=nome;
         this.username=username;
         this.cognome=cognome;
@@ -119,11 +120,11 @@ public class PersonaDTO {
 		this.cognome = cognome;
 	}
 
-	public String getVia() {
+	public Luogo getVia() {
 		return via;
 	}
 
-	public void setVia(String via) {
+	public void setVia(Luogo via) {
 		this.via = via;
 	}
 
