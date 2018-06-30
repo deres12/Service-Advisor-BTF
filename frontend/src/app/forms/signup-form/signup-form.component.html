@@ -13,17 +13,19 @@
 
     <div *ngIf="type==userType.Vendor">
         <label for="professione">Professione</label>
-        <select id="professione" name="professione" [(ngModel)]="professione">
-            <option *ngFor="let job of jobs.getAll()" value="{{job.id}}">{{job.name}}</option>
+        <select (change)="onChange($event)" id="professione" name="professione" [(ngModel)]="professione">
+            <option *ngFor="let job of jobs.getAll()" value="{{job.id}}">{{job.nome}}</option>
         </select>
+
+      <<div *ngIf="professione">
+        <label for="servizi">Servizi offerti</label>
+        <select id="servizi" name="servizi" multiple [(ngModel)]="jobs">
+          <option *ngFor="let pippo of listServizi" value="{{pippo.id}}">{{pippo.descrizione}}</option>
+        </select>
+      </div>
     </div>
 
-    <div *ngIf="professione">
-        <label for="servizi">Servizi offerti</label>
-        <select id="servizi" name="servizi" multiple [(ngModel)]="">
-            <option *ngFor="let service of " value="{{service.id}}">{{service.name}}</option>
-        </select>
-    </div>
+
 
     <label for="username">Indirizzo E-mail</label>
     <input id="username" type="email" name="email" placeholder="E-mail" [(ngModel)]="email">
