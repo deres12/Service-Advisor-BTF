@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import it.btf.dto.LuogoDTO;
 import it.btf.dto.ProfessioneDTO;
 import it.btf.dto.ServizioDTO;
-import it.btf.model.Fornitore;
-import it.btf.model.Professione;
-import it.btf.model.Servizio;
+import it.btf.model.*;
 import it.btf.repository.FornitoreRepository;
 import it.btf.repository.ServizioRepository;
 import it.btf.utility.DatabaseException;
+import it.btf.utility.Position;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +19,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import it.btf.dto.PersonaDTO;
 import it.btf.interf.GestioneUtenteBE;
-import it.btf.model.Cliente;
 import it.btf.repository.PersonaRepository;
 
 @Service
@@ -44,7 +43,8 @@ public class GestioneUtenteBEService implements GestioneUtenteBE {
             return persone;
         } else {
             for (Cliente a : utente) {
-                persone.add(new PersonaDTO(a.getNome(), a.getCognome(), a.getUsername(), a.getVia(), a.getEmail(), "", 0, "", "", "", null, null));
+                LuogoDTO l=new LuogoDTO(a.getVia().getNumeroCivico(),a.getVia().getVia(),a.getVia().getPaese(),a.getVia().getNazione());
+                persone.add(new PersonaDTO(a.getNome(), a.getCognome(), a.getUsername(), l, a.getEmail(), "", 0, "", "", "", null, null));
             }
         }
 
@@ -58,11 +58,13 @@ public class GestioneUtenteBEService implements GestioneUtenteBE {
 
         if (fornitoreRepository.existsById(dto.getEmail())) {
             Fornitore fornit = fornitoreRepository.getOne(dto.getEmail());
-            return new PersonaDTO(fornit.getNome(), fornit.getCognome(), fornit.getUsername(), fornit.getVia(), fornit.getEmail(), fornit.getPass(), fornit.getValutazione(), fornit.getNumero(), fornit.getDescrizione(), "F", null, null);
+            LuogoDTO l=new LuogoDTO(fornit.getVia().getNumeroCivico(),fornit.getVia().getVia(),fornit.getVia().getPaese(),fornit.getVia().getNazione());
+            return new PersonaDTO(fornit.getNome(), fornit.getCognome(), fornit.getUsername(), l, fornit.getEmail(), fornit.getPass(), fornit.getValutazione(), fornit.getNumero(), fornit.getDescrizione(), "F", null, null);
         }
         if (utenteRepository.existsById(dto.getEmail())) {
             Cliente utente = utenteRepository.getOne(dto.getEmail());
-            return new PersonaDTO(utente.getNome(), utente.getCognome(), utente.getUsername(), utente.getVia(), utente.getEmail(), utente.getPass(), 0, "", "", "C", null, null);
+            LuogoDTO l=new LuogoDTO(utente.getVia().getNumeroCivico(),utente.getVia().getVia(),utente.getVia().getPaese(),utente.getVia().getNazione());
+            return new PersonaDTO(utente.getNome(), utente.getCognome(), utente.getUsername(), l, utente.getEmail(), utente.getPass(), 0, "", "", "C", null, null);
         } else
             return null;
         //return persone;
@@ -73,7 +75,8 @@ public class GestioneUtenteBEService implements GestioneUtenteBE {
         cliente.setEmail(utente.getEmail());
         cliente.setNome(utente.getNome());
         cliente.setCognome(utente.getCognome());
-        cliente.setVia(utente.getVia());
+        Luogo l=new Luogo(utente.getVia().getNumeroCivico(),utente.getVia().getVia(),utente.getVia().getPaese(),utente.getVia().getNazione(),Position.getDoubleFromAddress(utente.getVia().toString(),"lat"),Position.getDoubleFromAddress(utente.getVia().toString(),"lng"));
+        cliente.setVia(l);
         cliente.setUsername(utente.getUsername());
         cliente.setPass(utente.getPass());
         utenteRepository.save(cliente);
@@ -82,7 +85,8 @@ public class GestioneUtenteBEService implements GestioneUtenteBE {
 
     public void addFornitore(PersonaDTO utente) {
         Fornitore fornitore = new Fornitore();
-        fornitore.setVia(utente.getVia());
+        Luogo l=new Luogo(utente.getVia().getNumeroCivico(),utente.getVia().getVia(),utente.getVia().getPaese(),utente.getVia().getNazione(),Position.getDoubleFromAddress(utente.getVia().toString(),"lat"),Position.getDoubleFromAddress(utente.getVia().toString(),"lng"));
+        fornitore.setVia(l);
         fornitore.setPass(utente.getPass());
         fornitore.setUsername(utente.getUsername());
         fornitore.setNome(utente.getNome());
