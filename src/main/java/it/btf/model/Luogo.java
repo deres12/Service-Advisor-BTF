@@ -1,9 +1,6 @@
 package it.btf.model;
 
 import javax.persistence.Embeddable;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.IdClass;
 import java.io.Serializable;
 
 @Embeddable

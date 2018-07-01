@@ -1,9 +1,8 @@
 package it.btf.controller;
 
 
-import it.btf.dto.PersonaDTO;
 import it.btf.dto.RichiestaDTO;
-import it.btf.dto.RispostaDTO;
+import it.btf.dto.RispostaExampleDTO;
 import it.btf.interf.GestioneRichiestaBE;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -23,11 +22,11 @@ public class GestioneRichiesteController {
 
     @ResponseBody
     @RequestMapping(value = "inserisci", method = RequestMethod.POST)
-    public ResponseEntity<RispostaDTO> inserisci(@RequestBody RichiestaDTO dto) {
+    public ResponseEntity<RispostaExampleDTO> inserisci(@RequestBody RichiestaDTO dto) {
 
         this.service.addRichiesta(dto);
 
-        return new ResponseEntity<>(new RispostaDTO("Richiesta inserita "), HttpStatus.OK);
+        return new ResponseEntity<>(new RispostaExampleDTO("Richiesta inserita "), HttpStatus.OK);
     }
 
 

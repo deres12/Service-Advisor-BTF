@@ -9,7 +9,7 @@ public class PersonaDTO {
 
 	private String nome;
 	private String cognome;
-	private Luogo via;
+	private LuogoDTO via;
 	private String username;
 	private String email;
 	private String pass;
@@ -25,7 +25,7 @@ public class PersonaDTO {
     }
 
 
-    public PersonaDTO(String nome, String cognome, String username, Luogo via, String email, String pass, int valutazione, String descrizione, String numero, String type, List<ServizioDTO>servizi, ProfessioneDTO professione) {
+    public PersonaDTO(String nome, String cognome, String username, LuogoDTO via, String email, String pass, int valutazione, String descrizione, String numero, String type, List<ServizioDTO>servizi, ProfessioneDTO professione) {
         this.nome=nome;
         this.username=username;
         this.cognome=cognome;
@@ -120,11 +120,11 @@ public class PersonaDTO {
 		this.cognome = cognome;
 	}
 
-	public Luogo getVia() {
+	public LuogoDTO getVia() {
 		return via;
 	}
 
-	public void setVia(Luogo via) {
+	public void setVia(LuogoDTO via) {
 		this.via = via;
 	}
 

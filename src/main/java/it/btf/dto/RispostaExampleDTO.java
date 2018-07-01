@@ -1,14 +1,14 @@
 package it.btf.dto;
 
-public class RispostaDTO {
+public class RispostaExampleDTO {
 
 	private String messaggio;
 
-	public RispostaDTO() {
+	public RispostaExampleDTO() {
 		
 	}
 
-	public RispostaDTO(String messaggio) {
+	public RispostaExampleDTO(String messaggio) {
 		super();
 		this.messaggio = messaggio;
 	}

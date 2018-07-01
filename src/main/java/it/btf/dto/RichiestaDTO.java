@@ -11,7 +11,7 @@ public class RichiestaDTO {
 
 	private Long id;
 	private String descrizione;
-	private String via;
+	private LuogoDTO via;
 	private long prezzoMassimo;
 	private Date dataInizio;
 	private Date dataFine;
@@ -62,11 +62,11 @@ public class RichiestaDTO {
 		this.descrizione = descrizione;
 	}
 
-	public String getVia() {
+	public LuogoDTO getVia() {
 		return via;
 	}
 
-	public void setVia(String via) {
+	public void setVia(LuogoDTO via) {
 		this.via = via;
 	}
 
