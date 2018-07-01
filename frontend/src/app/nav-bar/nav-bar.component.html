@@ -3,8 +3,8 @@
     &hellip;
   </button>
   <button routerLink="/">
-    <!--<img src="/assets/res/logo2.svg" alt="">-->
-    <strong style="vertical-align:middle">Service Advisor</strong>
+      <!--<img src="/assets/res/logo2.svg" alt="">-->
+      <strong style="vertical-align:middle">Service Advisor</strong>
   </button>
 </nav>
 
@@ -15,35 +15,7 @@
     <button class="close-menu-button" (click)="closeSideMenu()">
       &times;
     </button>
-    <br/>
-    <hr>
-    <div style="cursor: pointer; background: #4caf50; padding: 15px">
-      <div routerLink="/login" (click)="closeSideMenu()" onmouseover="">
-        <h2>Ve</h2></div>
-      <hr>
-      <div routerLink="/login" (click)="closeSideMenu()" onmouseover="">
-        <h2>PROVA</h2>
-      </div>
-      <hr>
-      <div routerLink="/login" (click)="closeSideMenu()" onmouseover="">
-        <h2>Login</h2>
-      </div>
-      <hr>
-      <div routerLink="/login" (click)="closeSideMenu()" onmouseover="">
-        <h2>Login</h2>
-      </div>
-      <hr>
-      <div routerLink="/login" (click)="closeSideMenu()" onmouseover="">
-        <h2>Login</h2>
-      </div>
-      <hr>
-      <div routerLink="/login" (click)="closeSideMenu()" onmouseover="">
-        <h2>Login</h2>
-      </div>
-      <hr>
-    </div>
   </div>
-  <!--
   <ul [ngSwitch]="auth.userType" (click)="closeSideMenu()">
     <ng-container *ngSwitchCase="userType.Guest">
       <li routerLink="/login">Accedi</li>
@@ -58,5 +30,5 @@
       <li>...</li>
       <li (click)="auth.logout()">Esci</li>
     </ng-container>
-  </ul>-->
+  </ul>
 </div>

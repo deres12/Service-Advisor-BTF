@@ -18,11 +18,13 @@ import { ChangePasswordFormComponent } from './forms/change-password-form/change
 import { AuthService } from './services/auth.service';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { SignupPageComponent } from './pages/signup-page/signup-page.component';
+import { OffertePageComponent } from './pages/offerte-page/offerte-page.component';
 
-/* 
+/*
   TODO: spostare <routes> in un modulo separato ed importarlo in app.module.ts
 */
 const routes: Routes = [
+  {path: 'offerte', component: OffertePageComponent},
   {path: '', component: HomePageComponent},
   {path: 'login', component: LoginPageComponent},
   {path: 'signup', component: SignupPageComponent},
@@ -45,7 +47,8 @@ const routes: Routes = [
     NotfoundPageComponent,
     ChangePasswordFormComponent,
     LoginPageComponent,
-    SignupPageComponent
+    SignupPageComponent,
+    OffertePageComponent
   ],
   imports: [
     BrowserModule,
