@@ -2,9 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { UserType, AuthService, SignupData } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { JobsService } from '../../services/jobs.service';
-import { JobService } from '../../services/jobs.service';
-import { Job } from '../../services/jobs.service';
-
 
 @Component({
   selector: 'app-signup-form',
@@ -21,7 +18,6 @@ export class SignupFormComponent implements OnInit {
   pass1: string = "";
   pass2: string = "";
   professione: number;
-  listServizi: JobService[];
 
 
   constructor(
@@ -62,14 +58,6 @@ export class SignupFormComponent implements OnInit {
 
     return true;
   }
-  public onChange(event): void {  // event will give you full breif of action
-    //const newVal = event.target.value;
-    this.listServizi=this.jobs.getServicesByJob(event.target.value);
-    console.log(event.target.value);
-  }
-
-
-
 
   submit(event) {
     event.preventDefault();

@@ -1,24 +1,24 @@
 <form class="form" (submit)="submit($event)">
-
+    
   <label for="service">Che tipo di servizio?</label>
-  <select id="service" name="service">
+  <select name="service">
         <option *ngFor="let job of jobs.getAll()" [value]="job.id">
             {{job.name}}
         </option>
   </select>
 
   <label for="address">Dove ti serve?</label>
-  <input id="address" type="text" name="address" placeholder="Indirizzo">
+  <input type="text" name="address" placeholder="Indirizzo">
 
   <label for="duration">Quando ti serve?</label>
-  <select id="duration" name="duration">
+  <select name="duration">
       <option>entro pochi giorni</option>
       <option>entro un mese</option>
       <option>non lo so</option>
   </select>
 
   <label for="descr">Descrivi il problema</label>
-  <textarea id="descr" name="descr"
+  <textarea name="descr"
       placeholder="..."
       rows="5"
       cols="30"></textarea>
