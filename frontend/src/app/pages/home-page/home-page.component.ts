@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {Fornitore} from "../../services/fornitore";
 import {TakeFornintoriService} from "../../services/take-fornintori.service";
+import { } from '@types/googlemaps';
+//import { Google } from 'http://maps.googleapis.com/maps/api/js';
+
 
 @Component({
   selector: 'app-home-page',
@@ -12,25 +15,27 @@ export class HomePageComponent implements OnInit {
   fornitori: Fornitore[];
   showFornit: Fornitore[];
 
- /* workers = [
-    {nome: "tizio"    , professione: "Elettricista"},
-    {nome: "caio"     , professione: "Idraulico"},
-    {nome: "sempronio", professione: "Gommista"},
-    {nome: "sempronio", professione: "Elettricista"},
-    {nome: "tizio"    , professione: "Gommista"},
-    {nome: "caio"     , professione: "Idraulico"},
-    {nome: "sempronio", professione: "Gommista"},
-    {nome: "tizio"    , professione: "Massaggiatore"},
-    {nome: "caio"     , professione: "Disoccupato?"}
-  ];
-*/
-  constructor(private serv: TakeFornintoriService) { }
+  @ViewChild('gmap') gmapElement: any;
+  map: google.maps.Map;
+
+  constructor(private serv: TakeFornintoriService) {
+    /*System.import("http://maps.googleapis.com/maps/api/js").then(refToLoadedModule => {
+        refToLoadedModule.someFunction();
+      }
+    );*/
+  }
 
   ngOnInit() {
     this.serv.getFornitori().subscribe((list: Fornitore[]) => {
       this.fornitori=list;
       this.showFornit=list;
     },(error)=>{console.log(error.toString());});
+    var mapProp = {
+      center: new google.maps.LatLng(18.5793, 73.8143),
+      zoom: 15,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+    this.map = new google.maps.Map(this.gmapElement.nativeElement, mapProp);
 
   }
 
