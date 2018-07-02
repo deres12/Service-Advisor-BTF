@@ -15,9 +15,8 @@
     <button class="close-menu-button" (click)="closeSideMenu()">
       &times;
     </button>
-    <br/>
-    <hr>
-    <div style="cursor: pointer; background: #4caf50; padding: 15px">
+    <!--
+    <div>
       <div routerLink="/" (click)="closeSideMenu()" onmouseover="">
         <h2>Servizi Offerti</h2></div>
       <hr>
@@ -35,7 +34,7 @@
       <hr>
     </div>
   </div>
-  <!--
+  -->
   <ul [ngSwitch]="auth.userType" (click)="closeSideMenu()">
     <ng-container *ngSwitchCase="userType.Guest">
       <li routerLink="/login">Accedi</li>
@@ -50,5 +49,5 @@
       <li>...</li>
       <li (click)="auth.logout()">Esci</li>
     </ng-container>
-  </ul>-->
+  </ul>
 </div>

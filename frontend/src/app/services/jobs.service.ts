@@ -1,20 +1,11 @@
 import { Injectable } from '@angular/core';
+import { Job, JobService } from '../interfaces/job';
 
-export interface JobService {
-  id: number,
-  descrizione: string
-}
-
-export interface Job {
-  id: number,
-  nome: string,
-  servizi: JobService[]
-}
 
 @Injectable({
   providedIn: 'root'
 })
-export class JobsService {
+export class JobsDataService {
 
   private jobs: Job[] = [
     {

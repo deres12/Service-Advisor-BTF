@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Fornitore} from "../../services/fornitore";
+import {Fornitore} from "../../interfaces/fornitore";
 import {TakeFornintoriService} from "../../services/take-fornintori.service";
 
 @Component({

@@ -7,7 +7,6 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { LoginFormComponent } from './forms/login-form/login-form.component';
-import { SignupFormComponent } from './forms/signup-form/signup-form.component';
 import { NewRequestFormComponent } from './forms/new-request-form/new-request-form.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { UserPageComponent } from './pages/user-page/user-page.component';
@@ -25,13 +24,13 @@ import { ChisiamoComponent } from './pages/chisiamo/chisiamo.component';
   TODO: spostare <routes> in un modulo separato ed importarlo in app.module.ts
 */
 const routes: Routes = [
-  {path: 'chisiamo', component: ChisiamoComponent},
+  {path: 'about', component: ChisiamoComponent},
+  {path: 'signup', component: SignupPageComponent},
+  {path: 'login', component: LoginPageComponent},
+  {path: 'user', component: UserPageComponent},
+  {path: 'settings', component: SettingsPageComponent},
   {path: 'richieste', component: RichiestePageComponent},
   {path: '', component: HomePageComponent},
-  {path: 'login', component: LoginPageComponent},
-  {path: 'signup', component: SignupPageComponent},
-  {path: 'settings', component: SettingsPageComponent},
-  {path: 'user', component: UserPageComponent},
   {path: '**', component: NotfoundPageComponent}
 ];
 
@@ -40,7 +39,6 @@ const routes: Routes = [
     AppComponent,
     NavBarComponent,
     LoginFormComponent,
-    SignupFormComponent,
     SettingsPageComponent,
     NewRequestFormComponent,
     HomePageComponent,
