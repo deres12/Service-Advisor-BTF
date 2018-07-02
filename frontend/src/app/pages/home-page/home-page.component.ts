@@ -18,6 +18,7 @@ export class HomePageComponent implements OnInit {
   @ViewChild('gmap') gmapElement: any;
   map: google.maps.Map;
   markers:any;
+  circle: any;
   latitude:number;
 
   longitude:number;
@@ -32,7 +33,15 @@ export class HomePageComponent implements OnInit {
       map: this.map,
       title: 'Click to zoom'
     });
+    var circle = new google.maps.Circle({
+      map: this.map,
+      radius: 160,    // 10 miles in metres
+      fillColor: '#AA0000'
+    });
 
+
+    circle.bindTo('center', marker, 'position');
+    this.circle=circle;
     this.markers=marker;
 
     this.map.setCenter(new google.maps.LatLng(this.latitude, this.longitude));
@@ -62,12 +71,25 @@ export class HomePageComponent implements OnInit {
       map: this.map,
       title: 'Click to zoom'
     });
+
+
+    var circle = new google.maps.Circle({
+      map: this.map,
+      radius: 160,    // 10 miles in metres
+      fillColor: '#AA0000'
+    });
+
+
+
     //this.markers.push(marker);
     //mapProp.panTo(marker.getPosition());
     this.markers=marker;
+
     //console.log("PROVAAAAAA");
     this.map = new google.maps.Map(this.gmapElement.nativeElement, mapProp);
     this.markers.setMap(this.map);
+    circle.bindTo('center', marker, 'position');
+    this.circle=circle;
   }
 
   filterByProf(query: string){
