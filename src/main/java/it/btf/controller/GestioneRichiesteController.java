@@ -36,4 +36,13 @@ public class GestioneRichiesteController {
 
         return service.loadByEmail(email);
     }
+
+    @RequestMapping("/findAll")
+    @ResponseBody
+    public List<RichiestaDTO> loadAll(){
+
+        return service.loadAll();
+    }
+
+
 }

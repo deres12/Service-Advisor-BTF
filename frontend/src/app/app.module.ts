@@ -18,13 +18,15 @@ import { ChangePasswordFormComponent } from './forms/change-password-form/change
 import { AuthService } from './services/auth.service';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { SignupPageComponent } from './pages/signup-page/signup-page.component';
-import { OffertePageComponent } from './pages/offerte-page/offerte-page.component';
+import { RichiestePageComponent } from './pages/richieste-page/richieste-page.component';
+import { ChisiamoComponent } from './pages/chisiamo/chisiamo.component';
 
 /*
   TODO: spostare <routes> in un modulo separato ed importarlo in app.module.ts
 */
 const routes: Routes = [
-  {path: 'offerte', component: OffertePageComponent},
+  {path: 'chisiamo', component: ChisiamoComponent},
+  {path: 'richieste', component: RichiestePageComponent},
   {path: '', component: HomePageComponent},
   {path: 'login', component: LoginPageComponent},
   {path: 'signup', component: SignupPageComponent},
@@ -48,7 +50,8 @@ const routes: Routes = [
     ChangePasswordFormComponent,
     LoginPageComponent,
     SignupPageComponent,
-    OffertePageComponent
+    RichiestePageComponent,
+    ChisiamoComponent
   ],
   imports: [
     BrowserModule,

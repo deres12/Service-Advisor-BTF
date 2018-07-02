@@ -73,17 +73,17 @@ public class StartClassExample {
 
 
 
-			Cliente a = new Cliente("assda", "prova", "adsadsad", pos, "aaa@aaa", "prova");
-			Cliente b = new Cliente("assda", "prova", "adsadsad", pos2, "sfsdfsdf@aaa", "prova");
-			Cliente c = new Cliente("assda", "prova", "adsadsad", pos3, "sfsdfsdf@sdsd", "prova");
+			Cliente a = new Cliente("Alessandro", "Beninati", "alex", pos, "ale@com.com", "1234");
+			Cliente b = new Cliente("Stefano", "Carrino", "ste", pos2, "sfsdfsdf@aaa", "567");
+			Cliente c = new Cliente("Antonio", "prova", "anto", pos3, "sfsdfsdf@sdsd", "prova");
 			personaRep.save(b);
 			personaRep.save(c);
 			Professione prof = new Professione();
 			prof.setNome("idraulico");
 			Fornitore fornit = new Fornitore();
-			fornit.setNome("stefano");
+			fornit.setNome("Stefano");
 			fornit.setCognome("carrino");
-			fornit.setDescrizione("lavoro da 20 anni nel campo ellettrico, offro supporto per qualsiasi evenienza");
+			fornit.setDescrizione("Esperienza pluriennale, offro supporto per qualsiasi evenienza nel campo idraulico. Anche pronto intervento");
 			fornit.setEmail("s.carrino@yahoo.it");
 			fornit.setNumero("aaaa");
 			fornit.setProfessione(prof);
@@ -92,7 +92,7 @@ public class StartClassExample {
 			
 			fornit.setTimeBirth(new Date());
 			fornit.setUsername("pippo");
-			fornit.setValutazione(0);
+			fornit.setValutazione(4);
 
 
 			fornit.setVia(pos3);
@@ -117,8 +117,8 @@ public class StartClassExample {
 			rich.setCliente(a);
 			rich.setDataFine(new Date());
 			rich.setDataInizio(new Date());
-			rich.setDescrizione("pipppppppppaspdaspddpa");
-			rich.setPrezzoMassimo(100);
+			rich.setDescrizione("Cerco gommista affidabile economico e veloce per cambio gomme.");
+			rich.setPrezzoMassimo(500);
 			rich.setServizioRichiesto(serv1);
 			rich.setFornitore(fornit);
 			rich.setVia(pos3);
@@ -133,16 +133,16 @@ public class StartClassExample {
 			
 			
 			Fornitore prova2 = new Fornitore();
-			prova2.setNome("stefano");
+			prova2.setNome("Aldo");
 			prova2.setCognome("carrino");
-			prova2.setDescrizione("A facc ro cazz!!!");
+			prova2.setDescrizione("Specializzato in impiati idraulici domestici.");
 			prova2.setEmail("esempio@gggg.vbb");
 			prova2.setNumero("aaaa");
 
 			prova2.setProfessione(prof.getId());
 			prova2.setTimeBirth(new Date());
 			prova2.setUsername("pippo");
-			prova2.setValutazione(0);
+			prova2.setValutazione(3);
 			prova2.setVia(pos3);
 			prova2.setPass("asdasda");
 			prova2.addServizio(serv1);
@@ -152,7 +152,7 @@ public class StartClassExample {
 			rich2.setCliente(a);
 			rich2.setDataFine(new Date());
 			rich2.setDataInizio(new Date());
-			rich2.setDescrizione("pipppppppppaspdaspddpa");
+			rich2.setDescrizione("Cerco idraulico per pronto intervento!");
 			rich2.setPrezzoMassimo(100);
 			rich2.setServizioRichiesto(serv2);
 			rich2.setFornitore(prova2);
@@ -186,7 +186,7 @@ public class StartClassExample {
 			Fornitore example3= new Fornitore();
             example3.setNome("stefano");
             example3.setCognome("carrino");
-            example3.setDescrizione("lavoro da 20 anni nel campo ellettrico, offro supporto per qualsiasi evenienza");
+            example3.setDescrizione("Interventi elettrici di ogni tipo, rifacimento impianti. Pronto intervento");
             example3.setEmail("zzz@zzz.zzz");
             example3.setNumero("aaaa");
 

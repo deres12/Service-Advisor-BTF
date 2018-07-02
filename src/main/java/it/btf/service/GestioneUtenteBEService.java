@@ -131,6 +131,4 @@ public class GestioneUtenteBEService implements GestioneUtenteBE {
         }
         return ResponseEntity.ok("Utente aggiunto");
     }
-
-
 }

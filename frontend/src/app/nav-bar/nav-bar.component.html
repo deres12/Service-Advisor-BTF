@@ -15,6 +15,25 @@
     <button class="close-menu-button" (click)="closeSideMenu()">
       &times;
     </button>
+    <br/>
+    <hr>
+    <div style="cursor: pointer; background: #4caf50; padding: 15px">
+      <div routerLink="/" (click)="closeSideMenu()" onmouseover="">
+        <h2>Servizi Offerti</h2></div>
+      <hr>
+      <div routerLink="/richieste" (click)="closeSideMenu()" onmouseover="">
+        <h2>Richieste dei Clienti</h2>
+      </div>
+      <hr>
+      <div routerLink="/chisiamo" (click)="closeSideMenu()" onmouseover="">
+        <h2>Come funziona</h2>
+      </div>
+      <hr>
+      <div routerLink="/login" (click)="closeSideMenu()" onmouseover="">
+        <h2>Login</h2>
+      </div>
+      <hr>
+    </div>
   </div>
   <ul [ngSwitch]="auth.userType" (click)="closeSideMenu()">
     <ng-container *ngSwitchCase="userType.Guest">

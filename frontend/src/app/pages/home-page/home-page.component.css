@@ -99,7 +99,6 @@ ul.vendors-list > li > span {
 }
 
 ul.vendors-list > li > .profile-image {
-    background: #333;
     width: 150px;
     height: 150px;
     border-radius: 3px;
