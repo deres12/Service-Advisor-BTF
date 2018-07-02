@@ -4,12 +4,12 @@
         Email o password errati
     </div>
 
-    <label for="email">Indirizzo Email</label>
-    <input id="email" type="text" name="email" placeholder="Email" [(ngModel)]="data.email">
+    <label for="">Indirizzo Email</label>
+    <input type="text" name="email" placeholder="Email" [(ngModel)]="data.email">
 
     <label for="password">Password</label>
-    <input id="password" type="password" name="password" placeholder="Password" [(ngModel)]="data.pass">
-
+    <input type="password" name="password" placeholder="Password" [(ngModel)]="data.pass">
+    
     <input type="submit" value="Accedi" class="big-btn" [disabled]="!validate()">
 
     <span class="separator">oppure</span>

@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 
-export interface JobService {
+interface JobService {
   id: number,
   descrizione: string
 }
 
-export interface Job {
+interface Job {
   id: number,
   nome: string,
   servizi: JobService[]
@@ -48,8 +48,7 @@ export class JobsService {
     return this.jobs;
   }
 
-  getServicesByJob(id: number): JobService[]  {
-    return this.jobs[id].servizi;
+  getServicesByJob(name: string) {
 
   }
 }
