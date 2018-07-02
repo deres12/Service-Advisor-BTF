@@ -28,6 +28,8 @@ export class HomePageComponent implements OnInit {
 
 
   setCenter(e:any){
+    this.circle.setMap(null);
+    this.markers.setMap(null);
     var myLatlng = new google.maps.LatLng(this.latitude, this.longitude);
     e.preventDefault();
     /*this.circle.unbindAll();
@@ -42,7 +44,7 @@ export class HomePageComponent implements OnInit {
     var circle = new google.maps.Circle({
       map: this.map,
       radius: this.radius,    // 10 miles in metres
-      fillColor: '#AA0000'
+      fillColor: '#347baa'
     });
 
 
@@ -83,7 +85,7 @@ export class HomePageComponent implements OnInit {
     var circle = new google.maps.Circle({
       map: this.map,
       radius: this.radius,    // 10 miles in metres
-      fillColor: '#AA0000'
+      fillColor: '#347baa'
     });
 
 
