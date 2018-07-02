@@ -41,10 +41,10 @@ public class StartClassExample {
 			RichiestaClienteRepository richiestaCliRep, ServizioRepository servizoRep) {
 		return (args) -> {
 			Luogo pos=new Luogo();
-			pos.setPaese("Copertino");
+			pos.setPaese("Milano");
 			pos.setNazione("IT");
-			pos.setNumeroCivico(7);
-			pos.setVia("Antonio Gramsci");
+			pos.setNumeroCivico(10);
+			pos.setVia("Negroli");
 			pos.setLatit(Position.getDoubleFromAddress(pos.toString(),"lat"));
 			pos.setLongit(Position.getDoubleFromAddress(pos.toString(),"lng"));
 			/*pos.setLatit(0);
@@ -62,10 +62,10 @@ public class StartClassExample {
 
 
 			Luogo pos3=new Luogo();
-			pos3.setPaese("Copertino");
+			pos3.setPaese("Milano");
 			pos3.setNazione("IT");
-			pos3.setNumeroCivico(8);
-			pos3.setVia("Siena");
+			pos3.setNumeroCivico(15);
+			pos3.setVia("Negroli");
 			pos3.setLatit(Position.getDoubleFromAddress(pos3.toString(),"lat"));
 			pos3.setLongit(Position.getDoubleFromAddress(pos3.toString(),"lng"));
 			/*pos3.setLatit(0);
