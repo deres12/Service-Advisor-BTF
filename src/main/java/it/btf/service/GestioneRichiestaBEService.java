@@ -11,6 +11,7 @@ import it.btf.model.RichiestaCliente;
 import it.btf.model.Servizio;
 import it.btf.repository.PersonaRepository;
 import it.btf.repository.RichiestaClienteRepository;
+import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
@@ -95,6 +96,19 @@ public class GestioneRichiestaBEService implements GestioneRichiestaBE {
 		servizioRepository.save(ric);
 	}
 
+	@Override
+	public List<RichiestaDTO> loadAll() {
+		List<RichiestaDTO> richiestaDTOS = new ArrayList<RichiestaDTO>();
+		List<RichiestaCliente> richieste = servizioRepository.findAll();
+
+		for(RichiestaCliente r: richieste){
+			RichiestaDTO ric = new RichiestaDTO();
+			ric=new DozerBeanMapper().map(r, RichiestaDTO.class);
+			richiestaDTOS.add(ric);
+		}
+
+		return richiestaDTOS;
+	}
 
 
 }

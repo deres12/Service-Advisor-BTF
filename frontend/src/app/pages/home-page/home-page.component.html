@@ -19,16 +19,21 @@
     </div>
 </div>
 
-<div class="centered" style="background: rgb(230,230,220)">
+<div style="background: rgb(230,230,220)">
     <div class="container">
         <ul class="vendors-list">
             <li *ngFor="let fornitore of fornitori; let i = index">
-                <div class="profile-image"><img src="http://static1.seety.pagesjaunes.fr/dam_55018360/2ee97218-6f53-4ccd-b5bd-694a93e5e9e1-800" style="width: 100px"/></div>
-                <span class="profile-content">
-                  {{fornitore.nome}}<br />
-                  {{fornitore.nomeProfessione}}<br />
-                  {{fornitore.descrizione}}<br />
-                  {{fornitore.valutazione}}
+                <div class="profile-image"><img src="http://static1.seety.pagesjaunes.fr/dam_55018360/2ee97218-6f53-4ccd-b5bd-694a93e5e9e1-800" style="width: 110px"/></div>
+                <span class="profile-content" style="width: 100%">
+                  <div style="background: #c2ecc3; width: 100%; padding: 5px">
+                    <font size="4">{{fornitore.nome}}           </font>
+                    <font size="4">{{fornitore.nomeProfessione}}</font>
+                  </div>
+                  <br />
+                  {{fornitore.descrizione}}
+                  <br />
+                  <br />
+                  <font size="2">Valutazione: {{fornitore.valutazione}}</font>
                 </span>
             </li>
         </ul>

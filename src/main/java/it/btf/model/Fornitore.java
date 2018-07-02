@@ -104,9 +104,5 @@ public class Fornitore extends Guest {
 	public void addServizio(Servizio servizio) {
 		this.servizi.add(servizio);
 	}
-	
-
-	
-	
 
 }

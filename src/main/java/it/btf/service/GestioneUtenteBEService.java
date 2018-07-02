@@ -44,7 +44,7 @@ public class GestioneUtenteBEService implements GestioneUtenteBE {
             return persone;
         } else {
             for (Cliente a : utente) {
-                persone.add(new PersonaDTO(a.getNome(), a.getCognome(), a.getUsername(), a.getVia(), a.getEmail(), "", 0, "", "", "", null, null));
+                //persone.add(new PersonaDTO(a.getNome(), a.getCognome(), a.getUsername(), a.getVia(), a.getEmail(), "", 0, "", "", "", null, null));
             }
         }
 
@@ -58,11 +58,11 @@ public class GestioneUtenteBEService implements GestioneUtenteBE {
 
         if (fornitoreRepository.existsById(dto.getEmail())) {
             Fornitore fornit = fornitoreRepository.getOne(dto.getEmail());
-            return new PersonaDTO(fornit.getNome(), fornit.getCognome(), fornit.getUsername(), fornit.getVia(), fornit.getEmail(), fornit.getPass(), fornit.getValutazione(), fornit.getNumero(), fornit.getDescrizione(), "F", null, null);
+            return null;//new PersonaDTO(fornit.getNome(), fornit.getCognome(), fornit.getUsername(), fornit.getVia(), fornit.getEmail(), fornit.getPass(), fornit.getValutazione(), fornit.getNumero(), fornit.getDescrizione(), "F", null, null);
         }
         if (utenteRepository.existsById(dto.getEmail())) {
             Cliente utente = utenteRepository.getOne(dto.getEmail());
-            return new PersonaDTO(utente.getNome(), utente.getCognome(), utente.getUsername(), utente.getVia(), utente.getEmail(), utente.getPass(), 0, "", "", "C", null, null);
+            return null;//new PersonaDTO(utente.getNome(), utente.getCognome(), utente.getUsername(), utente.getVia(), utente.getEmail(), utente.getPass(), 0, "", "", "C", null, null);
         } else
             return null;
         //return persone;
@@ -73,7 +73,7 @@ public class GestioneUtenteBEService implements GestioneUtenteBE {
         cliente.setEmail(utente.getEmail());
         cliente.setNome(utente.getNome());
         cliente.setCognome(utente.getCognome());
-        cliente.setVia(utente.getVia());
+        //cliente.setVia(utente.getVia());
         cliente.setUsername(utente.getUsername());
         cliente.setPass(utente.getPass());
         utenteRepository.save(cliente);
@@ -82,7 +82,7 @@ public class GestioneUtenteBEService implements GestioneUtenteBE {
 
     public void addFornitore(PersonaDTO utente) {
         Fornitore fornitore = new Fornitore();
-        fornitore.setVia(utente.getVia());
+        //fornitore.setVia(utente.getVia());
         fornitore.setPass(utente.getPass());
         fornitore.setUsername(utente.getUsername());
         fornitore.setNome(utente.getNome());
@@ -127,6 +127,4 @@ public class GestioneUtenteBEService implements GestioneUtenteBE {
         }
         return ResponseEntity.ok("Utente aggiunto");
     }
-
-
 }
