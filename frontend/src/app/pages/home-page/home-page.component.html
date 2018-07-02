@@ -4,7 +4,7 @@
             Service Advisor ti aiuta a trovare
             professionisti nella tua zona
         </div>
-        <button class="big-btn" routerLink="/signup">
+        <button type="button" class="big-btn" routerLink="signup">
             Registrati Subito
         </button>
     </div>
@@ -13,8 +13,8 @@
 <div class="search-bar centered">
     <div class="container">
         <form class="flex-row">
-            <input type="search" placeholder="Idraulici, ..." style="flex-grow:1">
-            <button class="search-button">Cerca</button>
+            <input type="text" placeholder="Idraulici, ..." #q>
+            <button class="search-button" (click)="filterByProf(q.value)">Cerca</button>
         </form>
     </div>
 </div>
@@ -22,7 +22,7 @@
 <div style="background: rgb(230,230,220)">
     <div class="container">
         <ul class="vendors-list">
-            <li *ngFor="let fornitore of fornitori; let i = index">
+            <li *ngFor="let fornitore of showFornit; let i = index">
                 <div class="profile-image"><img src="http://static1.seety.pagesjaunes.fr/dam_55018360/2ee97218-6f53-4ccd-b5bd-694a93e5e9e1-800" style="width: 110px"/></div>
                 <span class="profile-content" style="width: 100%">
                   <div style="background: #c2ecc3; width: 100%; padding: 5px">

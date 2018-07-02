@@ -10,8 +10,9 @@ import {TakeFornintoriService} from "../../services/take-fornintori.service";
 export class HomePageComponent implements OnInit {
 
   fornitori: Fornitore[];
+  showFornit: Fornitore[];
 
-  workers = [
+ /* workers = [
     {nome: "tizio"    , professione: "Elettricista"},
     {nome: "caio"     , professione: "Idraulico"},
     {nome: "sempronio", professione: "Gommista"},
@@ -22,13 +23,28 @@ export class HomePageComponent implements OnInit {
     {nome: "tizio"    , professione: "Massaggiatore"},
     {nome: "caio"     , professione: "Disoccupato?"}
   ];
-
+*/
   constructor(private serv: TakeFornintoriService) { }
 
   ngOnInit() {
     this.serv.getFornitori().subscribe((list: Fornitore[]) => {
       this.fornitori=list;
-    },(error)=>{console.log(error);});
+      this.showFornit=list;
+    },(error)=>{console.log(error.toString());});
+
+  }
+
+  filterByProf(query: string){
+    console.log(query);
+    let re = new RegExp(query, "i");
+    this.showFornit=[];
+    this.fornitori.forEach(item => {
+      if(re.test(item.nomeProfessione) || re.test(item.descrizione) || re.test(item.nome))
+        this.showFornit.push(item);
+    });
+    console.log(this.showFornit.length);
+    if(this.showFornit.length===0)
+      this.showFornit=this.fornitori;
 
   }
 

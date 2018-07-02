@@ -12,6 +12,8 @@ export class TakeFornintoriService {
   constructor(private httpClient:HttpClient) { }
 
   getFornitori () {
-    return this.httpClient.get("/services/fornitore/find");
+    //this.httpClient.request()
+  //  ;
+    return this.httpClient.get("http://localhost/services/fornitore/find");
 }
 }
