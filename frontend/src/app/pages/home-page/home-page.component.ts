@@ -17,26 +17,58 @@ export class HomePageComponent implements OnInit {
 
   @ViewChild('gmap') gmapElement: any;
   map: google.maps.Map;
+  markers:any;
+  latitude:number;
+
+  longitude:number;
+
+
+
+  setCenter(e:any){
+    var myLatlng = new google.maps.LatLng(this.latitude, this.longitude);
+    e.preventDefault();
+    var marker = new google.maps.Marker({
+      position: myLatlng,
+      map: this.map,
+      title: 'Click to zoom'
+    });
+    //this.markers.push(marker);
+    //mapProp.panTo(marker.getPosition());
+    this.markers=marker;
+
+    this.map.setCenter(new google.maps.LatLng(this.latitude, this.longitude));
+    this.markers.setMap(this.map);
+
+  }
 
   constructor(private serv: TakeFornintoriService) {
-    /*System.import("http://maps.googleapis.com/maps/api/js").then(refToLoadedModule => {
-        refToLoadedModule.someFunction();
-      }
-    );*/
   }
+
 
   ngOnInit() {
     this.serv.getFornitori().subscribe((list: Fornitore[]) => {
       this.fornitori=list;
       this.showFornit=list;
     },(error)=>{console.log(error.toString());});
-    var mapProp = {
-      center: new google.maps.LatLng(18.5793, 73.8143),
-      zoom: 15,
-      mapTypeId: google.maps.MapTypeId.ROADMAP
-    };
-    this.map = new google.maps.Map(this.gmapElement.nativeElement, mapProp);
 
+    var myLatlng = {lat: 45.4654666, lng: 9.2313484};
+    var mapProp = {
+      center: myLatlng,
+      zoom: 15,
+      mapTypeId: google.maps.MapTypeId.ROADMAP,
+      };
+
+    var marker = new google.maps.Marker({
+      position: myLatlng,
+      map: this.map,
+      title: 'Click to zoom'
+    });
+    //this.markers.push(marker);
+    //mapProp.panTo(marker.getPosition());
+    this.markers=marker;
+    //console.log("PROVAAAAAA");
+    this.map = new google.maps.Map(this.gmapElement.nativeElement, mapProp);
+    this.markers.setMap(this.map);
   }
 
   filterByProf(query: string){
@@ -52,5 +84,7 @@ export class HomePageComponent implements OnInit {
       this.showFornit=this.fornitori;
 
   }
+
+
 
 }

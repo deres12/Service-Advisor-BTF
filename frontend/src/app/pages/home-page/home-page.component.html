@@ -18,11 +18,6 @@
         </form>
     </div>
 </div>
-<div class="container">
-  <div class="row">
-  <div id="mappa" #gmap></div>
-  </div>
-</div>
 
 <div style="background: rgb(230,230,220)">
     <div class="container">
@@ -44,4 +39,21 @@
         </ul>
     </div>
 </div>
+<div class="container">
+  <div class="row">
+    <div id="mappa" class="col-8 offset-2" #gmap></div>
+  </div>
+  <div class="row">
+    <form class="form-inline" #form="ngForm" (ngSubmit)="setCenter($event)" ac>
+      <div class="form-group">
+        <input type="text" class="form-control" name="latitude" [(ngModel)]="latitude" placeholder="Enter latitude" required>
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" name="longitude" [(ngModel)]="longitude" placeholder="Enter longitude" required>
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Go</button>
+    </form>
+  </div>
+</div>
+
 
