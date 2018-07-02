@@ -32,8 +32,7 @@ export class HomePageComponent implements OnInit {
       map: this.map,
       title: 'Click to zoom'
     });
-    //this.markers.push(marker);
-    //mapProp.panTo(marker.getPosition());
+
     this.markers=marker;
 
     this.map.setCenter(new google.maps.LatLng(this.latitude, this.longitude));
