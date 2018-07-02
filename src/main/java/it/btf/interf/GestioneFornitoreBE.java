@@ -8,4 +8,5 @@ import java.util.List;
 public interface GestioneFornitoreBE {
 
     public List<FornitoreDTO> loadAllFornitore();
+    public List<FornitoreDTO> loadAllGuestFornByComune(String comune);
 }

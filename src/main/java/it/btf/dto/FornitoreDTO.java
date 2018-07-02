@@ -11,6 +11,11 @@ public class FornitoreDTO  {
     private String numero;
     private String email;
 
+    private String comune;
+    private Double latit;
+    private Double longit;
+
+
     private String nomeProfessione;
 
     private List<OffertaDTO> offerte;
@@ -19,6 +24,30 @@ public class FornitoreDTO  {
 
 
     //------METODI-----------
+
+    public String getComune() {
+        return comune;
+    }
+
+    public void setComune(String comune) {
+        this.comune = comune;
+    }
+
+    public Double getLatit() {
+        return latit;
+    }
+
+    public void setLatit(Double latit) {
+        this.latit = latit;
+    }
+
+    public Double getLongit() {
+        return longit;
+    }
+
+    public void setLongit(Double longit) {
+        this.longit = longit;
+    }
 
     public String getNomeProfessione() {
         return nomeProfessione;
