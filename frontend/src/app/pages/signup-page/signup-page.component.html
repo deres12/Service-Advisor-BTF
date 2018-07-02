@@ -1,3 +1,67 @@
-<div style="padding: 16px">
-  <app-signup-form></app-signup-form>
-</div>
+<div style="height:16px"></div>
+<form (ngSubmit)="submit(f)" #f="ngForm" class="signup-form">
+   <header>
+      Registrazione
+   </header>
+
+   <div class="error" *ngIf>
+     Errore...
+   </div>
+
+   <div class="form-content">
+      <div [class.hidden]="step!=0" class="centered">
+         <input type="hidden" name="type" [ngModel]="type">
+         <button type="button"
+                 (click)="type=userType.Client"
+                 [disabled]="type==userType.Client"
+                 class="button">
+         Cliente
+         </button>
+        <button type="button"
+                 (click)="type=userType.Professional"
+                 [disabled]="type==userType.Professional"
+                 class="button">
+          Professionista
+        </button>
+      </div>
+      
+      <div [class.hidden]="step!=1" class="centered">
+         <input type="hidden" name="professione" [ngModel]="professione?.id">
+         <div *ngFor="let job of jobs">
+          <button type="button" (click)="professione=job" [disabled]="professione==job" class="button">
+              {{job.nome}}
+          </button>
+         </div>
+      </div>
+
+      <div [class.hidden]="step!=2">
+         <label for="name">Ragione Sociale</label>
+         <input type="text" name="name" ngModel>
+
+         <label for="address">Indirizzo</label>
+         <input type="text" name="address" ngModel>
+
+         <div class="map-container">
+            <img src="/assets/res/mock-map.png" alt="mappa">
+         </div>
+       </div>
+
+      <div [class.hidden]="step!=3">
+        <label for="email">Email</label>
+        <input type="email" placeholder="Indirizzo Email" name="email" ngModel>
+
+        <label for="password">Password</label>
+        <input type="password" placeholder="Crea una password" name="password" ngModel>
+
+        <label for="password2">Ripeti Password</label>
+        <input type="password" placeholder="Ripeti la password" name="password2" ngModel>   
+      </div>
+   </div>
+
+   <footer>
+      <button class="button" type="button" (click)="back()" *ngIf="step>0">Indietro</button>
+      <button class="button" type="button" (click)="next()" *ngIf="step<3">Avanti</button>
+
+      <input class="button" type="submit" value="Registrati" *ngIf="step==3">
+   </footer>
+</form>

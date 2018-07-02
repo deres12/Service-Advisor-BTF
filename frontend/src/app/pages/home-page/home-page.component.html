@@ -13,7 +13,7 @@
 <div class="search-bar centered">
     <div class="container">
         <form class="flex-row">
-            <input type="text" placeholder="Idraulici, ..." #q>
+            <input type="search" class="search-text" placeholder="Idraulici, ..." #q>
             <button class="search-button" (click)="filterByProf(q.value)">Cerca</button>
         </form>
     </div>
@@ -23,7 +23,7 @@
     <div class="container">
         <ul class="vendors-list">
             <li *ngFor="let fornitore of showFornit; let i = index">
-                <div class="profile-image"><img src="http://static1.seety.pagesjaunes.fr/dam_55018360/2ee97218-6f53-4ccd-b5bd-694a93e5e9e1-800" style="width: 110px"/></div>
+                <div class="profile-image"><img src="/assets/res/logo_Idraulico.png" style="width: 110px"/></div>
                 <span class="profile-content" style="width: 100%">
                   <div style="background: #c2ecc3; width: 100%; padding: 5px">
                     <font size="4">{{fornitore.nome}}           </font>

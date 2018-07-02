@@ -1,5 +1,7 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {Fornitore} from "../../services/fornitore";
+
+import {Fornitore} from "../../interfaces/fornitore";
+
 import {TakeFornintoriService} from "../../services/take-fornintori.service";
 import { } from '@types/googlemaps';
 //import { Google } from 'http://maps.googleapis.com/maps/api/js';

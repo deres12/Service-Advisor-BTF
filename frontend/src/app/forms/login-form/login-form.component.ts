@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService, LoginData } from '../../services/auth.service';
+import { AuthService } from '../../services/auth.service';
+import { LoginData } from '../../interfaces/auth';
 
 @Component({
   selector: 'app-login-form',

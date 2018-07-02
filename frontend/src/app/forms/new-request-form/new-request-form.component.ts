@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { JobsService } from '../../services/jobs.service';
+import { JobsDataService } from '../../services/jobs.service';
 
 @Component({
   selector: 'app-new-request-form',
@@ -8,7 +8,7 @@ import { JobsService } from '../../services/jobs.service';
 })
 export class NewRequestFormComponent implements OnInit {
 
-  constructor(private jobs: JobsService) { }
+  constructor(private jobs: JobsDataService) { }
 
   ngOnInit() {
   }

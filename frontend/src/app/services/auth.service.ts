@@ -1,31 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import {environment} from "../../environments/environment.prod";
+import { environment } from "../../environments/environment.prod";
+import { ProfileInfo, UserType } from '../interfaces/user';
+import { LoginData, SignupData } from '../interfaces/auth';
 
-/* TODO: spostare le interfacce in file separati */
-export interface SignupData {
-  type: UserType,
-  email: string,
-  pass: string
-}
-
-export interface LoginData {
-  email: string,
-  pass: string
-}
-
-export enum UserType {
-  Guest  = "",
-  Client = "C",
-  Vendor = "F"
-}
-
-interface ProfileInfo {
-  name: string,
-  type: UserType
-  /*...*/
-}
 
 @Injectable({
   providedIn: 'root'
@@ -55,10 +34,7 @@ export class AuthService {
   }
 
   signup(data: SignupData): Observable<any> {
-    console.log(data.email);
-    console.log(data.pass);
-    console.log(data.type);
-    console.log(this.signupUrl);
+    console.log(data);
     return this.http.post<any>(this.signupUrl, data);
   }
 }
