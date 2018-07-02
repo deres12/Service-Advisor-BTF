@@ -17,8 +17,10 @@ export class HomePageComponent implements OnInit {
 
   @ViewChild('gmap') gmapElement: any;
   map: google.maps.Map;
+
   markers:any;
   circle: any;
+  radius: number=10.0;
   latitude:number;
 
   longitude:number;
@@ -28,25 +30,30 @@ export class HomePageComponent implements OnInit {
   setCenter(e:any){
     var myLatlng = new google.maps.LatLng(this.latitude, this.longitude);
     e.preventDefault();
+    /*this.circle.unbindAll();
+    this.markers.unbindAll();*/
+
     var marker = new google.maps.Marker({
       position: myLatlng,
       map: this.map,
       title: 'Click to zoom'
     });
+
     var circle = new google.maps.Circle({
       map: this.map,
-      radius: 160,    // 10 miles in metres
+      radius: this.radius,    // 10 miles in metres
       fillColor: '#AA0000'
     });
 
 
     circle.bindTo('center', marker, 'position');
+
     this.circle=circle;
     this.markers=marker;
 
     this.map.setCenter(new google.maps.LatLng(this.latitude, this.longitude));
     this.markers.setMap(this.map);
-
+    //thi.map.
   }
 
   constructor(private serv: TakeFornintoriService) {
@@ -75,7 +82,7 @@ export class HomePageComponent implements OnInit {
 
     var circle = new google.maps.Circle({
       map: this.map,
-      radius: 160,    // 10 miles in metres
+      radius: this.radius,    // 10 miles in metres
       fillColor: '#AA0000'
     });
 
