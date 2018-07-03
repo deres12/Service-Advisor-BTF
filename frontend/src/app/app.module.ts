@@ -19,6 +19,7 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { SignupPageComponent } from './pages/signup-page/signup-page.component';
 import { RichiestePageComponent } from './pages/richieste-page/richieste-page.component';
 import { ChisiamoComponent } from './pages/chisiamo/chisiamo.component';
+import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
 
 /*
   TODO: spostare <routes> in un modulo separato ed importarlo in app.module.ts
@@ -49,7 +50,8 @@ const routes: Routes = [
     LoginPageComponent,
     SignupPageComponent,
     RichiestePageComponent,
-    ChisiamoComponent
+    ChisiamoComponent,
+    ProfilePageComponent
   ],
   imports: [
     BrowserModule,
