@@ -4,10 +4,28 @@
 
 export const environment = {
   production: false,
-  apiUrl: "/services"
+  apiUrl: "/services",
+  utente: {email:"",indirizzo:"",nome:"",password:"",professione:0,tipo:"g"}
 };
 
-/*
+/*email
+:
+""
+indirizzo
+:
+""
+nome
+:
+""
+password
+:
+""
+professione
+:
+2
+type
+:
+undefined
  * In development mode, to ignore zone related error stack frames such as
  * `zone.run`, `zoneDelegate.invokeTask` for easier debugging, you can
  * import the following file, but please comment it out in production mode

@@ -75,7 +75,8 @@ public class GestioneUtenteBEService implements GestioneUtenteBE {
         cliente.setEmail(utente.getEmail());
         cliente.setNome(utente.getNome());
         cliente.setCognome(utente.getCognome());
-        Luogo l=new Luogo(utente.getVia().getNumeroCivico(),utente.getVia().getVia(),utente.getVia().getPaese(),utente.getVia().getNazione(),Position.getDoubleFromAddress(utente.getVia().toString(),"lat"),Position.getDoubleFromAddress(utente.getVia().toString(),"lng"));
+        Luogo l=new Luogo(0, "", "", "", 0.0, 0.0);
+        //Luogo l=new Luogo(utente.getVia().getNumeroCivico(),utente.getVia().getVia(),utente.getVia().getPaese(),utente.getVia().getNazione(),Position.getDoubleFromAddress(utente.getVia().toString(),"lat"),Position.getDoubleFromAddress(utente.getVia().toString(),"lng"));
         cliente.setVia(l);
         cliente.setUsername(utente.getUsername());
         cliente.setPass(utente.getPass());
@@ -85,7 +86,8 @@ public class GestioneUtenteBEService implements GestioneUtenteBE {
 
     public void addFornitore(PersonaDTO utente) {
         Fornitore fornitore = new Fornitore();
-        Luogo l=new Luogo(utente.getVia().getNumeroCivico(),utente.getVia().getVia(),utente.getVia().getPaese(),utente.getVia().getNazione(),Position.getDoubleFromAddress(utente.getVia().toString(),"lat"),Position.getDoubleFromAddress(utente.getVia().toString(),"lng"));
+        Luogo l=new Luogo(0, "", "", "", 0.0, 0.0);
+        //Luogo l=new Luogo(utente.getVia().getNumeroCivico(),utente.getVia().getVia(),utente.getVia().getPaese(),utente.getVia().getNazione(),Position.getDoubleFromAddress(utente.getVia().toString(),"lat"),Position.getDoubleFromAddress(utente.getVia().toString(),"lng"));
         fornitore.setVia(l);
         fornitore.setPass(utente.getPass());
         fornitore.setUsername(utente.getUsername());
@@ -96,11 +98,14 @@ public class GestioneUtenteBEService implements GestioneUtenteBE {
         fornitore.setCognome(utente.getCognome());
         fornitore.setValutazione(0);
         List<Servizio> servizi = new ArrayList<Servizio>();
-        for (ServizioDTO s : utente.getServizi()) {
-            Servizio s2 = new Servizio();
-            s2.setId(s.getId());
-            servizi.add(s2);
+        if(utente.getServizi()!=null){
+            for (ServizioDTO s : utente.getServizi()) {
+                Servizio s2 = new Servizio();
+                s2.setId(s.getId());
+                servizi.add(s2);
+            }
         }
+
         fornitore.setServizi(servizi);
         Professione p = new Professione();
         p.setId(utente.getProfessione().getId());

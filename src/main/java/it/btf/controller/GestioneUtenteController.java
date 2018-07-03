@@ -11,6 +11,7 @@ import it.btf.interf.GestioneUtenteBE;
 
 @RestController
 @RequestMapping("/user")
+@CrossOrigin
 public class GestioneUtenteController {
 
     @Autowired
@@ -27,7 +28,7 @@ public class GestioneUtenteController {
     @PostMapping("/registrati")
     @ResponseBody
     public ResponseEntity saveUser(@RequestBody PersonaDTO dto) {
-
+        System.err.println("ESENPIOOOOOO");
         ResponseEntity a;
         try {
             a = service.addUser(dto);
