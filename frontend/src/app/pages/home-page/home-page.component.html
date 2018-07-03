@@ -1,64 +1,120 @@
 <div class="main-banner">
-    <div class="container">
-        <div class="main-text">
-            Service Advisor ti aiuta a trovare
-            professionisti nella tua zona
-        </div>
-        <button type="button" class="big-btn" routerLink="signup">
-            Registrati Subito
-        </button>
+  <div class="container">
+    <div class="main-text">
+      Service Advisor ti aiuta a trovare
+      professionisti nella tua zona
     </div>
+    <button type="button" class="big-btn" routerLink="signup">
+      Registrati Subito
+    </button>
+  </div>
 </div>
 
 <div class="search-bar centered">
-    <div class="container">
-        <form class="flex-row">
-            <input type="search" class="search-text" placeholder="Idraulici, ..." #q>
-            <button class="search-button" (click)="filterByProf(q.value)">Cerca</button>
-        </form>
-    </div>
+  <div class="container">
+    <form class="flex-row">
+      <input type="search" class="search-text" placeholder="Idraulici, ..." #q>
+      <button class="search-button" (click)="filterByProf(q.value)">Cerca</button>
+    </form>
+  </div>
 </div>
-
+<div class="container-fluid" style="background: rgba(255,0,0,0.56)">
+<div *ngIf="empty" class="container">
+  <br>
+  <div class="row">
+    <div class="col-lg-1 col-offset-6 centered">
+      <h3><span>La ricerca non ha prodotto nessun risultato...</span></h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-1 col-offset-6 centered">
+      <h3><span>Ecco tutti i professionisti:</span></h3>
+    </div>
+  </div>
+  <br>
+</div>
+</div>
 <div style="background: rgb(230,230,220)">
-    <div class="container">
-        <ul class="vendors-list">
-            <li *ngFor="let fornitore of showFornit; let i = index">
-                <div class="profile-image"><img src="/assets/res/logo_Idraulico.png" style="width: 110px"/></div>
-                <span class="profile-content" style="width: 100%">
+  <div class="container">
+    <ul class="vendors-list">
+      <li *ngFor="let fornitore of showFornit; let i = index">
+        <div class="profile-image"><img src="/assets/res/logo_Idraulico.png" style="width: 110px"/></div>
+        <span class="profile-content" style="width: 100%">
                   <div style="background: #c2ecc3; width: 100%; padding: 5px">
                     <font size="4">{{fornitore.nome}}           </font>
                     <font size="4">{{fornitore.nomeProfessione}}</font>
                   </div>
-                  <br />
+                  <br/>
                   {{fornitore.descrizione}}
-                  <br />
-                  <br />
+                  <br/>
+                  <br/>
                   <font size="2">Valutazione: {{fornitore.valutazione}}</font>
                 </span>
-            </li>
-        </ul>
-    </div>
+      </li>
+    </ul>
+  </div>
 </div>
 <div class="container">
+<br>
+  <div class="row">
+    <form class="form" #form="ngForm" (ngSubmit)="setCenter($event)" >
+      <div class="row">
+        <div class="form-group">
+          <input type="text" class="form-control" name="latitude" [(ngModel)]="latitude" placeholder="Enter latitude"
+                 required>
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" name="longitude" [(ngModel)]="longitude" placeholder="Enter longitude"
+                 required>
+        </div>
+        <div class="form-group">
+          <input type="number" class="form-control" name="radius" [(ngModel)]="radius" placeholder="Enter radius"
+                 required>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Go</button>
+    </form>
+
+
+    <form class="form" #form="ngForm" (ngSubmit)="searchOnMap($event)" >
+      <div class="row">
+        <div class="form-group">
+
+          <input type="text" class="form-control" name="via" [(ngModel)]="place.via" placeholder="Enter Address"
+                 required>
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" name="paese" [(ngModel)]="place.paese" placeholder="Enter City"
+                 required>
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" name="nazione" [(ngModel)]="place.nazione" placeholder="Enter Nation"
+                 required>
+        </div>
+        <div class="form-group">
+          <input type="number" class="form-control" name="numeroCivico" [(ngModel)]="place.numeroCivico" placeholder="Enter civic number"
+                 required>
+        </div>
+        <div class="form-group">
+          <input type="number" class="form-control" name="radius" [(ngModel)]="radius" placeholder="Enter radius"
+                 required>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Search on map</button>
+    </form>
+
+
+
+
+
+  </div>
+  <br>
   <div class="row">
     <div id="mappa" class="col-8 offset-2" #gmap></div>
   </div>
-  <div class="row">
-    <form class="form-inline" #form="ngForm" (ngSubmit)="setCenter($event)" ac>
-     <div class="row">
-      <div class="form-group col-3">
-        <input type="text" class="form-control" name="latitude" [(ngModel)]="latitude" placeholder="Enter latitude" required>
-      </div>
-      <div class="form-group col-3">
-        <input type="text" class="form-control" name="longitude" [(ngModel)]="longitude" placeholder="Enter longitude" required>
-      </div>
-      <div class="form-group col-3">
-        <input type="number" class="form-control" name="radius" [(ngModel)]="radius" placeholder="Enter radius" required>
-      </div>
-     </div>
-      <button type="submit"  class="btn btn-primary" [disabled]="form.invalid">Go</button>
-    </form>
-  </div>
+
+  <br><br><br><br>
+
 </div>
 
 
