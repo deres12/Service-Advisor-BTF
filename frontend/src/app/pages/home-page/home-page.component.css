@@ -1,14 +1,15 @@
-.trasparente{
-  opacity: 0.8;
-  background: steelblue;
-}
 
 .backgroundtheme{
   background: steelblue;
 }
 
-.angoli{
+
+.etichetta{
   border-radius: 50px;
+  background: rgba(0,0,0,0.33);
+  color: white;
+  font-size: 28px;
+  font-weight: bold;
 }
 
 .example1 {
@@ -16,14 +17,14 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  height: 600px;
+  height: 450px;
 }
 .example2 {
   background-image: url(http://www.informagiovanivaldera.it/files/a_78_449f5efa088d8537d2b44fc643dee7d6.jpg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  height: 600px;
+  height: 450px;
 }
 
 .example3 {
@@ -31,6 +32,6 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  height: 600px;
+  height: 450px;
 }
 
