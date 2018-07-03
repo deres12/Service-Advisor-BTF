@@ -65,7 +65,7 @@ public class StartClassExample {
 			pos3.setPaese("Milano");
 			pos3.setNazione("IT");
 			pos3.setNumeroCivico(15);
-			pos3.setVia("Negroli");
+			pos3.setVia("Giacomo Zanella");
 			pos3.setLatit(Position.getDoubleFromAddress(pos3.toString(),"lat"));
 			pos3.setLongit(Position.getDoubleFromAddress(pos3.toString(),"lng"));
 			/*pos3.setLatit(0);
@@ -95,7 +95,7 @@ public class StartClassExample {
 			fornit.setValutazione(4);
 
 
-			fornit.setVia(pos3);
+			fornit.setVia(pos);
 
 
 			fornit.setPass("prova");

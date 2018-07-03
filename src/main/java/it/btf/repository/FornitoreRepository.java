@@ -18,4 +18,5 @@ public interface FornitoreRepository extends JpaRepository<Fornitore, String>{
     @Query("SELECT f FROM Fornitore f WHERE  f.via.paese= ?1")
     List<Fornitore> findAllByComune(String paese);
 
+
 }
