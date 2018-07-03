@@ -20,16 +20,20 @@ import { SignupPageComponent } from './pages/signup-page/signup-page.component';
 import { RichiestePageComponent } from './pages/richieste-page/richieste-page.component';
 import { ChisiamoComponent } from './pages/chisiamo/chisiamo.component';
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
+import { ListaFornitoriComponent } from './lista-fornitori/lista-fornitori.component';
+import { TestDataService } from './mock-data/test-data.service';
+import { TestPanelComponent } from './mock-data/test-panel/test-panel.component';
 
 /*
   TODO: spostare <routes> in un modulo separato ed importarlo in app.module.ts
 */
 const routes: Routes = [
-  {path: 'profile', component: ProfilePageComponent},
+  {path: 'DEBUG', component: TestPanelComponent},
+  {path: 'profile', component: UserPageComponent},
+  {path: 'user', component: UserPageComponent},
   {path: 'about', component: ChisiamoComponent},
   {path: 'signup', component: SignupPageComponent},
   {path: 'login', component: LoginPageComponent},
-  {path: 'user', component: UserPageComponent},
   {path: 'settings', component: SettingsPageComponent},
   {path: 'richieste', component: RichiestePageComponent},
   {path: '', component: HomePageComponent},
@@ -52,7 +56,9 @@ const routes: Routes = [
     SignupPageComponent,
     RichiestePageComponent,
     ChisiamoComponent,
-    ProfilePageComponent
+    ProfilePageComponent,
+    ListaFornitoriComponent,
+    TestPanelComponent
   ],
   imports: [
     BrowserModule,
@@ -60,7 +66,7 @@ const routes: Routes = [
     FormsModule,
     RouterModule.forRoot(routes, {useHash: true})
   ],
-  providers: [AuthService],
+  providers: [AuthService, TestDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

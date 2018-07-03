@@ -1,55 +1,6 @@
-<nav>
-  <button (click)="openSideMenu()">
-    &hellip;
-  </button>
-  <button routerLink="/">
-    <!--<img src="/assets/res/logo2.svg" alt="">-->
-    <strong style="vertical-align:middle">Service Advisor</strong>
-  </button>
-  <button *ngIf="auth.userType==userType.Guest" type="button" class="btn float-right" routerLink="signup">Login</button>
+<nav class="navbar navbar-dark bg-dark fixed-top">
+  <a class="navbar-brand" routerLink="">
+    Service Advisor
+  </a>
+  <button *ngIf="auth.userType==userType.Guest" type="button" class="btn btn-info" routerLink="signup">Registrati</button>
 </nav>
-
-
-<div class="side-menu-backdrop" [class.visible]="isMenuOpen"></div>
-<div class="side-menu" [class.visible]="isMenuOpen">
-  <div>
-    <button class="close-menu-button" (click)="closeSideMenu()">
-      &times;
-    </button>
-    <!--
-    <div>
-      <div routerLink="/" (click)="closeSideMenu()" onmouseover="">
-        <h2>Servizi Offerti</h2></div>
-      <hr>
-      <div routerLink="/richieste" (click)="closeSideMenu()" onmouseover="">
-        <h2>Richieste dei Clienti</h2>
-      </div>
-      <hr>
-      <div routerLink="/chisiamo" (click)="closeSideMenu()" onmouseover="">
-        <h2>Come funziona</h2>
-      </div>
-      <hr>
-      <div routerLink="/login" (click)="closeSideMenu()" onmouseover="">
-        <h2>Login</h2>
-      </div>
-      <hr>
-    </div>
-  </div>
-  -->
-
-  <ul [ngSwitch]="auth.userType" (click)="closeSideMenu()">
-    <ng-container *ngSwitchCase="userType.Guest">
-      <li routerLink="/login">Accedi</li>
-    </ng-container>
-    <ng-container *ngSwitchCase="userType.Client">
-      <li routerLink="/user">Profilo</li>
-      <li>...</li>
-      <li (click)="auth.logout()">Esci</li>
-    </ng-container>
-    <ng-container *ngSwitchCase="userType.Vendor">
-      <li routerLink="/user">Profilo</li>
-      <li>...</li>
-      <li (click)="auth.logout()">Esci</li>
-    </ng-container>
-  </ul>
-</div>

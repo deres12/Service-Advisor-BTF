@@ -1,126 +1,3 @@
-/*
-Questo blocco consente di dichiarare variabili.
-Per utilizzarle negli attributi CSS basta scrivere 
-ad esempio: var(--color1)
-*/
-:root {
-    --color1: #4caf50;
-    --color2: #43a047;
-    --color3: #388e3c;
-    --fgcolor1: #FFFFFF;
-}
-
-/* utils */
-/*--------------------------------------------------*/
-
-span.separator {
-    display: block;
-    border-bottom:solid 1px #CCC;
-    color: #888;
-    max-width: 80%;
-    margin: 0px auto;
-    margin-bottom: 10px;
-}
-
-.hidden {
-    display: none;
-}
-
-.centered {
-    text-align: center;
-}
-
-.perfect-centering {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.flex-row {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.flex-row > * {
-    flex-grow: 0;
-}
-
-.flex-spacer {
-    flex-grow: 1;
-}
-
-.flex-column {
-    display: flex;
-    flex-direction: column;
-}
-
-.flex-column > * {
-    flex-grow: 1;
-}
-
-.rounded {
-    border-radius: 100%;
-}
-
-.card {
-    background: #FFF;
-    border: solid 1px #DDD;
-    box-shadow: 0 1px 4px rgb(40, 50, 50, 0.5);
-    margin-bottom: 8px;
-    border-radius: 2px; 
-}
-
-
-ul.unstyled, ol.unstyled {
-    margin: 0;
-    padding: 0;
-    list-style-type: none;
-}
-
-ul.unstyled li {
-    font-family: 18px;
-    padding: 16px;
-    border-bottom: solid 1px #CCC;
-    background: #FFF;
-}
-
-ul.unstyled li:hover {
-    background: #EEE;
-    cursor: pointer;
-}
-
-.btn, .big-btn {
-    border: none;
-    padding: 6px 12px;
-    font-size: 20px;
-    color: #FFF;
-    background: var(--color1);
-    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
-}
-
-.btn:hover, .big-btn:hover {
-    background: var(--color2);
-}
-
-.btn:active, .big-btn:active {
-    background: var(--color3);
-}
-
-.big-btn[disabled] {
-    background: #888;
-    box-shadow: none;
-}
-
-.alert-error {
-    color: #F00;
-}
-
-/* main */
-/*--------------------------------------------------*/
-
 body {
     margin: 0;
     padding: 0;
@@ -128,40 +5,38 @@ body {
     background: #F9F9FA;
 }
 
-h1, h2, h3, h4, h5, h6 {
-    margin: 0;
-    margin-top: 8px;
-    margin-bottom: 6px;
-    color: #222;
-}
-
 .form {
-    margin: 8px;
-    padding: 12px;
-    border: solid 1px #DDD;
-    border-radius: 3px;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
-    max-width: 400px;
-    margin: 0px auto;
-    display: flex;
-    flex-direction: column;
-}
-
-.form > input, .form > textarea, .form > select {
-    margin-bottom: 1em;
-}
-
-input, textarea, select {
-    font-family: sans-serif;
-    padding: 4px;
     border: solid 1px #AAA;
-    font-size: 16px;
-    border-radius: 4px;
-    margin-bottom: 8px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
+    background: #FFF;
+    margin: 16px auto;
+    max-width: 400px;
+    border-radius: 3px;
 }
 
-textarea {
-    resize: none;
+.form > header {
+    background: #EEE;
+    color: #444;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 24px;
+    padding: 16px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.form-content {
+    padding: 8px;
+}
+
+.form-control {
+    margin-bottom: 10px;
+}
+
+.form > footer {
+    background: #EEE;
+    text-align: right;
+    padding: 4px 8px;
+    border-top: solid 1px #DDD;
 }
 
 /* social buttons */

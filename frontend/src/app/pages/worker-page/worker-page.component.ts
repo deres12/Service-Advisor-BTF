@@ -9,7 +9,5 @@ export class WorkerPageComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

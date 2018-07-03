@@ -1,25 +1,33 @@
-<form class="form" (submit)="submit($event)">
+<form class="form" (ngSubmit)="submit()">
+    <header>
+        Login
+    </header>
 
-    <div class="alert-error" *ngIf="error">
-        Email o password errati
+    <div class="form-content">
+        <div class="alert-error" *ngIf="error">
+            Email o password errati
+        </div>
+
+        <label for="email">Indirizzo Email</label>
+        <input class="form-control" type="text" name="email" placeholder="Email" [(ngModel)]="data.email">
+
+        <label for="password">Password</label>
+        <input class="form-control" type="password" name="password" placeholder="Password" [(ngModel)]="data.pass">
+
+        <input type="submit" value="Accedi" class="btn btn-success mt-3" [disabled]="!validate()">
+
+        <hr>
+        
+        <div class="text-center">
+            <button type="button" class="sign-with-google">
+                <span style="font-family:Verdana;font-weight:bold">G&nbsp;</span>
+                Accedi con Google
+            </button>
+            <button type="button" class="sign-with-facebook">
+                <span style="font-family:Verdana;font-weight:bold">f&nbsp;</span>
+                Accedi con Facebook
+            </button>
+        </div>
+        
     </div>
-
-    <label for="email">Indirizzo Email</label>
-    <input id="email" type="text" name="email" placeholder="Email" [(ngModel)]="data.email">
-
-    <label for="password">Password</label>
-    <input id="password" type="password" name="password" placeholder="Password" [(ngModel)]="data.pass">
-
-    <input type="submit" value="Accedi" class="big-btn" [disabled]="!validate()">
-
-    <span class="separator">oppure</span>
-    <button type="button" class="sign-with-google">
-        <span style="font-family:Verdana;font-weight:bold">G&nbsp;</span>
-        Accedi con Google
-    </button>
-    <button type="button" class="sign-with-facebook">
-        <span style="font-family:Verdana;font-weight:bold">f&nbsp;</span>
-        Accedi con Facebook
-    </button>
-
 </form>
