@@ -3,6 +3,8 @@ import { FornitorePlace } from '../interfaces/fornitore-place';
 import { Fornitore } from '../interfaces/fornitore';
 import { TakeFornintoriService } from '../services/take-fornintori.service';
 import { Luogo } from '../interfaces/luogo';
+import {} from '@types/googlemaps';
+
 
 @Component({
   selector: 'app-lista-fornitori',

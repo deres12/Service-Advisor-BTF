@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from "../../environments/environment.prod";
-import { ProfileInfo, UserType } from '../interfaces/user';
+import { User, UserType } from '../interfaces/user';
 import { LoginData, SignupData } from '../interfaces/auth';
 
 
@@ -14,9 +14,10 @@ export class AuthService {
   private signupUrl: string = environment.apiUrl+"/user/registrati";
 
 
-  userInfo: ProfileInfo = {
-    name: "",
-    type: UserType.Guest
+  userInfo: User = {
+    type: UserType.Guest,
+    email: "",
+    password: ""
   };
 
   constructor(private http: HttpClient) {}

@@ -6,8 +6,8 @@ export enum UserType {
     Vendor = "F"
 }
   
-export interface ProfileInfo {
-    name: string,
-    type: UserType
-    /*...*/
+export interface User {
+    type: UserType,
+    email: string,
+    password: string
 }
