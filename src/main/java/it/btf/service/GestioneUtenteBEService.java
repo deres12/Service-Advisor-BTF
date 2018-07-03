@@ -55,7 +55,7 @@ public class GestioneUtenteBEService implements GestioneUtenteBE {
     @Override
     public PersonaDTO loadById(PersonaDTO dto) {
         //Object a = utenteRepository.getOne(dto.getEmail());
-
+        //System.err.println(dto.getEmail());
         if (fornitoreRepository.existsById(dto.getEmail())) {
             Fornitore fornit = fornitoreRepository.getOne(dto.getEmail());
             LuogoDTO l=new LuogoDTO(fornit.getVia().getNumeroCivico(),fornit.getVia().getVia(),fornit.getVia().getPaese(),fornit.getVia().getNazione());
@@ -65,8 +65,10 @@ public class GestioneUtenteBEService implements GestioneUtenteBE {
             Cliente utente = utenteRepository.getOne(dto.getEmail());
             LuogoDTO l=new LuogoDTO(utente.getVia().getNumeroCivico(),utente.getVia().getVia(),utente.getVia().getPaese(),utente.getVia().getNazione());
             return new PersonaDTO(utente.getNome(), utente.getCognome(), utente.getUsername(), l, utente.getEmail(), utente.getPass(), 0, "", "", "C", null, null);
-        } else
+        } else{
+            //System.err.println("NULLLLLLLLLLLLLLLLLLLLLLL");
             return null;
+        }
         //return persone;
     }
 
@@ -112,6 +114,7 @@ public class GestioneUtenteBEService implements GestioneUtenteBE {
         fornitore.setProfessione(p);
         fornitoreRepository.save(fornitore);
     }
+
 
 
     @Override

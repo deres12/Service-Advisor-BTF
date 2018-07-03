@@ -38,14 +38,14 @@ export class AuthService {
   }
 
   signup(data: SignupData): Observable<any> {
-    let request = this.http.post<any>("http://localhost/services/user/registrati", data);
+    let request = this.http.post<any>("/services/user/registrati", data);
 
-    request.subscribe(
+    /*request.subscribe(
       response => {
         this.userInfo = response;
       }
-    );
-    
+    );*/
+
     return request;
   }
 }

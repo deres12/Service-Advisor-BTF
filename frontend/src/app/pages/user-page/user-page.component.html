@@ -10,16 +10,28 @@
     </div>
   </div>
 </div>
-<!--
-<div [ngSwitch]="auth.userType">
-      <ng-container *ngSwitchCase="userType.Client">
-        <h1>cliente</h1>
-        <app-lista-fornitori></app-lista-fornitori>
-    </ng-container>
-    <ng-container *ngSwitchCase="userType.Vendor">
-        <h1>fornitore</h1>
-    </ng-container>
-</div-->
+<div class="container">
+<br><br>
+  <div *ngFor="let fornitore of fornitori; let i = index" class="row">
+  <div  class="card text-center">
+    <div class="card-header">
+      {{fornitore.nome}}
+    </div>
+    <div class="card-body">
+      <h5 class="card-title"> <strong>{{fornitore.nomeProfessione}}:</strong></h5>
+      <div class="row">
+        <p class="card-text"> {{fornitore.descrizione}} </p>
+        <br>
+        <br>
+        <p class="card-text"> {{fornitore.email}} </p>
+      </div>
+      <br>
+      <button type="button" class="big-btn btn-info" routerLink="/new-request/{{i}}">
+        Fai una richiesta
+      </button>
+    </div>
 
-
-
+  </div>
+    <br>
+  </div>
+</div>

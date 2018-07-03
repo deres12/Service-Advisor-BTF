@@ -3,7 +3,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-
+import { StorageServiceModule} from 'angular-webstorage-service';
 import { AppComponent } from './app.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { LoginFormComponent } from './forms/login-form/login-form.component';
@@ -34,7 +34,7 @@ const routes: Routes = [
   {path: 'about', component: ChisiamoComponent},
   {path: 'signup', component: SignupPageComponent},
   {path: 'login', component: LoginPageComponent},
-  {path: 'new-request', component: NewRequestFormComponent},
+  {path: 'new-request/:id', component: NewRequestFormComponent},
   {path: 'settings', component: SettingsPageComponent},
   {path: 'richieste', component: RichiestePageComponent},
   {path: '', component: HomePageComponent},
@@ -65,6 +65,7 @@ const routes: Routes = [
     BrowserModule,
     HttpClientModule,
     FormsModule,
+    StorageServiceModule,
     RouterModule.forRoot(routes, {useHash: true})
   ],
   providers: [AuthService, TestDataService],

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from './services/auth.service';
 import { UserType } from './interfaces/user';
+import {SESSION_STORAGE, WebStorageService} from 'angular-webstorage-service';
 
 @Component({
   selector: 'app-root',

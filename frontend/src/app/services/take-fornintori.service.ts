@@ -12,11 +12,11 @@ export class TakeFornintoriService {
   }
 
   getFornitori() {
-    return this.httpClient.get("http://localhost/services/fornitore/find");
+    return this.httpClient.get("/services/fornitore/find");
   }
 
   getFornitoriByAddress(place: Luogo) {
-    return this.httpClient.post("http://localhost/services/fornitore/findByRadius",place);
+    return this.httpClient.post("/services/fornitore/findByRadius",place);
   }
 
 

@@ -28,7 +28,6 @@ public class GestioneUtenteController {
     @PostMapping("/registrati")
     @ResponseBody
     public ResponseEntity saveUser(@RequestBody PersonaDTO dto) {
-        System.err.println("ESEMPIOOOOOO");
         ResponseEntity a = new ResponseEntity(HttpStatus.OK);
         try {
             a = service.addUser(dto);
@@ -62,6 +61,6 @@ public class GestioneUtenteController {
         if (!loaded.getPass().equals(dto.getPass())) {
             return new ResponseEntity<>(2, HttpStatus.UNAUTHORIZED);
         }
-        return new ResponseEntity<>(HttpStatus.OK);
+        return new ResponseEntity<>(loaded,HttpStatus.OK);
     }
 }

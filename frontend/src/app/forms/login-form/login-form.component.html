@@ -9,15 +9,15 @@
         </div>
 
         <label for="email">Indirizzo Email</label>
-        <input class="form-control" type="text" name="email" placeholder="Email" [(ngModel)]="data.email">
+        <input id="email" class="form-control" type="text" name="email" placeholder="Email" [(ngModel)]="data.email">
 
         <label for="password">Password</label>
-        <input class="form-control" type="password" name="password" placeholder="Password" [(ngModel)]="data.pass">
+        <input id="password" class="form-control" type="password" name="password" placeholder="Password" [(ngModel)]="data.pass">
 
         <input type="submit" value="Accedi" class="btn btn-success mt-3" [disabled]="!validate()">
 
         <hr>
-        
+
         <div class="text-center">
             <button type="button" class="sign-with-google">
                 <span style="font-family:Verdana;font-weight:bold">G&nbsp;</span>
@@ -28,6 +28,6 @@
                 Accedi con Facebook
             </button>
         </div>
-        
+
     </div>
 </form>
