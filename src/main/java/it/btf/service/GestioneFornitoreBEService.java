@@ -1,13 +1,17 @@
 package it.btf.service;
 
 import it.btf.dto.FornitoreDTO;
+import it.btf.dto.LuogoDTO;
+import it.btf.dto.RicercaFornitoriDTO;
 import it.btf.dto.ServizioDTO;
 import it.btf.interf.GestioneFornitoreBE;
 import it.btf.model.Fornitore;
 import it.btf.model.Guest;
 import it.btf.model.Servizio;
 import it.btf.repository.FornitoreRepository;
+import it.btf.utility.Position;
 import org.dozer.DozerBeanMapper;
+import org.springframework.beans.factory.ListableBeanFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -77,4 +81,45 @@ public List<FornitoreDTO> loadAllGuestFornByComune(String comune) {
     }
     return fornitoreDTOS;
 }
+
+    @Override
+    public List<RicercaFornitoriDTO> loadAllFornByDistance(RicercaFornitoriDTO fornitore) {
+        List<RicercaFornitoriDTO> fornDTOS = new ArrayList<RicercaFornitoriDTO>();
+        List<Fornitore>  forns = new ArrayList<Fornitore>();
+
+
+        String via= fornitore.getCivico()+", "+fornitore.getVia()+", "+fornitore.getCity()+", "+fornitore.getNazione();
+        Double raggio= fornitore.getRaggio();
+        Double lat = Position.getDoubleFromAddress(via, "lat");
+        Double lon = Position.getDoubleFromAddress(via, "lng");
+
+
+
+        forns = fornitoreRepository.findAll();
+
+        for(Fornitore f:forns){
+
+            Double latitudine =f.getVia().getLatit();
+            Double longitudine=f.getVia().getLongit();
+            Double dist = Position.distance(lat,lon,latitudine,longitudine,"K");
+
+            System.out.println(dist);
+
+            if(dist<=raggio){
+                RicercaFornitoriDTO forn=new RicercaFornitoriDTO();
+                forn.setCity(f.getVia().getPaese());
+                forn.setNome(f.getNome());
+                forn.setDescrizione(f.getDescrizione());
+                forn.setLat(f.getVia().getLatit());
+                forn.setLongi(f.getVia().getLongit());
+
+
+                fornDTOS.add(forn);
+            }
+        }
+
+    return fornDTOS;
+    }
+
+
 }

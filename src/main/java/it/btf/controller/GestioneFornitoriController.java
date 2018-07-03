@@ -1,12 +1,13 @@
 package it.btf.controller;
 
 import it.btf.dto.FornitoreDTO;
+import it.btf.dto.RicercaFornitoriDTO;
+import it.btf.dto.RispostaExampleDTO;
 import it.btf.interf.GestioneFornitoreBE;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -30,4 +31,14 @@ public class GestioneFornitoriController {
 
         return gestioneFornitoreBE.loadAllGuestFornByComune(comune);
     }
+
+    @ResponseBody
+    @RequestMapping(value = "ricerca", method = RequestMethod.POST)
+    public ResponseEntity<List<RicercaFornitoriDTO>> ricerca (@RequestBody RicercaFornitoriDTO dto) {
+
+        List<RicercaFornitoriDTO> response =gestioneFornitoreBE.loadAllFornByDistance(dto);
+
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
 }
