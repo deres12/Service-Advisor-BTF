@@ -6,6 +6,7 @@
     <!--<img src="/assets/res/logo2.svg" alt="">-->
     <strong style="vertical-align:middle">Service Advisor</strong>
   </button>
+  <button type="button" class="btn float-right" routerLink="signup">Login</button>
 </nav>
 
 
@@ -35,6 +36,7 @@
     </div>
   </div>
   -->
+
   <ul [ngSwitch]="auth.userType" (click)="closeSideMenu()">
     <ng-container *ngSwitchCase="userType.Guest">
       <li routerLink="/login">Accedi</li>

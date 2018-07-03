@@ -13,10 +13,10 @@ import { JobsDataService } from '../../services/jobs.service';
     styleUrls: ['./signup-page.component.css']
 })
 export class SignupPageComponent implements OnInit {
-  
+
     private _step: number;
     private _history: number[];
-
+    //private route:Router;
     userType = UserType;
 
     error: boolean = false;
@@ -66,17 +66,29 @@ export class SignupPageComponent implements OnInit {
 
     submit(form: NgForm) {
         this.error = false;
-
+        var submitData;
         // collect form data
-        let submitData: SignupData = {
+      if(this.type==UserType.Client){
+        submitData = {
             type: this.type,
             email: form.value["email"],
             password: form.value["password"],
-            professione: this.professione.id,
+            professione:{id:0} ,
             nome: form.value["name"],
             indirizzo: form.value["address"],
         };
-        
+      }else{
+        submitData = {
+          type: this.type,
+          email: form.value["email"],
+          password: form.value["password"],
+          professione:{id:this.professione.id} ,
+          nome: form.value["name"],
+          indirizzo: form.value["address"],
+        };
+        //this.professione.id
+      }
+
         // call REST api
         let result = this.auth.signup(submitData);
         result.subscribe(
