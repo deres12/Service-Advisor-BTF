@@ -62,6 +62,6 @@ public class GestioneUtenteController {
         if (!loaded.getPass().equals(dto.getPass())) {
             return new ResponseEntity<>(2, HttpStatus.UNAUTHORIZED);
         }
-        return new ResponseEntity<>(1, HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }

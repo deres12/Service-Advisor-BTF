@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { UserType } from '../../interfaces/user';
 import { Job } from '../../interfaces/job';
 import { JobsDataService } from '../../services/jobs.service';
+import {environment} from "../../../environments/environment";
 
 @Component({
     selector: 'app-signup-page',
@@ -94,6 +95,7 @@ export class SignupPageComponent implements OnInit {
         result.subscribe(
             res => {
                 console.log("signup successful");
+                //environment.
                 this.router.navigateByUrl("");
             },
             err => {

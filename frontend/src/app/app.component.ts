@@ -10,5 +10,6 @@ import { UserType } from './interfaces/user';
 export class AppComponent {
   userType = UserType;
 
+
   constructor(public auth: AuthService) {}
 }
