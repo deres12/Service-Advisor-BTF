@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { AuthService, UserType } from './services/auth.service';
+import { AuthService } from './services/auth.service';
+import { UserType } from './interfaces/user';
 
 @Component({
   selector: 'app-root',
@@ -7,8 +8,6 @@ import { AuthService, UserType } from './services/auth.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
-
   userType = UserType;
 
   constructor(public auth: AuthService) {}

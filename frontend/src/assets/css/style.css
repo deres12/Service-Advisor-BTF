@@ -7,6 +7,7 @@ ad esempio: var(--color1)
     --color1: #4caf50;
     --color2: #43a047;
     --color3: #388e3c;
+    --fgcolor1: #FFFFFF;
 }
 
 /* utils */
@@ -144,7 +145,6 @@ h1, h2, h3, h4, h5, h6 {
     margin: 0px auto;
     display: flex;
     flex-direction: column;
-    background: 
 }
 
 .form > input, .form > textarea, .form > select {

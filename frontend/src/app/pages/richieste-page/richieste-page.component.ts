@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Richiesta} from "../../services/richiesta";
-import {Fornitore} from "../../services/fornitore";
-import {TakeFornintoriService} from "../../services/take-fornintori.service";
+import {Richiesta} from "../../interfaces/richiesta";
 import {TakeRichiesteService} from "../../services/take-richieste.service";
 
 @Component({

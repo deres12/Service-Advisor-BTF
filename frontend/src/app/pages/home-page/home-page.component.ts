@@ -1,6 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import {Fornitore} from "../../services/fornitore";
+import {Component, OnInit, ViewChild} from '@angular/core';
+
+import {Fornitore} from "../../interfaces/fornitore";
+
 import {TakeFornintoriService} from "../../services/take-fornintori.service";
+import { } from '@types/googlemaps';
+//import { Google } from 'http://maps.googleapis.com/maps/api/js';
+
 
 @Component({
   selector: 'app-home-page',
@@ -10,26 +15,108 @@ import {TakeFornintoriService} from "../../services/take-fornintori.service";
 export class HomePageComponent implements OnInit {
 
   fornitori: Fornitore[];
+  showFornit: Fornitore[];
 
-  workers = [
-    {nome: "tizio"    , professione: "Elettricista"},
-    {nome: "caio"     , professione: "Idraulico"},
-    {nome: "sempronio", professione: "Gommista"},
-    {nome: "sempronio", professione: "Elettricista"},
-    {nome: "tizio"    , professione: "Gommista"},
-    {nome: "caio"     , professione: "Idraulico"},
-    {nome: "sempronio", professione: "Gommista"},
-    {nome: "tizio"    , professione: "Massaggiatore"},
-    {nome: "caio"     , professione: "Disoccupato?"}
-  ];
+  @ViewChild('gmap') gmapElement: any;
+  map: google.maps.Map;
 
-  constructor(private serv: TakeFornintoriService) { }
+  markers:any;
+  circle: any;
+  radius: number=10.0;
+  latitude:number;
+
+  longitude:number;
+
+
+
+  setCenter(e:any){
+    this.circle.setMap(null);
+    this.markers.setMap(null);
+    var myLatlng = new google.maps.LatLng(this.latitude, this.longitude);
+    e.preventDefault();
+    /*this.circle.unbindAll();
+    this.markers.unbindAll();*/
+
+    var marker = new google.maps.Marker({
+      position: myLatlng,
+      map: this.map,
+      title: 'Click to zoom'
+    });
+
+    var circle = new google.maps.Circle({
+      map: this.map,
+      radius: this.radius,    // 10 miles in metres
+      fillColor: '#347baa'
+    });
+
+
+    circle.bindTo('center', marker, 'position');
+
+    this.circle=circle;
+    this.markers=marker;
+
+    this.map.setCenter(new google.maps.LatLng(this.latitude, this.longitude));
+    this.markers.setMap(this.map);
+    //thi.map.
+  }
+
+  constructor(private serv: TakeFornintoriService) {
+  }
+
 
   ngOnInit() {
     this.serv.getFornitori().subscribe((list: Fornitore[]) => {
       this.fornitori=list;
-    },(error)=>{console.log(error);});
+      this.showFornit=list;
+    },(error)=>{console.log(error.toString());});
+
+    var myLatlng = {lat: 45.4654666, lng: 9.2313484};
+    var mapProp = {
+      center: myLatlng,
+      zoom: 15,
+      mapTypeId: google.maps.MapTypeId.ROADMAP,
+      };
+
+    var marker = new google.maps.Marker({
+      position: myLatlng,
+      map: this.map,
+      title: 'Click to zoom'
+    });
+
+
+    var circle = new google.maps.Circle({
+      map: this.map,
+      radius: this.radius,    // 10 miles in metres
+      fillColor: '#347baa'
+    });
+
+
+
+    //this.markers.push(marker);
+    //mapProp.panTo(marker.getPosition());
+    this.markers=marker;
+
+    //console.log("PROVAAAAAA");
+    this.map = new google.maps.Map(this.gmapElement.nativeElement, mapProp);
+    this.markers.setMap(this.map);
+    circle.bindTo('center', marker, 'position');
+    this.circle=circle;
+  }
+
+  filterByProf(query: string){
+    console.log(query);
+    let re = new RegExp(query, "i");
+    this.showFornit=[];
+    this.fornitori.forEach(item => {
+      if(re.test(item.nomeProfessione) || re.test(item.descrizione) || re.test(item.nome))
+        this.showFornit.push(item);
+    });
+    console.log(this.showFornit.length);
+    if(this.showFornit.length===0)
+      this.showFornit=this.fornitori;
 
   }
+
+
 
 }
