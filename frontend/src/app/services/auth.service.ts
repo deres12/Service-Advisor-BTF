@@ -10,8 +10,10 @@ import { LoginData, SignupData } from '../interfaces/auth';
   providedIn: 'root'
 })
 export class AuthService {
-  private loginUrl: string = environment.apiUrl+"/user/login";
-  private signupUrl: string = environment.apiUrl+"/user/registrati";
+  private host: string = environment.hostname;
+  private apiUrl: string = environment.apiUrl;
+  private loginUrl: string = this.host + this.apiUrl + "/user/login";
+  private signupUrl: string = this.host + this.apiUrl + "/user/registrati";
 
 
   userInfo: User = {
@@ -35,22 +37,14 @@ export class AuthService {
   }
 
   signup(data: SignupData): Observable<any> {
-    //console.log(data);
-    /*environment.utente.email=data.email;
-    environment.utente.indirizzo=data.indirizzo;
-    environment.utente.nome=data.nome;
-    environment.utente.password=data.password;
-    environment.utente.professione=data.professione;
-    environment.utente.tipo=data.type;*/
-    let response: any=this.http.post<any>("http://localhost/services/user/registrati", data);
+    let request = this.http.post<any>("http://localhost/services/user/registrati", data);
 
-    if(data.type== UserType.Client) {
-      this.userInfo.type = UserType.Client;
-    }else if(data.type== UserType.Vendor){
-      this.userInfo.type = UserType.Vendor;
-    }
-
-    console.log(response);
-    return response;
+    request.subscribe(
+      response => {
+        this.userInfo = response;
+      }
+    );
+    
+    return request;
   }
 }

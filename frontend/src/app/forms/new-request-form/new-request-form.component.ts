@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { JobsDataService } from '../../services/jobs.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-new-request-form',
@@ -10,16 +11,15 @@ export class NewRequestFormComponent implements OnInit {
 
   constructor(private jobs: JobsDataService) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
-  validate(): boolean {
+  valid(form: NgForm): boolean {
     return false;
   }
 
-  submit(event) {
-    event.preventDefault();
-    if(!this.validate()) return;
+  submit(form: NgForm) {
+    if(!this.valid(form)) return;
+    
     // call REST API
   }
 }

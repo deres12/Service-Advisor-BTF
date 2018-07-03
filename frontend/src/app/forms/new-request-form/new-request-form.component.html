@@ -1,27 +1,37 @@
-<form class="form" (submit)="submit($event)">
+<div style="height: 16px"></div>
+<form class="form" (ngSubmit)="submit(f)" #f="ngForm">
+    <header>
+        Nuova Richiesta
+    </header>
 
-  <label for="service">Che tipo di servizio?</label>
-  <select id="service" name="service">
-        <option *ngFor="let job of jobs.getAll()" [value]="job.id">
-            {{job.name}}
-        </option>
-  </select>
+    <div class="form-content">
+        <label for="job">Che tipo di professionista?</label>
+        <select id="job" name="job" class="form-control" ngModel>
+            <option *ngFor="let job of jobs.getAll()" [value]="job.id">
+                {{job.nome}}
+            </option>
+        </select>
 
-  <label for="address">Dove ti serve?</label>
-  <input id="address" type="text" name="address" placeholder="Indirizzo">
+        <label for="address">Dove ti serve?</label>
+        <input id="address" type="text" name="address" placeholder="indirizzo" class="form-control" ngModel>
 
-  <label for="duration">Quando ti serve?</label>
-  <select id="duration" name="duration">
-      <option>entro pochi giorni</option>
-      <option>entro un mese</option>
-      <option>non lo so</option>
-  </select>
+        <label for="data">Quando ti serve?</label>
+        <select id="data" name="data" class="form-control" ngModel>
+            <option>entro pochi giorni</option>
+            <option>entro un mese</option>
+            <option>non lo so</option>
+        </select>
 
-  <label for="descr">Descrivi il problema</label>
-  <textarea id="descr" name="descr"
-      placeholder="..."
-      rows="5"
-      cols="30"></textarea>
+        <label for="descr">Descrivi il problema</label>
+        <textarea id="descr" name="descrizione"
+            placeholder="scrivi di cosa hai bisogno..."
+            rows="5"
+            cols="30"
+            class="form-control"
+            ngModel></textarea>
+    </div>
 
-  <input type="submit" value="Crea" class="big-btn">
+    <footer>
+        <input [disabled]="!valid(f)" type="submit" value="Crea Richiesta" class="btn btn-success">
+    </footer>
 </form>

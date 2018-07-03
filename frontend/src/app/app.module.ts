@@ -34,6 +34,7 @@ const routes: Routes = [
   {path: 'about', component: ChisiamoComponent},
   {path: 'signup', component: SignupPageComponent},
   {path: 'login', component: LoginPageComponent},
+  {path: 'new-request', component: NewRequestFormComponent},
   {path: 'settings', component: SettingsPageComponent},
   {path: 'richieste', component: RichiestePageComponent},
   {path: '', component: HomePageComponent},
