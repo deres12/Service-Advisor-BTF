@@ -61,8 +61,25 @@ export class SignupPageComponent implements OnInit {
         }
     }
 
-    valid(form: NgForm) {
+    valid(form: NgForm):boolean {
+
+      if(this.step==3) {
+        if (form.value["nome"].length < 1) {
+          return false;
+        }
+        if (form.value["email"].length < 1) {
+          return false;
+        }
+        if (form.value["password"].length < 1) {
+          return false;
+        }
+
+        if ((form.value["password"] != form.value["password2"])) {
+          return false;
+        }
+
         return true;
+      }
     }
 
     submit(form: NgForm) {
@@ -94,7 +111,12 @@ export class SignupPageComponent implements OnInit {
         let result = this.auth.signup(submitData);
         result.subscribe(
             res => {
-                //console.log(res);
+                console.log(res);
+              this.auth.userInfo.email=res.email;
+              this.auth.userInfo.nome=res.nome;
+
+
+
                 this.router.navigate(["profile"]);
             },
             err => {
@@ -103,4 +125,8 @@ export class SignupPageComponent implements OnInit {
             }
         );
     }
+
+    /*controllo(){
+      this.
+    }*/
 }

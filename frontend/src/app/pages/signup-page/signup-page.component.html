@@ -4,8 +4,8 @@
       Registrazione
    </header>
 
-   <div class="error" *ngIf>
-     Errore...
+   <div class="alert alert-danger" *ngIf="!valid(f)&&step==3">
+     Compila tutti i campi.
    </div>
   <div class="form-content">
     <div class="text-center" [class.hidden]="step!=0">
@@ -68,6 +68,7 @@
       <button type="button" class="btn btn-secondary mr-3" (click)="back()" *ngIf="step>0">Indietro</button>
       <button type="button" class="btn btn-primary" (click)="next()" *ngIf="step<3">Avanti</button>
 
-      <input class="btn btn-success" type="submit" value="Registrati" *ngIf="step==3">
+
+      <input  [disabled]="!valid(f)" class="btn btn-success" type="submit" value="Registrati" *ngIf="step==3">
    </footer>
 </form>

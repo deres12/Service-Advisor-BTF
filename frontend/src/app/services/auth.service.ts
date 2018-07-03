@@ -19,7 +19,8 @@ export class AuthService {
   userInfo: User = {
     type: UserType.Guest,
     email: "",
-    password: ""
+    password: "",
+    nome: ""
   };
 
   constructor(private http: HttpClient) {}

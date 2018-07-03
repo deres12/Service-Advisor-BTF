@@ -5,9 +5,10 @@ export enum UserType {
     Client = "C",
     Vendor = "F"
 }
-  
+
 export interface User {
     type: UserType,
     email: string,
-    password: string
+    password: string,
+    nome: string
 }
