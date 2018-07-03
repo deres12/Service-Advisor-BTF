@@ -21,8 +21,7 @@ export class LoginFormComponent implements OnInit {
     return true;
   }
 
-  submit(event) {
-    event.preventDefault();
+  submit() {
     if(this.validate() == false) {
       alert("compila bene il form");
       return;

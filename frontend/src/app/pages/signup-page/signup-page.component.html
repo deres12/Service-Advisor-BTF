@@ -1,5 +1,5 @@
 <div style="height:16px"></div>
-<form (ngSubmit)="submit(f)" #f="ngForm" class="signup-form">
+<form (ngSubmit)="submit(f)" #f="ngForm" class="form">
    <header>
       Registrazione
    </header>
@@ -8,60 +8,64 @@
      Errore...
    </div>
 
-   <div class="form-content">
-      <div [class.hidden]="step!=0" class="centered">
-         <input type="hidden" name="type" [ngModel]="type">
-         <button type="button"
-                 (click)="type=userType.Client"
-                 [disabled]="type==userType.Client"
-                 class="button">
-         Cliente
-         </button>
-        <button type="button"
-                 (click)="type=userType.Professional"
-                 [disabled]="type==userType.Professional"
-                 class="button">
-          Professionista
-        </button>
-      </div>
+  <div class="form-content">
+    <div class="text-center" [class.hidden]="step!=0">
+      <input type="hidden" name="type" [ngModel]="type">
+      <button type="button"
+              (click)="type=userType.Client"
+              [disabled]="type==userType.Client"
+              class="btn btn-info mr-3">
+        Cliente
+      </button>
+      <button type="button"
+                (click)="type=userType.Professional"
+                [disabled]="type==userType.Professional"
+                class="btn btn-info ml-3">
+        Professionista
+      </button>
+    </div>
       
-      <div [class.hidden]="step!=1" class="centered">
-         <input type="hidden" name="professione" [ngModel]="professione?.id">
-         <div *ngFor="let job of jobs">
-          <button type="button" (click)="professione=job" [disabled]="professione==job" class="button">
-              {{job.nome}}
+      <div [class.hidden]="step!=1" class="text-center">
+        <input type="hidden" name="professione" [ngModel]="professione?.id">
+        <div class="list-group">
+          <button class="list-group-item list-group-item-action"
+                  [class.active]="professione==job"
+                  (click)="professione=job"
+                  type="button"
+                  *ngFor="let job of jobs">
+                
+            {{job.nome}}
           </button>
-         </div>
+        </div>
       </div>
 
       <div [class.hidden]="step!=2">
-         <label for="name">Ragione Sociale</label>
-         <input type="text" name="name" ngModel>
+        <label for="name">Ragione Sociale</label>
+        <input type="text" class="form-control" name="name" ngModel>
 
-         <label for="address">Indirizzo</label>
-         <input type="text" name="address" ngModel>
-
-         <div class="map-container">
-            <img src="/assets/res/mock-map.png" alt="mappa">
-         </div>
-       </div>
+        <label for="address">Indirizzo</label>
+        <input type="text" class="form-control" name="address" ngModel>
+        <!--
+          aggiungere controlli per: stato, città, via e numero civico
+        -->
+      </div>
 
       <div [class.hidden]="step!=3">
         <label for="email">Email</label>
-        <input type="email" placeholder="Indirizzo Email" name="email" ngModel>
+        <input type="email" class="form-control" placeholder="Indirizzo Email" name="email" ngModel>
 
         <label for="password">Password</label>
-        <input type="password" placeholder="Crea una password" name="password" ngModel>
+        <input type="password" class="form-control" placeholder="Crea una password" name="password" ngModel>
 
         <label for="password2">Ripeti Password</label>
-        <input type="password" placeholder="Ripeti la password" name="password2" ngModel>   
+        <input type="password" class="form-control" placeholder="Ripeti la password" name="password2" ngModel>   
       </div>
-   </div>
+  </div>
 
    <footer>
-      <button class="button" type="button" (click)="back()" *ngIf="step>0">Indietro</button>
-      <button class="button" type="button" (click)="next()" *ngIf="step<3">Avanti</button>
+      <button type="button" class="btn btn-secondary mr-3" (click)="back()" *ngIf="step>0">Indietro</button>
+      <button type="button" class="btn btn-primary" (click)="next()" *ngIf="step<3">Avanti</button>
 
-      <input class="button" type="submit" value="Registrati" *ngIf="step==3">
+      <input class="btn btn-success" type="submit" value="Registrati" *ngIf="step==3">
    </footer>
 </form>
