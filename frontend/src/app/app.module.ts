@@ -25,6 +25,7 @@ import { ProfilePageComponent } from './pages/profile-page/profile-page.componen
   TODO: spostare <routes> in un modulo separato ed importarlo in app.module.ts
 */
 const routes: Routes = [
+  {path: 'profile', component: ProfilePageComponent},
   {path: 'about', component: ChisiamoComponent},
   {path: 'signup', component: SignupPageComponent},
   {path: 'login', component: LoginPageComponent},

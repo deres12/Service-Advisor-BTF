@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { UserType } from '../../interfaces/user';
 import { Job } from '../../interfaces/job';
 import { JobsDataService } from '../../services/jobs.service';
+import {environment} from "../../../environments/environment";
 
 @Component({
     selector: 'app-signup-page',
@@ -71,19 +72,19 @@ export class SignupPageComponent implements OnInit {
       if(this.type==UserType.Client){
         submitData = {
             type: this.type,
+            nome: form.value["nome"],
             email: form.value["email"],
             password: form.value["password"],
             professione:{id:0} ,
-            nome: form.value["name"],
             indirizzo: form.value["address"],
         };
       }else{
         submitData = {
           type: this.type,
+          nome: form.value["nome"],
           email: form.value["email"],
           password: form.value["password"],
           professione:{id:this.professione.id} ,
-          nome: form.value["name"],
           indirizzo: form.value["address"],
         };
         //this.professione.id
@@ -93,10 +94,11 @@ export class SignupPageComponent implements OnInit {
         let result = this.auth.signup(submitData);
         result.subscribe(
             res => {
-                console.log("signup successful");
-                this.router.navigateByUrl("");
+                //console.log(res);
+                this.router.navigate(["profile"]);
             },
             err => {
+                //console.log("ERRORE");
                 this.error = true;
             }
         );

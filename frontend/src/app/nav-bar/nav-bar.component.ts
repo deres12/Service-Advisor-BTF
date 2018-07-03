@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { UserType } from '../interfaces/user';
+import {environment} from "../../environments/environment.prod";
 
 @Component({
   selector: 'app-nav-bar',
@@ -11,10 +12,14 @@ export class NavBarComponent implements OnInit {
   private _menu_open: boolean = false;
 
   userType = UserType;
+  loggato: boolean;
 
-  constructor(private auth: AuthService) { }
+  constructor(public auth: AuthService) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.loggato=environment.loggato;
+  }
+
 
   get isMenuOpen() {
     return this._menu_open;
@@ -23,7 +28,7 @@ export class NavBarComponent implements OnInit {
   closeSideMenu() {
     this._menu_open = false;
   }
-  
+
   openSideMenu() {
     this._menu_open = true;
   }

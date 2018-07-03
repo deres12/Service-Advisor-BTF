@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   apiUrl: "/services",
-  utente: {email:"",indirizzo:"",nome:"",password:"",professione:0,tipo:"g"}
+  loggato: false,
 };
 
 /*email

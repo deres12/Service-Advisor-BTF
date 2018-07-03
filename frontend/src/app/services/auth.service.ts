@@ -34,13 +34,22 @@ export class AuthService {
   }
 
   signup(data: SignupData): Observable<any> {
-    console.log(data);
+    //console.log(data);
     /*environment.utente.email=data.email;
     environment.utente.indirizzo=data.indirizzo;
     environment.utente.nome=data.nome;
     environment.utente.password=data.password;
     environment.utente.professione=data.professione;
     environment.utente.tipo=data.type;*/
-    return this.http.post<any>("http://localhost/services/user/registrati", data);
+    let response: any=this.http.post<any>("http://localhost/services/user/registrati", data);
+
+    if(data.type== UserType.Client) {
+      this.userInfo.type = UserType.Client;
+    }else if(data.type== UserType.Vendor){
+      this.userInfo.type = UserType.Vendor;
+    }
+
+    console.log(response);
+    return response;
   }
 }
