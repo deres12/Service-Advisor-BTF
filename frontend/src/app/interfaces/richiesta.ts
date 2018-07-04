@@ -1,9 +1,8 @@
 export interface Richiesta {
-  prezzoMassimo:string;
+  prezzoMassimo:number;
   descrizione:string;
   professione:string;
   indirizzo:string;
   data:string;
-
-
+  email:string;
 }

@@ -2,6 +2,8 @@
   <a class="navbar-brand" routerLink="">
     Service Advisor
   </a>
+  <button *ngIf="auth.userType==userType.Guest" type="button" class="btn btn-info" routerLink="login">Login</button>
   <button *ngIf="auth.userType==userType.Guest" type="button" class="btn btn-info" routerLink="signup">Registrati</button>
   <button *ngIf="auth.userType!=userType.Guest" type="button" class="btn btn-info" routerLink="profile">Profilo</button>
+  <button *ngIf="auth.userType!=userType.Guest" type="button" class="btn btn-info" (click)="logout()">LogOut</button>
 </nav>

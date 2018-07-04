@@ -7,7 +7,7 @@ import {HttpClient} from "@angular/common/http";
 })
 export class AddRequestService {
 
-  richieste:Richiesta[];
+  richieste:Richiesta[]=[];
   constructor(private http: HttpClient) { }
 
   get richjeste(): Richiesta[] {

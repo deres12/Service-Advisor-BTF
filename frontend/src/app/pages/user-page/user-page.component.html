@@ -10,7 +10,35 @@
     </div>
   </div>
 </div>
+<br><br>
 <div class="container">
+<button type="button" class="btn btn-info" routerLink="/new-request">
+  Fai una richiesta
+</button>
+</div>
+<br><br>
+
+<div class="container" *ngIf="!empty">
+  <div *ngFor="let richiesta of richieste; let i = index" class="row">
+    <div  class="card text-center">
+      <div class="card-header">
+        Professione di: <strong>{{richiesta.professione}}</strong>
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"> Data di scadenza: <strong>{{richiesta.data}}</strong></h5>
+        <div class="row text-center">
+          <p class="card-text mx-auto">Descrizione: {{richiesta.descrizione}}
+          <br>
+         Via: {{richiesta.indirizzo}}
+          <br>
+          Prezzo massimo: {{richiesta.prezzoMassimo}} </p>
+        </div>
+        <br>
+      </div>
+
+    </div>
+  </div>
+  <!--
 <br><br>
   <div *ngFor="let fornitore of fornitori; let i = index" class="row">
   <div  class="card text-center">
@@ -33,5 +61,5 @@
 
   </div>
     <br>
-  </div>
+  </div>-->
 </div>

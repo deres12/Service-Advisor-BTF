@@ -7,23 +7,25 @@
     <div class="form-content">
         <label for="job">Che tipo di professionista?</label>
         <select id="job" name="job" class="form-control" ngModel>
-            <option *ngFor="let job of jobs.getAll()" [value]="job.id">
+            <option *ngFor="let job of jobs.getAll()" [value]="job.nome">
                 {{job.nome}}
             </option>
         </select>
 
         <label for="address">Dove ti serve?</label>
         <input id="address" type="text" name="address" placeholder="indirizzo" class="form-control" ngModel>
-
+      <label for="prezzoMassimo">Prezzo massimo da spendere</label>
+      <input id="prezzoMassimo" type="number" name="prezzoMassimo" placeholder="prezzoMassimo" class="form-control" ngModel>
         <label for="data">Quando ti serve?</label>
-        <select id="data" name="data" class="form-control" ngModel>
+      <input type="date" id="data" name="data" class="form-control" ngModel>
+        <!--select id="data" name="data" class="form-control" ngModel>
             <option>entro pochi giorni</option>
             <option>entro un mese</option>
             <option>non lo so</option>
-        </select>
-
-        <label for="descr">Descrivi il problema</label>
-        <textarea id="descr" name="descrizione"
+        </select-->
+        <label for="descrizione">Descrivi il problema</label>
+     <!-- <input id="descrizione" type="text" name="descrizione" placeholder="descrizione" class="form-control" ngModel-->
+        <textarea id="descrizione" name="descrizione"
             placeholder="scrivi di cosa hai bisogno..."
             rows="5"
             cols="30"

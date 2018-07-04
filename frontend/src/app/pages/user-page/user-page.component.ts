@@ -5,6 +5,8 @@ import { Router } from '@angular/router';
 import {isStorageAvailable, LOCAL_STORAGE, WebStorageService} from "angular-webstorage-service";
 import {Fornitore} from "../../interfaces/fornitore";
 import {TakeFornintoriService} from "../../services/take-fornintori.service";
+import {Richiesta} from "../../interfaces/richiesta";
+import {AddRequestService} from "../../services/add-request.service";
 
 @Component({
   selector: 'app-user-page',
@@ -14,15 +16,31 @@ import {TakeFornintoriService} from "../../services/take-fornintori.service";
 export class UserPageComponent implements OnInit {
   //userType = UserType;
   user: User;
+  richieste: Richiesta[]=[];
   fornitori: Fornitore[];
+  empty:boolean=true;
 
   constructor(@Inject(LOCAL_STORAGE) private storage: WebStorageService,
     public auth: AuthService,
-    public router: Router, private serv: TakeFornintoriService) { }
+    public router: Router, private serv: TakeFornintoriService,
+              public prova: AddRequestService) { }
 
   ngOnInit() {
     this.user=this.auth.userInfo;
-    this.serv.getFornitori().subscribe((list: Fornitore[]) => {
+
+    //this.richieste=this.prova.richieste;
+    console.log(this.richieste.length);
+    this.prova.richieste.forEach(item=>{
+      if(item.email==this.auth.userInfo.email){
+        this.richieste.push(item);
+      }
+    })
+    if(this.richieste.length==0){
+      this.empty=true;
+    }else{
+      this.empty=false;
+    }
+   /* this.serv.getFornitori().subscribe((list: Fornitore[]) => {
       this.fornitori=list;
       this.storage.set("fornitori",[]);
 
@@ -34,8 +52,8 @@ export class UserPageComponent implements OnInit {
       //this.storage.
 
     },(error)=>{
-      console.log(error.toString());});
-    if(this.auth.userType == UserType.Guest) {
+      console.log(error.toString());});*/
+    if(this.auth.userInfo.type == UserType.Guest) {
       console.log("unauthorized");
       this.router.navigateByUrl("login");
     }
