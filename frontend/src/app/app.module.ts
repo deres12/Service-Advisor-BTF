@@ -26,6 +26,7 @@ import { TestPanelComponent } from './mock-data/test-panel/test-panel.component'
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { FooterComponent } from './footer/footer.component';
 
+
 /*
   TODO: spostare <routes> in un modulo separato ed importarlo in app.module.ts
 */
@@ -65,6 +66,7 @@ const routes: Routes = [
     FooterComponent
   ],
   imports: [
+    NgbModule.forRoot(),
     BrowserModule,
     HttpClientModule,
     FormsModule,
