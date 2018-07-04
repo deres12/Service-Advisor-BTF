@@ -102,16 +102,6 @@ ul.vendors-list > li > span {
     color: #222;
 }
 
-ul.vendors-list > li > .profile-image {
-    width: 150px;
-    height: 150px;
-    border-radius: 3px;
-    margin-right: 8px;
-}
-
-ul.vendors-list > li > .profile-content {
-    color: #222;
-}
 
 #mappa{
   width: 100%;
