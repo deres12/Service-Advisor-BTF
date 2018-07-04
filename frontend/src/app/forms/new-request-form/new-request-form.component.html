@@ -5,6 +5,11 @@
     </header>
 
     <div class="form-content">
+
+
+
+
+
         <label for="job">Che tipo di professionista?</label>
         <select id="job" name="job" class="form-control" ngModel>
             <option *ngFor="let job of jobs.getAll()" [value]="job.nome">
@@ -17,7 +22,15 @@
       <label for="prezzoMassimo">Prezzo massimo da spendere</label>
       <input id="prezzoMassimo" type="number" name="prezzoMassimo" placeholder="prezzoMassimo" class="form-control" ngModel>
         <label for="data">Quando ti serve?</label>
-      <input type="date" id="data" name="data" class="form-control" ngModel>
+      <div class="input-group">
+        <input id="data" class="form-control" placeholder="yyyy-mm-dd"
+               name="data" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker" ngModel>
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button">
+            <img src="./calendar.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;"/>
+          </button>
+        </div>
+      </div>
         <!--select id="data" name="data" class="form-control" ngModel>
             <option>entro pochi giorni</option>
             <option>entro un mese</option>
@@ -32,6 +45,10 @@
             class="form-control"
             ngModel></textarea>
     </div>
+
+  <div class="form-group">
+
+  </div>
 
     <footer>
         <input [disabled]="!valid(f)" type="submit" value="Crea Richiesta" class="btn btn-success">

@@ -23,6 +23,7 @@ import { ProfilePageComponent } from './pages/profile-page/profile-page.componen
 import { ListaFornitoriComponent } from './lista-fornitori/lista-fornitori.component';
 import { TestDataService } from './mock-data/test-data.service';
 import { TestPanelComponent } from './mock-data/test-panel/test-panel.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 /*
   TODO: spostare <routes> in un modulo separato ed importarlo in app.module.ts
@@ -62,6 +63,7 @@ const routes: Routes = [
     TestPanelComponent
   ],
   imports: [
+    NgbModule.forRoot(),
     BrowserModule,
     HttpClientModule,
     FormsModule,

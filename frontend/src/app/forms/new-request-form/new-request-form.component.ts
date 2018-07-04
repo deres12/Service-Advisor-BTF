@@ -16,8 +16,9 @@ import {log} from "util";
   styleUrls: ['./new-request-form.component.css']
 })
 export class NewRequestFormComponent implements OnInit {
+  model;
 
-  constructor(public router: Router, public prova: AddRequestService, @Inject(LOCAL_STORAGE) private storage: WebStorageService, private jobs: JobsDataService, public auth: AuthService) {
+  constructor(public router: Router, public prova: AddRequestService, @Inject(LOCAL_STORAGE) private storage: WebStorageService, public jobs: JobsDataService, public auth: AuthService) {
   }
 
   private sub: any;
@@ -50,20 +51,20 @@ export class NewRequestFormComponent implements OnInit {
   }
 
   submit(form: NgForm) {
-    console.log(form.value);
+    console.log(form.value["data"]);
     this.richiesta.descrizione = form.value["descrizione"];
     //this.richiesta.descrizione="descrizione";
     this.richiesta.email=this.auth.userInfo.email;
     this.richiesta.professione = form.value["job"];
     this.richiesta.indirizzo = form.value["address"];
-    this.richiesta.data = form.value["data"];
+    this.richiesta.data =form.value["data"].day.toString()+"/"+form.value["data"].month.toString() +"/"+form.value["data"].year.toString();
     this.richiesta.prezzoMassimo = form.value["prezzoMassimo"];
     this.prova.addRichiesta(this.richiesta);
     // console.log(this.request.richjeste());
     // {job, address data: descrizione: ""}
     this.router.navigate(["profile"]);
 
-    //if(!this.valid(form)) return;
+    //if(!this.valid(form)) return; {year: 2018, month: 7, day: 7}
 
 
     // call REST API
