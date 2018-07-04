@@ -4,11 +4,11 @@ export interface SignupData {
     type: UserType,
     email: string,
     password: string,
-    professione: number,
+    professione: {id:number},
     nome: string,
     indirizzo: string
 }
-  
+
 export interface LoginData {
     email: string,
     pass: string

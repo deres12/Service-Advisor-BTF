@@ -18,13 +18,13 @@
          Cliente
          </button>
         <button type="button"
-                 (click)="type=userType.Professional"
-                 [disabled]="type==userType.Professional"
+                 (click)="type=userType.Vendor"
+                 [disabled]="type==userType.Vendor"
                  class="button">
           Professionista
         </button>
       </div>
-      
+
       <div [class.hidden]="step!=1" class="centered">
          <input type="hidden" name="professione" [ngModel]="professione?.id">
          <div *ngFor="let job of jobs">
@@ -36,10 +36,10 @@
 
       <div [class.hidden]="step!=2">
          <label for="name">Ragione Sociale</label>
-         <input type="text" name="name" ngModel>
+         <input id="name" type="text" name="name" ngModel>
 
          <label for="address">Indirizzo</label>
-         <input type="text" name="address" ngModel>
+         <input id="address" type="text" name="address" ngModel>
 
          <div class="map-container">
             <img src="/assets/res/mock-map.png" alt="mappa">
@@ -48,13 +48,13 @@
 
       <div [class.hidden]="step!=3">
         <label for="email">Email</label>
-        <input type="email" placeholder="Indirizzo Email" name="email" ngModel>
+        <input id="email" type="email" placeholder="Indirizzo Email" name="email" ngModel>
 
         <label for="password">Password</label>
-        <input type="password" placeholder="Crea una password" name="password" ngModel>
+        <input id="password" type="password" placeholder="Crea una password" name="password" ngModel>
 
         <label for="password2">Ripeti Password</label>
-        <input type="password" placeholder="Ripeti la password" name="password2" ngModel>   
+        <input id="password2" type="password" placeholder="Ripeti la password" name="password2" ngModel>
       </div>
    </div>
 
