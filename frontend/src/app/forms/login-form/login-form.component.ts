@@ -17,7 +17,7 @@ export class LoginFormComponent implements OnInit {
   ngOnInit() {}
 
   validate(): boolean {
-    if(this.data.email.length == 0 || this.data.pass.length == 0) {
+    if(this.data.email.length == 0 || !this.data.email.search('@')||this.data.pass.length == 0) {
       return false;
     }
     return true;
@@ -31,7 +31,6 @@ export class LoginFormComponent implements OnInit {
     this.auth.login(this.data).subscribe(
       res => {
 
-        console.log(res);
         this.auth.userInfo.email = res.email;
         this.auth.userInfo.nome = res.nome;
         this.auth.userInfo.type = res.tipo;
