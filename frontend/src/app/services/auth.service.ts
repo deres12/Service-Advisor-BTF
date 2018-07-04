@@ -35,6 +35,9 @@ export class AuthService {
 
   login(data: LoginData): Observable<any> {
     return this.http.post<any>(this.loginUrl, data);
+
+    // successo:
+    // memorizzare il profilo
   }
 
   signup(data: SignupData): Observable<any> {
@@ -48,4 +51,14 @@ export class AuthService {
 
     return request;
   }
+}
+
+function f1() {
+  let a = 9;
+
+  if(1<2) {
+    let a = 5;
+  }
+
+  
 }
