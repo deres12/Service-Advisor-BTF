@@ -25,7 +25,10 @@ import { TestDataService } from './mock-data/test-data.service';
 import { TestPanelComponent } from './mock-data/test-panel/test-panel.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { FooterComponent } from './footer/footer.component';
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/stefano
 
 /*
   TODO: spostare <routes> in un modulo separato ed importarlo in app.module.ts

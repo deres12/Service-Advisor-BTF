@@ -12,7 +12,11 @@ import {Router} from "@angular/router";
 export class LoginFormComponent implements OnInit {
   data: LoginData = {email: "", pass: ""};
   error:boolean=false;
-  constructor(private auth: AuthService,@Inject(LOCAL_STORAGE) private storage: WebStorageService,public router: Router) {}
+  
+  constructor(
+    private auth: AuthService,
+    @Inject(LOCAL_STORAGE) private storage: WebStorageService,
+    public router: Router) {}
 
   ngOnInit() {}
 
@@ -25,9 +29,9 @@ export class LoginFormComponent implements OnInit {
 
   submit() {
     if (this.validate() == false) {
-      alert("compila bene il form");
       return;
     }
+    
     this.auth.login(this.data).subscribe(
       res => {
 

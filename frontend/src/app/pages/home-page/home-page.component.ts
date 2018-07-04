@@ -1,4 +1,7 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
+import {AuthService} from "../../services/auth.service";
+import {UserType} from "../../interfaces/user";
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -10,6 +13,9 @@ export class HomePageComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+
+  }
+
 
 }
