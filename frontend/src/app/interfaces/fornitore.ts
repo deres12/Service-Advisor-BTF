@@ -6,4 +6,6 @@ export interface Fornitore {
     valutazione:string;
     descrizione:string;
     email:string;
+    longit:number;
+  latit:number;
 }

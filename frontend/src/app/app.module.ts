@@ -25,11 +25,14 @@ import { TestDataService } from './mock-data/test-data.service';
 import { TestPanelComponent } from './mock-data/test-panel/test-panel.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { FooterComponent } from './footer/footer.component';
+import { MappaComponent } from './components/mappa/mappa.component';
+import { TestMappaComponent } from './mock-data/test-mappa/test-mappa.component';
 
 /*
   TODO: spostare <routes> in un modulo separato ed importarlo in app.module.ts
 */
 const routes: Routes = [
+  {path: 'testMapp', component: TestMappaComponent},
   {path: 'DEBUG', component: TestPanelComponent},
   {path: 'profile', component: UserPageComponent},
   {path: 'user', component: UserPageComponent},
@@ -62,7 +65,9 @@ const routes: Routes = [
     ProfilePageComponent,
     ListaFornitoriComponent,
     TestPanelComponent,
-    FooterComponent
+    FooterComponent,
+    MappaComponent,
+    TestMappaComponent
   ],
   imports: [
     NgbModule.forRoot(),

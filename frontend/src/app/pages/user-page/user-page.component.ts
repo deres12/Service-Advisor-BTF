@@ -2,7 +2,6 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {AuthService} from '../../services/auth.service';
 import {User, UserType} from '../../interfaces/user';
 import {Router} from '@angular/router';
-import {isStorageAvailable, LOCAL_STORAGE, WebStorageService} from "angular-webstorage-service";
 import {Fornitore} from "../../interfaces/fornitore";
 import {TakeFornintoriService} from "../../services/take-fornintori.service";
 import {Richiesta} from "../../interfaces/richiesta";
@@ -27,14 +26,6 @@ export class UserPageComponent implements OnInit {
 
   ngOnInit() {
     this.user = this.auth.userInfo;
-
-    //this.richieste=this.prova.richieste;
-    console.log(this.richieste.length);
-    this.prova.richieste.forEach(item => {
-      if (item.email == this.auth.userInfo.email) {
-        this.richieste.push(item);
-      }
-    })
     if (this.richieste.length == 0) {
       this.empty = true;
     } else {

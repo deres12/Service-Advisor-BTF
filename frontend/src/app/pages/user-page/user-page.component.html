@@ -21,6 +21,9 @@
   <h3>Non hai ancora inserito nessuna richiesta.</h3>
 </div>
 </div>
+
+<app-mappa></app-mappa>
+
 <div *ngFor="let richiesta of richieste; let i = index" class="row">
 <div class="container" *ngIf="!empty">
 
@@ -43,30 +46,5 @@
 
     </div>
   </div>
-
-  <!--
-<br><br>
-  <div *ngFor="let fornitore of fornitori; let i = index" class="row">
-  <div  class="card text-center">
-    <div class="card-header">
-      {{fornitore.nome}}
-    </div>
-    <div class="card-body">
-      <h5 class="card-title"> <strong>{{fornitore.nomeProfessione}}:</strong></h5>
-      <div class="row">
-        <p class="card-text"> {{fornitore.descrizione}} </p>
-        <br>
-        <br>
-        <p class="card-text"> {{fornitore.email}} </p>
-      </div>
-      <br>
-      <button type="button" class="big-btn btn-info" routerLink="/new-request/{{i}}">
-        Fai una richiesta
-      </button>
-    </div>
-
-  </div>
-    <br>
-  </div>-->
 
 </div>

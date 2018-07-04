@@ -34,10 +34,13 @@ export class LoginFormComponent implements OnInit {
     this.auth.login(this.data).subscribe(
       res => {
 
+        localStorage.setItem("email",this.auth.userInfo.email);
+        localStorage.setItem("nome",this.auth.userInfo.nome);
+        localStorage.setItem("tipo",this.auth.userInfo.type);
+
         this.auth.userInfo.email = res.email;
         this.auth.userInfo.nome = res.nome;
         this.auth.userInfo.type = res.tipo;
-        //this.storage.set("user", this.auth.userInfo);
         this.router.navigate(["profile"]);
       },
       err => {
