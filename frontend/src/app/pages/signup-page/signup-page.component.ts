@@ -9,6 +9,7 @@ import {JobsDataService} from '../../services/jobs.service';
 import {environment} from "../../../environments/environment";
 import {isStorageAvailable, LOCAL_STORAGE, WebStorageService} from "angular-webstorage-service";
 
+
 @Component({
   selector: 'app-signup-page',
   templateUrl: './signup-page.component.html',
@@ -124,5 +125,4 @@ export class SignupPageComponent implements OnInit {
       }
     );
   }
-
 }

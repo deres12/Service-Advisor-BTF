@@ -13,5 +13,6 @@ export class AppComponent {
   utente: {email:"",indirizzo:"",nome:"",password:"",professione:0,tipo:"C"};
 
 
+
   constructor(public auth: AuthService) {}
 }
