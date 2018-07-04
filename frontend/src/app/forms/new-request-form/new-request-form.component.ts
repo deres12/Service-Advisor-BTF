@@ -1,4 +1,4 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {Component, Inject, NgModule, OnInit} from '@angular/core';
 import {JobsDataService} from '../../services/jobs.service';
 import {NgForm} from '@angular/forms';
 import {LOCAL_STORAGE, WebStorageService} from "angular-webstorage-service";
@@ -9,6 +9,20 @@ import {Richiesta} from "../../interfaces/richiesta";
 import {AuthService} from "../../services/auth.service";
 import {UserType} from "../../interfaces/user";
 import {log} from "util";
+/*
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+
+@NgModule({
+  declarations: [],
+  imports: [NgbModule]
+})
+export class OtherModule {
+}*/
+
+export class NgbdDatepickerPopup {
+  model;
+}
+
 
 @Component({
   selector: 'app-new-request-form',
@@ -17,7 +31,7 @@ import {log} from "util";
 })
 export class NewRequestFormComponent implements OnInit {
 
-  constructor(public router: Router, public prova: AddRequestService, @Inject(LOCAL_STORAGE) private storage: WebStorageService, private jobs: JobsDataService, public auth: AuthService) {
+  constructor(public router: Router, public prova: AddRequestService, @Inject(LOCAL_STORAGE) private storage: WebStorageService, public jobs: JobsDataService, public auth: AuthService) {
   }
 
   private sub: any;
@@ -40,7 +54,21 @@ export class NewRequestFormComponent implements OnInit {
     /*this.id = 0;
     console.log(this.storage.get("fornitori"));
     this.emailfornit = this.storage.get("fornitori")[this.id];
-    console.log(this.emailfornit);*/
+    console.log(this.emailfornit);
+    var today = new Date('dd-mm-yyyy');
+    console.log(today);
+    var dd = today.getDate();
+    var mm = today.getMonth()+1; //January is 0!
+    var yyyy = today.getFullYear();
+    if(dd<10){
+      dd='0'+dd
+    }
+    if(mm<10){
+      mm='0'+mm
+    }
+
+    today = yyyy+'-'+mm+'-'+dd;
+    */
     if (this.auth.userType == UserType.Guest)
       this.router.navigate([""]);
   }

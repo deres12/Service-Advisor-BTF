@@ -14,12 +14,13 @@
         <label for="password">Password</label>
         <input id="password" class="form-control" type="password" name="password" placeholder="Password" [(ngModel)]="data.pass">
 
-        <input type="submit" value="Accedi" class="btn btn-success mt-3" [disabled]="!validate()">
 
-        <hr>
+
 
         <div class="text-center">
-            <button type="button" class="sign-with-google">
+          <input type="submit" value="Accedi" class="btn btn-info mt-3" [disabled]="!validate()">
+          <hr>
+          <button type="button" class="sign-with-google">
                 <span style="font-family:Verdana;font-weight:bold">G&nbsp;</span>
                 Accedi con Google
             </button>

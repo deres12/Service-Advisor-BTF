@@ -42,8 +42,8 @@
                 <div class="form-group">
                     <input type="text"
                             class="form-control"
-                            name="latitude" 
-                            [(ngModel)]="latitude" 
+                            name="latitude"
+                            [(ngModel)]="latitude"
                             placeholder="Enter latitude"
                             required>
                 </div>
@@ -69,7 +69,7 @@
         </button>
     </form>
 
-    <form class="form" #form="ngForm" (ngSubmit)="searchOnMap($event)" >
+    <form class="form" #form="ngForm" (ngSubmit)="searchOnMap()" >
       <div class="row">
         <div class="form-group">
             <input type="text" class="form-control" name="via" [(ngModel)]="place.via" placeholder="Enter Address"

@@ -28,11 +28,11 @@ export class SignupPageComponent implements OnInit {
 
   jobs: Job[];
 
-  constructor(@Inject(LOCAL_STORAGE) private storage: WebStorageService,
+  constructor(@Inject(LOCAL_STORAGE)
+              private storage: WebStorageService,
               public auth: AuthService,
               public jobsData: JobsDataService,
-              public router: Router) {
-  }
+              public router: Router){}
 
   ngOnInit() {
     this._step = 0;
