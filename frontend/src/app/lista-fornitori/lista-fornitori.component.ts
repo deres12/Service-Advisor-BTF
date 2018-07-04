@@ -52,7 +52,7 @@ export class ListaFornitoriComponent implements OnInit {
     this.markerCenter.setMap(this.map);
   }
 
-  constructor(private serv: TakeFornintoriService) {
+  constructor(public serv: TakeFornintoriService) {
   }
 
   disableMarkersRadius(){

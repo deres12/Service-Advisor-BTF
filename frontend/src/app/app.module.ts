@@ -24,6 +24,7 @@ import { ListaFornitoriComponent } from './lista-fornitori/lista-fornitori.compo
 import { TestDataService } from './mock-data/test-data.service';
 import { TestPanelComponent } from './mock-data/test-panel/test-panel.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { FooterComponent } from './footer/footer.component';
 
 /*
   TODO: spostare <routes> in un modulo separato ed importarlo in app.module.ts
@@ -60,7 +61,8 @@ const routes: Routes = [
     ChisiamoComponent,
     ProfilePageComponent,
     ListaFornitoriComponent,
-    TestPanelComponent
+    TestPanelComponent,
+    FooterComponent
   ],
   imports: [
     NgbModule.forRoot(),
@@ -68,7 +70,8 @@ const routes: Routes = [
     HttpClientModule,
     FormsModule,
     StorageServiceModule,
-    RouterModule.forRoot(routes, {useHash: true})
+    NgbModule.forRoot(),
+    RouterModule.forRoot(routes, {useHash: true}),
   ],
   providers: [AuthService, TestDataService],
   bootstrap: [AppComponent]

@@ -6,10 +6,6 @@
 
     <div class="form-content">
 
-
-
-
-
         <label for="job">Che tipo di professionista?</label>
         <select id="job" name="job" class="form-control" ngModel>
             <option *ngFor="let job of jobs.getAll()" [value]="job.nome">
@@ -36,6 +32,7 @@
             <option>entro un mese</option>
             <option>non lo so</option>
         </select-->
+
         <label for="descrizione">Descrivi il problema</label>
      <!-- <input id="descrizione" type="text" name="descrizione" placeholder="descrizione" class="form-control" ngModel-->
         <textarea id="descrizione" name="descrizione"
@@ -46,11 +43,10 @@
             ngModel></textarea>
     </div>
 
-  <div class="form-group">
 
-  </div>
-
-    <footer>
-        <input [disabled]="!valid(f)" type="submit" value="Crea Richiesta" class="btn btn-success">
+    <footer style="display:flex;justify-content: space-between">
+      <input type="button" value="Annulla" class="btn btn-secondary" routerLink="/profile">
+      <input [disabled]="!valid(f)" type="submit" value="Crea Richiesta" class="btn btn-info">
     </footer>
 </form>
+
