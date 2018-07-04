@@ -28,9 +28,7 @@ export class SignupPageComponent implements OnInit {
 
   jobs: Job[];
 
-  constructor(@Inject(LOCAL_STORAGE)
-              private storage: WebStorageService,
-              public auth: AuthService,
+  constructor(public auth: AuthService,
               public jobsData: JobsDataService,
               public router: Router){}
 
@@ -89,11 +87,12 @@ export class SignupPageComponent implements OnInit {
     var submitData;
     // collect form data
     if (this.type == UserType.Client) {
+      console.log(form.value["password"]);
       submitData = {
         type: this.type,
         nome: form.value["nome"],
         email: form.value["email"],
-        password: form.value["password"],
+        pass: form.value["password"],
         professione: {id: 0},
         indirizzo: form.value["address"],
       };
@@ -102,7 +101,7 @@ export class SignupPageComponent implements OnInit {
         type: this.type,
         nome: form.value["nome"],
         email: form.value["email"],
-        password: form.value["password"],
+        pass: form.value["password"],
         professione: {id: this.professione.id},
         indirizzo: form.value["address"],
       };
@@ -116,10 +115,12 @@ export class SignupPageComponent implements OnInit {
         this.auth.userInfo.email = res.email;
         this.auth.userInfo.nome = res.nome;
         this.auth.userInfo.type = res.tipo;
-        this.storage.set("user", this.auth.userInfo);
+
+        //this.storage.set("user", this.auth.userInfo);
         this.router.navigate(["profile"]);
       },
       err => {
+        console.log(err)
         this.error = true;
       }
     );

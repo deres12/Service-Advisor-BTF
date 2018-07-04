@@ -42,13 +42,6 @@ export class AuthService {
 
   signup(data: SignupData): Observable<any> {
     let request = this.http.post<any>("/services/user/registrati", data);
-
-    /*request.subscribe(
-      response => {
-        this.userInfo = response;
-      }
-    );*/
-
     return request;
   }
 }
@@ -60,5 +53,5 @@ function f1() {
     let a = 5;
   }
 
-  
+
 }

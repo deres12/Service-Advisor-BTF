@@ -3,7 +3,7 @@ import { UserType } from "./user";
 export interface SignupData {
     type: UserType,
     email: string,
-    password: string,
+    pass: string,
     professione: {id:number},
     nome: string,
     indirizzo: string

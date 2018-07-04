@@ -10,7 +10,6 @@ import {Router} from "@angular/router";
   styleUrls: ['./home-page.component.css']
 })
 export class HomePageComponent implements OnInit {
-
   constructor() {}
 
   ngOnInit() {

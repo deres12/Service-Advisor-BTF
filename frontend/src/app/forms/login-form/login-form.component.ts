@@ -12,10 +12,9 @@ import {Router} from "@angular/router";
 export class LoginFormComponent implements OnInit {
   data: LoginData = {email: "", pass: ""};
   error:boolean=false;
-  
+
   constructor(
     private auth: AuthService,
-    @Inject(LOCAL_STORAGE) private storage: WebStorageService,
     public router: Router) {}
 
   ngOnInit() {}
@@ -31,14 +30,14 @@ export class LoginFormComponent implements OnInit {
     if (this.validate() == false) {
       return;
     }
-    
+    console.error(this.data);
     this.auth.login(this.data).subscribe(
       res => {
 
         this.auth.userInfo.email = res.email;
         this.auth.userInfo.nome = res.nome;
         this.auth.userInfo.type = res.tipo;
-        this.storage.set("user", this.auth.userInfo);
+        //this.storage.set("user", this.auth.userInfo);
         this.router.navigate(["profile"]);
       },
       err => {

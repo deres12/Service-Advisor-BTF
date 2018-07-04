@@ -11,8 +11,7 @@ import {LOCAL_STORAGE, WebStorageService} from "angular-webstorage-service";
 export class ProfilePageComponent implements OnInit {
 
   fornitori: Fornitore[];
-  constructor(@Inject(LOCAL_STORAGE) private storage: WebStorageService,
-              private serv: TakeFornintoriService) { }
+  constructor(private serv: TakeFornintoriService) { }
 
   ngOnInit() {
     this.serv.getFornitori().subscribe((list: Fornitore[]) => {
