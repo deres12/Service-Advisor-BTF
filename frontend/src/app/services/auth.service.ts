@@ -33,25 +33,29 @@ export class AuthService {
     this.userInfo.type = type;
   }
 
-  login(data: LoginData): Observable<any> {
-    return this.http.post<any>(this.loginUrl, data);
-
-    // successo:
-    // memorizzare il profilo
-  }
-
   signup(data: SignupData): Observable<any> {
+<<<<<<< HEAD
     let request = this.http.post<any>("/services/user/registrati", data);
+=======
+    let request = this.http.post<any>(this.signupUrl, data);
+
+>>>>>>> Logout service refactor
     return request;
   }
-}
 
-function f1() {
-  let a = 9;
-
-  if(1<2) {
-    let a = 5;
+  login(data: LoginData): Observable<any> {
+    return this.http.post<any>(this.loginUrl, data);
   }
 
+<<<<<<< HEAD
 
 }
+=======
+  logout() {
+    this.userInfo.type = UserType.Guest;
+    this.userInfo.email = "";
+    this.userInfo.nome = "";
+    this.userInfo.password = "";
+  }
+}
+>>>>>>> Logout service refactor
