@@ -25,11 +25,9 @@ public class Professione {
 	private List<Fornitore> fornitori;
 
 
-	//Costruttore vuoto come detto da Giancarlo per le entità
 	public Professione() {
 		this.fornitori =new ArrayList<Fornitore>();
 		this.servizi =new ArrayList<Servizio>();
-
 	}
 
 	public Professione(String nome, List<Servizio> servizi, List<Fornitore> fornitori) {

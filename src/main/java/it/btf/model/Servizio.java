@@ -34,6 +34,4 @@ public class Servizio  {
 		this.descrizione = descrizione;
 	}
 
-
-
 }
