@@ -10,7 +10,9 @@ import org.springframework.http.ResponseEntity;
 
 public interface GestioneUtenteBE {
 	
+	public boolean login(String email, String password);
+	public int addUser(PersonaDTO utente);
+	
 	public List<PersonaDTO> load(String username);
-	public ResponseEntity addUser(PersonaDTO utente) throws DatabaseException;
 	public PersonaDTO loadById(PersonaDTO dto);
 }

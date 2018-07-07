@@ -17,6 +17,8 @@ import it.btf.repository.ProfessioneRepository;
 import it.btf.repository.RichiestaClienteRepository;
 import it.btf.repository.ServizioRepository;
 
+import it.btf.utility.StringHashing;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -73,9 +75,9 @@ public class StartClassExample {
 
 
 
-			Cliente a = new Cliente("Alessandro", "Beninati", "alex", pos, "ale@com.com", "1234");
-			Cliente b = new Cliente("Stefano", "Carrino", "ste", pos2, "sfsdfsdf@aaa", "567");
-			Cliente c = new Cliente("Antonio", "prova", "anto", pos3, "sfsdfsdf@sdsd", "prova");
+			Cliente a = new Cliente("Alessandro", "Beninati", "alex", pos, "ale@com.com", StringHashing.sha1("1234"));
+			Cliente b = new Cliente("Stefano", "Carrino", "ste", pos2, "sfsdfsdf@aaa", StringHashing.sha1("567"));
+			Cliente c = new Cliente("Antonio", "prova", "anto", pos3, "sfsdfsdf@sdsd", StringHashing.sha1("prova"));
 			personaRep.save(b);
 			personaRep.save(c);
 			Professione prof = new Professione();
@@ -98,7 +100,7 @@ public class StartClassExample {
 			fornit.setVia(pos);
 
 
-			fornit.setPass("prova");
+			fornit.setPass(StringHashing.sha1("prova"));
 
 			Servizio serv1 = new Servizio();
 			serv1.setDescrizione("fdafhauidfa");
@@ -144,7 +146,7 @@ public class StartClassExample {
 			prova2.setUsername("pippo");
 			prova2.setValutazione(3);
 			prova2.setVia(pos3);
-			prova2.setPass("asdasda");
+			prova2.setPass(StringHashing.sha1("asdasda"));
 			prova2.addServizio(serv1);
 			fornitoreRep.save(prova2);
 			
@@ -195,7 +197,7 @@ public class StartClassExample {
             example3.setUsername("pippo");
             example3.setValutazione(0);
             example3.setVia(pos3);
-            example3.setPass("asdasda");
+            example3.setPass(StringHashing.sha1("asdasda"));
             Servizio asss=new Servizio();
             asss.setId(example.getId());
             example3.addServizio(asss);
