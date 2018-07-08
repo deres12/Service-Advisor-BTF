@@ -1,7 +1,6 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import { AuthService } from '../../services/auth.service';
-import { LoginData } from '../../interfaces/auth';
-import {LOCAL_STORAGE, WebStorageService} from "angular-webstorage-service";
+import { LoginData } from '../../models/auth';
 import {Router} from "@angular/router";
 
 @Component({
@@ -20,7 +19,7 @@ export class LoginFormComponent implements OnInit {
   ngOnInit() {}
 
   validate(): boolean {
-    if(this.data.email.length == 0 || !this.data.email.search('@')||this.data.pass.length == 0) {
+    if(this.data.email.length == 0 || !this.data.email.search('@') || this.data.pass.length == 0) {
       return false;
     }
     return true;

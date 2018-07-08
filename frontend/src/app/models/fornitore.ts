@@ -7,5 +7,5 @@ export interface Fornitore {
     descrizione:string;
     email:string;
     longit:number;
-  latit:number;
+    latit:number;
 }

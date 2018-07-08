@@ -1,13 +1,10 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {NgForm} from '@angular/forms';
 import {AuthService} from '../../services/auth.service';
-import {SignupData} from '../../interfaces/auth';
 import {Router} from '@angular/router';
-import {UserType} from '../../interfaces/user';
-import {Job} from '../../interfaces/job';
+import {UserType} from '../../models/user';
+import {Job} from '../../models/job';
 import {JobsDataService} from '../../services/jobs.service';
-import {environment} from "../../../environments/environment";
-import {isStorageAvailable, LOCAL_STORAGE, WebStorageService} from "angular-webstorage-service";
 
 @Component({
   selector: 'app-signup-page',

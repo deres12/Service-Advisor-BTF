@@ -1,9 +1,3 @@
-
-.backgroundtheme{
-  background: steelblue;
-}
-
-
 .etichetta{
   border-radius: 50px;
   background: rgba(0,0,0,0.33);
@@ -13,14 +7,14 @@
 }
 
 .example1 {
-  background-image: url(https://www.ilmioinstallatore.it/wp-content/uploads/2017/10/diventare-elettricista.jpg);
+  background-image: url(/assets/res/elettricista.jpg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   height: 450px;
 }
 .example2 {
-  background-image: url(http://www.informagiovanivaldera.it/files/a_78_449f5efa088d8537d2b44fc643dee7d6.jpg);
+  background-image: url(/assets/res/gommista.jpg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -28,7 +22,7 @@
 }
 
 .example3 {
-  background-image: url(https://www.scavietrasportimeo.it/spurghi/2017/04/IDRAULICO-CHIOGGIA-SOTTOMARINA_2.jpg);
+  background-image: url(/assets/res/idraulico.jpg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;

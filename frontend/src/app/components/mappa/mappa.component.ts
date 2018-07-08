@@ -1,8 +1,8 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {Luogo} from "../../interfaces/luogo";
-import {FornitorePlace} from "../../interfaces/fornitore-place";
+import {Luogo} from "../../models/luogo";
+import {FornitorePlace} from "../../models/fornitore-place";
+import {Fornitore} from "../../models/fornitore";
 import {TakeFornintoriService} from "../../services/take-fornintori.service";
-import {Fornitore} from "../../interfaces/fornitore";
 
 @Component({
   selector: 'app-mappa',

@@ -1,10 +1,10 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {AuthService} from '../../services/auth.service';
-import {User, UserType} from '../../interfaces/user';
+import {User, UserType} from '../../models/user';
 import {Router} from '@angular/router';
-import {Fornitore} from "../../interfaces/fornitore";
+import {Fornitore} from "../../models/fornitore";
 import {TakeFornintoriService} from "../../services/take-fornintori.service";
-import {Richiesta} from "../../interfaces/richiesta";
+import {Richiesta} from "../../models/richiesta";
 import {AddRequestService} from "../../services/add-request.service";
 
 @Component({

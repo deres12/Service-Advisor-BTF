@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Job, JobService } from '../interfaces/job';
+import { Job, JobService } from '../models/job';
 
 
 @Injectable({
