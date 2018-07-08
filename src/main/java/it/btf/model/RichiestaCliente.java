@@ -8,6 +8,10 @@ import javax.persistence.*;
 
 @Entity
 public class RichiestaCliente {
+	
+	enum STATO {
+		APERTA, SOSPESA, CHIUSA
+	}
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -26,17 +30,24 @@ public class RichiestaCliente {
 	private Fornitore fornitore;
 
 	private String descrizione;
+
 	@Embedded
 	private Luogo via;
 	private long prezzoMassimo;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataInizio;
+
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataFine;
 
 	private STATO stato;
 	
+
+	public RichiestaCliente() {
+		offerte=new ArrayList<Offerta>();
+		stato=STATO.APERTA;
+	}
 
 	public Luogo getVia() {
 		return via;
@@ -52,13 +63,6 @@ public class RichiestaCliente {
 
 	public void setFornitore(Fornitore fornitore) {
 		this.fornitore = fornitore;
-	}
-
-
-	public RichiestaCliente() {
-		offerte=new ArrayList<Offerta>();
-		stato=STATO.APERTA;
-
 	}
 
 	public Long getId() {
@@ -131,10 +135,6 @@ public class RichiestaCliente {
 
 	public void setServizioRichiesto(Servizio servizioRichiesto) {
 		this.servizioRichiesto = servizioRichiesto;
-	}
-
-	enum STATO {
-		APERTA, SOSPESA, CHIUSA
 	}
 
 }

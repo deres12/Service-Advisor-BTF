@@ -7,9 +7,6 @@ import javax.persistence.Entity;
 @DiscriminatorValue("C")
 public class Cliente extends Guest{
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	public Cliente() {

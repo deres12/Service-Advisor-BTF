@@ -5,14 +5,18 @@ import java.io.Serializable;
 
 @Embeddable
 public class Luogo implements Serializable {
+    
     private int numeroCivico;
     private String via;
     private String paese;
     private String nazione;
 
     private Double latit;
-
     private Double longit;
+    
+
+    public Luogo() {
+    }
 
     public Luogo(int numeroCivico, String via, String paese, String nazione, Double latit, Double longit) {
         this.numeroCivico = numeroCivico;
@@ -23,16 +27,13 @@ public class Luogo implements Serializable {
         this.longit = longit;
     }
 
-    public Luogo() {
-    }
 
-    /**/
-
+    
     @Override
     public String toString(){
         String richiesta=String.valueOf(this.numeroCivico)+" "+via+", "+paese+", "+nazione;
         return richiesta;
-        }
+    }
 
     public Double getLatit() {
         return latit;
@@ -82,7 +83,5 @@ public class Luogo implements Serializable {
     public void setNazione(String nazione) {
         this.nazione = nazione;
     }
-
-
 
 }

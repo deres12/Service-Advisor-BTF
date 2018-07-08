@@ -6,6 +6,12 @@ import java.util.Date;
 @Entity
 public class Offerta {
 	
+	enum STATO {
+		ACCETTATA,
+		RIFIUTATA,
+		SOSPESA
+	}
+	
 	@Id
 	@GeneratedValue
 	private Long id;
@@ -14,18 +20,17 @@ public class Offerta {
 	
 	private String descrizione;
 
-
-
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataInizio;
 
 	private STATO stato;
-	
+
 	@ManyToOne
 	private Fornitore fornitore;
-	
+
 	@ManyToOne
 	private RichiestaCliente richiesta;
+	
 	
 	public Offerta() {
 		stato=STATO.SOSPESA;
@@ -85,12 +90,6 @@ public class Offerta {
 
 	public void setDataInizio(Date dataInizio) {
 		this.dataInizio = dataInizio;
-	}
-	
-	enum STATO {
-		ACCETTATA,
-		RIFIUTATA,
-		SOSPESA
 	}
 
 }

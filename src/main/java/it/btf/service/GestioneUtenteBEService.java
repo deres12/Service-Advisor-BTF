@@ -20,10 +20,16 @@ import org.springframework.transaction.annotation.Transactional;
 import it.btf.dto.PersonaDTO;
 import it.btf.interf.GestioneUtenteBE;
 import it.btf.repository.PersonaRepository;
+import it.btf.repository.UserRepository;
+
+import it.btf.utility.StringHashing;
 
 @Service
 @Transactional
 public class GestioneUtenteBEService implements GestioneUtenteBE {
+
+    @Autowired
+    UserRepository usersRepository;
 
     @Autowired
     PersonaRepository utenteRepository;
@@ -33,6 +39,20 @@ public class GestioneUtenteBEService implements GestioneUtenteBE {
 
     @Autowired
     ServizioRepository servRep;
+
+    /* returns true on success, false on error */
+    public boolean login(String email, String password) {
+        Optional<Guest> guest = usersRepository.findById(email);
+        if(!guest.isPresent()) {
+            return false;
+        }
+
+        if(!StringHashing.sha1(password).equals(guest.get().getPass())) {
+            return false;
+        }
+        return true;
+    }
+
 
     @Override
     public List<PersonaDTO> load(String username) {
@@ -54,8 +74,6 @@ public class GestioneUtenteBEService implements GestioneUtenteBE {
 
     @Override
     public PersonaDTO loadById(PersonaDTO dto) {
-        //Object a = utenteRepository.getOne(dto.getEmail());
-        //System.err.println(dto.getEmail());
         if (fornitoreRepository.existsById(dto.getEmail())) {
             Fornitore fornit = fornitoreRepository.getOne(dto.getEmail());
             LuogoDTO l=new LuogoDTO(fornit.getVia().getNumeroCivico(),fornit.getVia().getVia(),fornit.getVia().getPaese(),fornit.getVia().getNazione());
@@ -66,11 +84,27 @@ public class GestioneUtenteBEService implements GestioneUtenteBE {
             LuogoDTO l=new LuogoDTO(utente.getVia().getNumeroCivico(),utente.getVia().getVia(),utente.getVia().getPaese(),utente.getVia().getNazione());
             return new PersonaDTO(utente.getNome(), utente.getCognome(), utente.getUsername(), l, utente.getEmail(), utente.getPass(), 0, "", "", "C", null, null);
         } else{
-            //System.err.println("NULLLLLLLLLLLLLLLLLLLLLLL");
             return null;
         }
-        //return persone;
     }
+
+    /* returns 0 on success, 1 on error */
+    public int addUser(PersonaDTO utente) {
+        String email = utente.getEmail();
+
+        if (usersRepository.existsById(email)) {
+            return 1;
+        }
+            
+        if (utente.getType().equalsIgnoreCase("C")) {
+            this.addCliente(utente);
+        } else if (utente.getType().equalsIgnoreCase("F")) {
+            this.addFornitore(utente);
+        }
+        
+        return 0;
+    }
+
 
     public void addCliente(PersonaDTO utente) {
         Cliente cliente = new Cliente();
@@ -81,7 +115,10 @@ public class GestioneUtenteBEService implements GestioneUtenteBE {
         //Luogo l=new Luogo(utente.getVia().getNumeroCivico(),utente.getVia().getVia(),utente.getVia().getPaese(),utente.getVia().getNazione(),Position.getDoubleFromAddress(utente.getVia().toString(),"lat"),Position.getDoubleFromAddress(utente.getVia().toString(),"lng"));
         cliente.setVia(l);
         cliente.setUsername(utente.getUsername());
-        cliente.setPass(utente.getPass());
+        
+        String hash = StringHashing.sha1(utente.getPass());
+        cliente.setPass(hash);
+
         utenteRepository.save(cliente);
     }
 
@@ -91,7 +128,10 @@ public class GestioneUtenteBEService implements GestioneUtenteBE {
         Luogo l=new Luogo(0, "", "", "", 0.0, 0.0);
         //Luogo l=new Luogo(utente.getVia().getNumeroCivico(),utente.getVia().getVia(),utente.getVia().getPaese(),utente.getVia().getNazione(),Position.getDoubleFromAddress(utente.getVia().toString(),"lat"),Position.getDoubleFromAddress(utente.getVia().toString(),"lng"));
         fornitore.setVia(l);
-        fornitore.setPass(utente.getPass());
+        
+        String hash = StringHashing.sha1(utente.getPass());
+        fornitore.setPass(hash);
+
         fornitore.setUsername(utente.getUsername());
         fornitore.setNome(utente.getNome());
         fornitore.setEmail(utente.getEmail());
@@ -115,28 +155,4 @@ public class GestioneUtenteBEService implements GestioneUtenteBE {
         fornitoreRepository.save(fornitore);
     }
 
-
-
-    @Override
-    public ResponseEntity addUser(PersonaDTO utente) throws DatabaseException {
-        if (utente.getType().equalsIgnoreCase("c")) {
-            if (utenteRepository.existsById(utente.getEmail())) {
-                ResponseEntity ex = new ResponseEntity("email presente, utente gia registrato", HttpStatus.CONFLICT);
-                throw new DatabaseException(ex);
-                //return "error_email";
-            } else {
-                this.addCliente(utente);
-            }
-        } else {
-            if (utente.getType().equalsIgnoreCase("F")) {
-                if (fornitoreRepository.existsById(utente.getEmail())) {
-                    ResponseEntity ex = new ResponseEntity("email presente, utente gia registrato", HttpStatus.CONFLICT);
-                    throw new DatabaseException(ex);
-                } else {
-                    this.addFornitore(utente);
-                }
-            }
-        }
-        return ResponseEntity.ok("Utente aggiunto");
-    }
 }

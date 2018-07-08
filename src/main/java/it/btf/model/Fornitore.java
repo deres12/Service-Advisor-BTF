@@ -12,6 +12,8 @@ import javax.persistence.OneToMany;
 @Entity 	
 @DiscriminatorValue("F")
 public class Fornitore extends Guest {
+
+	private static final long serialVersionUID = 1L;
 	
 	private int valutazione;
 	private String descrizione;
@@ -26,7 +28,13 @@ public class Fornitore extends Guest {
 	@ManyToMany
 	private List<Servizio> servizi;
 
-	private static final long serialVersionUID = 1L;
+
+	public Fornitore() {
+		super();
+		this.servizi=new ArrayList<Servizio>();
+		this.offerte=new ArrayList<Offerta>();
+		this.professione=new Professione();
+	}
 
 	public Fornitore(String nome, String cognome, String username, Luogo via, String email, String numero,String descrizione, List<Offerta> offerte, List<Servizio> servizi, Professione professione,String pass) {
 		super(nome, cognome, username, via, email, pass);
@@ -36,8 +44,8 @@ public class Fornitore extends Guest {
 		this.professione=professione;
 		this.servizi=servizi;
 		this.offerte=offerte;
-		// TODO Auto-generated constructor stub
 	}
+	
 
 	public List<Offerta> getOfferte() {
 		return offerte;
@@ -45,15 +53,6 @@ public class Fornitore extends Guest {
 
 	public void setOfferte(List<Offerta> offerte) {
 		this.offerte = offerte;
-	}
-
-	public Fornitore() {
-		super();
-		this.servizi=new ArrayList<Servizio>();
-		this.offerte=new ArrayList<Offerta>();
-		this.professione=new Professione();
-
-		// TODO Auto-generated constructor stub
 	}
 
 	public Professione getProfessione() {
