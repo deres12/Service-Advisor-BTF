@@ -1,0 +1,30 @@
+<!--form novalidate (ngSubmit)="buy($event)" [formGroup]="stripeTest">
+  <input type="text" formControlName="name" placeholder="Jane Doe">
+  <div id="card-element" class="field"></div>
+  <button type="submit">
+    BUY
+  </button>
+</form-->
+<div class="container">
+  <form>
+    <div class="row">
+      <input type="text" placeholder="Credit Card #" name="cardNumber">
+    </div>
+    <br>
+    <div class="row">
+      <input type="text" placeholder="Expiration Month" name="expMonth">
+    </div>
+    <br>
+    <div class="row">
+      <input type="text" placeholder="Expiration Year" name="expYear">
+    </div>
+    <br>
+    <div class="row">
+      <input type="text" placeholder="CVC" name="cvc">
+    </div>
+    <br>
+    <div class="row">
+      <button class="btn btn-info" (click)="chargeCreditCard()">Submit</button>
+    </div>
+  </form>
+</div>

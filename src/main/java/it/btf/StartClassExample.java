@@ -40,37 +40,36 @@ public class StartClassExample {
 			OffertaRepository offertaRep, ProfessioneRepository professioneRep,
 			RichiestaClienteRepository richiestaCliRep, ServizioRepository servizoRep) {
 		return (args) -> {
-			Luogo pos=new Luogo();
+			Luogo pos = new Luogo();
 			pos.setPaese("Milano");
 			pos.setNazione("IT");
 			pos.setNumeroCivico(10);
 			pos.setVia("Negroli");
-			pos.setLatit(Position.getDoubleFromAddress(pos.toString(),"lat"));
-			pos.setLongit(Position.getDoubleFromAddress(pos.toString(),"lng"));
+			pos.setLatit(Position.getDoubleFromAddress(pos.toString(), "lat"));
+			pos.setLongit(Position.getDoubleFromAddress(pos.toString(), "lng"));
 			/*pos.setLatit(0);
 			pos.setLongit(0);*/
 
-			Luogo pos2=new Luogo();
+			Luogo pos2 = new Luogo();
 			pos2.setPaese("Milano");
 			pos2.setNazione("IT");
 			pos2.setNumeroCivico(50);
 			pos2.setVia("Giancarlo Sismondi");
-			pos2.setLatit(Position.getDoubleFromAddress(pos2.toString(),"lat"));
-			pos2.setLongit(Position.getDoubleFromAddress(pos2.toString(),"lng"));
+			pos2.setLatit(Position.getDoubleFromAddress(pos2.toString(), "lat"));
+			pos2.setLongit(Position.getDoubleFromAddress(pos2.toString(), "lng"));
 			/*pos2.setLatit(0);
 			pos2.setLongit(0);*/
 
 
-			Luogo pos3=new Luogo();
+			Luogo pos3 = new Luogo();
 			pos3.setPaese("Milano");
 			pos3.setNazione("IT");
 			pos3.setNumeroCivico(15);
 			pos3.setVia("Giacomo Zanella");
-			pos3.setLatit(Position.getDoubleFromAddress(pos3.toString(),"lat"));
-			pos3.setLongit(Position.getDoubleFromAddress(pos3.toString(),"lng"));
+			pos3.setLatit(Position.getDoubleFromAddress(pos3.toString(), "lat"));
+			pos3.setLongit(Position.getDoubleFromAddress(pos3.toString(), "lng"));
 			/*pos3.setLatit(0);
 			pos3.setLongit(0);*/
-
 
 
 			Cliente a = new Cliente("Alessandro", "Beninati", "alex", pos, "ale@com.com", "1234");
@@ -89,7 +88,7 @@ public class StartClassExample {
 			fornit.setProfessione(prof);
 			prof.addFornitori(fornit);
 
-			
+
 			fornit.setTimeBirth(new Date());
 			fornit.setUsername("pippo");
 			fornit.setValutazione(4);
@@ -112,8 +111,8 @@ public class StartClassExample {
 			serv2.setDescrizione("fdafhauidfa");
 			servizoRep.save(serv2);
 			personaRep.save(a);
-			
-			RichiestaCliente rich= new RichiestaCliente();
+
+			RichiestaCliente rich = new RichiestaCliente();
 			rich.setCliente(a);
 			rich.setDataFine(new Date());
 			rich.setDataInizio(new Date());
@@ -123,15 +122,15 @@ public class StartClassExample {
 			rich.setFornitore(fornit);
 			rich.setVia(pos3);
 			richiestaCliRep.save(rich);
-			
-			Offerta offer=new Offerta();
+
+			Offerta offer = new Offerta();
 			offer.setDescrizione("esempio di offerta");
 			offer.setFornitore(fornit);
 			offer.setPrezzo(95);
 			offer.setRichiesta(rich);
 			offertaRep.save(offer);
-			
-			
+
+
 			Fornitore prova2 = new Fornitore();
 			prova2.setNome("Aldo");
 			prova2.setCognome("carrino");
@@ -147,8 +146,8 @@ public class StartClassExample {
 			prova2.setPass("asdasda");
 			prova2.addServizio(serv1);
 			fornitoreRep.save(prova2);
-			
-			RichiestaCliente rich2= new RichiestaCliente();
+
+			RichiestaCliente rich2 = new RichiestaCliente();
 			rich2.setCliente(a);
 			rich2.setDataFine(new Date());
 			rich2.setDataInizio(new Date());
@@ -158,48 +157,48 @@ public class StartClassExample {
 			rich2.setFornitore(prova2);
 			rich2.setVia(pos3);
 			richiestaCliRep.save(rich2);
-			
-			
-			Offerta offer2=new Offerta();
+
+
+			Offerta offer2 = new Offerta();
 			offer2.setDescrizione("dfdsfdsf");
 			offer2.setFornitore(prova2);
 			offer2.setRichiesta(rich);
 			offer2.setPrezzo(100);
 			offertaRep.save(offer2);
-			
-			Offerta offer3=new Offerta();
+
+			Offerta offer3 = new Offerta();
 			offer3.setDescrizione("dfdsfdsf");
 			offer3.setFornitore(fornit);
 			offer3.setRichiesta(rich2);
 			offer3.setPrezzo(100);
 			offertaRep.save(offer3);
-			List<Servizio> pippo=new ArrayList<Servizio>();
+			List<Servizio> pippo = new ArrayList<Servizio>();
 			pippo.add(serv2);
-			Professione p=new Professione("gommista", pippo,null);
-			Servizio example =new Servizio();
+			Professione p = new Professione("gommista", pippo, null);
+			Servizio example = new Servizio();
 			example.setDescrizione("ciccio pasticcio");
 			servizoRep.save(example);
-			Professione example2= new Professione();
+			Professione example2 = new Professione();
 			example2.setNome("elettricista");
 			example2.addServizio(example);
 			professioneRep.save(example2);
-			Fornitore example3= new Fornitore();
-            example3.setNome("stefano");
-            example3.setCognome("carrino");
-            example3.setDescrizione("Interventi elettrici di ogni tipo, rifacimento impianti. Pronto intervento");
-            example3.setEmail("zzz@zzz.zzz");
-            example3.setNumero("aaaa");
+			Fornitore example3 = new Fornitore();
+			example3.setNome("stefano");
+			example3.setCognome("carrino");
+			example3.setDescrizione("Interventi elettrici di ogni tipo, rifacimento impianti. Pronto intervento");
+			example3.setEmail("zzz@zzz.zzz");
+			example3.setNumero("aaaa");
 
-            example3.setProfessione(example2.getId());
-            example3.setTimeBirth(new Date());
-            example3.setUsername("pippo");
-            example3.setValutazione(0);
-            example3.setVia(pos3);
-            example3.setPass("asdasda");
-            Servizio asss=new Servizio();
-            asss.setId(example.getId());
-            example3.addServizio(asss);
-            fornitoreRep.save(example3);
+			example3.setProfessione(example2.getId());
+			example3.setTimeBirth(new Date());
+			example3.setUsername("pippo");
+			example3.setValutazione(0);
+			example3.setVia(pos3);
+			example3.setPass("asdasda");
+			Servizio asss = new Servizio();
+			asss.setId(example.getId());
+			example3.addServizio(asss);
+			fornitoreRep.save(example3);
 
 			professioneRep.save(p);
 

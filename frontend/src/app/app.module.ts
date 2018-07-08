@@ -26,7 +26,10 @@ import { TestPanelComponent } from './mock-data/test-panel/test-panel.component'
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { FooterComponent } from './footer/footer.component';
 import { MappaComponent } from './components/mappa/mappa.component';
-import { TestMappaComponent } from './mock-data/test-mappa/test-mappa.component';
+import { TestMappaComponent } from './mock-data/test-mappa/test-mappa.component';;
+import { NgxStripeModule } from 'ngx-stripe';
+import { PaymentsComponent } from './components/payments/payments.component';
+import {HttpModule} from "@angular/http";
 
 /*
   TODO: spostare <routes> in un modulo separato ed importarlo in app.module.ts
@@ -67,15 +70,18 @@ const routes: Routes = [
     TestPanelComponent,
     FooterComponent,
     MappaComponent,
-    TestMappaComponent
+    TestMappaComponent,
+    PaymentsComponent
   ],
   imports: [
     NgbModule.forRoot(),
     BrowserModule,
     HttpClientModule,
+    HttpModule,
     FormsModule,
     StorageServiceModule,
     NgbModule.forRoot(),
+    NgxStripeModule.forRoot('pk_test_telEqsWJwaOuBQXVfwFR3u9q'),
     RouterModule.forRoot(routes, {useHash: true}),
   ],
   providers: [AuthService, TestDataService],
