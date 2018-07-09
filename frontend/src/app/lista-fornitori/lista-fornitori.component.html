@@ -12,29 +12,6 @@
     </div>
 </div>
 
-<div>
-    <div class="container">
-        <ul class="vendors-list">
-            <li *ngFor="let fornitore of showFornit; let i = index">
-                <div class="profile-image">
-                    <img src="/assets/res/logo_Idraulico.png" style="width: 110px"/>
-                </div>
-                <span class="profile-content" style="width: 100%">
-                <div class="bg-dark">
-                    <font size="4">{{fornitore.nome}}</font>
-                    <font size="4">{{fornitore.nomeProfessione}}</font>
-                </div>
-                <br/>
-                {{fornitore.descrizione}}
-                <br/>
-                <br/>
-                <font size="2">Valutazione: {{fornitore.valutazione}}</font>
-                </span>
-            </li>
-        </ul>
-    </div>
-</div>
-
 <div class="container">
     <div class="row">
         <form class="form" #form="ngForm" (ngSubmit)="setCenter($event)" >

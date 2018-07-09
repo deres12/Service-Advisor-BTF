@@ -105,17 +105,11 @@ ul.vendors-list > li > span {
 }
 
 
-#mappa{
-  width: 100%;
-  height: 500px;
-}
-
 
 .trasparente{
   opacity: 0.8;
   background: steelblue;
 }
->>>>>>> origin
 
 .backgroundtheme{
   background: steelblue;
