@@ -17,6 +17,8 @@ import it.btf.repository.ProfessioneRepository;
 import it.btf.repository.RichiestaClienteRepository;
 import it.btf.repository.ServizioRepository;
 
+import it.btf.utility.StringHashing;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -40,42 +42,51 @@ public class StartClassExample {
 			OffertaRepository offertaRep, ProfessioneRepository professioneRep,
 			RichiestaClienteRepository richiestaCliRep, ServizioRepository servizoRep) {
 		return (args) -> {
-			Luogo pos=new Luogo();
+			Luogo pos = new Luogo();
 			pos.setPaese("Milano");
 			pos.setNazione("IT");
 			pos.setNumeroCivico(10);
 			pos.setVia("Negroli");
-			pos.setLatit(Position.getDoubleFromAddress(pos.toString(),"lat"));
-			pos.setLongit(Position.getDoubleFromAddress(pos.toString(),"lng"));
+			pos.setLatit(Position.getDoubleFromAddress(pos.toString(), "lat"));
+			pos.setLongit(Position.getDoubleFromAddress(pos.toString(), "lng"));
 			/*pos.setLatit(0);
 			pos.setLongit(0);*/
 
-			Luogo pos2=new Luogo();
+			Luogo pos2 = new Luogo();
 			pos2.setPaese("Milano");
 			pos2.setNazione("IT");
 			pos2.setNumeroCivico(50);
 			pos2.setVia("Giancarlo Sismondi");
-			pos2.setLatit(Position.getDoubleFromAddress(pos2.toString(),"lat"));
-			pos2.setLongit(Position.getDoubleFromAddress(pos2.toString(),"lng"));
+			pos2.setLatit(Position.getDoubleFromAddress(pos2.toString(), "lat"));
+			pos2.setLongit(Position.getDoubleFromAddress(pos2.toString(), "lng"));
 			/*pos2.setLatit(0);
 			pos2.setLongit(0);*/
 
 
-			Luogo pos3=new Luogo();
+			Luogo pos3 = new Luogo();
 			pos3.setPaese("Milano");
 			pos3.setNazione("IT");
 			pos3.setNumeroCivico(15);
 			pos3.setVia("Giacomo Zanella");
-			pos3.setLatit(Position.getDoubleFromAddress(pos3.toString(),"lat"));
-			pos3.setLongit(Position.getDoubleFromAddress(pos3.toString(),"lng"));
+			pos3.setLatit(Position.getDoubleFromAddress(pos3.toString(), "lat"));
+			pos3.setLongit(Position.getDoubleFromAddress(pos3.toString(), "lng"));
 			/*pos3.setLatit(0);
 			pos3.setLongit(0);*/
 
+			Luogo pos4 = new Luogo();
+			pos4.setPaese("Milano");
+			pos4.setNazione("IT");
+			pos4.setNumeroCivico(35);
+			pos4.setVia("Giacomo Zanella");
+			pos4.setLatit(Position.getDoubleFromAddress(pos4.toString(), "lat"));
+			pos4.setLongit(Position.getDoubleFromAddress(pos4.toString(), "lng"));
 
 
-			Cliente a = new Cliente("Alessandro", "Beninati", "alex", pos, "ale@com.com", "1234");
-			Cliente b = new Cliente("Stefano", "Carrino", "ste", pos2, "sfsdfsdf@aaa", "567");
-			Cliente c = new Cliente("Antonio", "prova", "anto", pos3, "sfsdfsdf@sdsd", "prova");
+
+
+			Cliente a = new Cliente("Alessandro", "Beninati", "alex", pos, "ale@com.com", StringHashing.sha1("1234"));
+			Cliente b = new Cliente("Stefano", "Carrino", "ste", pos2, "sfsdfsdf@aaa", StringHashing.sha1("567"));
+			Cliente c = new Cliente("Antonio", "prova", "anto", pos3, "sfsdfsdf@sdsd", StringHashing.sha1("prova"));
 			personaRep.save(b);
 			personaRep.save(c);
 
@@ -99,7 +110,7 @@ public class StartClassExample {
 			fornit.setVia(pos);
 
 
-			fornit.setPass("prova");
+			fornit.setPass(StringHashing.sha1("prova"));
 
 			Servizio serv1 = new Servizio();
 			serv1.setDescrizione("fdafhauidfa");
@@ -113,8 +124,8 @@ public class StartClassExample {
 			serv2.setDescrizione("fdafhauidfa");
 			servizoRep.save(serv2);
 			personaRep.save(a);
-			
-			RichiestaCliente rich= new RichiestaCliente();
+
+			RichiestaCliente rich = new RichiestaCliente();
 			rich.setCliente(a);
 			rich.setDataFine(new Date());
 			rich.setDataInizio(new Date());
@@ -124,15 +135,15 @@ public class StartClassExample {
 			rich.setFornitore(fornit);
 			rich.setVia(pos3);
 			richiestaCliRep.save(rich);
-			
-			Offerta offer=new Offerta();
+
+			Offerta offer = new Offerta();
 			offer.setDescrizione("esempio di offerta");
 			offer.setFornitore(fornit);
 			offer.setPrezzo(95);
 			offer.setRichiesta(rich);
 			offertaRep.save(offer);
-			
-			
+
+
 			Fornitore prova2 = new Fornitore();
 			prova2.setNome("Aldo");
 			prova2.setCognome("carrino");
@@ -145,11 +156,11 @@ public class StartClassExample {
 			prova2.setUsername("pippo");
 			prova2.setValutazione(3);
 			prova2.setVia(pos3);
-			prova2.setPass("asdasda");
+			prova2.setPass(StringHashing.sha1("asdasda"));
 			prova2.addServizio(serv1);
 			fornitoreRep.save(prova2);
-			
-			RichiestaCliente rich2= new RichiestaCliente();
+
+			RichiestaCliente rich2 = new RichiestaCliente();
 			rich2.setCliente(a);
 			rich2.setDataFine(new Date());
 			rich2.setDataInizio(new Date());
@@ -159,31 +170,32 @@ public class StartClassExample {
 			rich2.setFornitore(prova2);
 			rich2.setVia(pos3);
 			richiestaCliRep.save(rich2);
-			
-			
-			Offerta offer2=new Offerta();
+
+
+			Offerta offer2 = new Offerta();
 			offer2.setDescrizione("dfdsfdsf");
 			offer2.setFornitore(prova2);
 			offer2.setRichiesta(rich);
 			offer2.setPrezzo(100);
 			offertaRep.save(offer2);
-			
-			Offerta offer3=new Offerta();
+
+			Offerta offer3 = new Offerta();
 			offer3.setDescrizione("dfdsfdsf");
 			offer3.setFornitore(fornit);
 			offer3.setRichiesta(rich2);
 			offer3.setPrezzo(100);
 			offertaRep.save(offer3);
-			List<Servizio> pippo=new ArrayList<Servizio>();
+			List<Servizio> pippo = new ArrayList<Servizio>();
 			pippo.add(serv2);
-			Professione p=new Professione("gommista", pippo,null);
-			Servizio example =new Servizio();
+			Professione p = new Professione("gommista", pippo, null);
+			Servizio example = new Servizio();
 			example.setDescrizione("ciccio pasticcio");
 			servizoRep.save(example);
-			Professione example2= new Professione();
+			Professione example2 = new Professione();
 			example2.setNome("elettricista");
 			example2.addServizio(example);
 			professioneRep.save(example2);
+
 			Fornitore example3= new Fornitore();
             example3.setNome("stefano");
             example3.setCognome("carrino");
@@ -196,7 +208,7 @@ public class StartClassExample {
             example3.setUsername("pippo");
             example3.setValutazione(0);
             example3.setVia(pos3);
-            example3.setPass("asdasda");
+            example3.setPass(StringHashing.sha1("asdasda"));
             Servizio asss=new Servizio();
             asss.setId(example.getId());
             example3.addServizio(asss);
@@ -252,7 +264,7 @@ public class StartClassExample {
 			example4.setTimeBirth(new Date());
 			example4.setUsername("pippo");
 			example4.setValutazione(0);
-			example4.setVia(pos3);
+			example4.setVia(pos4);
 			example4.setPass("asdasda");
 			asss2.setId(example.getId());
 			example4.addServizio(asss);

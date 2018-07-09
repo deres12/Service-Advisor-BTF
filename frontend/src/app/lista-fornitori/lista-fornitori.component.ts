@@ -1,9 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FornitorePlace } from '../interfaces/fornitore-place';
-import { Fornitore } from '../interfaces/fornitore';
+import { FornitorePlace } from '../models/fornitore-place';
+import { Fornitore } from '../models/fornitore';
 import { TakeFornintoriService } from '../services/take-fornintori.service';
-import { Luogo } from '../interfaces/luogo';
-import {} from '@types/googlemaps';
+import { Luogo } from '../models/luogo';
 
 
 @Component({
@@ -67,7 +66,7 @@ export class ListaFornitoriComponent implements OnInit {
       this.empty=true;
       console.log(error.toString());});
 
-    this.place={numeroCivico: 50,via: "giancarlo sismondi",paese:"Milano",nazione:"IT",latit:45.4654666, longit: 9.2313484, radius:150};
+    this.place={numeroCivico: 50,via: "giancarlo sismondi",paese:"Milano",nazione:"IT",lat:45.4654666, longi: 9.2313484, radius:150};
 
     var myLatlng = {lat: 45.4654666, lng: 9.2313484};
     var mapProp = {
@@ -132,8 +131,8 @@ export class ListaFornitoriComponent implements OnInit {
 
   searchOnMap(){
     console.log(this.place.numeroCivico+" => "+this.place.via+" => "+this.place.paese+" => "+this.place.nazione)
-    this.place.longit=0.0;
-    this.place.latit=0.0;
+    this.place.longi=0.0;
+    this.place.lat=0.0;
     this.place.radius=this.radius;
     this.disableMarkersRadius();
     this.markers=[];
@@ -143,12 +142,12 @@ export class ListaFornitoriComponent implements OnInit {
 
         if(this.fornitoriOnMap[0].luogo===item.luogo){
           this.markerCenter=new google.maps.Marker({
-            position: {lat: item.luogo.latit, lng: item.luogo.longit},
+            position: {lat: item.luogo.lat, lng: item.luogo.longi},
             map: this.map,
             title: 'Click to zoom'
           });
-          this.latitude=item.luogo.latit;
-          this.longitude=item.luogo.longit;
+          this.latitude=item.luogo.lat;
+          this.longitude=item.luogo.longi;
           var circle = new google.maps.Circle({
             map: this.map,
             radius: item.luogo.radius,    // 10 miles in metres
@@ -161,7 +160,7 @@ export class ListaFornitoriComponent implements OnInit {
         }
 
         this.markers.push(new google.maps.Marker({
-          position: {lat: item.luogo.latit, lng: item.luogo.longit},
+          position: {lat: item.luogo.lat, lng: item.luogo.longi},
           map: this.map,
           title: 'Click to zoom'
         }));

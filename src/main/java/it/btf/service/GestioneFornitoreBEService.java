@@ -44,6 +44,7 @@ public class GestioneFornitoreBEService implements GestioneFornitoreBE {
             fornDTO.setLongit(f.getVia().getLongit());
             fornDTO.setLatit(f.getVia().getLatit());
 
+
             for(Servizio S : f.getServizi()){
                 servsDTO.add(new ServizioDTO(S.getId(),S.getDescrizione()));
             }

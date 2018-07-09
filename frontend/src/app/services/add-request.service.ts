@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Richiesta} from "../interfaces/richiesta";
+import {Richiesta} from "../models/richiesta";
 import {HttpClient} from "@angular/common/http";
 
 @Injectable({
@@ -7,7 +7,8 @@ import {HttpClient} from "@angular/common/http";
 })
 export class AddRequestService {
 
-  richieste:Richiesta[]=[];
+  richieste: Richiesta[] = [];
+  
   constructor(private http: HttpClient) { }
 
   get richjeste(): Richiesta[] {
@@ -17,7 +18,5 @@ export class AddRequestService {
   addRichiesta(type: Richiesta) {
     this.richieste.push(type);
   }
-
-
 
 }

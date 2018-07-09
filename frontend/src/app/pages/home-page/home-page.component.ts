@@ -1,7 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-import {AuthService} from "../../services/auth.service";
-import {UserType} from "../../interfaces/user";
-import {Router} from "@angular/router";
+import {Component, OnInit} from '@angular/core';
 
 
 @Component({
@@ -10,12 +7,9 @@ import {Router} from "@angular/router";
   styleUrls: ['./home-page.component.css']
 })
 export class HomePageComponent implements OnInit {
-
   constructor() {}
 
   ngOnInit() {
 
   }
-
-
 }

@@ -1,4 +1,4 @@
-import { UserType } from "../interfaces/user";
+import { UserType } from "../models/user";
 
 export interface MockJob {
     id: number,

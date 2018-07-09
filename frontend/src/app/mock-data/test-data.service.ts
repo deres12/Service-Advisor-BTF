@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { UserType } from '../interfaces/user';
+import { UserType } from '../models/user';
 import { MockUser, MockUserRequest, MockRequestOffer, MockJob } from '../mock-data/models';
 import { DEFAULT_JOBS } from './default-data';
 

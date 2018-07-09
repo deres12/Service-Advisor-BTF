@@ -1,3 +1,42 @@
-<div>
-  <h1>Professional Page</h1>
+<div class="banner-breadcum section">
+  <div class="row">
+    <div class="breadcrumb-image" style="padding-bottom: 45px;background-image: url(https://images.pexels.com/photos/544117/pexels-photo-544117.jpeg?w=940&h=650&auto=compress&cs=tinysrgb);">
+      <div class="container text-center">
+        <h1>Benvenuto {{this.user.nome}}</h1>
+        <div class="breadcrumbs_path">
+          <button type="button" class="btn btn-info btn-lg mt-3" routerLink="/new-request">Inserisci un servizio</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <h2>Preventivi richiesti</h2>
+</div>
+<hr>
+<div class="container" *ngIf="empty">
+  <div class="col">
+    <h3>Non hai ancora inserito nessuna richiesta.</h3>
+  </div>
+</div>
+<div *ngFor="let richiesta of richieste; let i = index" class="row">
+  <div class="container" *ngIf="!empty">
+    <div  class="card text-center">
+      <div class="card-header">
+        Ho chiesto servizi per <strong>{{richiesta.professione}}</strong>
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"> Mi serve entro il <strong>{{richiesta.data}}</strong></h5>
+        <div class="row text-center">
+          <p class="card-text mx-auto">Descrizione: {{richiesta.descrizione}}
+            <br>
+            Via: {{richiesta.indirizzo}}
+            <br>
+            Prezzo massimo: {{richiesta.prezzoMassimo}} </p>
+        </div>
+        <br>
+      </div>
+    </div>
+  </div>
 </div>

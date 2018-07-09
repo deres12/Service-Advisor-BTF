@@ -1,7 +1,7 @@
-import {Component, Inject, OnInit} from '@angular/core';
-import {Fornitore} from "../../interfaces/fornitore";
-import {TakeFornintoriService} from "../../services/take-fornintori.service";
-import {LOCAL_STORAGE, WebStorageService} from "angular-webstorage-service";
+import {Component, OnInit} from '@angular/core';
+import { AuthService } from '../../services/auth.service';
+import { UserType } from '../../models/user';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile-page',
@@ -9,16 +9,18 @@ import {LOCAL_STORAGE, WebStorageService} from "angular-webstorage-service";
   styleUrls: ['./profile-page.component.css']
 })
 export class ProfilePageComponent implements OnInit {
+  userType = UserType;
 
-  fornitori: Fornitore[];
-  constructor(@Inject(LOCAL_STORAGE) private storage: WebStorageService,
-              private serv: TakeFornintoriService) { }
+  constructor(
+    private auth: AuthService,
+    private router: Router) {}
 
   ngOnInit() {
-    this.serv.getFornitori().subscribe((list: Fornitore[]) => {
-      this.fornitori=list;
-    },(error)=>{
-      console.log(error.toString());});
+    if(this.auth.userType == UserType.Guest) {
+      this.router.navigateByUrl("/login");
+    }
+
+    console.log(this.auth.userInfo);
   }
 
 }

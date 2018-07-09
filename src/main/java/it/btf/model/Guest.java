@@ -11,12 +11,11 @@ import javax.persistence.*;
 @Table(name="GUEST")
 public abstract class Guest implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	
-	
+	@Id
+	private String email;
+		
 	private String username;
 	private String nome;
 	private String cognome;
@@ -25,17 +24,6 @@ public abstract class Guest implements Serializable {
 	private Luogo via;
 
 	private String pass;
-	
-	public String getPass() {
-		return pass;
-	}
-
-	public void setPass(String pass) {
-		this.pass = pass;
-	}
-
-	@Id
-	private String email;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date timeBirth;
@@ -71,6 +59,14 @@ public abstract class Guest implements Serializable {
 		this.cognome = cognome;
 	}
 
+	public String getPass() {
+		return pass;
+	}
+
+	public void setPass(String pass) {
+		this.pass = pass;
+	}
+
 	public Luogo getVia() {
 		return via;
 	}
@@ -78,7 +74,6 @@ public abstract class Guest implements Serializable {
 	public void setVia(Luogo via) {
 		this.via = via;
 	}
-
 	
 	public String getOid() {
 		return getUsername();
@@ -91,7 +86,6 @@ public abstract class Guest implements Serializable {
 	public void setUsername(String username) {
 		this.username = username;
 	}
-
 
 	public String getEmail() {
 		return email;
