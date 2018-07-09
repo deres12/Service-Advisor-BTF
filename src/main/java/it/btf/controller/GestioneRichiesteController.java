@@ -23,9 +23,9 @@ public class GestioneRichiesteController {
     @ResponseBody
     @RequestMapping(value = "inserisci", method = RequestMethod.POST)
     public ResponseEntity<RispostaExampleDTO> inserisci(@RequestBody RichiestaDTO dto) {
-
+        //System.err.println("ATTENZIONE EMAIL:  "+dto.getPersona().getEmail());
+        //System.err.println(this.service.addRichiesta(dto).getId());
         this.service.addRichiesta(dto);
-
         return new ResponseEntity<>(new RispostaExampleDTO("Richiesta inserita "), HttpStatus.OK);
     }
 

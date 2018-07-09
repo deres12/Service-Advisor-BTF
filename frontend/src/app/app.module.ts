@@ -26,7 +26,6 @@ import { TestPanelComponent } from './mock-data/test-panel/test-panel.component'
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { FooterComponent } from './footer/footer.component';
 import { CardsFornitoriComponent } from './cards-fornitori/cards-fornitori.component';
-
 import { MappaComponent } from './components/mappa/mappa.component';
 import { NgxStripeModule } from 'ngx-stripe';
 import { PaymentsComponent } from './components/payments/payments.component';
@@ -73,10 +72,10 @@ const routes: Routes = [
     TestPanelComponent,
     FooterComponent,
     CardsFornitoriComponent,
+    RicercaComponent,
     MappaComponent,
     TestMappaComponent,
-    PaymentsComponent,
-    RicercaComponent
+    PaymentsComponent
   ],
   imports: [
     NgbModule.forRoot(),

@@ -214,6 +214,7 @@ public class StartClassExample {
             example3.addServizio(asss);
             fornitoreRep.save(example3);
 
+
 			Fornitore example4= new Fornitore();
 			example4.setNome("stefano");
 			example4.setCognome("carrino");

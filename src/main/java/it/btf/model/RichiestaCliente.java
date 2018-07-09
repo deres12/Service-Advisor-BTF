@@ -1,5 +1,7 @@
 package it.btf.model;
 
+import org.springframework.lang.Nullable;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -21,12 +23,15 @@ public class RichiestaCliente {
 	private Cliente cliente;
 
 	@OneToMany(mappedBy="richiesta")
+	@Nullable
 	private List<Offerta> offerte;
 
 	@ManyToOne
+	@Nullable
 	private Servizio servizioRichiesto;
 
 	@ManyToOne
+    @Nullable
 	private Fornitore fornitore;
 
 	private String descrizione;

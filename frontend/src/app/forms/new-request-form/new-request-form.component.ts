@@ -8,6 +8,7 @@ import {AddRequestService} from "../../services/add-request.service";
 import {Richiesta} from "../../models/richiesta";
 import {AuthService} from "../../services/auth.service";
 import {UserType} from "../../models/user";
+import {Luogo} from "../../models/luogo";
 
 
 export class NgbdDatepickerPopup {
@@ -33,9 +34,9 @@ export class NewRequestFormComponent implements OnInit {
     prezzoMassimo: 0,
     descrizione: "",
     professione: "",
-    indirizzo: "",
+    via: {numeroCivico:0,via:"",paese:"",nazione:"IT",lat:0,longi:0,radius:0},
     data: "",
-    email: ""
+    persona: {email:"",type: null, pass:"",nome:""}
   };
 
   ngOnInit() {
@@ -48,15 +49,30 @@ export class NewRequestFormComponent implements OnInit {
   }
 
   submit(form: NgForm) {
-    console.log(form.value["data"]);
+    //console.log(form.value["data"]);
     this.richiesta.descrizione = form.value["descrizione"];
     //this.richiesta.descrizione="descrizione";
-    this.richiesta.email=this.auth.userInfo.email;
+    console.log("EMAIL:  "+this.auth.userInfo.email);
+
+    this.richiesta.persona.email=this.auth.userInfo.email;
     this.richiesta.professione = form.value["job"];
-    this.richiesta.indirizzo = form.value["address"];
+    this.richiesta.via.via = form.value["address"];
+    this.richiesta.via.paese = form.value["paese"];
+    this.richiesta.via.numeroCivico = form.value["numeroCivico"];
     this.richiesta.data =form.value["data"].day.toString()+"/"+form.value["data"].month.toString() +"/"+form.value["data"].year.toString();
     this.richiesta.prezzoMassimo = form.value["prezzoMassimo"];
-    this.prova.addRichiesta(this.richiesta);
+    //console.log(this.richiesta);
+    // call REST api
+    this.prova.addRichiesta(this.richiesta).subscribe(
+      res => {
+        console.log(res);
+      },
+      err => {
+        console.log(err)
+        /*this.error = true;*/
+      }
+    );
+    this.prova.esempioMock(this.richiesta);
     // console.log(this.request.richjeste());
     // {job, address data: descrizione: ""}
     this.router.navigate(["profile"]);

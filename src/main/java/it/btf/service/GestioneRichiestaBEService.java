@@ -2,18 +2,18 @@ package it.btf.service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import it.btf.dto.PersonaDTO;
 import it.btf.dto.ServizioDTO;
 import it.btf.model.Cliente;
+import it.btf.model.Luogo;
 import it.btf.model.RichiestaCliente;
 import it.btf.model.Servizio;
 import it.btf.repository.PersonaRepository;
 import it.btf.repository.RichiestaClienteRepository;
+import it.btf.utility.Position;
 import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -69,31 +69,35 @@ public class GestioneRichiestaBEService implements GestioneRichiestaBE {
 
 
 	@Override
-	public void addRichiesta(RichiestaDTO richiesta) {
+	public RichiestaCliente addRichiesta(RichiestaDTO richiesta) {
+	    //System.err.println("ATTENZIONE: "+richiesta.getDescrizione());
 		RichiestaCliente ric =new RichiestaCliente();
-		Cliente cl=new Cliente();
-		Servizio serv=new Servizio();
+        Cliente cl;
+		if(utenteRepository.findById(richiesta.getPersona().getEmail()).isPresent()){
+            cl=utenteRepository.findById(richiesta.getPersona().getEmail()).get();
+            Servizio serv=new Servizio();
+            //cl.setEmail(richiesta.getPersona().getEmail());
+            //MANCANO ALTRI ATTRIBUTI
+            if(richiesta.getServizioRichiesto()!=null){
+                serv.setId(richiesta.getServizioRichiesto().getId());
+                serv.setDescrizione(richiesta.getServizioRichiesto().getDescrizione());
+                ric.setServizioRichiesto(serv);
+            }
+            ric.setVia(new Luogo(richiesta.getVia().getNumeroCivico(),richiesta.getVia().getVia(),richiesta.getVia().getPaese(),richiesta.getVia().getNazione(),Position.getDoubleFromAddress(richiesta.getVia().toString(),"lat"),Position.getDoubleFromAddress(richiesta.getVia().toString(),"lng")));
 
-		/*cl.setUsername(richiesta.getCliente().getUsername());
-		cl.setCognome(richiesta.getCliente().getCognome());
-		cl.setNome(richiesta.getCliente().getNome());*/
+            ric.setCliente(cl);
+            ric.setDescrizione(richiesta.getDescrizione());
+            ric.setPrezzoMassimo(richiesta.getPrezzoMassimo());
+
+            ric=servizioRepository.save(ric);
+        }else{
+		    System.err.println("sdsdsdsdsddsdsdsdsdsds");
+        }
 
 
-		cl.setEmail(richiesta.getPersona().getEmail());
-		//MANCANO ALTRI ATTRIBUTI
 
+		return ric;
 
-		serv.setId(richiesta.getServizioRichiesto().getId());
-		serv.setDescrizione(richiesta.getServizioRichiesto().getDescrizione());
-
-		ric.setServizioRichiesto(serv);
-		ric.setCliente(cl);
-		ric.setDescrizione(richiesta.getDescrizione());
-		//ric.setDataFine(richiesta.getDataFine());
-		//ric.setDataInizio(richiesta.getDataInizio());
-		ric.setPrezzoMassimo(richiesta.getPrezzoMassimo());
-
-		servizioRepository.save(ric);
 	}
 
 	@Override

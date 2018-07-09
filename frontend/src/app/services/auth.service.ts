@@ -36,8 +36,11 @@ export class AuthService {
 
   signup(data: SignupData): Observable<any> {
 
-    let request = this.http.post<any>(this.signupUrl, data);
-    return request;
+
+    console.log(data);
+    this.userInfo.type;
+    let response:any=this.http.post<any>("/services/user/registrati", data);
+    return response;
   }
 
   login(data: LoginData): Observable<any> {
