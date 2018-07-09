@@ -6,6 +6,7 @@ import {Router} from "@angular/router";
 import {AddRequestService} from "../../services/add-request.service";
 import {AuthService} from "../../services/auth.service";
 import {Fornitore} from "../../models/fornitore";
+import {Offerta} from "../../models/offerta";
 
 @Component({
   selector: 'app-worker-page',
@@ -17,6 +18,7 @@ export class WorkerPageComponent implements OnInit {
   user: User;
     richieste: Richiesta[] = [];
     fornitori: Fornitore[];
+    offerte: Offerta[]=[];
     empty: boolean = true;
 
     constructor(public auth: AuthService,
@@ -26,15 +28,20 @@ export class WorkerPageComponent implements OnInit {
 
     ngOnInit() {
       this.user = this.auth.userInfo;
-      if (this.richieste.length == 0) {
-        this.empty = true;
-      } else {
-        this.empty = false;
-      }
+
+      this.serv.getRichiesteByFornitoreEmail(this.auth.userInfo.email).subscribe((list: Offerta[]) => {
+        this.offerte = list;
+        if (this.offerte.length>0)
+          this.empty = false;
+      }, (error) => {
+        console.log(error.toString());
+      });
+
       if (this.auth.userInfo.type == UserType.Guest) {
         console.log("unauthorized");
         this.router.navigateByUrl("login");
       }
+
     }
   }
 

@@ -1,0 +1,13 @@
+<div class="row">
+  <div class="container">
+    <form class="form-inline" (ngSubmit)="filterByProf(q.value)">
+      <input type="search" placeholder="Idraulici, ..." #q>
+      <button type="submit" class="btn">
+        Cerca
+      </button>
+    </form>
+  </div>
+  <div *ngIf="empty" class="alert alert-info">
+    La ricerca non ha prodotto nessun risultato
+  </div>
+</div>

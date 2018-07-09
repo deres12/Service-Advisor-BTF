@@ -164,8 +164,11 @@ export class MappaComponent implements OnInit {
       '<p>Attribution: Uluru, <a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">' +
       'https://en.wikipedia.org/w/index.php?title=Uluru</a> ' +
       '(last visited June 22, 2009).</p>' +
+      '<button name="remove-marker" class="remove-marker" title="Remove Marker">'+
       '</div>' +
       '</div>';
+
+
 
     var infowindow = new google.maps.InfoWindow({
       content: contentString
@@ -281,11 +284,7 @@ export class MappaComponent implements OnInit {
         this.markers.forEach(item => {
           item.setMap(this.map);
         });
-
-
       },
       (error) => console.log(error));
   }
-
-
 }

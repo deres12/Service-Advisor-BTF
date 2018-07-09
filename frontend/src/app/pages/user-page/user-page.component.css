@@ -2,12 +2,12 @@
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
-  padding: 104px 0 110px;
+  padding: 10rem 5rem;
   position: relative;
   width:100%;
 }
 .breadcrumb-image::before {
-  background: rgba(0, 0, 0, 0.80) none repeat scroll 0 0;
+  background: rgba(0, 0, 0, 0.50) none repeat scroll 0 0;
   content: "";
   height: 100%;
   left: 0;

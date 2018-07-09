@@ -25,6 +25,10 @@ export class UserPageComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    this.richieste = this.prova.richieste;
+
+
     this.user = this.auth.userInfo;
     if (this.richieste.length == 0) {
       this.empty = true;
