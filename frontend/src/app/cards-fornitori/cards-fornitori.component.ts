@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {Fornitore} from "../interfaces/fornitore";
 import {TakeFornintoriService} from "../services/take-fornintori.service";
+import {Fornitore} from "../models/fornitore";
 
 @Component({
   selector: 'app-cards-fornitori',

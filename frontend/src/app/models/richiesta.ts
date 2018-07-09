@@ -1,8 +1,11 @@
+import {Luogo} from "./luogo";
+import {User} from "./user";
+
 export interface Richiesta {
   prezzoMassimo:number;
   descrizione:string;
   professione:string;
-  indirizzo:string;
+  via:Luogo;
   data:string;
-  email:string;
+  persona: User;
 }

@@ -3,6 +3,8 @@ import {Luogo} from "../../models/luogo";
 import {FornitorePlace} from "../../models/fornitore-place";
 import {Fornitore} from "../../models/fornitore";
 import {TakeFornintoriService} from "../../services/take-fornintori.service";
+import {Router} from "@angular/router";
+import {$} from "protractor";
 
 @Component({
   selector: 'app-mappa',
@@ -21,39 +23,44 @@ export class MappaComponent implements OnInit {
   radius: number=150.0;
   latitude:number;
   longitude:number;
-  constructor(public serv: TakeFornintoriService) { }
+  constructor(public serv: TakeFornintoriService,public router: Router) { }
 
+  provami(){
+    console.log("SONO ENTRATOOOOOOO...");
+    this.router.navigateByUrl("new-request");
+  }
   ngOnInit() {
 
     this.serv.getFornitori().subscribe((list: Fornitore[]) => {
       this.fornitori=list;
       this.fornitori.forEach(item=>{
-        console.log("LATITUDINE===> "+item.latit);
-        console.log("LONGITUDINE===> "+item.longit);
         var contentString = '<div id="content">'+
           '<div id="siteNotice">'+
           '</div>'+
-          '<h1 id="firstHeading" class="firstHeading">Uluru</h1>'+
+          '<h1 id="firstHeading" class="firstHeading">'+item.nome+'</h1>'+
           '<div id="bodyContent">'+
-          '<p><b>Uluru</b>, also referred to as <b>Ayers Rock</b>, is a large ' +
-          'sandstone rock formation in the southern part of the '+
-          'Northern Territory, central Australia. It lies 335&#160;km (208&#160;mi) '+
-          'south west of the nearest large town, Alice Springs; 450&#160;km '+
-          '(280&#160;mi) by road. Kata Tjuta and Uluru are the two major '+
-          'features of the Uluru - Kata Tjuta National Park. Uluru is '+
-          'sacred to the Pitjantjatjara and Yankunytjatjara, the '+
-          'Aboriginal people of the area. It has many springs, waterholes, '+
-          'rock caves and ancient paintings. Uluru is listed as a World '+
-          'Heritage Site.</p>'+
-          '<p>Attribution: Uluru, <a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">'+
-          'https://en.wikipedia.org/w/index.php?title=Uluru</a> '+
-          '(last visited June 22, 2009).</p>'+
-          '</div>'+
+          '<br>Professione: <strong>'+item.nomeProfessione+
+          '</strong><p>Attribution: '+item.descrizione+
+          '<br><br>' +
+          '<a href="http://localhost/#/new-request">Chiedi preventivo</a>'+
+          '<button style="margin-left: 5px" type="button" (click)="provami()" class="btn btn-info" >Chiedi preventivo</button-->'+
+          '</div>' +
+          '<br>'+
           '</div>';
 
         var infowindow = new google.maps.InfoWindow({
           content: contentString
         });
+/*
+        google.maps.event.addListener(marker, 'click', function() {
+          infowindow.setContent(contentString);
+          infowindow.open(this.map, this);
+          var btn = $(contentString).findElement('#prova');
+          console.log("premuto");
+        });*/
+
+
+
 
         var marker=new google.maps.Marker({
           position: {lat: item.latit, lng: item.longit},
@@ -71,6 +78,7 @@ export class MappaComponent implements OnInit {
         }
 
       );
+
 
     },(error)=>{
       console.log(error.toString());});
@@ -94,6 +102,7 @@ export class MappaComponent implements OnInit {
       radius: 150,    // 10 miles in metres
       fillColor: '#347baa'
     });
+
 
 
     /*********************************************/
@@ -185,6 +194,8 @@ export class MappaComponent implements OnInit {
     this.markerCenter.setMap(this.map);
   }
 
+
+
   searchOnMap(){
     this.place.longi=0.0;
     this.place.lat=0.0;
@@ -228,6 +239,7 @@ export class MappaComponent implements OnInit {
     },
     (error)=>console.log(error));
   }
+
 
 
 }

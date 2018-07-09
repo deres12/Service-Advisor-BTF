@@ -1,8 +1,9 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {Luogo} from "../interfaces/luogo";
 import {TakeFornintoriService} from "../services/take-fornintori.service";
-import {FornitorePlace} from "../interfaces/fornitore-place";
-import {Fornitore} from "../interfaces/fornitore";
+import {Fornitore} from "../models/fornitore";
+import {FornitorePlace} from "../models/fornitore-place";
+import {Luogo} from "../models/luogo";
+
 
 @Component({
   selector: 'app-map',
@@ -10,9 +11,10 @@ import {Fornitore} from "../interfaces/fornitore";
   styleUrls: ['./map.component.css']
 })
 export class MapComponent implements OnInit {
+  constructor() {}
+  ngOnInit() {}
 
-
-  fornitori: any[];
+  /*fornitori: any[];
   showFornit: Fornitore[];
   fornitoriOnMap: FornitorePlace[];
   place:Luogo;
@@ -100,13 +102,7 @@ export class MapComponent implements OnInit {
     });
 
 
-   /*for(let fornitore of this.fornitori){
-      var marker = new google.maps.Marker({
-        position: {lat: fornitore.latit, lng:fornitore.longit},
-        map: this.map,
-        title: 'Click to zoom'
-      });
-    }; */
+
 
 
 
@@ -219,5 +215,5 @@ export class MapComponent implements OnInit {
 
     },(error)=>{
       console.log(error.toString());});
-  }
+  }*/
 }
