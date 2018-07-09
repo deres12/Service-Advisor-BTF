@@ -28,8 +28,6 @@ export class MappaComponent implements OnInit {
     this.serv.getFornitori().subscribe((list: Fornitore[]) => {
       this.fornitori=list;
       this.fornitori.forEach(item=>{
-        console.log("LATITUDINE===> "+item.latit);
-        console.log("LONGITUDINE===> "+item.longit);
         this.markers.push(new google.maps.Marker({
           position: {lat: item.latit, lng: item.longit},
           map: this.map,
@@ -38,9 +36,8 @@ export class MappaComponent implements OnInit {
         }
 
       )
-    },(error)=>{
-      console.log(error.toString());});
-
+    },
+    (error)=>console.log(error));
 
     this.place={numeroCivico: 50,via: "giancarlo sismondi",paese:"Milano",nazione:"IT",lat:45.4654666, longi: 9.2313484, radius:150};
 
@@ -116,7 +113,6 @@ export class MappaComponent implements OnInit {
   }
 
   searchOnMap(){
-    console.log(this.place.numeroCivico+" => "+this.place.via+" => "+this.place.paese+" => "+this.place.nazione)
     this.place.longi=0.0;
     this.place.lat=0.0;
     this.place.radius=this.radius;
@@ -156,8 +152,8 @@ export class MappaComponent implements OnInit {
       });
 
 
-    },(error)=>{
-      console.log(error.toString());});
+    },
+    (error)=>console.log(error));
   }
 
 

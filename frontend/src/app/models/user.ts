@@ -7,10 +7,13 @@ export enum UserType {
 export class User {
     type: UserType;
     email: string;
-    password: string;
+    pass: string;
     nome: string;
 
     constructor() {
         this.type = UserType.Guest;
+        this.email = "";
+        this.pass = "";
+        this.nome = "";
     }
 }

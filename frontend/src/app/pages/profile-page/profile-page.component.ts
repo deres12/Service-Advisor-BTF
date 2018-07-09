@@ -1,7 +1,7 @@
-import {Component, Inject, OnInit} from '@angular/core';
-import {Fornitore} from "../../models/fornitore";
-import {TakeFornintoriService} from "../../services/take-fornintori.service";
-import {User, UserType} from "../../models/user";
+import {Component, OnInit} from '@angular/core';
+import { AuthService } from '../../services/auth.service';
+import { UserType } from '../../models/user';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile-page',
@@ -9,29 +9,18 @@ import {User, UserType} from "../../models/user";
   styleUrls: ['./profile-page.component.css']
 })
 export class ProfilePageComponent implements OnInit {
+  userType = UserType;
 
-  user: User;
-  fornitori: Fornitore[];
-
-  constructor(private serv: TakeFornintoriService) {
-  }
+  constructor(
+    private auth: AuthService,
+    private router: Router) {}
 
   ngOnInit() {
-    this.user.email = localStorage.getItem("email");
-    if (localStorage.getItem("tipo") == UserType.Guest)
-      this.user.type = UserType.Guest;
-    else if (localStorage.getItem("tipo") == UserType.Vendor)
-      this.user.type = UserType.Vendor;
-    else
-      this.user.type = UserType.Client;
-    this.user.nome = localStorage.getItem("nome");
+    if(this.auth.userType == UserType.Guest) {
+      this.router.navigateByUrl("/login");
+    }
 
-
-    this.serv.getFornitori().subscribe((list: Fornitore[]) => {
-      this.fornitori = list;
-    }, (error) => {
-      console.log(error.toString());
-    });
+    console.log(this.auth.userInfo);
   }
 
 }

@@ -1,12 +1,13 @@
 <div style="height:16px"></div>
 <form (ngSubmit)="submit(f)" #f="ngForm" class="form">
-   <header>
-      Registrazione
-   </header>
+  <header>
+    Registrazione
+  </header>
 
-   <div class="alert alert-danger" *ngIf="!valid(f)&&step==3">
-     Compila tutti i campi.
-   </div>
+  <div class="alert alert-danger" *ngIf="!valid(f) && error">
+    Compila tutti i campi.
+  </div>
+
   <div class="form-content">
     <div class="text-center" [class.hidden]="step!=0">
       <input type="hidden" name="type" [ngModel]="type">
@@ -25,6 +26,7 @@
     </div>
 
       <div [class.hidden]="step!=1" class="text-center">
+        <label><strong>Professione Praticata</strong></label>
         <input type="hidden" name="professione" [ngModel]="professione?.id">
         <div class="list-group">
           <button class="list-group-item list-group-item-action"
@@ -39,9 +41,6 @@
       </div>
 
       <div [class.hidden]="step!=2">
-        <label for="name">Ragione Sociale</label>
-        <input id="name" type="text" class="form-control" name="name" ngModel>
-
         <label for="address">Indirizzo</label>
         <input id="address" type="text" class="form-control" name="address" ngModel>
         <!--
@@ -50,8 +49,9 @@
       </div>
 
       <div [class.hidden]="step!=3">
-        <label for="nome">Nome</label>
-        <input id="nome" type="text" class="form-control" placeholder="Nome" name="nome" ngModel>
+        <label for="nome" *ngIf="type==userType.Client">Nome</label>
+        <label for="nome" *ngIf="type==userType.Vendor">Ragione Sociale</label>
+        <input id="nome" type="text" class="form-control" name="nome" ngModel>
 
         <label for="email">Email</label>
         <input id="email" type="email" class="form-control" placeholder="Indirizzo Email" name="email" ngModel>

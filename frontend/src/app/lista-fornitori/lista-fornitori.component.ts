@@ -3,7 +3,6 @@ import { FornitorePlace } from '../models/fornitore-place';
 import { Fornitore } from '../models/fornitore';
 import { TakeFornintoriService } from '../services/take-fornintori.service';
 import { Luogo } from '../models/luogo';
-import {} from '@types/googlemaps';
 
 
 @Component({

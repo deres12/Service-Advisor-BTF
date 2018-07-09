@@ -15,10 +15,16 @@ export class AuthService {
   private loginUrl: string = this.host + this.apiUrl + "/user/login";
   private signupUrl: string = this.host + this.apiUrl + "/user/registrati";
 
-
   userInfo: User = new User();
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    const jsondata = localStorage.getItem("user-profile");
+    if(jsondata) {
+      this.userInfo = JSON.parse(jsondata);
+    } else {
+      this.userInfo = new User();
+    }
+  }
 
   get userType(): UserType {
     return this.userInfo.type;
@@ -40,5 +46,6 @@ export class AuthService {
 
   logout() {
     this.userInfo = new User();
+    localStorage.removeItem("user-profile");
   }
 }
