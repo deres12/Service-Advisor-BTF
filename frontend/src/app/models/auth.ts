@@ -4,7 +4,7 @@ export interface SignupData {
     type: UserType,
     email: string,
     pass: string,
-    professione: {id:number},
+    professione: {id: number},
     nome: string,
     indirizzo: string
 }

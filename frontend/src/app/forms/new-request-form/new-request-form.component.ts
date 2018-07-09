@@ -5,24 +5,14 @@ import {LOCAL_STORAGE, WebStorageService} from "angular-webstorage-service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {MockJob} from "../../mock-data/models";
 import {AddRequestService} from "../../services/add-request.service";
-import {Richiesta} from "../../interfaces/richiesta";
+import {Richiesta} from "../../models/richiesta";
 import {AuthService} from "../../services/auth.service";
-import {UserType} from "../../interfaces/user";
-import {log} from "util";
-/*
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {UserType} from "../../models/user";
 
-@NgModule({
-  declarations: [],
-  imports: [NgbModule]
-})
-export class OtherModule {
-}*/
 
 export class NgbdDatepickerPopup {
   model;
 }
-
 
 @Component({
   selector: 'app-new-request-form',

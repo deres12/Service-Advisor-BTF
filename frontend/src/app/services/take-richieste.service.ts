@@ -6,7 +6,7 @@ import {HttpClient} from "@angular/common/http";
 })
 export class TakeRichiesteService {
 
-  constructor(private httpClient:HttpClient) { }
+  constructor(private httpClient: HttpClient) { }
 
   getRichieste () {
     return this.httpClient.get("/services/richieste/findAll");

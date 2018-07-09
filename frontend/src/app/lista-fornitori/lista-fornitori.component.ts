@@ -1,9 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FornitorePlace } from '../interfaces/fornitore-place';
-import { Fornitore } from '../interfaces/fornitore';
+import { FornitorePlace } from '../models/fornitore-place';
+import { Fornitore } from '../models/fornitore';
 import { TakeFornintoriService } from '../services/take-fornintori.service';
-import { Luogo } from '../interfaces/luogo';
-import {} from '@types/googlemaps';
+import { Luogo } from '../models/luogo';
 
 
 @Component({

@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from "../../environments/environment.prod";
-import { User, UserType } from '../interfaces/user';
-import { LoginData, SignupData } from '../interfaces/auth';
+import { User, UserType } from '../models/user';
+import { LoginData, SignupData } from '../models/auth';
 
 
 @Injectable({
@@ -15,15 +15,16 @@ export class AuthService {
   private loginUrl: string = this.host + this.apiUrl + "/user/login";
   private signupUrl: string = this.host + this.apiUrl + "/user/registrati";
 
+  userInfo: User = new User();
 
-  userInfo: User = {
-    type: UserType.Guest,
-    email: "",
-    password: "",
-    nome: ""
-  };
-
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    const jsondata = localStorage.getItem("user-profile");
+    if(jsondata) {
+      this.userInfo = JSON.parse(jsondata);
+    } else {
+      this.userInfo = new User();
+    }
+  }
 
   get userType(): UserType {
     return this.userInfo.type;
@@ -33,25 +34,18 @@ export class AuthService {
     this.userInfo.type = type;
   }
 
-  login(data: LoginData): Observable<any> {
-    return this.http.post<any>(this.loginUrl, data);
-
-    // successo:
-    // memorizzare il profilo
-  }
-
   signup(data: SignupData): Observable<any> {
-    let request = this.http.post<any>("/services/user/registrati", data);
+    let request = this.http.post<any>(this.signupUrl, data);
     return request;
   }
-}
 
-function f1() {
-  let a = 9;
-
-  if(1<2) {
-    let a = 5;
+  login(data: LoginData): Observable<any> {
+    let request = this.http.post<any>(this.loginUrl, data);
+    return request;
   }
 
-
+  logout() {
+    this.userInfo = new User();
+    localStorage.removeItem("user-profile");
+  }
 }

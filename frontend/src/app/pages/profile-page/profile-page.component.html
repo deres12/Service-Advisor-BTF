@@ -1,40 +1,8 @@
-<div class="main-banner">
-  <div class="container">
-    <div class="main-text">
-      Benvenuto!
-    </div>
-  </div>
-</div>
+<ng-container *ngIf="auth.userType==userType.Client">
+  <app-user-page></app-user-page>
+</ng-container>
 
-<!--div class="search-bar centered">
-  <div class="container">
-    <form class="form-inline">
-      <input class="form-control mr-sm-2" type="search" placeholder="Idraulici..." aria-label="Search"#q>
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit" (click)="filterByProf(q.value)">Search</button>
-    </form>
-  </div>
-</div-->
-
-<div class="container">
-
-  <div *ngFor="let fornitore of fornitori; let i = index" class="card text-center">
-    <div class="card-header">
-      Featured
-    </div>
-    <div class="card-body">
-      <h5 class="card-title">{{fornitore.nome}} </h5>
-      <div class="row">
-        <p class="card-text">{{fornitore.nomeProfessione}}: </p>
-      </div>
-      <div class="row">
-        <p class="card-text">{{fornitore.descrizione}}: </p>
-      </div>
-      <button type="button" class="big-btn" routerLink="">
-        Fai una richiesta
-      </button>
-    </div>
-  </div>
-</div>
-
-
+<ng-container *ngIf="auth.userType==userType.Vendor">
+  <app-worker-page></app-worker-page>
+</ng-container>
 

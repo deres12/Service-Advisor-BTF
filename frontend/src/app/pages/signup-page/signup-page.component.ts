@@ -1,13 +1,10 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {NgForm} from '@angular/forms';
 import {AuthService} from '../../services/auth.service';
-import {SignupData} from '../../interfaces/auth';
 import {Router} from '@angular/router';
-import {UserType} from '../../interfaces/user';
-import {Job} from '../../interfaces/job';
+import {UserType} from '../../models/user';
+import {Job} from '../../models/job';
 import {JobsDataService} from '../../services/jobs.service';
-import {environment} from "../../../environments/environment";
-import {isStorageAvailable, LOCAL_STORAGE, WebStorageService} from "angular-webstorage-service";
 
 @Component({
   selector: 'app-signup-page',
@@ -18,7 +15,6 @@ export class SignupPageComponent implements OnInit {
 
   private _step: number;
   private _history: number[];
-  //private route:Router;
   userType = UserType;
 
   error: boolean = false;
@@ -28,9 +24,10 @@ export class SignupPageComponent implements OnInit {
 
   jobs: Job[];
 
-  constructor(public auth: AuthService,
-              public jobsData: JobsDataService,
-              public router: Router){}
+  constructor(
+    public auth: AuthService,
+    public jobsData: JobsDataService,
+    public router: Router){}
 
   ngOnInit() {
     this._step = 0;
@@ -64,30 +61,31 @@ export class SignupPageComponent implements OnInit {
   valid(form: NgForm): boolean {
 
     if (this.step == 3) {
-      if (form.value["nome"].length < 1) {
+      if (form.value["nome"].length == 0) {
         return false;
       }
-      if (form.value["email"].length < 1) {
+      if (form.value["email"].length == 0) {
         return false;
       }
-      if (form.value["password"].length < 1) {
+      if (form.value["password"].length == 0) {
         return false;
       }
 
       if ((form.value["password"] != form.value["password2"])) {
         return false;
       }
-
-      return true;
     }
+
+    return true;
   }
 
   submit(form: NgForm) {
     this.error = false;
-    var submitData;
+    
+    let submitData;
+
     // collect form data
     if (this.type == UserType.Client) {
-      console.log(form.value["password"]);
       submitData = {
         type: this.type,
         nome: form.value["nome"],
@@ -105,19 +103,16 @@ export class SignupPageComponent implements OnInit {
         professione: {id: this.professione.id},
         indirizzo: form.value["address"],
       };
-      //this.professione.id
     }
 
     // call REST api
     this.auth.signup(submitData).subscribe(
       res => {
         console.log(res);
-        this.auth.userInfo.email = res.email;
-        this.auth.userInfo.nome = res.nome;
-        this.auth.userInfo.type = res.tipo;
+        this.auth.userInfo = res;
 
-        //this.storage.set("user", this.auth.userInfo);
-        this.router.navigate(["profile"]);
+        localStorage.setItem("user-profile", JSON.stringify(this.auth.userInfo));
+        this.router.navigateByUrl("/profile");
       },
       err => {
         console.log(err)

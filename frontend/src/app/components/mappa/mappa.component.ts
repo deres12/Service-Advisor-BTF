@@ -1,8 +1,8 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {Luogo} from "../../interfaces/luogo";
-import {FornitorePlace} from "../../interfaces/fornitore-place";
+import {Luogo} from "../../models/luogo";
+import {FornitorePlace} from "../../models/fornitore-place";
+import {Fornitore} from "../../models/fornitore";
 import {TakeFornintoriService} from "../../services/take-fornintori.service";
-import {Fornitore} from "../../interfaces/fornitore";
 
 @Component({
   selector: 'app-mappa',
@@ -186,7 +186,6 @@ export class MappaComponent implements OnInit {
   }
 
   searchOnMap(){
-    console.log(this.place.numeroCivico+" => "+this.place.via+" => "+this.place.paese+" => "+this.place.nazione)
     this.place.longi=0.0;
     this.place.lat=0.0;
     this.place.radius=this.radius;
@@ -226,8 +225,8 @@ export class MappaComponent implements OnInit {
       });
 
 
-    },(error)=>{
-      console.log(error.toString());});
+    },
+    (error)=>console.log(error));
   }
 
 
