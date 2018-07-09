@@ -12,13 +12,32 @@
 </div>
 
 <div class="container">
-  <h3>Le tue richieste</h3>
-  <hr>
-  <h5 *ngIf="richieste.length==0">
-    Non hai effettuato richieste
-  </h5>
-    
-  <app-mappa></app-mappa>
+
+    <h2>Servizi richiesti</h2>
+</div>
+<hr>
+<div class="container" *ngIf="empty">
+  <div class="col">
+  <h3>Non hai ancora inserito nessuna richiesta.</h3>
+</div>
+</div>
+<div *ngFor="let richiesta of richieste; let i = index" class="row">
+<div class="container" *ngIf="!empty">
+    <div  class="card text-center">
+      <div class="card-header">
+        Ho chiesto servizi per <strong>{{richiesta.professione}}</strong>
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"> Mi serve entro il <strong>{{richiesta.data}}</strong></h5>
+        <div class="row text-center">
+          <p class="card-text mx-auto">Descrizione: {{richiesta.descrizione}}
+          <br>
+         Via: {{richiesta.indirizzo}}
+          <br>
+          Prezzo massimo: {{richiesta.prezzoMassimo}} </p>
+        </div>
+        <br>
+      </div>
 
   <div class="card text-center" *ngFor="let richiesta of richieste; let i = index">
     <div class="card-header">
@@ -32,5 +51,5 @@
       <br>
       Spesa massima: € {{richiesta.prezzoMassimo}}
     </div>
-  </div>    
+  </div>
 </div>

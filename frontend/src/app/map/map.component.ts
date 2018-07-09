@@ -1,27 +1,30 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { FornitorePlace } from '../models/fornitore-place';
-import { Fornitore } from '../models/fornitore';
-import { TakeFornintoriService } from '../services/take-fornintori.service';
-import { Luogo } from '../models/luogo';
-
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {Luogo} from "../interfaces/luogo";
+import {TakeFornintoriService} from "../services/take-fornintori.service";
+import {FornitorePlace} from "../interfaces/fornitore-place";
+import {Fornitore} from "../interfaces/fornitore";
 
 @Component({
-  selector: 'app-lista-fornitori',
-  templateUrl: './lista-fornitori.component.html',
-  styleUrls: ['./lista-fornitori.component.css']
+  selector: 'app-map',
+  templateUrl: './map.component.html',
+  styleUrls: ['./map.component.css']
 })
-export class ListaFornitoriComponent implements OnInit {
+export class MapComponent implements OnInit {
 
-  fornitori: Fornitore[];
+
+  fornitori: any[];
   showFornit: Fornitore[];
   fornitoriOnMap: FornitorePlace[];
   place:Luogo;
 
-  @ViewChild('gmap') gmapElement: any;
+  @ViewChild('gmap')
+
+  gmapElement: any;
   map: google.maps.Map;
 
   markerCenter:any;
   markers:any[];
+  marker: any;
   circle: any;
   radius: number=150.0;
   latitude:number;
@@ -29,6 +32,7 @@ export class ListaFornitoriComponent implements OnInit {
   longitude:number;
   empty = false;
 
+  prova: any;
   setCenter(e:any){
     this.disableMarkersRadius();
     var myLatlng = new google.maps.LatLng(this.latitude, this.longitude);
@@ -60,35 +64,78 @@ export class ListaFornitoriComponent implements OnInit {
 
   ngOnInit() {
     this.serv.getFornitori().subscribe((list: Fornitore[]) => {
+
       this.fornitori=list;
       this.showFornit=list;
+      console.log(list);
+      console.log(this.fornitori);
+      this.addMarkers(this.fornitori);
     },(error)=>{
       this.empty=true;
       console.log(error.toString());});
 
-    this.place={numeroCivico: 50,via: "giancarlo sismondi",paese:"Milano",nazione:"IT",lat:45.4654666, longi: 9.2313484, radius:150};
+
+    this.place={numeroCivico: 50,via: "giancarlo sismondi",paese:"Milano",nazione:"IT",latit:45.4654666, longit: 9.2313484, radius:150};
 
     var myLatlng = {lat: 45.4654666, lng: 9.2313484};
     var mapProp = {
       center: myLatlng,
       zoom: 15,
       mapTypeId: google.maps.MapTypeId.ROADMAP,
-      };
+    };
     var marker = new google.maps.Marker({
       position: myLatlng,
       map: this.map,
       title: 'Click to zoom'
     });
+
+
+
+
+
+    var marker2 = new google.maps.Marker({
+      position: {lat: 45.40000, lng:9.2313668},
+      map: this.map,
+      title: 'Click to zoom 2'
+    });
+
+
+   /*for(let fornitore of this.fornitori){
+      var marker = new google.maps.Marker({
+        position: {lat: fornitore.latit, lng:fornitore.longit},
+        map: this.map,
+        title: 'Click to zoom'
+      });
+    }; */
+
+
+
     var circle = new google.maps.Circle({
       map: this.map,
       radius: 150,    // 10 miles in metres
       fillColor: '#347baa'
     });
+    this.marker=marker;
     this.markerCenter=marker;
     this.map = new google.maps.Map(this.gmapElement.nativeElement, mapProp);
     this.markerCenter.setMap(this.map);
-    circle.bindTo('center', marker, 'position');
+    circle.bindTo('center', marker2, 'position');
     this.circle=circle;
+  }
+
+  addMarkers(fornitori : Fornitore[]){
+    for(let fornitore of fornitori) {
+      var longi=fornitore.longit;
+      var lat=fornitore.latit;
+
+      var marker = new google.maps.Marker({
+        position: {lat: lat, lng: longi},
+        map: this.map,
+        title: 'Click to zoom'
+      });
+      this.markerCenter = marker;
+      this.markerCenter.setMap(this.map);
+    }
   }
 
   filterByProf(query: string) {
@@ -131,8 +178,8 @@ export class ListaFornitoriComponent implements OnInit {
 
   searchOnMap(){
     console.log(this.place.numeroCivico+" => "+this.place.via+" => "+this.place.paese+" => "+this.place.nazione)
-    this.place.longi=0.0;
-    this.place.lat=0.0;
+    this.place.longit=0.0;
+    this.place.latit=0.0;
     this.place.radius=this.radius;
     this.disableMarkersRadius();
     this.markers=[];
@@ -142,12 +189,12 @@ export class ListaFornitoriComponent implements OnInit {
 
         if(this.fornitoriOnMap[0].luogo===item.luogo){
           this.markerCenter=new google.maps.Marker({
-            position: {lat: item.luogo.lat, lng: item.luogo.longi},
+            position: {lat: item.luogo.latit, lng: item.luogo.longit},
             map: this.map,
             title: 'Click to zoom'
           });
-          this.latitude=item.luogo.lat;
-          this.longitude=item.luogo.longi;
+          this.latitude=item.luogo.latit;
+          this.longitude=item.luogo.longit;
           var circle = new google.maps.Circle({
             map: this.map,
             radius: item.luogo.radius,    // 10 miles in metres
@@ -160,7 +207,7 @@ export class ListaFornitoriComponent implements OnInit {
         }
 
         this.markers.push(new google.maps.Marker({
-          position: {lat: item.luogo.lat, lng: item.luogo.longi},
+          position: {lat: item.luogo.latit, lng: item.luogo.longit},
           map: this.map,
           title: 'Click to zoom'
         }));

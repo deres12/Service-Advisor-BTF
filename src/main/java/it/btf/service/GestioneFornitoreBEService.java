@@ -41,8 +41,11 @@ public class GestioneFornitoreBEService implements GestioneFornitoreBE {
             fornDTO.setNome(f.getNome());
             fornDTO.setEmail(f.getEmail());
             fornDTO.setNomeProfessione(f.getProfessione().getNome());
-            fornDTO.setLatit(f.getVia().getLatit());
+
             fornDTO.setLongit(f.getVia().getLongit());
+            fornDTO.setLatit(f.getVia().getLatit());
+
+
             for(Servizio S : f.getServizi()){
                 servsDTO.add(new ServizioDTO(S.getId(),S.getDescrizione()));
             }

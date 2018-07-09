@@ -81,6 +81,7 @@ public class StartClassExample {
 			Cliente c = new Cliente("Antonio", "prova", "anto", pos3, "sfsdfsdf@sdsd", StringHashing.sha1("prova"));
 			personaRep.save(b);
 			personaRep.save(c);
+
 			Professione prof = new Professione();
 			prof.setNome("idraulico");
 			Fornitore fornit = new Fornitore();
@@ -204,6 +205,63 @@ public class StartClassExample {
             asss.setId(example.getId());
             example3.addServizio(asss);
             fornitoreRep.save(example3);
+
+
+			Fornitore example4= new Fornitore();
+			example4.setNome("stefano");
+			example4.setCognome("carrino");
+			example4.setDescrizione("Interventi elettrici di ogni tipo, rifacimento impianti. Pronto intervento");
+			example4.setEmail("email@zzz.zzz");
+			example4.setNumero("aaaa");
+
+			example4.setProfessione(example2.getId());
+			example4.setTimeBirth(new Date());
+			example4.setUsername("pippo");
+			example4.setValutazione(0);
+			example4.setVia(pos3);
+			example4.setPass("asdasda");
+			Servizio asss2=new Servizio();
+			asss2.setId(example.getId());
+			example4.addServizio(asss);
+			fornitoreRep.save(example4);
+
+			professioneRep.save(p);
+
+			Fornitore example5= new Fornitore();
+			example4.setNome("stefano");
+			example4.setCognome("carrino");
+			example4.setDescrizione("Interventi elettrici di ogni tipo, rifacimento impianti. Pronto intervento");
+			example4.setEmail("nnnnn@zzz.zzz");
+			example4.setNumero("aaaa");
+
+			example4.setProfessione(example2.getId());
+			example4.setTimeBirth(new Date());
+			example4.setUsername("pippo");
+			example4.setValutazione(0);
+			example4.setVia(pos3);
+			example4.setPass("asdasda");
+			Servizio asss3=new Servizio();
+			asss3.setId(example.getId());
+			example4.addServizio(asss);
+			fornitoreRep.save(example4);
+
+			professioneRep.save(p);
+
+			example4.setNome("Pippo");
+			example4.setCognome("carrino");
+			example4.setDescrizione("Interventi elettrici di ogni tipo, rifacimento impianti. Pronto intervento");
+			example4.setEmail("asganauei@zzz.zzz");
+			example4.setNumero("aaaa");
+
+			example4.setProfessione(example2.getId());
+			example4.setTimeBirth(new Date());
+			example4.setUsername("pippo");
+			example4.setValutazione(0);
+			example4.setVia(pos3);
+			example4.setPass("asdasda");
+			asss2.setId(example.getId());
+			example4.addServizio(asss);
+			fornitoreRep.save(example4);
 			professioneRep.save(p);
 
 		};

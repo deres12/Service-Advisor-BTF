@@ -1,0 +1,36 @@
+  <div class="container" *ngFor="let index of showFornit; let i = index">
+      <div class="card-deck" *ngIf="i%3==0" style="padding-bottom: 25px;">
+        <div class="card border-info  " >
+          <div class="card-header" style="text-transform: uppercase">{{showFornit[i].nomeProfessione}}</div>
+          <div class="card-body text-info">
+          <h5 class="card-title">{{showFornit[i].nome}}</h5>
+          <div class="card-text"> {{showFornit[i].descrizione}}</div>
+          </div>
+          <div class="card-footer">
+          <p>Valutazione: {{showFornit[i].valutazione}}</p>
+          </div>
+        </div>
+
+        <div class="card border-info"  *ngIf="showFornit[i+1]">
+          <div class="card-header" style="text-transform: uppercase">{{showFornit[i+1].nomeProfessione}}</div>
+          <div class="card-body text-info">
+            <h5 class="card-title">{{showFornit[i+1].nome}}</h5>
+            <p class="card-text"> {{showFornit[i+1].descrizione}}</p>
+          </div>
+            <div class="card-footer">
+            <p>Valutazione: {{showFornit[i+1].valutazione}}</p>
+            </div>
+        </div>
+
+        <div class="card border-info "  *ngIf="showFornit[i+2]">
+          <div class="card-header" style="text-transform: uppercase">{{showFornit[i+2].nomeProfessione}}</div>
+          <div class="card-body text-info">
+            <h5 class="card-title">{{showFornit[i+2].nome}}</h5>
+            <p class="card-text"> {{showFornit[i+2].descrizione}}</p>
+          </div>
+            <div class="card-footer">
+            <p>Valutazione: {{showFornit[i+2].valutazione}}</p>
+            </div>
+        </div>
+      </div>
+</div>

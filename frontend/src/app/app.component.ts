@@ -9,5 +9,6 @@ import { UserType } from './models/user';
 })
 export class AppComponent {
 
+
   constructor(public auth: AuthService) {}
 }

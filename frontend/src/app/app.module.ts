@@ -31,6 +31,8 @@ import { PaymentsComponent } from './components/payments/payments.component';
 import {HttpModule} from "@angular/http";
 import { TestMappaComponent } from './mock-data/test-mappa/test-mappa.component';
 import {} from '@types/googlemaps';
+import { CardsFornitoriComponent } from './cards-fornitori/cards-fornitori.component';
+import { MapComponent } from './map/map.component';
 
 /*
   TODO: spostare <routes> in un modulo separato ed importarlo in app.module.ts
@@ -71,7 +73,9 @@ const routes: Routes = [
     FooterComponent,
     MappaComponent,
     TestMappaComponent,
-    PaymentsComponent
+    PaymentsComponent,
+    CardsFornitoriComponent,
+    MapComponent
   ],
   imports: [
     NgbModule.forRoot(),

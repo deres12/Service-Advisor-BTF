@@ -6,6 +6,7 @@ import {UserType} from '../../models/user';
 import {Job} from '../../models/job';
 import {JobsDataService} from '../../services/jobs.service';
 
+
 @Component({
   selector: 'app-signup-page',
   templateUrl: './signup-page.component.html',
@@ -120,5 +121,4 @@ export class SignupPageComponent implements OnInit {
       }
     );
   }
-
 }
