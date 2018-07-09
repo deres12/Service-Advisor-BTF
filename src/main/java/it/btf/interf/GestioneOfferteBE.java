@@ -8,4 +8,5 @@ import java.util.List;
 public interface GestioneOfferteBE {
     public void addOfferta(OffertaDTO dto);
     public List<Offerta> loadByRichiesta(String ricId);
+    List<OffertaDTO> loadOfferteByFornitore(String id);
 }

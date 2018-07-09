@@ -9,6 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/offerte")
 public class GestioneOfferteController {
@@ -23,6 +25,21 @@ public class GestioneOfferteController {
         this.serviceOfferte.addOfferta(dto);
 
         return new ResponseEntity<>(new RispostaExampleDTO("Offera inserita "), HttpStatus.OK);
+    }
+
+    @RequestMapping("/find/{id}")
+    @ResponseBody
+    public List<OffertaDTO> loadServiceByProf(@PathVariable("id") String id){
+
+        return serviceOfferte.loadOfferteByFornitore(id);
+    }
+    @ResponseBody
+    @RequestMapping(value = "findByEmail", method = RequestMethod.POST)
+    public ResponseEntity<List<OffertaDTO>> ricerca (@RequestBody  String email) {
+
+        List<OffertaDTO> response =serviceOfferte.loadOfferteByFornitore(email);
+
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
 
