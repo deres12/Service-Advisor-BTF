@@ -1,7 +1,5 @@
 package it.btf.dto;
 
-import it.btf.model.Servizio;
-
 import java.util.List;
 
 public class ProfessioneDTO {

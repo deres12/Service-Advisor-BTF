@@ -41,11 +41,14 @@
       </div>
 
       <div [class.hidden]="step!=2">
-        <label for="address">Indirizzo</label>
+        <label for="city">Citt&aacute;</label>
+        <input id="city" type="text" class="form-control" name="city" ngModel>
+        
+        <label for="address">Via/Piazza</label>
         <input id="address" type="text" class="form-control" name="address" ngModel>
-        <!--
-          aggiungere controlli per: stato, città, via e numero civico
-        -->
+        
+        <label for="civic-num">Numero Civico</label>
+        <input id="civic-num" type="number" class="form-control" name="civic-num" ngModel>
       </div>
 
       <div [class.hidden]="step!=3">

@@ -1,12 +1,17 @@
 package it.btf.model;
 
 import javax.persistence.Embeddable;
+
+import it.btf.dto.LuogoDTO;
+
 import java.io.Serializable;
 
 @Embeddable
 public class Luogo implements Serializable {
     
-    private int numeroCivico;
+    private static final long serialVersionUID = 1L;
+	
+	private int numeroCivico;
     private String via;
     private String paese;
     private String nazione;
@@ -16,6 +21,7 @@ public class Luogo implements Serializable {
     
 
     public Luogo() {
+    
     }
 
     public Luogo(int numeroCivico, String via, String paese, String nazione, Double latit, Double longit) {
@@ -25,6 +31,13 @@ public class Luogo implements Serializable {
         this.nazione = nazione;
         this.latit = latit;
         this.longit = longit;
+    }
+    
+    public Luogo(LuogoDTO dto) {
+        this.numeroCivico = dto.getNumeroCivico();
+        this.via = dto.getVia();
+        this.paese = dto.getPaese();
+        this.nazione = dto.getNazione();
     }
 
 

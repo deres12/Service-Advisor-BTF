@@ -1,11 +1,6 @@
 package it.btf.dto;
 
 import java.util.Date;
-import java.util.List;
-import it.btf.model.Cliente;
-import it.btf.model.Fornitore;
-import it.btf.model.Offerta;
-import it.btf.model.Servizio;
 
 public class RichiestaDTO {
 

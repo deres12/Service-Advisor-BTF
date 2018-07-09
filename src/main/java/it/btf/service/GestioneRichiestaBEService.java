@@ -3,22 +3,20 @@ package it.btf.service;
 import java.util.ArrayList;
 import java.util.List;
 
-import it.btf.dto.PersonaDTO;
-import it.btf.dto.ServizioDTO;
-import it.btf.model.Cliente;
-import it.btf.model.Luogo;
-import it.btf.model.RichiestaCliente;
-import it.btf.model.Servizio;
-import it.btf.repository.PersonaRepository;
-import it.btf.repository.RichiestaClienteRepository;
-import it.btf.utility.Position;
 import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import it.btf.dto.PersonaDTO;
 import it.btf.dto.RichiestaDTO;
+import it.btf.dto.ServizioDTO;
 import it.btf.interf.GestioneRichiestaBE;
+import it.btf.model.Cliente;
+import it.btf.model.RichiestaCliente;
+import it.btf.model.Servizio;
+import it.btf.repository.PersonaRepository;
+import it.btf.repository.RichiestaClienteRepository;
 
 @Service
 @Transactional
@@ -39,29 +37,26 @@ public class GestioneRichiestaBEService implements GestioneRichiestaBE {
 		List<RichiestaCliente> richieste= servizioRepository.myQuery(email);//servizioRepository.findRichiestaClienteByCliente(email);
 
 
-		if(richieste.size()>0){
-			for(RichiestaCliente R:richieste) {
-				RichiestaDTO ric = new RichiestaDTO();
+		for(RichiestaCliente R : richieste) {
+			RichiestaDTO ric = new RichiestaDTO();
 
-				PersonaDTO pers = new PersonaDTO();
-				ServizioDTO serv = new ServizioDTO();
+			PersonaDTO pers = new PersonaDTO();
+			ServizioDTO serv = new ServizioDTO();
 
-				pers.setEmail(R.getCliente().getEmail());
+			pers.setEmail(R.getCliente().getEmail());
 
-				serv.setId(R.getServizioRichiesto().getId());
+			serv.setId(R.getServizioRichiesto().getId());
 
 
-				ric.setDescrizione(R.getDescrizione());
-				ric.setDataInizio(R.getDataInizio());
-				ric.setDataFine(R.getDataFine());
-				ric.setPrezzoMassimo(R.getPrezzoMassimo());
+			ric.setDescrizione(R.getDescrizione());
+			ric.setDataInizio(R.getDataInizio());
+			ric.setDataFine(R.getDataFine());
+			ric.setPrezzoMassimo(R.getPrezzoMassimo());
 
-				ric.setPersona(pers);
-				ric.setServizioRichiesto(serv);
+			ric.setPersona(pers);
+			ric.setServizioRichiesto(serv);
 
-				//AGGIUNGO ALLA LISTA DI RICHIESTEdto
-				richiesteDTOS.add(ric);
-			}
+			richiesteDTOS.add(ric);
 		}
 
 		return richiesteDTOS;

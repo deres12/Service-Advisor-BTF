@@ -1,14 +1,12 @@
 package it.btf.repository;
 
-import it.btf.model.Offerta;
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import it.btf.model.RichiestaCliente;
-
-import java.util.List;
-import java.util.Optional;
 
 @Repository
 public interface RichiestaClienteRepository extends JpaRepository<RichiestaCliente, Long> {

@@ -17,7 +17,6 @@ public class Fornitore extends Guest {
 	
 	private int valutazione;
 	private String descrizione;
-	private String numero;
 
 	@ManyToOne
 	private Professione professione;
@@ -36,14 +35,14 @@ public class Fornitore extends Guest {
 		this.professione=new Professione();
 	}
 
-	public Fornitore(String nome, String cognome, String username, Luogo via, String email, String numero,String descrizione, List<Offerta> offerte, List<Servizio> servizi, Professione professione,String pass) {
-		super(nome, cognome, username, via, email, pass);
-		this.valutazione=0;
-		this.numero=numero;
-		this.descrizione=descrizione;
-		this.professione=professione;
-		this.servizi=servizi;
-		this.offerte=offerte;
+	public Fornitore(String email, String pass, String nome, Luogo via) {
+		super(email, pass, nome, via);
+		
+		this.valutazione = 0;
+		this.descrizione = "";
+		this.servizi = new ArrayList<Servizio>();
+		this.offerte = new ArrayList<Offerta>();
+		this.professione = new Professione();
 	}
 	
 
@@ -90,14 +89,6 @@ public class Fornitore extends Guest {
 
 	public void setDescrizione(String descrizione) {
 		this.descrizione = descrizione;
-	}
-
-	public String getNumero() {
-		return numero;
-	}
-
-	public void setNumero(String numero) {
-		this.numero = numero;
 	}
 	
 	public void addServizio(Servizio servizio) {

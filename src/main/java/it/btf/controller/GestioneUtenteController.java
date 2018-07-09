@@ -1,10 +1,15 @@
 package it.btf.controller;
-import java.util.List;
-import it.btf.utility.DatabaseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
 import it.btf.dto.PersonaDTO;
 import it.btf.interf.GestioneUtenteBE;
 
@@ -18,10 +23,9 @@ public class GestioneUtenteController {
     GestioneUtenteBE service;
 
 
-    @GetMapping("/find/{username}")
-    public List<PersonaDTO> load(@PathVariable("username") String username) {
-
-        return service.load(username);
+    @GetMapping("/find/{email}")
+    public PersonaDTO load(@PathVariable("email") String email) {
+        return service.loadById(email);
     }
 
 
@@ -45,8 +49,7 @@ public class GestioneUtenteController {
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         }
 
-
-        PersonaDTO user = service.loadById(dto);
+        PersonaDTO user = service.loadById(dto.getEmail());
         user.setPass("");
         
         return new ResponseEntity<>(user, HttpStatus.OK);

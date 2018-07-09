@@ -1,19 +1,16 @@
 package it.btf.service;
 
-import it.btf.dto.OffertaDTO;
-import it.btf.dto.RichiestaDTO;
-import it.btf.interf.GestioneOfferteBE;
-import it.btf.model.Fornitore;
-import it.btf.model.Offerta;
-import it.btf.model.RichiestaCliente;
-import it.btf.repository.OffertaRepository;
+import java.util.List;
+
 import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.List;
+import it.btf.dto.OffertaDTO;
+import it.btf.interf.GestioneOfferteBE;
+import it.btf.model.Offerta;
+import it.btf.repository.OffertaRepository;
 
 @Service
 @Transactional

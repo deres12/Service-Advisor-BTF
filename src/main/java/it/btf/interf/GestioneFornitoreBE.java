@@ -1,11 +1,9 @@
 package it.btf.interf;
 
-import it.btf.dto.FornitoreDTO;
-import it.btf.dto.LuogoDTO;
-import it.btf.dto.RicercaFornitoriDTO;
-import it.btf.model.Fornitore;
-
 import java.util.List;
+
+import it.btf.dto.FornitoreDTO;
+import it.btf.dto.RicercaFornitoriDTO;
 
 public interface GestioneFornitoreBE {
 

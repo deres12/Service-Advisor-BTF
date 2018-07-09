@@ -93,7 +93,7 @@ export class SignupPageComponent implements OnInit {
         email: form.value["email"],
         pass: form.value["password"],
         professione: {id: 0},
-        indirizzo: form.value["address"],
+        via: null
       };
     } else {
       submitData = {
@@ -102,7 +102,12 @@ export class SignupPageComponent implements OnInit {
         email: form.value["email"],
         pass: form.value["password"],
         professione: {id: this.professione.id},
-        indirizzo: form.value["address"],
+        via: {
+          nazione: "IT",
+          paese: form.value["city"],
+          via: form.value["address"],
+          numeroCivico: form.value["civic-num"]
+        }
       };
     }
 

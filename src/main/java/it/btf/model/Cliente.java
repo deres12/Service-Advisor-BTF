@@ -13,7 +13,7 @@ public class Cliente extends Guest{
 		super();
 	}
 	
-	public Cliente(String nome, String cognome, String username, Luogo via, String email, String pass) {
-		super(nome, cognome, username, via, email, pass);
+	public Cliente(String email, String pass, String nome, Luogo via) {
+		super(email, pass, nome, via);
 	}
 }

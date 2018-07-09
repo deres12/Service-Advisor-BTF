@@ -1,5 +1,7 @@
 package it.btf.dto;
 
+import it.btf.model.Luogo;
+
 public class LuogoDTO {
 
         private int numeroCivico;
@@ -7,26 +9,30 @@ public class LuogoDTO {
         private String paese;
         private String nazione;
 
+        public LuogoDTO() {
+        
+        }
+
         public LuogoDTO(int numeroCivico, String via, String paese, String nazione) {
             this.numeroCivico = numeroCivico;
             this.via = via;
             this.paese = paese;
             this.nazione = nazione;
-
         }
 
-        public LuogoDTO() {
+        public LuogoDTO(Luogo luogo) {
+        	this.numeroCivico = luogo.getNumeroCivico();
+            this.via = luogo.getVia();
+            this.paese = luogo.getPaese();
+            this.nazione = luogo.getNazione();	
         }
 
-        /**/
 
         @Override
         public String toString(){
             String richiesta=String.valueOf(this.numeroCivico)+" "+via+", "+paese+", "+nazione;
             return richiesta;
         }
-
-
 
 
         public int getNumeroCivico() {
