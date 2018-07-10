@@ -4,8 +4,8 @@ export interface Luogo {
   via:string;
   paese:string;
   nazione:string;
-  lat:number;
+  
+  latit:number;
   longi:number;
   radius:number;
-
 }

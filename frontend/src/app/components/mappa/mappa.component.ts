@@ -36,69 +36,40 @@ export class MappaComponent implements OnInit {
   ngOnInit() {
 
     this.serv.getFornitori().subscribe((list: Fornitore[]) => {
+      this.fornitori=list;
+      this.fornitori.forEach(item=>{
+        console.log("LATITUDINE===> "+item.via.latit);
+        console.log("LONGITUDINE===> "+item.via.longit);
+        var contentString = '<div id="content">'+
+          '<div id="siteNotice">'+
+          '</div>'+
+          '<h1 id="firstHeading" class="firstHeading">Uluru</h1>'+
+          '<div id="bodyContent">'+
+          '<p><b>Uluru</b>, also referred to as <b>Ayers Rock</b>, is a large ' +
+          'sandstone rock formation in the southern part of the '+
+          'Northern Territory, central Australia. It lies 335&#160;km (208&#160;mi) '+
+          'south west of the nearest large town, Alice Springs; 450&#160;km '+
+          '(280&#160;mi) by road. Kata Tjuta and Uluru are the two major '+
+          'features of the Uluru - Kata Tjuta National Park. Uluru is '+
+          'sacred to the Pitjantjatjara and Yankunytjatjara, the '+
+          'Aboriginal people of the area. It has many springs, waterholes, '+
+          'rock caves and ancient paintings. Uluru is listed as a World '+
+          'Heritage Site.</p>'+
+          '<p>Attribution: Uluru, <a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">'+
+          'https://en.wikipedia.org/w/index.php?title=Uluru</a> '+
+          '(last visited June 22, 2009).</p>'+
+          '</div>'+
+          '</div>';
 
-      this.fornitori = list;
-      this.fornitori.forEach(item => {
-          var contentString = '<div id="content">' +
-            '<div id="siteNotice">' +
-            '</div>' +
-            '<h1 id="firstHeading" class="firstHeading">' + item.nome + '</h1>' +
-            '<div id="bodyContent">' +
-            '<br>Professione: <strong>' + item.nomeProfessione +
-            '</strong><p>Attribution: ' + item.descrizione +
-            '<br><br>' +
-            '<a href="http://localhost/#/new-request">Chiedi preventivo</a>' +
-            '<button style="margin-left: 5px" type="button" (click)="provami()" class="btn btn-info" >Chiedi preventivo</button-->' +
-            '</div>' +
-            '<br>' +
-            '</div>';
+        var infowindow = new google.maps.InfoWindow({
+          content: contentString
+        });
 
-          var infowindow = new google.maps.InfoWindow({
-            content: contentString
-          });
-          /*
-                  google.maps.event.addListener(marker, 'click', function() {
-                    infowindow.setContent(contentString);
-                    infowindow.open(this.map, this);
-                    var btn = $(contentString).findElement('#prova');
-                    console.log("premuto");
-                  });*/
-
-
-          var image;
-          if (item.nomeProfessione == 'elettricista') {
-            image = {
-              url: '/assets/res/electric1.png',
-              size: new google.maps.Size(128, 128),
-              origin: new google.maps.Point(0, 0),
-              scaledSize: new google.maps.Size(40, 40),
-              anchor: new google.maps.Point(20, 40)
-            };
-          } else if (item.nomeProfessione == 'idraulico') {
-            image = {
-              url: '/assets/res/pipe1.png',
-              size: new google.maps.Size(128, 128),
-              origin: new google.maps.Point(0, 0),
-              scaledSize: new google.maps.Size(40, 40),
-              anchor: new google.maps.Point(20, 40)
-            };
-          } else if (item.nomeProfessione == 'gommista') {
-            image = {
-              url: '/assets/res/tire1.png',
-              size: new google.maps.Size(128, 128),
-              origin: new google.maps.Point(0, 0),
-              scaledSize: new google.maps.Size(40, 40),
-              anchor: new google.maps.Point(20, 40)
-            };
-          }
-
-
-          var marker = new google.maps.Marker({
-            position: {lat: item.latit, lng: item.longit},
-            map: this.map,
-            title: 'Click to zoom',
-            icon: image
-          });
+        var marker=new google.maps.Marker({
+          position: {lat: item.via.latit, lng: item.via.longit},
+          map: this.map,
+          title: 'Click to zoom'
+        });
 
           marker.addListener('click', function () {
             infowindow.open(this.map, marker);
@@ -122,6 +93,7 @@ export class MappaComponent implements OnInit {
       anchor: new google.maps.Point(20, 40)
     };
 
+<<<<<<< HEAD
     this.place = {
       numeroCivico: 50,
       via: "giancarlo sismondi",
@@ -131,6 +103,9 @@ export class MappaComponent implements OnInit {
       longi: 9.2313484,
       radius: 150
     };
+=======
+    this.place={numeroCivico: 50,via: "giancarlo sismondi",paese:"Milano",nazione:"IT",latit:45.4654666, longi: 9.2313484, radius:150};
+>>>>>>> Refactor Models and Jobs Icons Addition
 
     var mapProp = {
       center: {lat: 45.4654666, lng: 9.2313484},
@@ -252,14 +227,21 @@ export class MappaComponent implements OnInit {
     this.markerCenter.setMap(this.map);
   }
 
+<<<<<<< HEAD
 
   searchOnMap() {
     this.place.longi = 0.0;
     this.place.lat = 0.0;
+=======
+  searchOnMap(){
+    this.place.longi = 0.0;
+    this.place.latit = 0.0;
+>>>>>>> Refactor Models and Jobs Icons Addition
     this.place.radius = this.radius;
     this.disableMarkersRadius();
     this.markers = [];
     this.serv.getFornitoriByAddress(this.place).subscribe((list: FornitorePlace[]) => {
+<<<<<<< HEAD
         this.fornitoriOnMap = list;
         this.fornitoriOnMap.forEach(item => {
 
@@ -293,5 +275,42 @@ export class MappaComponent implements OnInit {
         });
       },
       (error) => console.log(error));
+=======
+      this.fornitoriOnMap = list;
+      this.fornitoriOnMap.forEach(item => {
+
+        if(this.fornitoriOnMap[0].luogo===item.luogo){
+          this.markerCenter=new google.maps.Marker({
+            position: {lat: item.luogo.latit, lng: item.luogo.longi},
+            map: this.map,
+            title: 'Click to zoom'
+          });
+          this.latitude=item.luogo.latit;
+          this.longitude=item.luogo.longi;
+          var circle = new google.maps.Circle({
+            map: this.map,
+            radius: item.luogo.radius,    // 10 miles in metres
+            fillColor: '#347baa'
+          });
+          this.markerCenter.setMap(this.map);
+          circle.bindTo('center', this.markerCenter, 'position');
+          this.circle=circle;
+          this.map.setCenter(new google.maps.LatLng(this.latitude, this.longitude));
+        }
+
+        this.markers.push(new google.maps.Marker({
+          position: {lat: item.luogo.latit, lng: item.luogo.longi},
+          map: this.map,
+          title: 'Click to zoom'
+        }));
+      });
+      this.markers.forEach(item=>{
+        item.setMap(this.map);
+      });
+
+
+    },
+    (error)=>console.log(error));
+>>>>>>> Refactor Models and Jobs Icons Addition
   }
 }

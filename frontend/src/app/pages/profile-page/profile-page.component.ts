@@ -19,8 +19,5 @@ export class ProfilePageComponent implements OnInit {
     if(this.auth.userType == UserType.Guest) {
       this.router.navigateByUrl("/login");
     }
-
-    console.log(this.auth.userInfo);
   }
-
 }

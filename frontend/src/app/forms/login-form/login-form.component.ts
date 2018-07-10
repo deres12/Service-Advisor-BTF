@@ -36,8 +36,6 @@ export class LoginFormComponent implements OnInit {
 
     this.auth.login(this.data).subscribe(
       res => {
-        console.log(res);
-
         this.auth.userInfo = res;
 
         localStorage.setItem("user-profile", JSON.stringify(this.auth.userInfo));

@@ -60,13 +60,21 @@ export class ListaFornitoriComponent implements OnInit {
 
   ngOnInit() {
     this.serv.getFornitori().subscribe((list: Fornitore[]) => {
-      this.fornitori=list;
-      this.showFornit=list;
+      this.fornitori = list;
+      this.showFornit = list;
     },(error)=>{
       this.empty=true;
       console.log(error.toString());});
 
-    this.place={numeroCivico: 50,via: "giancarlo sismondi",paese:"Milano",nazione:"IT",lat:45.4654666, longi: 9.2313484, radius:150};
+    this.place={
+      numeroCivico: 50,
+      via: "giancarlo sismondi",
+      paese: "Milano",
+      nazione: "IT",
+      latit: 45.4654666,
+      longi: 9.2313484,
+      radius: 150
+    };
 
     var myLatlng = {lat: 45.4654666, lng: 9.2313484};
     var mapProp = {
@@ -96,7 +104,7 @@ export class ListaFornitoriComponent implements OnInit {
     let re = new RegExp(query, "i");
     this.showFornit = [];
     this.fornitori.forEach(item => {
-      if (re.test(item.nomeProfessione) || re.test(item.descrizione) || re.test(item.nome))
+      if (re.test(item.descrizione) || re.test(item.nome))
         this.showFornit.push(item);
     });
     console.log(this.showFornit.length);
@@ -131,8 +139,8 @@ export class ListaFornitoriComponent implements OnInit {
 
   searchOnMap(){
     console.log(this.place.numeroCivico+" => "+this.place.via+" => "+this.place.paese+" => "+this.place.nazione)
-    this.place.longi=0.0;
-    this.place.lat=0.0;
+    this.place.longi = 0.0;
+    this.place.latit = 0.0;
     this.place.radius=this.radius;
     this.disableMarkersRadius();
     this.markers=[];
@@ -142,11 +150,11 @@ export class ListaFornitoriComponent implements OnInit {
 
         if(this.fornitoriOnMap[0].luogo===item.luogo){
           this.markerCenter=new google.maps.Marker({
-            position: {lat: item.luogo.lat, lng: item.luogo.longi},
+            position: {lat: item.luogo.latit, lng: item.luogo.longi},
             map: this.map,
             title: 'Click to zoom'
           });
-          this.latitude=item.luogo.lat;
+          this.latitude=item.luogo.latit;
           this.longitude=item.luogo.longi;
           var circle = new google.maps.Circle({
             map: this.map,
@@ -160,7 +168,7 @@ export class ListaFornitoriComponent implements OnInit {
         }
 
         this.markers.push(new google.maps.Marker({
-          position: {lat: item.luogo.lat, lng: item.luogo.longi},
+          position: {lat: item.luogo.latit, lng: item.luogo.longi},
           map: this.map,
           title: 'Click to zoom'
         }));

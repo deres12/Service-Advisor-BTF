@@ -6,5 +6,6 @@ export interface JobService {
   export interface Job {
     id: number,
     nome: string,
+    icon: string,
     servizi: JobService[]
   }

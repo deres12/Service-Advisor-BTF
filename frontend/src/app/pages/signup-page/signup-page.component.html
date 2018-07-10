@@ -25,53 +25,53 @@
       </button>
     </div>
 
-      <div [class.hidden]="step!=1" class="text-center">
-        <label><strong>Professione Praticata</strong></label>
-        <input type="hidden" name="professione" [ngModel]="professione?.id">
-        <div class="list-group">
-          <button class="list-group-item list-group-item-action"
-                  [class.active]="professione==job"
-                  (click)="professione=job"
-                  type="button"
-                  *ngFor="let job of jobs">
+    <div [class.hidden]="step!=1" class="text-center">
+      <label><strong>Professione Praticata</strong></label>
+      <input type="hidden" name="professione" [ngModel]="professione?.id">
+      <div class="list-group">
+        <button class="list-group-item list-group-item-action"
+                [class.active]="professione==job"
+                (click)="professione=job"
+                type="button"
+                *ngFor="let job of jobs">
 
-            {{job.nome}}
-          </button>
-        </div>
+          {{job.nome}}
+        </button>
       </div>
+    </div>
 
-      <div [class.hidden]="step!=2">
-        <label for="city">Citt&aacute;</label>
-        <input id="city" type="text" class="form-control" name="city" ngModel>
-        
-        <label for="address">Via/Piazza</label>
-        <input id="address" type="text" class="form-control" name="address" ngModel>
-        
-        <label for="civic-num">Numero Civico</label>
-        <input id="civic-num" type="number" class="form-control" name="civic-num" ngModel>
-      </div>
+    <div [class.hidden]="step!=2">
+      <label for="city">Citt&aacute;</label>
+      <input id="city" type="text" class="form-control" name="city" ngModel>
+      
+      <label for="address">Via/Piazza</label>
+      <input id="address" type="text" class="form-control" name="address" ngModel>
+      
+      <label for="civic-num">Numero Civico</label>
+      <input id="civic-num" type="number" class="form-control" name="civic-num" ngModel>
+    </div>
 
-      <div [class.hidden]="step!=3">
-        <label for="nome" *ngIf="type==userType.Client">Nome</label>
-        <label for="nome" *ngIf="type==userType.Vendor">Ragione Sociale</label>
-        <input id="nome" type="text" class="form-control" name="nome" ngModel>
+    <div [class.hidden]="step!=3">
+      <label for="nome" *ngIf="type==userType.Client">Nome</label>
+      <label for="nome" *ngIf="type==userType.Vendor">Ragione Sociale</label>
+      <input id="nome" type="text" class="form-control" name="nome" ngModel>
 
-        <label for="email">Email</label>
-        <input id="email" type="email" class="form-control" placeholder="Indirizzo Email" name="email" ngModel>
+      <label for="email">Email</label>
+      <input id="email" type="email" class="form-control" placeholder="Indirizzo Email" name="email" ngModel>
 
-        <label for="password">Password</label>
-        <input id="password" type="password" class="form-control" placeholder="Crea una password" name="password" ngModel>
+      <label for="password">Password</label>
+      <input id="password" type="password" class="form-control" placeholder="Crea una password" name="password" ngModel>
 
-        <label for="password2">Ripeti Password</label>
-        <input id="password2" type="password" class="form-control" placeholder="Ripeti la password" name="password2" ngModel>
-      </div>
+      <label for="password2">Ripeti Password</label>
+      <input id="password2" type="password" class="form-control" placeholder="Ripeti la password" name="password2" ngModel>
+    </div>
   </div>
 
-   <footer>
-      <button type="button" class="btn btn-secondary mr-3" (click)="back()" *ngIf="step>0">Indietro</button>
-      <button type="button" class="btn btn-primary" (click)="next()" *ngIf="step<3">Avanti</button>
+  <footer>
+    <button type="button" class="btn btn-secondary mr-3" (click)="back()" *ngIf="step>0">Indietro</button>
+    <button type="button" class="btn btn-primary" (click)="next()" *ngIf="step<3">Avanti</button>
 
 
-      <input  [disabled]="!valid(f)" class="btn btn-success" type="submit" value="Registrati" *ngIf="step==3">
-   </footer>
+    <input  [disabled]="!valid(f)" class="btn btn-success" type="submit" value="Registrati" *ngIf="step==3">
+  </footer>
 </form>

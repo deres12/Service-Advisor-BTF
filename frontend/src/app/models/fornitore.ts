@@ -1,11 +1,17 @@
 import {Luogo} from "./luogo";
 
 export interface Fornitore {
-    nome:string;
-    nomeProfessione:string;
-    valutazione:string;
-    descrizione:string;
-    email:string;
-    longit: number;
-    latit: number;
+    nome: string;
+    email: string;
+    professione: number,
+    descrizione: string;
+    valutazione: string;
+    via: {
+        numeroCivico: number,
+        via: string,
+        paese: string,
+        nazione: string,
+        latit: number,
+        longit: number
+    }
 }

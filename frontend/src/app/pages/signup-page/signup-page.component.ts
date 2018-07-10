@@ -114,7 +114,6 @@ export class SignupPageComponent implements OnInit {
     // call REST api
     this.auth.signup(submitData).subscribe(
       res => {
-        console.log(res);
         this.auth.userInfo = res;
 
         localStorage.setItem("user-profile", JSON.stringify(this.auth.userInfo));
