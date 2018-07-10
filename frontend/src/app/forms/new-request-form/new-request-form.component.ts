@@ -84,7 +84,7 @@ export class NewRequestFormComponent implements OnInit {
     this.prova.esempioMock(this.richiesta);
     // console.log(this.request.richjeste());
     // {job, address data: descrizione: ""}
-    this.router.navigate(["profile"]);
+    this.router.navigateByUrl("/profile");
 
     //if(!this.valid(form)) return; {year: 2018, month: 7, day: 7}
 
