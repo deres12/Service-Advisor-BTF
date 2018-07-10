@@ -93,19 +93,15 @@ export class MappaComponent implements OnInit {
       anchor: new google.maps.Point(20, 40)
     };
 
-<<<<<<< HEAD
     this.place = {
       numeroCivico: 50,
       via: "giancarlo sismondi",
       paese: "Milano",
       nazione: "IT",
-      lat: 45.4654666,
+      latit: 45.4654666,
       longi: 9.2313484,
       radius: 150
     };
-=======
-    this.place={numeroCivico: 50,via: "giancarlo sismondi",paese:"Milano",nazione:"IT",latit:45.4654666, longi: 9.2313484, radius:150};
->>>>>>> Refactor Models and Jobs Icons Addition
 
     var mapProp = {
       center: {lat: 45.4654666, lng: 9.2313484},
@@ -227,55 +223,13 @@ export class MappaComponent implements OnInit {
     this.markerCenter.setMap(this.map);
   }
 
-<<<<<<< HEAD
-
-  searchOnMap() {
-    this.place.longi = 0.0;
-    this.place.lat = 0.0;
-=======
   searchOnMap(){
     this.place.longi = 0.0;
     this.place.latit = 0.0;
->>>>>>> Refactor Models and Jobs Icons Addition
     this.place.radius = this.radius;
     this.disableMarkersRadius();
     this.markers = [];
     this.serv.getFornitoriByAddress(this.place).subscribe((list: FornitorePlace[]) => {
-<<<<<<< HEAD
-        this.fornitoriOnMap = list;
-        this.fornitoriOnMap.forEach(item => {
-
-          if (this.fornitoriOnMap[0].luogo === item.luogo) {
-            this.markerCenter = new google.maps.Marker({
-              position: {lat: item.luogo.lat, lng: item.luogo.longi},
-              map: this.map,
-              title: 'Click to zoom'
-            });
-            this.latitude = item.luogo.lat;
-            this.longitude = item.luogo.longi;
-            var circle = new google.maps.Circle({
-              map: this.map,
-              radius: item.luogo.radius,    // 10 miles in metres
-              fillColor: '#347baa'
-            });
-            this.markerCenter.setMap(this.map);
-            circle.bindTo('center', this.markerCenter, 'position');
-            this.circle = circle;
-            this.map.setCenter(new google.maps.LatLng(this.latitude, this.longitude));
-          }
-
-          this.markers.push(new google.maps.Marker({
-            position: {lat: item.luogo.lat, lng: item.luogo.longi},
-            map: this.map,
-            title: 'Click to zoom'
-          }));
-        });
-        this.markers.forEach(item => {
-          item.setMap(this.map);
-        });
-      },
-      (error) => console.log(error));
-=======
       this.fornitoriOnMap = list;
       this.fornitoriOnMap.forEach(item => {
 
@@ -311,6 +265,5 @@ export class MappaComponent implements OnInit {
 
     },
     (error)=>console.log(error));
->>>>>>> Refactor Models and Jobs Icons Addition
   }
 }

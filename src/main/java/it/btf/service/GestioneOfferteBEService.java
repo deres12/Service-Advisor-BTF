@@ -1,5 +1,6 @@
 package it.btf.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.dozer.DozerBeanMapper;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import it.btf.dto.OffertaDTO;
+import it.btf.dto.RichiestaDTO;
 import it.btf.interf.GestioneOfferteBE;
 import it.btf.model.Offerta;
 import it.btf.repository.OffertaRepository;

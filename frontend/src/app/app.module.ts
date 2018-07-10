@@ -33,6 +33,9 @@ import { TestMappaComponent } from './mock-data/test-mappa/test-mappa.component'
 import { SearchVendorComponent } from './search-vendor/search-vendor.component';
 import {} from '@types/googlemaps';
 import { RicercaComponent } from './components/ricerca/ricerca.component';
+import { MappaAGMComponent } from './components/mappa-agm/mappa-agm.component';
+import { AgmCoreModule } from '@agm/core';
+import { AgmSnazzyInfoWindowModule } from '@agm/snazzy-info-window';
 
 /*
   TODO: spostare <routes> in un modulo separato ed importarlo in app.module.ts
@@ -74,7 +77,8 @@ const routes: Routes = [
     MappaComponent,
     TestMappaComponent,
     PaymentsComponent,
-    SearchVendorComponent
+    SearchVendorComponent,
+    MappaAGMComponent
   ],
   imports: [
     NgbModule.forRoot(),
@@ -86,6 +90,10 @@ const routes: Routes = [
     NgbModule.forRoot(),
     NgxStripeModule.forRoot('pk_test_telEqsWJwaOuBQXVfwFR3u9q'),
     RouterModule.forRoot(routes, {useHash: true}),
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyCO86P-aWvq0wCdj6rSwVYF7jdbqAV3F4s'
+    }),
+    AgmSnazzyInfoWindowModule
   ],
   providers: [AuthService, TestDataService],
   bootstrap: [AppComponent]

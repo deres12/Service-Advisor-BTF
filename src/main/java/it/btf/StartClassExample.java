@@ -1,8 +1,9 @@
 package it.btf;
 
-import it.btf.model.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
-import it.btf.utility.Position;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
@@ -10,18 +11,21 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import it.btf.model.Cliente;
+import it.btf.model.Fornitore;
+import it.btf.model.Luogo;
+import it.btf.model.Offerta;
+import it.btf.model.Professione;
+import it.btf.model.RichiestaCliente;
+import it.btf.model.Servizio;
 import it.btf.repository.FornitoreRepository;
 import it.btf.repository.OffertaRepository;
 import it.btf.repository.PersonaRepository;
 import it.btf.repository.ProfessioneRepository;
 import it.btf.repository.RichiestaClienteRepository;
 import it.btf.repository.ServizioRepository;
-
+import it.btf.utility.Position;
 import it.btf.utility.StringHashing;
-
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 
 @SpringBootApplication
 public class StartClassExample {
@@ -193,14 +197,10 @@ public class StartClassExample {
 
 			Fornitore example4= new Fornitore();
 			example4.setNome("stefano");
-			example4.setCognome("carrino");
 			example4.setDescrizione("Interventi elettrici di ogni tipo, rifacimento impianti. Pronto intervento");
 			example4.setEmail("email@zzz.zzz");
-			example4.setNumero("aaaa");
 
 			example4.setProfessione(example2.getId());
-			example4.setTimeBirth(new Date());
-			example4.setUsername("pippo");
 			example4.setValutazione(0);
 			example4.setVia(pos3);
 			example4.setPass("asdasda");
@@ -213,14 +213,10 @@ public class StartClassExample {
 
 			Fornitore example5= new Fornitore();
 			example4.setNome("stefano");
-			example4.setCognome("carrino");
 			example4.setDescrizione("Interventi elettrici di ogni tipo, rifacimento impianti. Pronto intervento");
 			example4.setEmail("nnnnn@zzz.zzz");
-			example4.setNumero("aaaa");
 
 			example4.setProfessione(example2.getId());
-			example4.setTimeBirth(new Date());
-			example4.setUsername("pippo");
 			example4.setValutazione(0);
 			example4.setVia(pos3);
 			example4.setPass("asdasda");
@@ -232,16 +228,12 @@ public class StartClassExample {
 			professioneRep.save(p);
 
 			example4.setNome("Pippo");
-			example4.setCognome("carrino");
 			example4.setDescrizione("Interventi elettrici di ogni tipo, rifacimento impianti. Pronto intervento");
 			example4.setEmail("asganauei@zzz.zzz");
-			example4.setNumero("aaaa");
 
 			example4.setProfessione(example2.getId());
-			example4.setTimeBirth(new Date());
-			example4.setUsername("pippo");
 			example4.setValutazione(0);
-			example4.setVia(pos4);
+			example4.setVia(pos3);
 			example4.setPass("asdasda");
 			asss2.setId(example.getId());
 			example4.addServizio(asss);

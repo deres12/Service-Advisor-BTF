@@ -8,4 +8,5 @@ export interface Richiesta {
   via:Luogo;
   data:string;
   persona: User;
+  emailfornitore:string;
 }

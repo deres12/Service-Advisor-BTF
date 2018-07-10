@@ -36,10 +36,18 @@ export class NewRequestFormComponent implements OnInit {
     professione: "",
     via: {numeroCivico:0,via:"",paese:"",nazione:"IT",lat:0,longi:0,radius:0},
     data: "",
-    persona: {email:"",type: null, pass:"",nome:""}
+    persona: {email:"",type: null, pass:"",nome:""},
+    emailfornitore: null
   };
 
   ngOnInit() {
+    if(localStorage.getItem("emailfornitore")!=null){
+      this.richiesta.emailfornitore=localStorage.getItem("emailfornitore");
+      localStorage.removeItem("emailfornitore");
+      console.log(this.richiesta.emailfornitore);
+    }else{
+      this.richiesta.emailfornitore=null;
+    }
     if (this.auth.userType == UserType.Guest)
       this.router.navigate([""]);
   }
@@ -52,7 +60,7 @@ export class NewRequestFormComponent implements OnInit {
     //console.log(form.value["data"]);
     this.richiesta.descrizione = form.value["descrizione"];
     //this.richiesta.descrizione="descrizione";
-    console.log("EMAIL:  "+this.auth.userInfo.email);
+    //console.log("EMAIL:  "+this.auth.userInfo.email);
 
     this.richiesta.persona.email=this.auth.userInfo.email;
     this.richiesta.professione = form.value["job"];
@@ -61,6 +69,7 @@ export class NewRequestFormComponent implements OnInit {
     this.richiesta.via.numeroCivico = form.value["numeroCivico"];
     this.richiesta.data =form.value["data"].day.toString()+"/"+form.value["data"].month.toString() +"/"+form.value["data"].year.toString();
     this.richiesta.prezzoMassimo = form.value["prezzoMassimo"];
+    //console.log(this.richiesta.emailfornitore);
     //console.log(this.richiesta);
     // call REST api
     this.prova.addRichiesta(this.richiesta).subscribe(

@@ -12,6 +12,16 @@ public class RichiestaDTO {
 	private Date dataFine;
 
 	private PersonaDTO persona;
+
+	public String getEmailfornitore() {
+		return emailfornitore;
+	}
+
+	public void setEmailfornitore(String emailfornitore) {
+		this.emailfornitore = emailfornitore;
+	}
+
+	private String emailfornitore;
 	private ServizioDTO servizioRichiesto;
 
 	private STATO stato;
