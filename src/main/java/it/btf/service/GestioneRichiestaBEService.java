@@ -48,7 +48,8 @@ public class GestioneRichiestaBEService implements GestioneRichiestaBE {
 
 				pers.setEmail(R.getCliente().getEmail());
 
-				serv.setId(R.getServizioRichiesto().getId());
+
+				//serv.setId(R.getServizioRichiesto().getId());
 
 
 				ric.setDescrizione(R.getDescrizione());
@@ -57,7 +58,8 @@ public class GestioneRichiestaBEService implements GestioneRichiestaBE {
 				ric.setPrezzoMassimo(R.getPrezzoMassimo());
 
 				ric.setPersona(pers);
-				ric.setServizioRichiesto(serv);
+
+				//				ric.setServizioRichiesto(serv);
 
 				//AGGIUNGO ALLA LISTA DI RICHIESTEdto
 				richiesteDTOS.add(ric);

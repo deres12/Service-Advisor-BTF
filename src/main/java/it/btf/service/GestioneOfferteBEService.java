@@ -1,5 +1,6 @@
 package it.btf.service;
 
+import it.btf.dto.FornitoreDTO;
 import it.btf.dto.OffertaDTO;
 import it.btf.dto.RichiestaDTO;
 import it.btf.interf.GestioneOfferteBE;
@@ -80,5 +81,34 @@ public class GestioneOfferteBEService implements GestioneOfferteBE {
         return offertaDTOS;
     }
 
+    @Override
+    public List<OffertaDTO> loadOfferteByCliente(String id) {
+        List<Offerta> offertaList = new ArrayList<Offerta>();
+        List<OffertaDTO> offertaDTOS = new ArrayList<OffertaDTO>();
 
+
+        offertaList= offertaRepository.findAllByRichiesta_Cliente_Email(id);
+
+
+
+        for(Offerta off : offertaList) {
+            OffertaDTO offDTO = new OffertaDTO();
+            FornitoreDTO fornDTO = new FornitoreDTO();
+
+            fornDTO.setNome(off.getFornitore().getNome());
+
+            offDTO.setFornitore(fornDTO);
+
+            offDTO.setDescrizione(off.getDescrizione());
+            offDTO.setPrezzo(off.getPrezzo());
+
+            RichiestaDTO richiestaDTO = new DozerBeanMapper().map(off.getRichiesta(), RichiestaDTO.class);
+
+            offDTO.setRichiesta(richiestaDTO);
+
+            offertaDTOS.add(offDTO);
+        }
+
+            return offertaDTOS;
+    }
 }
