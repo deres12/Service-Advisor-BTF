@@ -41,7 +41,13 @@ public class GestioneOfferteController {
 
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
+    @ResponseBody
+    @RequestMapping(value = "findByClient", method = RequestMethod.POST)
+    public ResponseEntity<List<OffertaDTO>> ricercaPerCliente (@RequestBody  String email) {
+        List<OffertaDTO> response =serviceOfferte.loadOfferteByCliente(email);
 
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
 
 
 }

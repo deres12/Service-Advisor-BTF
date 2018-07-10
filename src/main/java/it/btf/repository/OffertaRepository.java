@@ -11,4 +11,5 @@ import java.util.List;
 @Repository
 public interface OffertaRepository extends JpaRepository<Offerta, Long> {
         List<Offerta> findAllByFornitore_Email(String email);
+        List<Offerta> findAllByRichiesta_Cliente_Email(String email);
 }

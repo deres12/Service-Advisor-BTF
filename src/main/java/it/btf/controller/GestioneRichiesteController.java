@@ -44,5 +44,12 @@ public class GestioneRichiesteController {
         return service.loadAll();
     }
 
+    @ResponseBody
+    @RequestMapping(value = "findByClient", method = RequestMethod.POST)
+    public ResponseEntity<List<RichiestaDTO>> ricercaRichiestePerCliente (@RequestBody  String email) {
+        List<RichiestaDTO> response =service.loadByEmail(email);
+
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
 
 }

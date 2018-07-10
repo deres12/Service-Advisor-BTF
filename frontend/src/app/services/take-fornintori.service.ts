@@ -24,5 +24,9 @@ export class TakeFornintoriService {
     return this.httpClient.post("/services/offerte/findByEmail", id);
   }
 
+  getRichiesteByClientEmail(id: string) {
+    return this.httpClient.post("/services/offerte/findByClient", id);
+  }
+
 
 }
