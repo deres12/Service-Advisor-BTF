@@ -11,4 +11,8 @@ export class TakeRichiesteService {
   getRichieste() {
     return this.httpClient.get("/services/richieste/findAll");
   }
+
+  getRequestsByClient(email: string) {
+    
+  }
 }

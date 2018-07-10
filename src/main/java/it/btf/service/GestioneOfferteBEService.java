@@ -49,8 +49,6 @@ public class GestioneOfferteBEService implements GestioneOfferteBE {
     @Override
     public List<Offerta> loadByRichiesta(String ricId) {
 
-
-
         return null;
     }
 

@@ -17,7 +17,6 @@ import { ChangePasswordFormComponent } from './forms/change-password-form/change
 import { AuthService } from './services/auth.service';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { SignupPageComponent } from './pages/signup-page/signup-page.component';
-import { RichiestePageComponent } from './pages/richieste-page/richieste-page.component';
 import { ChisiamoComponent } from './pages/chisiamo/chisiamo.component';
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
 import { ListaFornitoriComponent } from './lista-fornitori/lista-fornitori.component';
@@ -31,7 +30,6 @@ import { PaymentsComponent } from './components/payments/payments.component';
 import { HttpModule } from "@angular/http";
 import { TestMappaComponent } from './mock-data/test-mappa/test-mappa.component';
 import { SearchVendorComponent } from './search-vendor/search-vendor.component';
-import { RicercaComponent } from './components/ricerca/ricerca.component';
 import { MappaAGMComponent } from './components/mappa-agm/mappa-agm.component';
 import { AgmCoreModule } from '@agm/core';
 import { AgmSnazzyInfoWindowModule } from '@agm/snazzy-info-window';
@@ -67,13 +65,11 @@ const routes: Routes = [
     ChangePasswordFormComponent,
     LoginPageComponent,
     SignupPageComponent,
-    RichiestePageComponent,
     ChisiamoComponent,
     ProfilePageComponent,
     ListaFornitoriComponent,
     FooterComponent,
     CardsFornitoriComponent,
-    RicercaComponent,
     MappaComponent,
     TestMappaComponent,
     PaymentsComponent,

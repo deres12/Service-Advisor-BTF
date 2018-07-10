@@ -15,34 +15,26 @@ import java.util.List;
 @RequestMapping("/richieste")
 public class GestioneRichiesteController {
 
-//INSERISCI RICHIEST --------GET RICHIESTE EFFETTUATE-------- GET ALL RICHIESTE
-
     @Autowired
     GestioneRichiestaBE service;
 
-    @ResponseBody
-    @RequestMapping(value = "inserisci", method = RequestMethod.POST)
+    @PostMapping("inserisci")
     public ResponseEntity<RispostaExampleDTO> inserisci(@RequestBody RichiestaDTO dto) {
-        //System.err.println("ATTENZIONE EMAIL:  "+dto.getPersona().getEmail());
-        //System.err.println(this.service.addRichiesta(dto).getId());
         this.service.addRichiesta(dto);
         return new ResponseEntity<>(new RispostaExampleDTO("Richiesta inserita "), HttpStatus.OK);
     }
 
 
-    @RequestMapping("/find/{email}")
-    @ResponseBody
-    public List<RichiestaDTO> loadRic(@PathVariable("email") String email){
+    @GetMapping("/find")
+    public List<RichiestaDTO> loadRic(@RequestParam("email") String email){
 
         return service.loadByEmail(email);
     }
 
-    @RequestMapping("/findAll")
-    @ResponseBody
+    @GetMapping("/findAll")
     public List<RichiestaDTO> loadAll(){
 
         return service.loadAll();
     }
-
 
 }

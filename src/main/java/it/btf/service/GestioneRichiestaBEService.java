@@ -29,9 +29,9 @@ public class GestioneRichiestaBEService implements GestioneRichiestaBE {
 	@Autowired
 	RichiestaClienteRepository servizioRepository;
 
-
 	@Autowired
 	PersonaRepository utenteRepository;
+	
 	@Autowired
 	FornitoreRepository fornRepository;
 
