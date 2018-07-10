@@ -3,6 +3,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Fornitore } from '../models/fornitore';
 import { TakeFornintoriService } from '../services/take-fornintori.service';
 import { JobsDataService } from '../services/jobs.service';
+import { AuthService } from '../services/auth.service';
+import { UserType } from '../models/user';
 
 @Component({
   selector: 'app-search-vendor',
@@ -19,6 +21,7 @@ export class SearchVendorComponent implements OnInit {
   noResult: boolean = false;
 
   constructor(
+    public auth: AuthService,
     public route: ActivatedRoute,
     public routing: Router,
     public serv: TakeFornintoriService,
@@ -69,5 +72,14 @@ export class SearchVendorComponent implements OnInit {
 
   searchByArea() {
     // ...
+  }
+
+  newRequest(email: string) {
+    if(this.auth.userType==UserType.Guest) {
+      this.routing.navigate(["/signup"]);
+    } else if(this.auth.userType==UserType.Client) {
+      localStorage.setItem("emailfornitore", email);
+      this.routing.navigate(["/new-request"]);
+    }
   }
 }

@@ -21,7 +21,7 @@
 
 <div class="container">
   <ul class="vendors-list">
-    <li *ngFor="let forn of showFornit">
+    <li *ngFor="let forn of showFornit" (click)="newRequest(forn.email)">
       <div style="text-align: left;margin-bottom: 6px;">
         <img [src]="jobsData.getById(forn.professione)?.icon" style="width: 40px;vertical-align:middle;margin-right: 6px;" />
         <span style="font-weight: bold; color: #666;font-size:24px;vertical-align: middle">{{forn.nome}}</span>
