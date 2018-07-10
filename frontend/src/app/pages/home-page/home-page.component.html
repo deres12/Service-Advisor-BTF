@@ -1,3 +1,44 @@
+<div class="banner1">
+  <div class="container">
+    <h1>
+      Ti aiutiamo a trovare professionisti nella tua zona
+    </h1>
+    <button type="button" class="btn btn-info" routerLink="signup" *ngIf="auth.userType==userType.Guest">
+      Registrati Subito
+    </button>
+  </div>
+</div>
+
+<div class="jobs-container" >
+  <div class="job-card" routerLink="/search" [queryParams]="{q:'elettricista'}">
+    <div style="padding: 15px;">
+        <img src="/assets/res/electric1.png" style="width: 100px; height: 100px; opacity: 0.7">
+    </div>
+    <div style="font-size: 24px; color: #666;">
+      Elettricisti
+    </div>
+  </div>
+
+  <div class="job-card" routerLink="/search" [queryParams]="{q:'gommista'}">
+    <div style="padding: 15px;">
+        <img src="/assets/res/tire1.png" style="width: 100px; height: 100px; opacity: 0.7">
+    </div>
+    <div style="font-size: 24px; color: #666;">
+      Gommisti
+    </div>
+  </div>
+    
+  <div class="job-card" routerLink="/search" [queryParams]="{q:'idraulico'}">
+    <div style="padding: 15px;">
+        <img src="/assets/res/pipe1.png" style="width: 100px; height: 100px; opacity: 0.7">
+    </div>
+    <div style="font-size: 24px; color: #666;">
+      Idraulici
+    </div>
+  </div>
+</div>
+
+<!--
 <div class="row">
   <div class="col-12">
     <div id="carouselIndicators" class="carousel slide"
@@ -31,19 +72,6 @@
     </div>
   </div>
 </div>
+-->
 
-<div class="jumbotron">
-    <div class="container text-center">
-        <h1>
-            Ti aiutiamo a trovare professionisti nella tua zona
-        </h1>
-        <button type="button" class="btn btn-info" routerLink="signup">
-            Registrati Subito
-        </button>
-    </div>
-</div>
-
-<app-cards-fornitori></app-cards-fornitori>
-
-<app-mappa></app-mappa>
 

@@ -1,4 +1,6 @@
 import {Component, OnInit} from '@angular/core';
+import { AuthService } from '../../services/auth.service';
+import { UserType } from '../../models/user';
 
 
 @Component({
@@ -7,7 +9,11 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./home-page.component.css']
 })
 export class HomePageComponent implements OnInit {
-  constructor() {}
+  userType = UserType;
+
+  constructor(
+    public auth: AuthService
+  ) {}
 
   ngOnInit() {
 
