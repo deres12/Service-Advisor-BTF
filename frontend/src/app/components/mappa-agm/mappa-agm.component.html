@@ -1,0 +1,36 @@
+<!--h1>{{ title }}</h1-->
+
+<!-- this creates a google map on the page with the given lat/lng from -->
+<!-- the component as the initial center of the map: -->
+
+<agm-map [zoom]="15"  [latitude]="45.4654666" [longitude]="9.2313484">
+
+
+
+  <agm-marker *ngFor="let fornitore of fornitori; let i = index" [latitude]="fornitore.latit" [longitude]="fornitore.longit">
+    <agm-snazzy-info-window [closeWhenOthersOpen]="true">
+      <ng-template>
+        <div style="text-align: center">
+        <div style="font-size: 16px;margin-bottom: 6px">{{fornitore.nome}}</div>
+
+        <div style="font-size: 16px; margin-bottom: 6px"><strong>{{fornitore.nomeProfessione}}</strong></div>
+
+        <button (click)="richiesta(fornitore.email)" class="btn btn-info" style="font-size: 12px">Preventivo</button>
+        </div>
+      </ng-template>
+    </agm-snazzy-info-window>
+  </agm-marker>
+
+
+
+
+  <agm-marker [latitude]="51.69" [longitude]="7.82">
+    <agm-snazzy-info-window [maxWidth]="300" [closeWhenOthersOpen]="true">
+      <ng-template>
+        My second Snazzy Info Window!
+        <button class="btn btn-info">Chiedi Preventivo</button>
+      </ng-template>
+    </agm-snazzy-info-window>
+  </agm-marker>
+
+</agm-map>
