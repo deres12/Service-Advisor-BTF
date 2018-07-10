@@ -20,108 +20,83 @@ import it.btf.utility.Position;
 @Transactional
 public class GestioneFornitoreBEService implements GestioneFornitoreBE {
 
-    @Autowired
-    FornitoreRepository fornitoreRepository;
-
-    @Override
-    public List<FornitoreDTO> loadAllFornitore() {
-
-        List<FornitoreDTO> fornitoriDTOS = new ArrayList<FornitoreDTO>();
-        List<Fornitore> fornitori= fornitoreRepository.findAll();
+	@Autowired
+	FornitoreRepository fornitoreRepository;
 
 
-        for(Fornitore f : fornitori) {
-            List<ServizioDTO> servsDTO = new ArrayList<ServizioDTO>();
-            FornitoreDTO fornDTO=new FornitoreDTO();
-            fornDTO.setDescrizione(f.getDescrizione());
-            fornDTO.setValutazione(f.getValutazione());
-            fornDTO.setNome(f.getNome());
-            fornDTO.setEmail(f.getEmail());
-            fornDTO.setNomeProfessione(f.getProfessione().getNome());
+	public List<FornitoreDTO> loadAllFornitore() {
 
-            fornDTO.setLongit(f.getVia().getLongit());
-            fornDTO.setLatit(f.getVia().getLatit());
+		List<FornitoreDTO> fornitoriDTOS = new ArrayList<FornitoreDTO>();
+		List<Fornitore> fornitori = fornitoreRepository.findAll();
 
+		for (Fornitore f : fornitori) {
+			List<ServizioDTO> servsDTO = new ArrayList<ServizioDTO>();
+			FornitoreDTO fornDTO = new FornitoreDTO(f);
+			for (Servizio S : f.getServizi()) {
+				servsDTO.add(new ServizioDTO(S.getId(), S.getDescrizione()));
+			}
+			fornDTO.setServizi(servsDTO);
+			fornitoriDTOS.add(fornDTO);
+		}
+		return fornitoriDTOS;
+	}
 
-            for(Servizio S : f.getServizi()){
-                servsDTO.add(new ServizioDTO(S.getId(),S.getDescrizione()));
-            }
-            fornDTO.setServizi(servsDTO);
-            fornitoriDTOS.add(fornDTO);
-        }
-        return fornitoriDTOS;
-    }
-/*
-    @Override
-    public List<FornitoreDTO> loadAllByComune(String comune) {
-        List<FornitoreDTO> fornitoreDTOS = new ArrayList<FornitoreDTO>();
-        List<Fornitore> fornitori = fornitoreRepository.findAllByComune(comune);
+	/*
+	 * @Override public List<FornitoreDTO> loadAllByComune(String comune) {
+	 * List<FornitoreDTO> fornitoreDTOS = new ArrayList<FornitoreDTO>();
+	 * List<Fornitore> fornitori = fornitoreRepository.findAllByComune(comune);
+	 * 
+	 * for(Fornitore f:fornitori){ FornitoreDTO forn= new DozerBeanMapper().map(f,
+	 * FornitoreDTO.class); fornitoreDTOS.add(forn); } return fornitoreDTOS; }
+	 */
+	
 
-        for(Fornitore f:fornitori){
-         FornitoreDTO forn=  new DozerBeanMapper().map(f, FornitoreDTO.class);
-         fornitoreDTOS.add(forn);
-        }
-        return fornitoreDTOS;
-    }
-*/
-@Override
-public List<FornitoreDTO> loadAllGuestFornByComune(String comune) {
-    List<FornitoreDTO> fornitoreDTOS = new ArrayList<FornitoreDTO>();
-    List<Fornitore> fornitori = fornitoreRepository.findAllByComune(comune);
+	public List<FornitoreDTO> loadAllGuestFornByComune(String comune) {
+		List<FornitoreDTO> fornitoreDTOS = new ArrayList<FornitoreDTO>();
+		List<Fornitore> fornitori = fornitoreRepository.findAllByComune(comune);
 
+		for (Fornitore f : fornitori) {
+			FornitoreDTO forn = new FornitoreDTO(f);
 
-    for(Fornitore f:fornitori){
-        FornitoreDTO forn=  new FornitoreDTO();
-        forn.setComune(f.getVia().getPaese());
-        forn.setNome(f.getNome());
-        forn.setDescrizione(f.getDescrizione());
-        forn.setNomeProfessione(f.getProfessione().getNome());
-        forn.setLatit(f.getVia().getLatit());
-        forn.setLongit(f.getVia().getLongit());
-
-        fornitoreDTOS.add(forn);
-    }
-    return fornitoreDTOS;
-}
-
-    @Override
-    public List<RicercaFornitoriDTO> loadAllFornByDistance(RicercaFornitoriDTO fornitore) {
-        List<RicercaFornitoriDTO> fornDTOS = new ArrayList<RicercaFornitoriDTO>();
-        List<Fornitore>  forns = new ArrayList<Fornitore>();
+			fornitoreDTOS.add(forn);
+		}
+		return fornitoreDTOS;
+	}
 
 
-        String via= fornitore.getCivico()+", "+fornitore.getVia()+", "+fornitore.getCity()+", "+fornitore.getNazione();
-        Double raggio= fornitore.getRaggio();
-        Double lat = Position.getDoubleFromAddress(via, "lat");
-        Double lon = Position.getDoubleFromAddress(via, "lng");
+	public List<RicercaFornitoriDTO> loadAllFornByDistance(RicercaFornitoriDTO fornitore) {
+		List<RicercaFornitoriDTO> fornDTOS = new ArrayList<RicercaFornitoriDTO>();
+		List<Fornitore> forns = new ArrayList<Fornitore>();
 
+		String via = fornitore.getCivico() + ", " + fornitore.getVia() + ", " + fornitore.getCity() + ", "
+				+ fornitore.getNazione();
+		Double raggio = fornitore.getRaggio();
+		Double lat = Position.getDoubleFromAddress(via, "lat");
+		Double lon = Position.getDoubleFromAddress(via, "lng");
 
+		forns = fornitoreRepository.findAll();
 
-        forns = fornitoreRepository.findAll();
+		for (Fornitore f : forns) {
 
-        for(Fornitore f:forns){
+			Double latitudine = f.getVia().getLatit();
+			Double longitudine = f.getVia().getLongit();
+			Double dist = Position.distance(lat, lon, latitudine, longitudine, "K");
 
-            Double latitudine =f.getVia().getLatit();
-            Double longitudine=f.getVia().getLongit();
-            Double dist = Position.distance(lat,lon,latitudine,longitudine,"K");
+			System.out.println(dist);
 
-            System.out.println(dist);
+			if (dist <= raggio) {
+				RicercaFornitoriDTO forn = new RicercaFornitoriDTO();
+				forn.setCity(f.getVia().getPaese());
+				forn.setNome(f.getNome());
+				forn.setDescrizione(f.getDescrizione());
+				forn.setLat(f.getVia().getLatit());
+				forn.setLongi(f.getVia().getLongit());
 
-            if(dist<=raggio){
-                RicercaFornitoriDTO forn=new RicercaFornitoriDTO();
-                forn.setCity(f.getVia().getPaese());
-                forn.setNome(f.getNome());
-                forn.setDescrizione(f.getDescrizione());
-                forn.setLat(f.getVia().getLatit());
-                forn.setLongi(f.getVia().getLongit());
+				fornDTOS.add(forn);
+			}
+		}
 
-
-                fornDTOS.add(forn);
-            }
-        }
-
-    return fornDTOS;
-    }
-
+		return fornDTOS;
+	}
 
 }

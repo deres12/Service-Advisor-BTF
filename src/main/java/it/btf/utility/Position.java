@@ -13,13 +13,8 @@ public class Position {
     private static Map<String, String> vars2 = new HashMap<>();
     private static String key = "AIzaSyCO86P-aWvq0wCdj6rSwVYF7jdbqAV3F4s";
 
-    /************************
-     *
-     * TYPE= "lat"/"lng"
-     *
-     *
-     *
-     * **********************/
+    private Position() {}
+
     public static Double getDoubleFromAddress(String address, String type) {
         RestTemplate restTemplate = new RestTemplate();
         //System.out.println(result);
@@ -82,9 +77,5 @@ public class Position {
     private static double rad2deg(double rad) {
         return (rad * 180 / Math.PI);
     }
-
-
-
-
 
 }

@@ -12,9 +12,10 @@ public class RicercaFornitoriDTO {
 
     private Double raggio;
 
-    private Double lat=0.0;
-    private Double longi=0.0 ;
+    private Double lat = 0.0;
+    private Double longi = 0.0;
 
+    public RicercaFornitoriDTO() {}
 
 
     public String getNome() {
