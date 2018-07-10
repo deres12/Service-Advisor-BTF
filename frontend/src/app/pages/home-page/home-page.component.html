@@ -9,6 +9,19 @@
   </div>
 </div>
 
+<div class="container">
+  <form class="search-bar" (ngSubmit)="searchByText(q.value)">
+    <div class="input-group">
+      <input type="search" class="form-control" placeholder="professione, nome, indirizzo, ..." name="search" #q>
+      <div class="input-group-append">
+        <button type="submit" class="btn btn-info">
+          Cerca
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+
 <div class="jobs-container" >
   <div class="job-card" routerLink="/search" [queryParams]="{q:'elettricista'}">
     <div style="padding: 15px;">
@@ -37,6 +50,8 @@
     </div>
   </div>
 </div>
+
+
 
 <!--
 <div class="row">

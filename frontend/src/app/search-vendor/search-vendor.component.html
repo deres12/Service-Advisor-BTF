@@ -1,7 +1,7 @@
 <div class="container">
   <form class="search-bar" (ngSubmit)="searchByText()">
     <div class="input-group">
-      <input type="search" class="form-control" placeholder="professione, nome, ..." name="search" [(ngModel)]="searchQuery">
+      <input type="search" class="form-control" placeholder="professione, nome, indirizzo, ..." name="search" [(ngModel)]="searchQuery">
       <div class="input-group-append">
         <button type="submit" class="btn btn-info">
           Cerca
@@ -22,11 +22,10 @@
 <div class="container">
   <ul class="vendors-list">
     <li *ngFor="let forn of showFornit">
-      <div style="text-align: left">
+      <div style="text-align: left;margin-bottom: 6px;">
         <img [src]="jobsData.getById(forn.professione)?.icon" style="width: 40px;vertical-align:middle;margin-right: 6px;" />
         <span style="font-weight: bold; color: #666;font-size:24px;vertical-align: middle">{{forn.nome}}</span>
       </div>
-      <hr>
       {{forn.via.paese +", "+ forn.via.via +" "+ forn.via.numeroCivico}}
       <hr>
       Punteggio: {{forn.valutazione}}

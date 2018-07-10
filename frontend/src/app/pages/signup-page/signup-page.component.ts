@@ -31,6 +31,10 @@ export class SignupPageComponent implements OnInit {
     public router: Router){}
 
   ngOnInit() {
+    if(this.auth.userType != UserType.Guest) {
+      this.router.navigateByUrl("/profile");
+    }
+
     this._step = 0;
     this._history = [];
 

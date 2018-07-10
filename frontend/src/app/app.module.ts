@@ -22,16 +22,15 @@ import { ChisiamoComponent } from './pages/chisiamo/chisiamo.component';
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
 import { ListaFornitoriComponent } from './lista-fornitori/lista-fornitori.component';
 import { TestDataService } from './mock-data/test-data.service';
-import { TestPanelComponent } from './mock-data/test-panel/test-panel.component';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FooterComponent } from './footer/footer.component';
 import { CardsFornitoriComponent } from './cards-fornitori/cards-fornitori.component';
 import { MappaComponent } from './components/mappa/mappa.component';
 import { NgxStripeModule } from 'ngx-stripe';
 import { PaymentsComponent } from './components/payments/payments.component';
-import {HttpModule} from "@angular/http";
+import { HttpModule } from "@angular/http";
 import { TestMappaComponent } from './mock-data/test-mappa/test-mappa.component';
-import { SearchPageComponent } from './pages/search-page/search-page.component';
+import { SearchVendorComponent } from './search-vendor/search-vendor.component';
 import {} from '@types/googlemaps';
 import { RicercaComponent } from './components/ricerca/ricerca.component';
 
@@ -40,15 +39,13 @@ import { RicercaComponent } from './components/ricerca/ricerca.component';
 */
 const routes: Routes = [
   {path: 'testMapp', component: TestMappaComponent},
-  {path: 'DEBUG', component: TestPanelComponent},
   {path: 'profile', component: ProfilePageComponent},
-  {path: 'search', component: SearchPageComponent},
   {path: 'about', component: ChisiamoComponent},
   {path: 'signup', component: SignupPageComponent},
   {path: 'login', component: LoginPageComponent},
   {path: 'new-request', component: NewRequestFormComponent},
+  {path: 'search', component: SearchVendorComponent},
   {path: 'settings', component: SettingsPageComponent},
-  {path: 'richieste', component: RichiestePageComponent},
   {path: '', component: HomePageComponent},
   {path: '**', component: NotfoundPageComponent}
 ];
@@ -71,14 +68,13 @@ const routes: Routes = [
     ChisiamoComponent,
     ProfilePageComponent,
     ListaFornitoriComponent,
-    TestPanelComponent,
     FooterComponent,
     CardsFornitoriComponent,
     RicercaComponent,
     MappaComponent,
     TestMappaComponent,
     PaymentsComponent,
-    SearchPageComponent
+    SearchVendorComponent
   ],
   imports: [
     NgbModule.forRoot(),

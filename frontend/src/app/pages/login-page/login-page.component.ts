@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
+import { UserType } from '../../models/user';
 
 @Component({
   selector: 'app-login-page',
@@ -7,8 +10,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public auth: AuthService,
+    public router: Router
+  ) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    if(this.auth.userType != UserType.Guest) {
+      this.router.navigateByUrl("/profile");
+    }
+  }
 
 }

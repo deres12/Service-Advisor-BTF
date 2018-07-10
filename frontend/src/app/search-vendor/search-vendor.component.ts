@@ -1,15 +1,15 @@
-import { Component, OnInit } from '@angular/core';
-import { Fornitore } from '../../models/fornitore';
-import { TakeFornintoriService } from '../../services/take-fornintori.service';
-import { JobsDataService } from '../../services/jobs.service';
+import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Fornitore } from '../models/fornitore';
+import { TakeFornintoriService } from '../services/take-fornintori.service';
+import { JobsDataService } from '../services/jobs.service';
 
 @Component({
-  selector: 'app-search-page',
-  templateUrl: './search-page.component.html',
-  styleUrls: ['./search-page.component.css']
+  selector: 'app-search-vendor',
+  templateUrl: './search-vendor.component.html',
+  styleUrls: ['./search-vendor.component.css']
 })
-export class SearchPageComponent implements OnInit {
+export class SearchVendorComponent implements OnInit {
 
   fornitori: Fornitore[];
   showFornit: Fornitore[];

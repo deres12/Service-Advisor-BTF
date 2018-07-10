@@ -8,7 +8,7 @@ export class TakeRichiesteService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getRichieste () {
+  getRichieste() {
     return this.httpClient.get("/services/richieste/findAll");
   }
 }
