@@ -31,11 +31,11 @@ import { PaymentsComponent } from './components/payments/payments.component';
 import { HttpModule } from "@angular/http";
 import { TestMappaComponent } from './mock-data/test-mappa/test-mappa.component';
 import { SearchVendorComponent } from './search-vendor/search-vendor.component';
-import {} from '@types/googlemaps';
 import { RicercaComponent } from './components/ricerca/ricerca.component';
 import { MappaAGMComponent } from './components/mappa-agm/mappa-agm.component';
 import { AgmCoreModule } from '@agm/core';
 import { AgmSnazzyInfoWindowModule } from '@agm/snazzy-info-window';
+import {} from '@types/googlemaps';
 
 /*
   TODO: spostare <routes> in un modulo separato ed importarlo in app.module.ts

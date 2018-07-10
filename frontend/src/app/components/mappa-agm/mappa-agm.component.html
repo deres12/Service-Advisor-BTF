@@ -7,7 +7,7 @@
 
 
 
-  <agm-marker *ngFor="let fornitore of fornitori; let i = index" [latitude]="fornitore.latit" [longitude]="fornitore.longit">
+  <agm-marker *ngFor="let fornitore of fornitori; let i = index" [latitude]="fornitore.via.latit" [longitude]="fornitore.via.longit">
     <agm-snazzy-info-window [closeWhenOthersOpen]="true">
       <ng-template>
         <div style="text-align: center">

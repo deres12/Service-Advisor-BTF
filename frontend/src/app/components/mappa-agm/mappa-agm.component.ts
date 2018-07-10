@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import {Fornitore} from "../../models/fornitore";
 import {Router} from "@angular/router";
 import {TakeFornintoriService} from "../../services/take-fornintori.service";
@@ -15,16 +15,18 @@ export class MappaAGMComponent implements OnInit {
   //title: string = 'My first AGM project';
   lat: number = 51.678418;
   lng: number = 7.809007;
-  fornitori: Fornitore[];
+  @Input("fornitori") fornitori: Fornitore[];
   constructor(public serv: TakeFornintoriService, public router: Router, public auth: AuthService) { }
 
   ngOnInit() {
+    /*
     this.serv.getFornitori().subscribe((list: Fornitore[]) => {
 
       this.fornitori = list;
     }, (error) => {
       console.log(error.toString());
     });
+    */
   }
 
   richiesta(email:string){
@@ -37,7 +39,4 @@ export class MappaAGMComponent implements OnInit {
       }
 
     }
-
-
-
 }
