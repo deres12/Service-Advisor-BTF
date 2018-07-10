@@ -1,0 +1,35 @@
+<div class="container">
+  <form class="search-bar" (ngSubmit)="searchByText()">
+    <div class="input-group">
+      <input type="search" class="form-control" placeholder="professione, nome, ..." name="search" [(ngModel)]="searchQuery">
+      <div class="input-group-append">
+        <button type="submit" class="btn btn-info">
+          Cerca
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+
+
+<div class="container">
+  <div *ngIf="noResult" class="alert alert-info">
+    La ricerca non ha prodotto alcun risultato
+  </div>  
+</div>
+
+
+<div class="container">
+  <ul class="vendors-list">
+    <li *ngFor="let forn of showFornit">
+      <div style="text-align: left">
+        <img [src]="jobsData.getById(forn.professione)?.icon" style="width: 40px;vertical-align:middle;margin-right: 6px;" />
+        <span style="font-weight: bold; color: #666;font-size:24px;vertical-align: middle">{{forn.nome}}</span>
+      </div>
+      <hr>
+      {{forn.via.paese +", "+ forn.via.via +" "+ forn.via.numeroCivico}}
+      <hr>
+      Punteggio: {{forn.valutazione}}
+    </li>
+  </ul>
+</div>

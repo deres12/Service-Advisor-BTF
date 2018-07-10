@@ -31,6 +31,7 @@ import { NgxStripeModule } from 'ngx-stripe';
 import { PaymentsComponent } from './components/payments/payments.component';
 import {HttpModule} from "@angular/http";
 import { TestMappaComponent } from './mock-data/test-mappa/test-mappa.component';
+import { SearchPageComponent } from './pages/search-page/search-page.component';
 import {} from '@types/googlemaps';
 import { RicercaComponent } from './components/ricerca/ricerca.component';
 
@@ -41,6 +42,7 @@ const routes: Routes = [
   {path: 'testMapp', component: TestMappaComponent},
   {path: 'DEBUG', component: TestPanelComponent},
   {path: 'profile', component: ProfilePageComponent},
+  {path: 'search', component: SearchPageComponent},
   {path: 'about', component: ChisiamoComponent},
   {path: 'signup', component: SignupPageComponent},
   {path: 'login', component: LoginPageComponent},
@@ -75,7 +77,8 @@ const routes: Routes = [
     RicercaComponent,
     MappaComponent,
     TestMappaComponent,
-    PaymentsComponent
+    PaymentsComponent,
+    SearchPageComponent
   ],
   imports: [
     NgbModule.forRoot(),

@@ -1,0 +1,35 @@
+.search-bar {
+    background: #FFF;
+    padding: 5px;
+    margin: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: .25rem;
+    text-align: center;
+}
+
+.vendors-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: space-around;
+}
+
+.vendors-list li {
+    background: #FFF;
+    width: 300px;
+    padding: 10px;
+    margin: 10px;
+    display: inline-block;
+    cursor: pointer;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: .25rem;
+    text-align: left;
+}
+
+.vendors-list li:hover {
+    background: #EEE;
+}
