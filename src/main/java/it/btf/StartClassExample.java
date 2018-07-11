@@ -171,6 +171,17 @@ public class StartClassExample {
 			rich2.setVia(pos3);
 			richiestaCliRep.save(rich2);
 
+			RichiestaCliente rich3 = new RichiestaCliente();
+			rich3.setCliente(c);
+			rich3.setDataFine(new Date());
+			rich3.setDataInizio(new Date());
+			rich3.setDescrizione("Gommista per convergenza!");
+			rich3.setPrezzoMassimo(600);
+			rich3.setServizioRichiesto(serv2);
+			rich3.setFornitore(prova2);
+			rich3.setVia(pos3);
+			richiestaCliRep.save(rich3);
+
 
 			Offerta offer2 = new Offerta();
 			offer2.setDescrizione("dfdsfdsf");
@@ -182,9 +193,11 @@ public class StartClassExample {
 			Offerta offer3 = new Offerta();
 			offer3.setDescrizione("dfdsfdsf");
 			offer3.setFornitore(fornit);
-			offer3.setRichiesta(rich2);
+			offer3.setRichiesta(rich3);
 			offer3.setPrezzo(100);
 			offertaRep.save(offer3);
+
+
 			List<Servizio> pippo = new ArrayList<Servizio>();
 			pippo.add(serv2);
 			Professione p = new Professione("gommista", pippo, null);

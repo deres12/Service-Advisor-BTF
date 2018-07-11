@@ -9,4 +9,5 @@ public interface GestioneOfferteBE {
     public void addOfferta(OffertaDTO dto);
     public List<Offerta> loadByRichiesta(String ricId);
     List<OffertaDTO> loadOfferteByFornitore(String id);
+    List<OffertaDTO> loadOfferteByCliente(String id);
 }

@@ -10,29 +10,33 @@
     </div>
   </div>
 </div>
-
 <div class="container">
-
-    <h2>Servizi richiesti</h2>
+  <br>
+  <h2>Contatta un fornitore</h2>
+  <br>
+  <app-mappa-agm></app-mappa-agm>
+</div>
+<div class="container">
+<br />
+    <h2>Servizi Richiesti</h2>
 </div>
 <hr>
 <div class="container" *ngIf="empty">
   <div class="col">
-  <h3>Non hai ancora inserito nessuna richiesta.</h3>
+  <h5 class="text-info">Non hai ancora inserito nessuna richiesta.</h5>
 </div>
 </div>
 <div *ngFor="let richiesta of richieste; let i = index" class="row">
 <div class="container" *ngIf="!empty">
     <div  class="card text-center">
       <div class="card-header">
-        Ho chiesto servizi per <strong>{{richiesta.professione}}</strong>
+        <strong>Richiesta #{{i+1}} </strong>
       </div>
       <div class="card-body">
-        <h5 class="card-title"> Mi serve entro il <strong>{{richiesta.data}}</strong></h5>
+        <h5 class="card-title">  <strong></strong></h5>
         <div class="row text-center">
           <p class="card-text mx-auto">Descrizione: {{richiesta.descrizione}}
           <br>
-          Via: {{richiesta.indirizzo}}
           <br>
           Prezzo massimo: {{richiesta.prezzoMassimo}} </p>
         </div>
@@ -40,5 +44,36 @@
       </div>
     </div>
 </div>
+</div>
 
+<br />
+<br />
+
+<div class="container">
+  <h2>Preventivi Ricevuti</h2>
+</div>
+<hr>
+<div class="container" *ngIf="emptyOfferte">
+  <div class="col">
+    <h5 class="text-info">Non hai ancora ricevuto nessun preventivo.</h5>
+  </div>
+</div>
+<div *ngFor="let offerta of offerte; let i = index" class="row">
+  <div class="container" *ngIf="!emptyOfferte">
+    <div  class="card text-center">
+      <div class="card-header">
+        Ho chiesto servizi per <strong>{{offerta.richiesta.descrizione}}</strong>
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">  <strong></strong></h5>
+        <div class="row text-center">
+          <p class="card-text mx-auto">Descrizione offerta: {{offerta.descrizione}}
+            <br>
+            <br>
+            Preventivo: {{offerta.prezzo}} </p>
+        </div>
+        <br>
+      </div>
+    </div>
+  </div>
 </div>
