@@ -6,6 +6,14 @@ import {UserType} from '../../models/user';
 import {Job} from '../../models/job';
 import {JobsDataService} from '../../services/jobs.service';
 
+enum StepName {
+  TYPE = 0,
+  JOB,
+  ADDRESS,
+  OTHER,
+
+  MAX_STEPS
+}
 
 @Component({
   selector: 'app-signup-page',
@@ -35,8 +43,10 @@ export class SignupPageComponent implements OnInit {
       this.router.navigateByUrl("/profile");
     }
 
-    this._step = 0;
+    this._step = StepName.TYPE;
     this._history = [];
+
+    this.professione = null;
 
     this.jobs = this.jobsData.getAll();
   }
@@ -52,12 +62,12 @@ export class SignupPageComponent implements OnInit {
   }
 
   next() {
-    if (this._step == 3) {
+    if (this._step+1 >= StepName.MAX_STEPS) {
       return;
     }
     this._history.push(this._step);
-    if (this._step == 0 && this.type == UserType.Client) {
-      this._step = 3;
+    if (this._step == StepName.TYPE && this.type == UserType.Client) {
+      this._step = StepName.OTHER;
     } else {
       this._step++;
     }
@@ -65,7 +75,24 @@ export class SignupPageComponent implements OnInit {
 
   valid(form: NgForm): boolean {
 
-    if (this.step == 3) {
+    if (this.step == StepName.JOB) {
+
+      if(!this.professione) {
+        return false;
+      }
+    } else if(this.step == StepName.ADDRESS) {
+
+      if (form.value["city"].length == 0) {
+        return false;
+      }
+      if (form.value["address"].length == 0) {
+        return false;
+      }
+      if (typeof(form.value["civic-num"]) !== "number" || form.value["civic-num"] <= 0) {
+        return false;
+      }
+    } else if (this.step == StepName.OTHER) {
+
       if (form.value["nome"].length == 0) {
         return false;
       }

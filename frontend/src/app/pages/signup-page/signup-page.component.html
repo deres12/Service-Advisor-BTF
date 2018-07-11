@@ -10,23 +10,24 @@
 
   <div class="form-content">
     <div class="text-center" [class.hidden]="step!=0">
+      <h5 class="mb-3">Tipo di Account</h5>
+
       <input type="hidden" name="type" [ngModel]="type">
       <button type="button"
-              (click)="type=userType.Client"
-              [disabled]="type==userType.Client"
-              class="btn btn-info mr-3">
+              (click)="type=userType.Client;next()"
+              class="btn btn-lg btn-info mr-3">
         Cliente
       </button>
       <button type="button"
-                (click)="type=userType.Vendor"
-                [disabled]="type==userType.Vendor"
-                class="btn btn-info ml-3">
+                (click)="type=userType.Vendor;next()"
+                class="btn btn-lg btn-info ml-3">
         Professionista
       </button>
     </div>
 
     <div [class.hidden]="step!=1" class="text-center">
-      <label><strong>Professione Praticata</strong></label>
+      <h5 class="mb-3">Indirizzo</h5>
+
       <input type="hidden" name="professione" [ngModel]="professione?.id">
       <div class="list-group">
         <button class="list-group-item list-group-item-action"
@@ -41,6 +42,10 @@
     </div>
 
     <div [class.hidden]="step!=2">
+      <div class="text-center">
+        <h5 class="mb-3">Professione</h5>
+      </div>
+
       <label for="city">Citt&aacute;</label>
       <input id="city" type="text" class="form-control" name="city" ngModel>
       
@@ -69,9 +74,13 @@
 
   <footer>
     <button type="button" class="btn btn-secondary mr-3" (click)="back()" *ngIf="step>0">Indietro</button>
-    <button type="button" class="btn btn-primary" (click)="next()" *ngIf="step<3">Avanti</button>
+    <button
+      *ngIf="step>0 && step<3"
+      class="btn btn-info"
+      type="button"
+      (click)="next()"
+      [disabled]="!valid(f)">Avanti</button>
 
-
-    <input  [disabled]="!valid(f)" class="btn btn-success" type="submit" value="Registrati" *ngIf="step==3">
+    <input [disabled]="!valid(f)" class="btn btn-success" type="submit" value="Registrati" *ngIf="step==3">
   </footer>
 </form>
