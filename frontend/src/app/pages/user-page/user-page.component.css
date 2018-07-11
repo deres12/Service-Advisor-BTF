@@ -1,21 +1,24 @@
 .breadcrumb-image {
+  background-image: url(https://www.bakaji.com/images/prodotti/Campanello-hotel-alberghi-rece_01817580.jpg);
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
-  padding: 10rem 5rem;
+  padding: 5rem 2rem;
   position: relative;
-  width:100%;
+  width: 100%;
 }
+
 .breadcrumb-image::before {
   background: rgba(0, 0, 0, 0.50) none repeat scroll 0 0;
-  content: "";
-  height: 100%;
   left: 0;
-  position: absolute;
   top: 0;
   width: 100%;
+  height: 100%;
+  content: "";
+  position: absolute;
   z-index: 0;
 }
+
 .breadcrumb-image h1 {
   color: #ffffff;
   font-size: 33px;
@@ -24,13 +27,10 @@
   position: relative;
   text-transform: uppercase;
 }
-.breadcrumbs_path {
+
+.breadcrumbs-path {
   color: #fff;
   margin-top: 8px;
   position: relative;
   z-index: 9;
-}
-.breadcrumbs_path > a {
-  color: #fff;
-  transition: all 0.3s ease 0s;
 }
