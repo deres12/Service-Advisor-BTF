@@ -39,11 +39,13 @@ import { AgmSnazzyInfoWindowModule } from '@agm/snazzy-info-window';
 import {GooglePieChartService} from "./services/google-pie-chart.service";
 import { GooglechartsComponent } from './components/googlepiecharts/googlecharts.component';
 import { GooglelinechartsComponent } from './components/googlelinecharts/googlelinecharts.component';
+import { NewRequestFromMapComponent } from './forms/new-request-from-map/new-request-from-map.component';
 
 /*
   TODO: spostare <routes> in un modulo separato ed importarlo in app.module.ts
 */
 const routes: Routes = [
+  {path: 'new-request-map', component: NewRequestFromMapComponent},
   {path: 'testMapp', component: TestMappaComponent},
   {path: 'DEBUG', component: TestPanelComponent},
   {path: 'profile', component: ProfilePageComponent},
@@ -84,7 +86,8 @@ const routes: Routes = [
     PaymentsComponent,
     MappaAGMComponent,
     GooglechartsComponent,
-    GooglelinechartsComponent
+    GooglelinechartsComponent,
+    NewRequestFromMapComponent
   ],
   imports: [
     NgbModule.forRoot(),

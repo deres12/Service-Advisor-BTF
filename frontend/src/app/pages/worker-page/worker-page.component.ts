@@ -7,6 +7,7 @@ import {AddRequestService} from "../../services/add-request.service";
 import {AuthService} from "../../services/auth.service";
 import {Fornitore} from "../../models/fornitore";
 import {Offerta} from "../../models/offerta";
+import {LineChartConfig} from "../../models/LineChartConfig";
 
 @Component({
   selector: 'app-worker-page',
@@ -14,6 +15,19 @@ import {Offerta} from "../../models/offerta";
   styleUrls: ['./worker-page.component.css']
 })
 export class WorkerPageComponent implements OnInit {
+
+  title = 'Reusable charts sample';
+
+  data1: any[];
+  config1: LineChartConfig;
+  elementId1: String;
+
+
+ //*******************************
+
+
+
+
 
   user: User;
     richieste: Richiesta[] = [];
@@ -27,6 +41,28 @@ export class WorkerPageComponent implements OnInit {
     }
 
     ngOnInit() {
+
+      this.data1 = [
+        ['Giorno', 'Click' ],
+        ['2004',  100      ],
+        ['2005',  117      ],
+        ['2006',  66       ],
+        ['2007',  103      ]
+      ];
+
+
+      //for(var )
+      //data1[i][j]=
+
+      this.config1 = new LineChartConfig('Trend visualizzazioni', '' ,{ position: 'bottom' });
+      this.elementId1 = 'myLineChart1';
+
+//*****************************************
+
+
+
+
+
       this.user = this.auth.userInfo;
 
       this.serv.getRichiesteByFornitoreEmail(this.auth.userInfo.email).subscribe((list: Offerta[]) => {

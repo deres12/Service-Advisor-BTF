@@ -1,26 +1,18 @@
-import {Component, Inject, NgModule, OnInit} from '@angular/core';
-import {JobsDataService} from '../../services/jobs.service';
-import {NgForm} from '@angular/forms';
-import {LOCAL_STORAGE, WebStorageService} from "angular-webstorage-service";
-import {ActivatedRoute, Router} from "@angular/router";
-import {MockJob} from "../../mock-data/models";
-import {AddRequestService} from "../../services/add-request.service";
-import {Richiesta} from "../../models/richiesta";
+import { Component, OnInit } from '@angular/core';
 import {AuthService} from "../../services/auth.service";
+import {JobsDataService} from "../../services/jobs.service";
+import {NgForm} from "@angular/forms";
+import {Router} from "@angular/router";
 import {UserType} from "../../models/user";
-import {Luogo} from "../../models/luogo";
-
-
-export class NgbdDatepickerPopup {
-  model;
-}
+import {Richiesta} from "../../models/richiesta";
+import {AddRequestService} from "../../services/add-request.service";
 
 @Component({
-  selector: 'app-new-request-form',
-  templateUrl: './new-request-form.component.html',
-  styleUrls: ['./new-request-form.component.css']
+  selector: 'app-new-request-from-map',
+  templateUrl: './new-request-from-map.component.html',
+  styleUrls: ['./new-request-from-map.component.css']
 })
-export class NewRequestFormComponent implements OnInit {
+export class NewRequestFromMapComponent implements OnInit {
   model;
 
   constructor(public router: Router, public prova: AddRequestService, public jobs: JobsDataService, public auth: AuthService) {
@@ -63,7 +55,7 @@ export class NewRequestFormComponent implements OnInit {
     //console.log("EMAIL:  "+this.auth.userInfo.email);
 
     this.richiesta.persona.email=this.auth.userInfo.email;
-    this.richiesta.professione = form.value["job"];
+    this.richiesta.professione = sessionStorage.getItem("professione");
     this.richiesta.via.via = form.value["address"];
     this.richiesta.via.paese = form.value["paese"];
     this.richiesta.via.numeroCivico = form.value["numeroCivico"];
@@ -83,7 +75,6 @@ export class NewRequestFormComponent implements OnInit {
         /*this.error = true;*/
       }
     );
-   // this.prova.esempioMock(this.richiesta);
-
+    this.prova.esempioMock(this.richiesta);
   }
 }
