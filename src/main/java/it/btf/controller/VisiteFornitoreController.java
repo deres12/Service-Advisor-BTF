@@ -28,7 +28,6 @@ public class VisiteFornitoreController {
 
     @GetMapping("/")
     public ResponseEntity<List<VisiteGgDTO>> contaVisiteFornitore(@RequestParam("email") String email) {
-        //System.err.println("sdfdsfsdf");
        List<VisiteGgDTO> conta= gestioneVisiteBE.contaVisite(email);
 
         return new ResponseEntity(conta, HttpStatus.OK);
