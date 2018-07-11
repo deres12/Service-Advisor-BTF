@@ -44,16 +44,16 @@ export class WorkerPageComponent implements OnInit {
 
 
       this.visitato.getVisite(this.auth.userInfo.email).subscribe((list: Visita[])=>{
-        //console.log(list);
 
         for(let i=0; i<list.length;i++){
           this.data1.push([list[i].dataStr,list[i].numero]);
           console.log(list[i].dataStr,list[i].numero);
         }
 
+
         }, (error) => {
         console.log(error);
-      });
+        });
 
 
     console.log("prima di config1");
@@ -70,7 +70,6 @@ export class WorkerPageComponent implements OnInit {
       }
       this.config1 = new LineChartConfig("Visite Settimanali", '',{ position: 'bottom' });
       this.elementId1 = 'myLineChart1';
-
 
     }, (error) => {
       console.log(error);
