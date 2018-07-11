@@ -4,7 +4,6 @@ import {Router} from "@angular/router";
 import {TakeFornintoriService} from "../../services/take-fornintori.service";
 import {AuthService} from "../../services/auth.service";
 import {UserType} from "../../models/user";
-import {AddRequestService} from "../../services/add-request.service";
 import {VisiteService} from "../../services/visite.service";
 
 @Component({
@@ -39,7 +38,10 @@ export class MappaAGMComponent implements OnInit {
       }
 
     }
-  visited(email:string) {
+
+  clicked(email:string) {
+   /* console.error("visitatoooooo");
+    console.error(email);*/
     this.visitato.setVisite(email).subscribe((risposta: any)=>{
       console.log(risposta);
     }, (error) => {

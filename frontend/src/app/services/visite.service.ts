@@ -1,5 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
+import {any} from "codelyzer/util/function";
+import {Visita} from "../models/Visita";
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +12,9 @@ export class VisiteService {
   }
 
   getVisite(id: string) {
+    //console.log("dfasdad");
+  //  let ex : Visita[] =;
+    //console.log(prova);
     return this.httpClient.get("/services/conta/",{params: {email: id}});
   }
 
