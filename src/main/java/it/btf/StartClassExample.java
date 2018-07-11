@@ -103,7 +103,7 @@ public class StartClassExample {
 
 
 			fornit.setTimeBirth(new Date());
-			fornit.setUsername("pippo");
+			fornit.setUsername("clicked");
 			fornit.setValutazione(4);
 
 
@@ -153,7 +153,7 @@ public class StartClassExample {
 
 			prova2.setProfessione(prof.getId());
 			prova2.setTimeBirth(new Date());
-			prova2.setUsername("pippo");
+			prova2.setUsername("clicked");
 			prova2.setValutazione(3);
 			prova2.setVia(pos3);
 			prova2.setPass(StringHashing.sha1("asdasda"));
@@ -218,7 +218,7 @@ public class StartClassExample {
 
             example3.setProfessione(example2.getId());
             example3.setTimeBirth(new Date());
-            example3.setUsername("pippo");
+            example3.setUsername("clicked");
             example3.setValutazione(0);
             example3.setVia(pos3);
             example3.setPass(StringHashing.sha1("asdasda"));
@@ -237,7 +237,7 @@ public class StartClassExample {
 
 			example4.setProfessione(example2.getId());
 			example4.setTimeBirth(new Date());
-			example4.setUsername("pippo");
+			example4.setUsername("clicked");
 			example4.setValutazione(0);
 			example4.setVia(pos3);
 			example4.setPass("asdasda");
@@ -257,7 +257,7 @@ public class StartClassExample {
 
 			example4.setProfessione(example2.getId());
 			example4.setTimeBirth(new Date());
-			example4.setUsername("pippo");
+			example4.setUsername("clicked");
 			example4.setValutazione(0);
 			example4.setVia(pos3);
 			example4.setPass("asdasda");
@@ -276,7 +276,7 @@ public class StartClassExample {
 
 			example4.setProfessione(example2.getId());
 			example4.setTimeBirth(new Date());
-			example4.setUsername("pippo");
+			example4.setUsername("clicked");
 			example4.setValutazione(0);
 			example4.setVia(pos4);
 			example4.setPass("asdasda");
