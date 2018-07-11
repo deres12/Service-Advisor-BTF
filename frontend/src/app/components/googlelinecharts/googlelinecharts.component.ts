@@ -22,5 +22,4 @@ export class GooglelinechartsComponent implements OnInit {
     this._lineChartService.BuildPieChart(this.elementId, this.data, this.config);
 
   }
-
 }

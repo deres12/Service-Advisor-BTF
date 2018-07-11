@@ -10,6 +10,7 @@ import {Offerta} from "../../models/offerta";
 import {LineChartConfig} from "../../models/LineChartConfig";
 import {VisiteService} from "../../services/visite.service";
 import {Visita} from "../../models/Visita";
+import {GooglelinechartsComponent} from "../../components/googlelinecharts/googlelinecharts.component";
 
 
 @Component({
@@ -21,7 +22,7 @@ export class WorkerPageComponent implements OnInit {
   data1: any[];
   config1: LineChartConfig;
   elementId1: String;
-
+  title = 'Reusable charts sample';
 
   user: User;
   richieste: Richiesta[] = [];
@@ -36,23 +37,41 @@ export class WorkerPageComponent implements OnInit {
               public prova: AddRequestService,public visitato: VisiteService) {
   }
 
+
   ngOnInit() {
-    this.pippo.set("adfad",5);
-    this.user = this.auth.userInfo;
-    this.data1 = [
-      ['Giorno', 'Click']
-    ];
+
+    this.data1 = [["Giorno", "Click"],["",0]];
 
 
-    this.config1 = new LineChartConfig('Visite Settimanali', '',{ position: 'bottom' });
+      this.visitato.getVisite(this.auth.userInfo.email).subscribe((list: Visita[])=>{
+        //console.log(list);
+
+        for(let i=0; i<list.length;i++){
+          this.data1.push([list[i].dataStr,list[i].numero]);
+          console.log(list[i].dataStr,list[i].numero);
+        }
+
+        }, (error) => {
+        console.log(error);
+      });
+
+
+    console.log("prima di config1");
+    this.config1 = new LineChartConfig("Visite Settimanali", '',{ position: 'bottom' });
     this.elementId1 = 'myLineChart1';
+
 
     this.visitato.getVisite(this.auth.userInfo.email).subscribe((list: Visita[])=>{
       //console.log(list);
+
       for(let i=0; i<list.length;i++){
         this.data1.push([list[i].dataStr,list[i].numero]);
         console.log(list[i].dataStr,list[i].numero);
       }
+      this.config1 = new LineChartConfig("Visite Settimanali", '',{ position: 'bottom' });
+      this.elementId1 = 'myLineChart1';
+
+
     }, (error) => {
       console.log(error);
     });
@@ -69,6 +88,13 @@ export class WorkerPageComponent implements OnInit {
       console.log("unauthorized");
       this.router.navigateByUrl("login");
     }
+
+    this.pippo.set("adfad",5);
+    this.user = this.auth.userInfo;
+
+
+
+
 
   }
 }
