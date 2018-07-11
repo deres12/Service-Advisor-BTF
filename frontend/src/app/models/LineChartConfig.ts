@@ -10,8 +10,4 @@ export class LineChartConfig {
     this.legend=legend;
   }
 }
-/*
 
-title: 'Company Performance',
-  curveType: 'function',
-  legend: { position: 'bottom' }*/

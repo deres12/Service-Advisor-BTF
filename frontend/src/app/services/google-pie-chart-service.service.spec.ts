@@ -1,15 +1,15 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { GooglePieChartServiceService } from './google-pie-chart-service.service';
+import { GooglePieChartService } from './google-pie-chart.service';
 
-describe('GooglePieChartServiceService', () => {
+describe('GooglePieChartService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [GooglePieChartServiceService]
+      providers: [GooglePieChartService]
     });
   });
 
-  it('should be created', inject([GooglePieChartServiceService], (service: GooglePieChartServiceService) => {
+  it('should be created', inject([GooglePieChartService], (service: GooglePieChartService) => {
     expect(service).toBeTruthy();
   }));
 });

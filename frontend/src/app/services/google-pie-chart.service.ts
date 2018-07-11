@@ -8,7 +8,7 @@ declare var google: any;
   providedIn: 'root'
 })
 
-export class GooglePieChartServiceService extends GoogleChartsBaseService {
+export class GooglePieChartService extends GoogleChartsBaseService {
 
   constructor() {super(); }
 

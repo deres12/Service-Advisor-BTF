@@ -36,7 +36,7 @@ import { RicercaComponent } from './components/ricerca/ricerca.component';
 import { MappaAGMComponent } from './components/mappa-agm/mappa-agm.component';
 import { AgmCoreModule } from '@agm/core';
 import { AgmSnazzyInfoWindowModule } from '@agm/snazzy-info-window';
-import {GooglePieChartServiceService} from "./services/google-pie-chart-service.service";
+import {GooglePieChartService} from "./services/google-pie-chart.service";
 import { GooglechartsComponent } from './components/googlepiecharts/googlecharts.component';
 import { GooglelinechartsComponent } from './components/googlelinecharts/googlelinecharts.component';
 
@@ -101,7 +101,7 @@ const routes: Routes = [
     }),
     AgmSnazzyInfoWindowModule
   ],
-  providers: [AuthService, TestDataService, GooglePieChartServiceService],
+  providers: [AuthService, TestDataService, GooglePieChartService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
