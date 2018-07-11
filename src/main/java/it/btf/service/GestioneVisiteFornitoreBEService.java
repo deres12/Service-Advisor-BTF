@@ -1,9 +1,10 @@
 package it.btf.service;
 
+import it.btf.dto.VisiteGgDTO;
 import it.btf.interf.GestioneVisiteBE;
 import it.btf.model.Fornitore;
 import it.btf.model.Visita;
-import it.btf.repository.ContatoreRepository;
+import it.btf.repository.VisiteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,7 +20,7 @@ import java.util.*;
 public class GestioneVisiteFornitoreBEService implements GestioneVisiteBE {
 
     @Autowired
-    ContatoreRepository contatoreRepository;
+    VisiteRepository visiteRepository;
 
 
     @Override
@@ -34,13 +35,14 @@ public class GestioneVisiteFornitoreBEService implements GestioneVisiteBE {
         visita.setDataClick(dataClick);
         visita.setFornitore(forn);
 
-        contatoreRepository.save(visita);
+        visiteRepository.save(visita);
     }
 
     @Override
-    public Map<String,Long> contaVisite(String email) {
+    public List<VisiteGgDTO> contaVisite(String email) {
+        //System.err.println(email);
 
-        Map<String,Long> values= new HashMap();
+        List<VisiteGgDTO> values= new ArrayList<VisiteGgDTO>();
 
 //********Istanza oggetto di tipo LocalDateTime inizializzato*****//
         LocalDateTime data = LocalDateTime.now();
@@ -50,9 +52,16 @@ public class GestioneVisiteFornitoreBEService implements GestioneVisiteBE {
 
 //********ciclo e query sui giorni antecedenti***********//
         for(int i=0;i<7;i++){
+            VisiteGgDTO visite = new VisiteGgDTO();
+
             LocalDateTime day=data.minusDays(i);
-            String formattata= formmat1.format(day);
-            values.put(formattata,contatoreRepository.countByFornitore_EmailAndDataClick(email, Date.from(day.atZone(ZoneId.systemDefault()).toInstant())));
+            String dataFormattata= formmat1.format(day);
+
+            Long numeroVisite = visiteRepository.countByFornitore_EmailAndDataClick(email, Date.from(day.atZone(ZoneId.systemDefault()).toInstant()));
+            //System.out.println(numeroVisite);
+            visite.setDataStr(dataFormattata);
+            visite.setNumero(numeroVisite);
+            values.add(visite);
         }
         return values;
     }

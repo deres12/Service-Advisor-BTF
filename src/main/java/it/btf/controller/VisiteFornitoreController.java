@@ -1,11 +1,13 @@
 package it.btf.controller;
 
+import it.btf.dto.VisiteGgDTO;
 import it.btf.interf.GestioneVisiteBE;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -25,11 +27,11 @@ public class VisiteFornitoreController {
     }
 
     @GetMapping("/")
-    public Map <String,Long> contaVisiteFornitore(@RequestParam("email") String email) {
+    public ResponseEntity<List<VisiteGgDTO>> contaVisiteFornitore(@RequestParam("email") String email) {
+        //System.err.println("sdfdsfsdf");
+       List<VisiteGgDTO> conta= gestioneVisiteBE.contaVisite(email);
 
-       Map <String,Long> conta= gestioneVisiteBE.contaVisite(email);
-
-        return conta;
+        return new ResponseEntity(conta, HttpStatus.OK);
 
     }
 }

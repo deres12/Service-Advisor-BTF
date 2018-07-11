@@ -83,9 +83,10 @@ public class GestioneRichiestaBEService implements GestioneRichiestaBE {
 
             System.err.println("email:  ");
             System.err.println(richiesta.getEmailfornitore());
-			if(fornRepository.findById(richiesta.getEmailfornitore()).isPresent()) {
+
+			if(richiesta.getEmailfornitore()!= null && fornRepository.findById(richiesta.getEmailfornitore()).isPresent()) {
 				forn = fornRepository.findById(richiesta.getEmailfornitore()).get();
-                ric.setFornitore(forn);
+				ric.setFornitore(forn);
 			}
 				Servizio serv = new Servizio();
 				//cl.setEmail(richiesta.getPersona().getEmail());
