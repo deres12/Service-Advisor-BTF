@@ -37,7 +37,8 @@ import { MappaAGMComponent } from './components/mappa-agm/mappa-agm.component';
 import { AgmCoreModule } from '@agm/core';
 import { AgmSnazzyInfoWindowModule } from '@agm/snazzy-info-window';
 import {GooglePieChartServiceService} from "./services/google-pie-chart-service.service";
-import { GooglechartsComponent } from './components/googlecharts/googlecharts.component';
+import { GooglechartsComponent } from './components/googlepiecharts/googlecharts.component';
+import { GooglelinechartsComponent } from './components/googlelinecharts/googlelinecharts.component';
 
 /*
   TODO: spostare <routes> in un modulo separato ed importarlo in app.module.ts
@@ -82,7 +83,8 @@ const routes: Routes = [
     TestMappaComponent,
     PaymentsComponent,
     MappaAGMComponent,
-    GooglechartsComponent
+    GooglechartsComponent,
+    GooglelinechartsComponent
   ],
   imports: [
     NgbModule.forRoot(),
