@@ -13,7 +13,7 @@ export class VisiteService {
     return this.httpClient.get("/services/conta/",{params: {email: id}});
   }
 
-  setVisite(id: string) {
+  setVisite(id: string) :any {
     return this.httpClient.get("/services/conta/addVisita/", {params: {email: id}});
   }
 }
