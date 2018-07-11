@@ -100,9 +100,9 @@ public class GestioneUtenteBEService implements GestioneUtenteBE {
         cliente.setPass(hash);
         
         cliente.setNome(utente.getNome());
-        
-        cliente.setVia(new Luogo(utente.getVia()));
 
+        cliente.setVia(new Luogo());
+        
         utenteRepository.save(cliente);
     }
 
