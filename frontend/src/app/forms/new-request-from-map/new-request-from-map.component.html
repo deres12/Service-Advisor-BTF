@@ -1,0 +1,47 @@
+<div style="height: 16px"></div>
+<form class="form" (ngSubmit)="submit(f)" #f="ngForm">
+  <header>
+    Nuova Richiesta
+  </header>
+
+  <div class="form-content">
+    <label for="address">Inserisci la via:</label>
+    <input id="address" type="text" name="address" placeholder="indirizzo" class="form-control" ngModel>
+    <label for="numeroCivico">Inserisci il numero civico:</label>
+    <input id="numeroCivico" type="number" name="numeroCivico" placeholder="numeroCivico" class="form-control" ngModel>
+    <label for="paese">Inserisci la città:</label>
+    <input id="paese" type="text" name="paese" placeholder="paese" class="form-control" ngModel>
+    <label for="prezzoMassimo">Prezzo massimo da spendere</label>
+    <input id="prezzoMassimo" type="number" name="prezzoMassimo" placeholder="prezzoMassimo" class="form-control"
+           ngModel>
+    <label for="data">Quando ti serve?</label>
+    <div class="input-group">
+      <input id="data" class="form-control" placeholder="yyyy-mm-dd"
+             name="data" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker" ngModel>
+      <div class="input-group-append">
+        <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button">
+          <img src="assets/img/calendar.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;"/>
+        </button>
+      </div>
+    </div>
+    <!--select id="data" name="data" class="form-control" ngModel>
+        <option>entro pochi giorni</option>
+        <option>entro un mese</option>
+        <option>non lo so</option>
+    </select-->
+    <label for="descrizione">Descrivi il problema</label>
+    <!-- <input id="descrizione" type="text" name="descrizione" placeholder="descrizione" class="form-control" ngModel-->
+    <textarea id="descrizione" name="descrizione"
+              placeholder="scrivi di cosa hai bisogno..."
+              rows="5"
+              cols="30"
+              class="form-control"
+              ngModel></textarea>
+  </div>
+
+  <footer style="display:flex;justify-content: space-between">
+    <input type="button" value="Annulla" class="btn btn-secondary" routerLink="/profile">
+    <input [disabled]="!valid(f)" type="submit" value="Crea Richiesta" class="btn btn-info">
+  </footer>
+</form>
+

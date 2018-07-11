@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.Date;
 
 @Repository
-public interface ContatoreRepository extends JpaRepository<Visita, Long > {
+public interface VisiteRepository extends JpaRepository<Visita, Long > {
 
      Long countByFornitore_EmailAndDataClick(String email, Date data);
 

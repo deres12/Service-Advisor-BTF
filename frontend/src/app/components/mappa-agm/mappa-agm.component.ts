@@ -28,13 +28,14 @@ export class MappaAGMComponent implements OnInit {
     });
   }
 
-  richiesta(email:string){
+  richiesta(forn: Fornitore){
     if(this.auth.userType==UserType.Guest){
       this.router.navigate(["/signup"]);
     }else
       if(this.auth.userType==UserType.Client) {
-      localStorage.setItem("emailfornitore",email);
-        this.router.navigate(["/new-request"]);
+      localStorage.setItem("emailfornitore",forn.email);
+      sessionStorage.setItem("professione", forn.nomeProfessione);
+        this.router.navigate(["/new-request-map"]);
       }
 
     }

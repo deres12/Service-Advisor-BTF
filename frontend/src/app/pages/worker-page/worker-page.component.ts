@@ -9,8 +9,8 @@ import {Fornitore} from "../../models/fornitore";
 import {Offerta} from "../../models/offerta";
 import {LineChartConfig} from "../../models/LineChartConfig";
 import {VisiteService} from "../../services/visite.service";
-import {forEach} from "@angular/router/src/utils/collection";
 import {Visita} from "../../models/Visita";
+
 
 @Component({
   selector: 'app-worker-page',
@@ -21,6 +21,7 @@ export class WorkerPageComponent implements OnInit {
   data1: any[];
   config1: LineChartConfig;
   elementId1: String;
+
 
   user: User;
   richieste: Richiesta[] = [];
@@ -42,18 +43,16 @@ export class WorkerPageComponent implements OnInit {
       ['Giorno', 'Click']
     ];
 
+
     this.config1 = new LineChartConfig('Visite Settimanali', '',{ position: 'bottom' });
     this.elementId1 = 'myLineChart1';
 
     this.visitato.getVisite(this.auth.userInfo.email).subscribe((list: Visita[])=>{
-      console.log(list);
-      //this.pippo=risposta;
-      //this.pippo.forEach((value: number, key: string) => {console.log(value+"===>"+key)})
-      list.forEach((obj: Visita)=>{
-        this.data1.push([obj.dataStr,obj.numero])
-      })
-
-     // this.visite=risposta;
+      //console.log(list);
+      for(let i=0; i<list.length;i++){
+        this.data1.push([list[i].dataStr,list[i].numero]);
+        console.log(list[i].dataStr,list[i].numero);
+      }
     }, (error) => {
       console.log(error);
     });

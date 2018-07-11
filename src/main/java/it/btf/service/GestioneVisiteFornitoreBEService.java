@@ -3,7 +3,7 @@ package it.btf.service;
 import it.btf.interf.GestioneVisiteBE;
 import it.btf.model.Fornitore;
 import it.btf.model.Visita;
-import it.btf.repository.ContatoreRepository;
+import it.btf.repository.VisiteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,7 +19,7 @@ import java.util.*;
 public class GestioneVisiteFornitoreBEService implements GestioneVisiteBE {
 
     @Autowired
-    ContatoreRepository contatoreRepository;
+    VisiteRepository contatoreRepository;
 
 
     @Override

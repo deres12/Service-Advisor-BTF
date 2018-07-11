@@ -15,7 +15,9 @@ export class VisiteService {
     //console.log("dfasdad");
   //  let ex : Visita[] =;
     //console.log(prova);
-    return this.httpClient.get("/services/conta/",{params: {email: id}});
+    let ex : Visita[] =this.httpClient.get("/services/conta/",{params: {email: id}});
+    console.log("ecco: "+ex);
+    return ex;
   }
 
   setVisite(id: string) :any {
