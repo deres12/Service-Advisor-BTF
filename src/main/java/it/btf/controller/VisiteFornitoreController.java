@@ -15,8 +15,8 @@ public class VisiteFornitoreController {
     @Autowired
     GestioneVisiteBE gestioneVisiteBE;
 
-    @GetMapping("/addVisita/{emailForn}")
-    public ResponseEntity aggiungiVisita(@PathVariable("emailForn") String email) {
+    @GetMapping("/addVisita")
+    public ResponseEntity aggiungiVisita(@RequestParam("email") String email) {
 
         gestioneVisiteBE.addVisita(email);
 
@@ -24,8 +24,8 @@ public class VisiteFornitoreController {
 
     }
 
-    @GetMapping("/{emailForn}")
-    public Map <String,Long> contaVisiteFornitore(@PathVariable("emailForn") String email) {
+    @GetMapping("/")
+    public Map <String,Long> contaVisiteFornitore(@RequestParam("email") String email) {
 
        Map <String,Long> conta= gestioneVisiteBE.contaVisite(email);
 
