@@ -281,6 +281,7 @@ public class StartClassExample {
 
 			professioneRep.save(p);
 
+            //visiteRep.save(exampleVisit);
 			/*Visita exampleVisit=new Visita();
 			exampleVisit.setDataClick(new Date(2018, 06, 11));
 			exampleVisit.setFornitore(fornit);

@@ -1,10 +1,12 @@
 <div class="banner-breadcum section">
   <div class="row">
-<div class="breadcrumb-image" style="padding-bottom: 45px;background-image: url(http://img.r101.it/bin/news/53.$plit/C_22_news_3247_upiFotoApertura.jpg);">
+    <div class="breadcrumb-image"
+         style="padding-bottom: 45px;background-image: url(http://img.r101.it/bin/news/53.$plit/C_22_news_3247_upiFotoApertura.jpg);">
       <div class="container text-center">
         <h1>Ciao {{this.user.nome}}</h1>
         <div class="breadcrumbs_path">
-          <button type="button" class="btn btn-info btn-lg mt-3" routerLink="/new-request">Inserisci un servizio</button>
+          <button type="button" class="btn btn-info btn-lg mt-3" routerLink="/new-request">Inserisci un servizio
+          </button>
         </div>
       </div>
     </div>
@@ -12,7 +14,7 @@
 </div>
 <div class="container">
   <div class="row">
-<app-googlelinecharts></app-googlelinecharts>
+    <app-googlelinecharts style="margin: 0 auto"></app-googlelinecharts>
   </div>
 </div>
 <div class="container">
@@ -26,19 +28,19 @@
 </div>
 
 <div class="container">
-<ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0" [closeOthers]="true" >
-  <ngb-panel title= "Preventivo #{{i+1}}" *ngFor="let offerta of offerte; let i = index">
-    <ng-template ngbPanelContent>
-      <h5>Richiesta cliente</h5>
-      <p>Preventivo per offerta: {{offerta.richiesta.descrizione}}</p>
-      <p>Prezzo massimo: {{offerta.richiesta.prezzoMassimo}}</p>
+  <ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0" [closeOthers]="true">
+    <ngb-panel title="Preventivo #{{i+1}}" *ngFor="let offerta of offerte; let i = index">
+      <ng-template ngbPanelContent>
+        <h5>Richiesta cliente</h5>
+        <p>Preventivo per offerta: {{offerta.richiesta.descrizione}}</p>
+        <p>Prezzo massimo: {{offerta.richiesta.prezzoMassimo}}</p>
 
-      <h5>Offerta inviata</h5>
-      <p>Note: {{offerta.descrizione}}</p>
-      <p>Offerta: {{offerta.prezzo}}</p>
-    </ng-template>
-  </ngb-panel>
-</ngb-accordion>
+        <h5>Offerta inviata</h5>
+        <p>Note: {{offerta.descrizione}}</p>
+        <p>Offerta: {{offerta.prezzo}}</p>
+      </ng-template>
+    </ngb-panel>
+  </ngb-accordion>
 </div>
 <!--div class="divTable">
   <div class="divTableBody">
