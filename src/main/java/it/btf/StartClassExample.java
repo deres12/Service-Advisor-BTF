@@ -2,6 +2,8 @@ package it.btf;
 
 import it.btf.model.*;
 
+import it.btf.repository.*;
+import it.btf.service.GestioneVisiteFornitoreBEService;
 import it.btf.utility.Position;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -9,13 +11,6 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-
-import it.btf.repository.FornitoreRepository;
-import it.btf.repository.OffertaRepository;
-import it.btf.repository.PersonaRepository;
-import it.btf.repository.ProfessioneRepository;
-import it.btf.repository.RichiestaClienteRepository;
-import it.btf.repository.ServizioRepository;
 
 import it.btf.utility.StringHashing;
 
@@ -40,7 +35,7 @@ public class StartClassExample {
 	@Bean(name = "repositoryCommandLine")
 	public CommandLineRunner commandLineRunner(PersonaRepository personaRep, FornitoreRepository fornitoreRep,
 			OffertaRepository offertaRep, ProfessioneRepository professioneRep,
-			RichiestaClienteRepository richiestaCliRep, ServizioRepository servizoRep) {
+			RichiestaClienteRepository richiestaCliRep, ServizioRepository servizoRep, VisiteRepository visiteRep) {
 		return (args) -> {
 			Luogo pos = new Luogo();
 			pos.setPaese("Milano");
@@ -285,6 +280,87 @@ public class StartClassExample {
 			fornitoreRep.save(example4);
 
 			professioneRep.save(p);
+
+			/*Visita exampleVisit=new Visita();
+			exampleVisit.setDataClick(new Date(2018, 06, 11));
+			exampleVisit.setFornitore(fornit);
+			visiteRep.save(exampleVisit);
+
+			Visita exampleVisit1=new Visita();
+			exampleVisit1.setDataClick(new Date(2018, 06, 11));
+			exampleVisit1.setFornitore(fornit);
+			visiteRep.save(exampleVisit1);
+
+			Visita exampleVisit2=new Visita();
+			exampleVisit2.setDataClick(new Date(2018, 06, 11));
+			exampleVisit2.setFornitore(fornit);
+			visiteRep.save(exampleVisit2);
+
+			Visita exampleVisit3=new Visita();
+
+			exampleVisit3.setDataClick(new Date(2018, 06, 11));
+			exampleVisit3.setFornitore(fornit);
+			visiteRep.save(exampleVisit3);
+
+			Visita exampleVisit4=new Visita();
+
+			exampleVisit4.setDataClick(new Date(2018, 06, 10));
+			exampleVisit4.setFornitore(fornit);
+			visiteRep.save(exampleVisit4);
+
+			Visita exampleVisit5=new Visita();
+
+			exampleVisit5.setDataClick(new Date(2018, 06, 10));
+			exampleVisit5.setFornitore(fornit);
+			visiteRep.save(exampleVisit5);
+
+			exampleVisit=new Visita();
+			exampleVisit.setDataClick(new Date(2018, 06, 10));
+			exampleVisit.setFornitore(fornit);
+			visiteRep.save(exampleVisit);
+			exampleVisit=new Visita();
+
+			exampleVisit.setDataClick(new Date(2018, 06, 10));
+			exampleVisit.setFornitore(fornit);
+			visiteRep.save(exampleVisit);
+			exampleVisit=new Visita();
+
+			exampleVisit.setDataClick(new Date(2018, 06, 10));
+			exampleVisit.setFornitore(fornit);
+			visiteRep.save(exampleVisit);
+			exampleVisit=new Visita();
+
+			exampleVisit.setDataClick(new Date(2018, 06, 10));
+			exampleVisit.setFornitore(fornit);
+			visiteRep.save(exampleVisit);
+			exampleVisit=new Visita();
+
+
+
+			exampleVisit.setDataClick(new Date(2018, 06, 9));
+			exampleVisit.setFornitore(fornit);
+			visiteRep.save(exampleVisit);
+			exampleVisit=new Visita();
+
+			exampleVisit.setDataClick(new Date(2018, 06, 9));
+			exampleVisit.setFornitore(fornit);
+			visiteRep.save(exampleVisit);
+			exampleVisit=new Visita();
+
+			exampleVisit.setDataClick(new Date(2018, 06, 9));
+			exampleVisit.setFornitore(fornit);
+			visiteRep.save(exampleVisit);
+			exampleVisit=new Visita();
+
+			exampleVisit.setDataClick(new Date(2018, 06, 9));
+			exampleVisit.setFornitore(fornit);
+			visiteRep.save(exampleVisit);
+
+
+
+
+
+*/
 
 		};
 	}
